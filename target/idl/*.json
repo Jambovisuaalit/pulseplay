@@ -1,0 +1,15 @@
+# .github/workflows/test.yml
+name: Anchor Test
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: rustup default stable
+      - run: npm install -g ts-mocha
+      - run: anchor build
+      - run: anchor test
