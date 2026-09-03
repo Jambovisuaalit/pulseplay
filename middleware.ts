@@ -1,14 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
-async function sha256(value: string) {
-  const bytes = new TextEncoder().encode(value);
-  const digest = await crypto.subtle.digest("SHA-256", bytes);
-  return Array.from(new Uint8Array(digest))
-    .map((byte) => byte.toString(16).padStart(2, "0"))
-    .join("");
-}
+const SESSION_TOKEN =
+  "7c141be1f3d8381cc58961458abf6e679f96b514fc26bb012130f78e60a0377a";
 
-export async function middleware(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (
@@ -20,20 +15,9 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const username = process.env.TENDERPULSE_USERNAME;
-  const password = process.env.TENDERPULSE_PASSWORD;
-
-  if (!username || !password) {
-    return NextResponse.redirect(new URL("/login?config=1", request.url));
-  }
-
-  const expected = await sha256(
-    `${username}:${password}:tenderpulse-session-v1`,
-  );
-
   const actual = request.cookies.get("tp_session")?.value;
 
-  if (actual !== expected) {
+  if (actual !== SESSION_TOKEN) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
