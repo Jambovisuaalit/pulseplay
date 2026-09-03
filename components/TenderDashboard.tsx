@@ -1,35 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { Tender } from "@/types/tender";
-
-type NormalizedTender = Tender & {
-  _key: string;
-  _title: string;
-  _buyer: string;
-  _revenue: number;
-  _decision: string;
-};
-
-function normalizeTender(item: Tender, index: number): NormalizedTender {
-  const organisationName =
-    typeof item.organisation === "object" && item.organisation
-      ? item.organisation.name
-      : typeof item.organisation === "string"
-        ? item.organisation
-        : undefined;
-
-  const decision = String(item.go_no_go_suositus ?? "EI ARVIOITU").toUpperCase();
-
-  return {
-    ...item,
-    _key: String(item.id ?? item.notice_id ?? index),
-    _title: item.title ?? item.hankinta ?? "Ei otsikkoa",
-    _buyer: item.ostaja ?? item.buyer ?? organisationName ?? "Ei ilmoitettu",
-    _revenue: Number(item.liikevaihto_vaatimus_eur ?? 0) || 0,
-    _decision: decision,
-  };
-}
+import { useRouter } from "next/navigation";
+import type { NormalizedTender } from "@/lib/tenders";
 
 function euro(value: number) {
   return value > 0
@@ -41,69 +14,72 @@ function euro(value: number) {
     : "Ei ilmoitettu";
 }
 
-export default function TenderDashboard({ notices }: { notices: Tender[] }) {
-  const normalized = useMemo(
-    () => notices.map((item, index) => normalizeTender(item, index)),
+export default function TenderDashboard({
+  notices,
+}: {
+  notices: NormalizedTender[];
+}) {
+  const router = useRouter();
+
+  const buyers = useMemo(
+    () => Array.from(new Set(notices.map((item) => item._buyer))).sort(),
     [notices],
   );
 
-  const buyers = useMemo(
-    () => Array.from(new Set(normalized.map((item) => item._buyer))).sort(),
-    [normalized],
-  );
-
   const decisions = useMemo(
-    () => Array.from(new Set(normalized.map((item) => item._decision))).sort(),
-    [normalized],
+    () => Array.from(new Set(notices.map((item) => item._decision))).sort(),
+    [notices],
   );
 
-  const datasetMaxRevenue = useMemo(
-    () => Math.max(0, ...normalized.map((item) => item._revenue)),
-    [normalized],
+  const maxRevenue = useMemo(
+    () => Math.max(0, ...notices.map((item) => item._revenue)),
+    [notices],
   );
 
   const [buyer, setBuyer] = useState("ALL");
   const [decision, setDecision] = useState("ALL");
-  const [revenueLimit, setRevenueLimit] = useState<number>(
-    Math.max(datasetMaxRevenue, 1_000_000),
+  const [revenueLimit, setRevenueLimit] = useState(
+    Math.max(maxRevenue, 1_000_000),
   );
-  const [selectedKey, setSelectedKey] = useState<string | null>(null);
 
   const filtered = useMemo(
     () =>
-      normalized.filter((item) => {
+      notices.filter((item) => {
         const buyerOk = buyer === "ALL" || item._buyer === buyer;
         const decisionOk = decision === "ALL" || item._decision === decision;
         const revenueOk = item._revenue <= revenueLimit;
         return buyerOk && decisionOk && revenueOk;
       }),
-    [normalized, buyer, decision, revenueLimit],
+    [notices, buyer, decision, revenueLimit],
   );
 
-  const selected =
-    filtered.find((item) => item._key === selectedKey) ??
-    normalized.find((item) => item._key === selectedKey) ??
-    null;
-
-  const goCount = normalized.filter((item) => item._decision === "GO").length;
-  const goRate = normalized.length ? Math.round((goCount / normalized.length) * 100) : 0;
+  const goCount = notices.filter((item) => item._decision === "GO").length;
+  const goRate = notices.length
+    ? Math.round((goCount / notices.length) * 100)
+    : 0;
 
   return (
     <main className="shell">
       <header className="header">
         <div>
-          <p className="eyebrow">TENDERPULSE MVP</p>
+          <p className="eyebrow">TENDERPULSE</p>
           <h1>Hankintojen päätöksentekonäkymä</h1>
           <p className="muted">
-            Hilma-aineisto → vaatimukset → riskit → GO / NO-GO
+            Yksi näkymä per tarjouspyyntö: vaatimukset, riskit ja GO / NO-GO.
           </p>
         </div>
+
+        <form action="/api/logout" method="post">
+          <button className="secondaryButton headerButton" type="submit">
+            Kirjaudu ulos
+          </button>
+        </form>
       </header>
 
       <section className="metrics" aria-label="Yhteenveto">
         <article className="metric">
           <span>Uusia ilmoituksia</span>
-          <strong>{normalized.length}</strong>
+          <strong>{notices.length}</strong>
         </article>
         <article className="metric">
           <span>GO-suositukset</span>
@@ -162,7 +138,7 @@ export default function TenderDashboard({ notices }: { notices: Tender[] }) {
             onClick={() => {
               setBuyer("ALL");
               setDecision("ALL");
-              setRevenueLimit(Math.max(datasetMaxRevenue, 1_000_000));
+              setRevenueLimit(Math.max(maxRevenue, 1_000_000));
             }}
           >
             Tyhjennä suodattimet
@@ -183,44 +159,42 @@ export default function TenderDashboard({ notices }: { notices: Tender[] }) {
                 <tr>
                   <th>Hankinta</th>
                   <th>Ostaja</th>
+                  <th>Julkaistu</th>
                   <th>Liikevaihtoraja</th>
                   <th>Suositus</th>
                   <th>Riskit</th>
                 </tr>
               </thead>
               <tbody>
-                {filtered.map((item) => {
-                  const risks = item.sopimusriskit ?? [];
-                  const isSelected = selectedKey === item._key;
-
-                  return (
-                    <tr
-                      key={item._key}
-                      className={isSelected ? "selectedRow" : ""}
-                      onClick={() => setSelectedKey(item._key)}
-                    >
-                      <td>
-                        <strong>{item._title}</strong>
-                      </td>
-                      <td>{item._buyer}</td>
-                      <td>{euro(item._revenue)}</td>
-                      <td>
-                        <span
-                          className={
-                            item._decision === "GO"
-                              ? "badge badgeGo"
-                              : item._decision.includes("NO-GO")
-                                ? "badge badgeNo"
-                                : "badge"
-                          }
-                        >
-                          {item._decision}
-                        </span>
-                      </td>
-                      <td>{risks.length}</td>
-                    </tr>
-                  );
-                })}
+                {filtered.map((item) => (
+                  <tr
+                    key={item._key}
+                    onClick={() =>
+                      router.push(`/tender/${encodeURIComponent(item._key)}`)
+                    }
+                  >
+                    <td>
+                      <strong>{item._title}</strong>
+                    </td>
+                    <td>{item._buyer}</td>
+                    <td>{item.publishedAt ?? item.published_at ?? "—"}</td>
+                    <td>{euro(item._revenue)}</td>
+                    <td>
+                      <span
+                        className={
+                          item._decision === "GO"
+                            ? "badge badgeGo"
+                            : item._decision.includes("NO-GO")
+                              ? "badge badgeNo"
+                              : "badge"
+                        }
+                      >
+                        {item._decision}
+                      </span>
+                    </td>
+                    <td>{(item.sopimusriskit ?? []).length}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
 
@@ -228,75 +202,6 @@ export default function TenderDashboard({ notices }: { notices: Tender[] }) {
               <div className="emptyState">Ei osumia valituilla suodattimilla.</div>
             )}
           </div>
-
-          {selected ? (
-            <section className="detail">
-              <div className="detailHeader">
-                <div>
-                  <p className="eyebrow">VALITTU HANKINTA</p>
-                  <h2>{selected._title}</h2>
-                  <p className="muted">{selected._buyer}</p>
-                </div>
-                <span
-                  className={
-                    selected._decision === "GO"
-                      ? "badge badgeGo"
-                      : selected._decision.includes("NO-GO")
-                        ? "badge badgeNo"
-                        : "badge"
-                  }
-                >
-                  {selected._decision}
-                </span>
-              </div>
-
-              {selected.tiivistelma && (
-                <div className="detailBlock">
-                  <h3>Tiivistelmä</h3>
-                  <p>{selected.tiivistelma}</p>
-                </div>
-              )}
-
-              {selected.perustelu && (
-                <div className="detailBlock">
-                  <h3>Perustelu</h3>
-                  <p>{selected.perustelu}</p>
-                </div>
-              )}
-
-              <div className="detailGrid">
-                <div>
-                  <h3>Pakolliset vaatimukset</h3>
-                  {(selected.pakolliset_vaatimukset ?? []).length ? (
-                    (selected.pakolliset_vaatimukset ?? []).map((requirement) => (
-                      <div className="successBox" key={requirement}>
-                        {requirement}
-                      </div>
-                    ))
-                  ) : (
-                    <div className="neutralBox">Ei tunnistettuja vaatimuksia.</div>
-                  )}
-                </div>
-
-                <div>
-                  <h3>Sopimusriskit</h3>
-                  {(selected.sopimusriskit ?? []).length ? (
-                    (selected.sopimusriskit ?? []).map((risk) => (
-                      <div className="errorBox" key={risk}>
-                        {risk}
-                      </div>
-                    ))
-                  ) : (
-                    <div className="neutralBox">Ei tunnistettuja riskejä.</div>
-                  )}
-                </div>
-              </div>
-            </section>
-          ) : (
-            <div className="emptyDetail">
-              Valitse taulukosta hankinta nähdäksesi vaatimukset ja riskit.
-            </div>
-          )}
         </section>
       </div>
     </main>
