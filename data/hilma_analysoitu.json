@@ -22,7 +22,23 @@
     "riskit_evidenssi": "Hilma-ilmoituksessa todetaan, että hankintaan valitaan 4-5 sopimuskumppania, yli 25 000 euron kohteissa vaaditaan vakuudet ja peruskautta voidaan jatkaa kahdella yhden vuoden optiolla.",
     "deadline": "2026-09-17T12:00:00+03:00",
     "hilma_url": null,
-    "source_url": "https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon/?tpId=623920"
+    "source_url": "https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon/?tpId=623920",
+    "hard_gates": [
+      {
+        "id": "capability-electric",
+        "type": "capability",
+        "label": "Sähköurakoinnin kyvykkyys",
+        "required_value": "sähkötyöt",
+        "evidence": "Hankinta koskee Vihdin kunnan kiinteistöjen sähköteknisiä vuosikorjaustöitä."
+      },
+      {
+        "id": "financial-guarantee",
+        "type": "financial_guarantee",
+        "label": "Rakennus- ja takuuajan vakuus yli 25 000 € kohteissa",
+        "required_value": true,
+        "evidence": "Yli 25 000 euron kohteissa vaaditaan kohdekohtainen rakennusajan ja takuuajan vakuus."
+      }
+    ]
   },
   {
     "id": "2026-053903",
@@ -45,7 +61,19 @@
     "riskit_evidenssi": "Ilmoitus koskee jätevedenpuhdistamoihin liittyviä rakennus-, LVIS-, koneisto- ja putkistotöitä vuosille 2026-2028 sekä mahdollista optiota 2028-2030. Tarkemmat ehdot on siirretty tarjouspyyntöasiakirjoihin.",
     "deadline": "2026-09-25",
     "hilma_url": "https://www.hankintailmoitukset.fi/fi/public/procurement/35533/notice/53903",
-    "source_url": "https://www.hankintailmoitukset.fi/fi/public/procurement/35533/notice/53903"
+    "source_url": "https://www.hankintailmoitukset.fi/fi/public/procurement/35533/notice/53903",
+    "hard_gates": [
+      {
+        "id": "capability-lvis",
+        "type": "capability_any",
+        "label": "Soveltuva LVI- tai sähköosaaminen",
+        "required_value": [
+          "LVI",
+          "sähkötyöt"
+        ],
+        "evidence": "Puitejärjestelyn osa-alue 3 on LVI-työt ja osa-alue 4 sähkötyöt."
+      }
+    ]
   },
   {
     "id": "2026-054303",
@@ -69,7 +97,19 @@
     "riskit_evidenssi": "Ilmoituksen mukaan muodostetaan enintään viiden urakoitsijan puitejärjestely. Sopimus on voimassa 24 kuukautta ja sitä voidaan jatkaa kahdella 12 kuukauden optiokaudella.",
     "deadline": "2026-09-04",
     "hilma_url": null,
-    "source_url": "https://fi.openprocurements.com/tender/kiinteistojen-rakennuspalveluita-koskeva-puitejarjestely-osa-alue-1-ru-osa-alue-2-sah-osa-alue-3-lvi/"
+    "source_url": "https://fi.openprocurements.com/tender/kiinteistojen-rakennuspalveluita-koskeva-puitejarjestely-osa-alue-1-ru-osa-alue-2-sah-osa-alue-3-lvi/",
+    "hard_gates": [
+      {
+        "id": "capability-kokkola",
+        "type": "capability_any",
+        "label": "SÄH- tai LVIA-osaaminen",
+        "required_value": [
+          "sähkötyöt",
+          "LVIA"
+        ],
+        "evidence": "Hankinnan osa-alueet 2 ja 3 ovat sähkötyöt ja LVIA-työt."
+      }
+    ]
   },
   {
     "id": "2026-055952",
@@ -90,7 +130,16 @@
     "riskit_evidenssi": "Ilmoituksessa todetaan, että Pirhan ylläpitovastuulla olevia kohteita voi poistua tai tulla lisää sopimuskauden aikana ja puitesopimusta voidaan käyttää myös myöhemmin ylläpitovastuulle siirtyvissä kohteissa.",
     "deadline": "2026-10-02",
     "hilma_url": "https://www.hankintailmoitukset.fi/fi/public/procurement/36521/notice/55952",
-    "source_url": "https://www.hankintailmoitukset.fi/fi/public/procurement/36521/notice/55952"
+    "source_url": "https://www.hankintailmoitukset.fi/fi/public/procurement/36521/notice/55952",
+    "hard_gates": [
+      {
+        "id": "capability-fire",
+        "type": "capability",
+        "label": "Sprinkleri- ja kaasusammutusjärjestelmien huolto-osaaminen",
+        "required_value": "sammutusjärjestelmät",
+        "evidence": "Hankinta koskee sprinkleri- ja kaasusammutuslaitteistojen testaus- ja määräaikaishuoltoja."
+      }
+    ]
   },
   {
     "id": "2026-054740",
@@ -110,7 +159,16 @@
     "riskit_evidenssi": "Ilmoituksen mukaan palvelu koskee LUMI-datakeskuksen lämpöpumppuja ja vedenjäähdyttimiä. Hankinnan tarkempi sisältö on siirretty palvelukuvausliitteeseen, joten SLA- ja vastuuriskit on tarkistettava siitä ennen tarjousta.",
     "deadline": "2026-09-23T15:00:00+03:00",
     "hilma_url": null,
-    "source_url": "https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon/?p=2110&tpId=609813"
+    "source_url": "https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon/?p=2110&tpId=609813",
+    "hard_gates": [
+      {
+        "id": "capability-cooling",
+        "type": "capability",
+        "label": "Kylmätekniikan huolto-osaaminen",
+        "required_value": "kylmätekniikka",
+        "evidence": "Hankinta koskee LUMI-datakeskuksen lämpöpumppujen ja vedenjäähdyttimien huoltoa."
+      }
+    ]
   },
   {
     "id": "2026-055083",
@@ -133,7 +191,16 @@
     "riskit_evidenssi": "Hankinnan julkinen kuvaus osoittaa työn kohdistuvan 110 kV verkkoon sekä ilmajohtoon, kaapelointiin, valokuituun ja maadoituksiin. Tarkemmat toteutusehdot ovat liiteasiakirjoissa.",
     "deadline": "2026-09-25",
     "hilma_url": "https://www.hankintailmoitukset.fi/fi/public/procurement/36055/notice/55083",
-    "source_url": "https://www.hankintailmoitukset.fi/fi/public/procurement/36055/notice/55083"
+    "source_url": "https://www.hankintailmoitukset.fi/fi/public/procurement/36055/notice/55083",
+    "hard_gates": [
+      {
+        "id": "capability-110kv",
+        "type": "capability",
+        "label": "110 kV verkkorakentamisen osaaminen",
+        "required_value": "110 kV verkkorakentaminen",
+        "evidence": "Urakka sisältää 110 kV ilmajohdon, kaapeloinnin, valokuidun ja maadoitukset."
+      }
+    ]
   },
   {
     "id": "2026-055869",
@@ -156,7 +223,19 @@
     "riskit_evidenssi": "Ilmoitus määrittelee hankinnan suunnittelu- ja toteutusvastuun kattavaksi ST-urakaksi, joka luovutetaan valmiiksi käyttökuntoon.",
     "deadline": "2026-09-23",
     "hilma_url": "https://www.hankintailmoitukset.fi/fi/public/procedure/36479/enotice/55869/",
-    "source_url": "https://www.hankintailmoitukset.fi/fi/public/procedure/36479/enotice/55869/"
+    "source_url": "https://www.hankintailmoitukset.fi/fi/public/procedure/36479/enotice/55869/",
+    "hard_gates": [
+      {
+        "id": "capability-pumping",
+        "type": "capability_all",
+        "label": "Jätevesipumppaamo- ja ST-urakkaosaaminen",
+        "required_value": [
+          "jätevesipumppaamot",
+          "ST-urakka"
+        ],
+        "evidence": "Urakka sisältää kahden jätevesipumppaamon suunnittelun ja rakentamisen käyttökuntoon."
+      }
+    ]
   },
   {
     "id": "2026-054367",
@@ -180,6 +259,27 @@
     "riskit_evidenssi": "Ilmoituksessa toimeksiannot jaetaan hintapisteisiin perustuvan prosenttijakauman mukaan, jonka toteuma voi poiketa ±5 prosenttiyksikköä. Lisäksi tarjous on jätettävä sprinkleriosa-alueesta ja vähintään yhdestä muusta sammutusjärjestelmäosa-alueesta.",
     "deadline": "2026-09-07",
     "hilma_url": null,
-    "source_url": "https://op.europa.eu/fi/web/public-procurement/procurement-details/-/procurement/49b12cb7-3df8-49aa-8a1d-2d817cc8b392"
+    "source_url": "https://op.europa.eu/fi/web/public-procurement/procurement-details/-/procurement/49b12cb7-3df8-49aa-8a1d-2d817cc8b392",
+    "hard_gates": [
+      {
+        "id": "capability-sprinkler",
+        "type": "capability",
+        "label": "Sprinklerilaitteistojen osaaminen",
+        "required_value": "sprinklerilaitteistot",
+        "evidence": "Tarjoajan on aina tarjottava sprinklerilaitteistojen osa-aluetta."
+      },
+      {
+        "id": "capability-second-fire-system",
+        "type": "capability_any",
+        "label": "Vähintään yksi muu automaattinen sammutusjärjestelmä",
+        "required_value": [
+          "vesisumulaitteistot",
+          "kaasusammutuslaitteistot",
+          "aerosolilaitteistot",
+          "vaahtosammutuslaitteistot"
+        ],
+        "evidence": "Sprinkleriosa-alueen lisäksi on tarjottava vähintään yhtä muuta osa-aluetta."
+      }
+    ]
   }
 ]
