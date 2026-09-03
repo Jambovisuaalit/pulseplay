@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TenderPulse analysis",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "tiivistelma",
+    "pakolliset_vaatimukset",
+    "liikevaihto_vaatimus_eur",
+    "sopimusriskit",
+    "vasteaika_vaatimus",
+    "go_no_go_suositus",
+    "perustelu"
+  ],
+  "properties": {
+    "tiivistelma": { "type": "string" },
+    "pakolliset_vaatimukset": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "liikevaihto_vaatimus_eur": {
+      "type": ["number", "null"],
+      "minimum": 0
+    },
+    "sopimusriskit": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "vasteaika_vaatimus": {
+      "type": ["string", "null"]
+    },
+    "go_no_go_suositus": {
+      "type": "string",
+      "enum": ["GO", "NO-GO", "CONDITIONAL_GO"]
+    },
+    "perustelu": { "type": "string" },
+    "source_evidence": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
