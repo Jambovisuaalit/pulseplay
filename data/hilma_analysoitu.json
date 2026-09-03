@@ -6,7 +6,7 @@
     "publishedAt": "2026-08-18",
     "go_no_go_suositus": "GO",
     "perustelu": "Selkeä sähköurakoinnin puitehankinta, joka kattaa kiinteistöjen sähkötekniset perustyöt, heikkovirtatyöt sekä palo- ja turvajärjestelmiin liittyvät työt. Soveltuu hyvin yleiselle sähköurakoitsijalle, jos vakuus- ja osa-aluekohtaiset ehdot täyttyvät.",
-    "liikevaihto_vaatimus_eur": 0,
+    "liikevaihto_vaatimus_eur": null,
     "liikevaihto_evidenssi": "Julkisessa Hilma-ilmoitustekstissä ei yksilöidä tarjoajan vähimmäisliikevaihtovaatimusta. Hankinnan ennakoitu arvo on 5 400 000 euroa koko puitejärjestelylle, mutta tämä ei ole tarjoajan liikevaihtovaatimus.",
     "pakolliset_vaatimukset": [
       "Yli 25 000 euron kohteissa urakoitsijalta vaaditaan kohdekohtainen rakennusajan vakuus",
@@ -19,7 +19,10 @@
       "Puitesopimukseen valitaan 4-5 toimittajaa, joten sopimus ei takaa yksittäiselle toimittajalle tiettyä työmäärää",
       "Sopimukseen sisältyy kaksi mahdollista yhden vuoden optiota"
     ],
-    "riskit_evidenssi": "Hilma-ilmoituksessa todetaan, että hankintaan valitaan 4-5 sopimuskumppania, yli 25 000 euron kohteissa vaaditaan vakuudet ja peruskautta voidaan jatkaa kahdella yhden vuoden optiolla."
+    "riskit_evidenssi": "Hilma-ilmoituksessa todetaan, että hankintaan valitaan 4-5 sopimuskumppania, yli 25 000 euron kohteissa vaaditaan vakuudet ja peruskautta voidaan jatkaa kahdella yhden vuoden optiolla.",
+    "deadline": "2026-09-17T12:00:00+03:00",
+    "hilma_url": null,
+    "source_url": "https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon/?tpId=623920"
   },
   {
     "id": "2026-053903",
@@ -28,7 +31,7 @@
     "publishedAt": "2026-08-21",
     "go_no_go_suositus": "GO",
     "perustelu": "Erittäin relevantti LVI- ja sähköurakoitsijalle, koska puitesopimuksessa on omat osa-alueet LVI-töille ja sähkötöille ja tarjoaja voi tarjota yhtä tai useampaa osa-aluetta. Tarkat soveltuvuusvaatimukset on kuitenkin tarkistettava tarjousasiakirjoista.",
-    "liikevaihto_vaatimus_eur": 0,
+    "liikevaihto_vaatimus_eur": null,
     "liikevaihto_evidenssi": "Julkisessa ilmoituksessa hankinnan arvoa tai tarjoajan vähimmäisliikevaihtovaatimusta ei ole julkaistu.",
     "pakolliset_vaatimukset": [
       "Tarjous annetaan valitulle yhdelle tai useammalle osa-alueelle tarjouspyyntöasiakirjojen mukaisesti"
@@ -39,7 +42,10 @@
       "Jätevedenpuhdistamoympäristö voi edellyttää tavallista kiinteistöurakointia laajempaa prosessi- ja työturvallisuusosaamista",
       "Optiokausi 2028-2030 on tilaajan valinnassa"
     ],
-    "riskit_evidenssi": "Ilmoitus koskee jätevedenpuhdistamoihin liittyviä rakennus-, LVIS-, koneisto- ja putkistotöitä vuosille 2026-2028 sekä mahdollista optiota 2028-2030. Tarkemmat ehdot on siirretty tarjouspyyntöasiakirjoihin."
+    "riskit_evidenssi": "Ilmoitus koskee jätevedenpuhdistamoihin liittyviä rakennus-, LVIS-, koneisto- ja putkistotöitä vuosille 2026-2028 sekä mahdollista optiota 2028-2030. Tarkemmat ehdot on siirretty tarjouspyyntöasiakirjoihin.",
+    "deadline": "2026-09-25",
+    "hilma_url": "https://www.hankintailmoitukset.fi/fi/public/procurement/35533/notice/53903",
+    "source_url": "https://www.hankintailmoitukset.fi/fi/public/procurement/35533/notice/53903"
   },
   {
     "id": "2026-054303",
@@ -48,7 +54,7 @@
     "publishedAt": "2026-08-08",
     "go_no_go_suositus": "GO",
     "perustelu": "Selkeä ICP-osuma sekä sähkö- että LVIA-urakoitsijalle. Hankinta on jaettu erillisiin SÄH- ja LVIA-osa-alueisiin, joten tarjoajan ei tarvitse kattaa koko rakennusurakointia.",
-    "liikevaihto_vaatimus_eur": 0,
+    "liikevaihto_vaatimus_eur": null,
     "liikevaihto_evidenssi": "Julkisessa ilmoitustekstissä ei ilmoiteta tarjoajan vähimmäisliikevaihtovaatimusta eikä hankinnan kokonaisarvoa.",
     "pakolliset_vaatimukset": [
       "Tarjouksen hinnat ilmoitetaan osa-aluekohtaisesti tuntihintojen painotettuna keskiarvona ja kateprosenttina Hinnat-liitteellä",
@@ -60,7 +66,10 @@
       "Hinnoittelu perustuu tuntihintojen ja kateprosentin kilpailuun",
       "Sopimuskausi 24 kuukautta ja kaksi mahdollista 12 kuukauden optiota"
     ],
-    "riskit_evidenssi": "Ilmoituksen mukaan muodostetaan enintään viiden urakoitsijan puitejärjestely. Sopimus on voimassa 24 kuukautta ja sitä voidaan jatkaa kahdella 12 kuukauden optiokaudella."
+    "riskit_evidenssi": "Ilmoituksen mukaan muodostetaan enintään viiden urakoitsijan puitejärjestely. Sopimus on voimassa 24 kuukautta ja sitä voidaan jatkaa kahdella 12 kuukauden optiokaudella.",
+    "deadline": "2026-09-04",
+    "hilma_url": null,
+    "source_url": "https://fi.openprocurements.com/tender/kiinteistojen-rakennuspalveluita-koskeva-puitejarjestely-osa-alue-1-ru-osa-alue-2-sah-osa-alue-3-lvi/"
   },
   {
     "id": "2026-055952",
@@ -69,7 +78,7 @@
     "publishedAt": "2026-09-02",
     "go_no_go_suositus": "NO-GO",
     "perustelu": "Hankinta on LVI-/kiinteistötekniikan rajapinnassa, mutta kohdistuu erikoistuneesti sprinkleri- ja kaasusammutusjärjestelmien testaukseen, määräaikaishuoltoon ja muutostöihin. Yleiselle LVI-/sähköurakoitsijalle tämä on NO-GO ilman nimenomaista sammutusjärjestelmäosaamista.",
-    "liikevaihto_vaatimus_eur": 0,
+    "liikevaihto_vaatimus_eur": null,
     "liikevaihto_evidenssi": "Julkisessa Hilma-ilmoitustekstissä ei yksilöidä tarjoajan vähimmäisliikevaihtovaatimusta.",
     "pakolliset_vaatimukset": [],
     "vaatimukset_evidenssi": "Julkisessa ilmoitustekstissä kuvataan testaus-, määräaikaishuolto- sekä vähäiset lisä- ja muutostyöt, mutta tarjoajan yksityiskohtaisia pätevyys- tai sertifikaattivaatimuksia ei julkaista tässä näkymässä. Ne on tarkistettava tarjousasiakirjoista.",
@@ -78,7 +87,10 @@
       "Puitejärjestely voi ulottua myöhemmin Pirhan ylläpitovastuulle siirtyviin uusiin kohteisiin",
       "Erikoisjärjestelmien huoltovastuu kasvattaa virhe- ja turvallisuusriskiä"
     ],
-    "riskit_evidenssi": "Ilmoituksessa todetaan, että Pirhan ylläpitovastuulla olevia kohteita voi poistua tai tulla lisää sopimuskauden aikana ja puitesopimusta voidaan käyttää myös myöhemmin ylläpitovastuulle siirtyvissä kohteissa."
+    "riskit_evidenssi": "Ilmoituksessa todetaan, että Pirhan ylläpitovastuulla olevia kohteita voi poistua tai tulla lisää sopimuskauden aikana ja puitesopimusta voidaan käyttää myös myöhemmin ylläpitovastuulle siirtyvissä kohteissa.",
+    "deadline": "2026-10-02",
+    "hilma_url": "https://www.hankintailmoitukset.fi/fi/public/procurement/36521/notice/55952",
+    "source_url": "https://www.hankintailmoitukset.fi/fi/public/procurement/36521/notice/55952"
   },
   {
     "id": "2026-054740",
@@ -87,7 +99,7 @@
     "publishedAt": "2026-08-15",
     "go_no_go_suositus": "NO-GO",
     "perustelu": "Hankinta kohdistuu LUMI-datakeskuksen lämpöpumppujen ja vedenjäähdyttimien määräaikaishuoltoon ja korjauksiin. Tämä on teknisesti relevantti vain kylmätekniikkaan erikoistuneelle toimijalle; yleiselle LVI-/sähköurakoitsijalle NO-GO ilman kylmälaiteosaamista.",
-    "liikevaihto_vaatimus_eur": 0,
+    "liikevaihto_vaatimus_eur": null,
     "liikevaihto_evidenssi": "Julkisessa Hilma-aineistossa ei ilmoiteta tarjoajan vähimmäisliikevaihtovaatimusta.",
     "pakolliset_vaatimukset": [],
     "vaatimukset_evidenssi": "Julkisessa ilmoituksessa hankinnan kohteeksi määritellään LUMI-datakeskuksen lämpöpumppujen ja vedenjäähdyttimien määräaikaishuolto- ja korjauspalvelut. Tarkemmat tekniset vaatimukset ovat liitteessä 1 Palvelukuvaus lämpöpumppu ja VJK.",
@@ -95,7 +107,10 @@
       "Datakeskusympäristön jäähdytysjärjestelmien häiriöt voivat olla liiketoimintakriittisiä",
       "Tarkat tekniset vastuut ja palvelutasot eivät ilmene julkisesta tiivistelmästä vaan erillisestä palvelukuvauksesta"
     ],
-    "riskit_evidenssi": "Ilmoituksen mukaan palvelu koskee LUMI-datakeskuksen lämpöpumppuja ja vedenjäähdyttimiä. Hankinnan tarkempi sisältö on siirretty palvelukuvausliitteeseen, joten SLA- ja vastuuriskit on tarkistettava siitä ennen tarjousta."
+    "riskit_evidenssi": "Ilmoituksen mukaan palvelu koskee LUMI-datakeskuksen lämpöpumppuja ja vedenjäähdyttimiä. Hankinnan tarkempi sisältö on siirretty palvelukuvausliitteeseen, joten SLA- ja vastuuriskit on tarkistettava siitä ennen tarjousta.",
+    "deadline": "2026-09-23T15:00:00+03:00",
+    "hilma_url": null,
+    "source_url": "https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon/?p=2110&tpId=609813"
   },
   {
     "id": "2026-055083",
@@ -104,7 +119,7 @@
     "publishedAt": "2026-08-26",
     "go_no_go_suositus": "NO-GO",
     "perustelu": "Kyse on 110 kV sähköverkon ilmajohdon, kaapeloinnin, valokuidun ja maadoitusten rakentamisesta. Tämä on selvästi erikoistunutta suurjännite- ja verkkorakentamista eikä tavallisen kiinteistösähköurakoitsijan perus-ICP:tä.",
-    "liikevaihto_vaatimus_eur": 0,
+    "liikevaihto_vaatimus_eur": null,
     "liikevaihto_evidenssi": "Julkisessa Hilma-ilmoitustekstissä ei ilmoiteta tarjoajan vähimmäisliikevaihtovaatimusta. Ulkopuolisissa TED-pohjaisissa tietolähteissä hankinnan ennakoitu arvo on noin 1,88 miljoonaa euroa, mutta tämä ei ole tarjoajan liikevaihtovaatimus.",
     "pakolliset_vaatimukset": [
       "Urakka sisältää 110 kV sähköverkon ilmajohdon rakentamisen tarjouspyynnön ja suunnitelmien mukaisesti",
@@ -115,7 +130,10 @@
       "110 kV suurjänniteverkon rakentaminen vaatii erikoisosaamista ja tavallista kiinteistösähköurakointia korkeampaa turvallisuushallintaa",
       "Suunnitelma- ja liiteasiakirjojen tekniset ehdot ratkaisevat todellisen toteutus- ja vastuuriskin"
     ],
-    "riskit_evidenssi": "Hankinnan julkinen kuvaus osoittaa työn kohdistuvan 110 kV verkkoon sekä ilmajohtoon, kaapelointiin, valokuituun ja maadoituksiin. Tarkemmat toteutusehdot ovat liiteasiakirjoissa."
+    "riskit_evidenssi": "Hankinnan julkinen kuvaus osoittaa työn kohdistuvan 110 kV verkkoon sekä ilmajohtoon, kaapelointiin, valokuituun ja maadoituksiin. Tarkemmat toteutusehdot ovat liiteasiakirjoissa.",
+    "deadline": "2026-09-25",
+    "hilma_url": "https://www.hankintailmoitukset.fi/fi/public/procurement/36055/notice/55083",
+    "source_url": "https://www.hankintailmoitukset.fi/fi/public/procurement/36055/notice/55083"
   },
   {
     "id": "2026-055869",
@@ -124,7 +142,7 @@
     "publishedAt": "2026-09-02",
     "go_no_go_suositus": "NO-GO",
     "perustelu": "Hankinta sisältää kahden jätevesipumppaamon saneerauksen sekä toteutussuunnittelun ja rakentamisen valmiiksi käyttökuntoon. Yleiselle LVI-/sähköurakoitsijalle kokonaisvastuullinen ST-urakka on liian laaja ilman pumppaamo-, prosessi- ja suunnittelukapasiteettia.",
-    "liikevaihto_vaatimus_eur": 0,
+    "liikevaihto_vaatimus_eur": null,
     "liikevaihto_evidenssi": "Julkisessa Hilma-ilmoituksessa ei ilmoiteta tarjoajan vähimmäisliikevaihtovaatimusta.",
     "pakolliset_vaatimukset": [
       "Urakoitsijan toimitusvastuu kattaa saneerauksen edellyttämän suunnittelun",
@@ -135,7 +153,10 @@
       "ST-urakassa suunnittelu- ja toteutusvastuu yhdistyvät samalle toimittajalle",
       "Jätevesipumppaamon käyttökuntoon saattaminen sisältää rajapintariskin prosessi-, sähkö-, automaatio- ja putkistotöiden välillä"
     ],
-    "riskit_evidenssi": "Ilmoitus määrittelee hankinnan suunnittelu- ja toteutusvastuun kattavaksi ST-urakaksi, joka luovutetaan valmiiksi käyttökuntoon."
+    "riskit_evidenssi": "Ilmoitus määrittelee hankinnan suunnittelu- ja toteutusvastuun kattavaksi ST-urakaksi, joka luovutetaan valmiiksi käyttökuntoon.",
+    "deadline": "2026-09-23",
+    "hilma_url": "https://www.hankintailmoitukset.fi/fi/public/procedure/36479/enotice/55869/",
+    "source_url": "https://www.hankintailmoitukset.fi/fi/public/procedure/36479/enotice/55869/"
   },
   {
     "id": "2026-054367",
@@ -144,7 +165,7 @@
     "publishedAt": "2026-08-08",
     "go_no_go_suositus": "NO-GO",
     "perustelu": "Hankinta on kiinteistöteknisesti relevantti, mutta tarjoajan on tarjottava sprinklerilaitteistojen osa-alue sekä vähintään yksi muu sammutusjärjestelmätyyppi. Tämä tekee kohteesta liian erikoistuneen yleiselle LVI-/sähköurakoitsijalle ilman laajaa sammutusjärjestelmäosaamista.",
-    "liikevaihto_vaatimus_eur": 0,
+    "liikevaihto_vaatimus_eur": null,
     "liikevaihto_evidenssi": "Julkisessa ilmoituksessa ei yksilöidä tarjoajan vähimmäisliikevaihtovaatimusta. Hankinnan arvioitu kokonaisarvo on 1 000 000 euroa ja enimmäisarvo 1 500 000 euroa, mutta nämä ovat hankinnan arvoja eivätkä tarjoajan liikevaihtorajoja.",
     "pakolliset_vaatimukset": [
       "Tarjoajan on jätettävä tarjous osa-alueesta 1 Sprinklerilaitteistot",
@@ -156,6 +177,9 @@
       "Toteutunut prosenttijakauma voi poiketa tavoitejakaumasta ±5 prosenttiyksikköä",
       "Tarjoajan on hallittava vähintään kaksi erilaista sammutusjärjestelmäkokonaisuutta"
     ],
-    "riskit_evidenssi": "Ilmoituksessa toimeksiannot jaetaan hintapisteisiin perustuvan prosenttijakauman mukaan, jonka toteuma voi poiketa ±5 prosenttiyksikköä. Lisäksi tarjous on jätettävä sprinkleriosa-alueesta ja vähintään yhdestä muusta sammutusjärjestelmäosa-alueesta."
+    "riskit_evidenssi": "Ilmoituksessa toimeksiannot jaetaan hintapisteisiin perustuvan prosenttijakauman mukaan, jonka toteuma voi poiketa ±5 prosenttiyksikköä. Lisäksi tarjous on jätettävä sprinkleriosa-alueesta ja vähintään yhdestä muusta sammutusjärjestelmäosa-alueesta.",
+    "deadline": "2026-09-07",
+    "hilma_url": null,
+    "source_url": "https://op.europa.eu/fi/web/public-procurement/procurement-details/-/procurement/49b12cb7-3df8-49aa-8a1d-2d817cc8b392"
   }
 ]
