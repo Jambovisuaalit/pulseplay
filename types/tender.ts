@@ -10,8 +10,11 @@ export interface Tender {
   organisation?: { name?: string } | string;
   tiivistelma?: string;
   pakolliset_vaatimukset?: string[];
+  vaatimukset_evidenssi?: string;
   liikevaihto_vaatimus_eur?: number | null;
+  liikevaihto_evidenssi?: string;
   sopimusriskit?: string[];
+  riskit_evidenssi?: string;
   vasteaika_vaatimus?: string | null;
   go_no_go_suositus?: GoNoGo;
   perustelu?: string;
