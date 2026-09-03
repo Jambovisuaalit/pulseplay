@@ -1,0 +1,64 @@
+name: TenderPulse ingest
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 5 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install OCR system packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-fin
+
+      - name: Install worker dependencies
+        run: pip install -r requirements-worker.txt
+
+      - name: Fetch Hilma notices and available attachments
+        env:
+          HILMA_API_KEY: ${{ secrets.HILMA_API_KEY }}
+        run: python workers/fetch_hilma.py
+
+      - name: Extract PDF text with OCR fallback
+        run: python workers/extract_pdfs.py
+
+      - name: Build 100-notice manual validation set
+        run: python workers/build_validation_set.py
+
+      - name: Evaluate current company profile hard gates
+        run: python workers/hard_gate_engine.py
+
+      - name: Score validation labels when available
+        continue-on-error: true
+        run: python workers/score_validation.py
+
+      - name: Upload pipeline artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: tenderpulse-ingest
+          if-no-files-found: warn
+          path: |
+            data/hilma_raw.json
+            data/attachment_texts.json
+            data/profile_fit.json
+            data/validation/hilma_100_luokiteltavaksi.csv
+            data/validation/metrics.json
+
+      # LLM-analyysi lisätään vasta, kun 100 ilmoituksen manuaalinen
+      # ground truth osoittaa, että relevance-signaali on riittävän tarkka.

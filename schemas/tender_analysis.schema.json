@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TenderPulse analyzed tender",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "title",
+    "organisation",
+    "publishedAt",
+    "deadline",
+    "go_no_go_suositus",
+    "perustelu",
+    "liikevaihto_vaatimus_eur",
+    "liikevaihto_evidenssi",
+    "pakolliset_vaatimukset",
+    "vaatimukset_evidenssi",
+    "sopimusriskit",
+    "riskit_evidenssi"
+  ],
+  "properties": {
+    "id": { "type": ["string", "number"] },
+    "title": { "type": "string" },
+    "organisation": { "type": ["string", "object"] },
+    "publishedAt": { "type": ["string", "null"] },
+    "deadline": { "type": ["string", "null"] },
+    "hilma_url": { "type": ["string", "null"], "format": "uri" },
+    "source_url": { "type": ["string", "null"], "format": "uri" },
+    "tiivistelma": { "type": ["string", "null"] },
+    "pakolliset_vaatimukset": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "vaatimukset_evidenssi": { "type": ["string", "null"] },
+    "liikevaihto_vaatimus_eur": {
+      "type": ["number", "null"],
+      "minimum": 0
+    },
+    "liikevaihto_evidenssi": { "type": ["string", "null"] },
+    "sopimusriskit": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "riskit_evidenssi": { "type": ["string", "null"] },
+    "vasteaika_vaatimus": { "type": ["string", "null"] },
+    "go_no_go_suositus": {
+      "type": "string",
+      "enum": ["GO", "NO-GO", "CONDITIONAL_GO"]
+    },
+    "perustelu": { "type": "string" },
+    "hard_gates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "type", "label", "required_value"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": [
+              "turnover_min",
+              "capability",
+              "capability_any",
+              "capability_all",
+              "certification",
+              "region",
+              "response_time_max_hours",
+              "financial_guarantee"
+            ]
+          },
+          "label": { "type": "string" },
+          "required_value": {
+            "type": ["string", "number", "boolean", "array", "null"]
+          },
+          "evidence": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TenderPulse company profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profile_status",
+    "company_name",
+    "turnover_eur",
+    "regions",
+    "capabilities",
+    "certifications",
+    "response_time_hours",
+    "can_provide_financial_guarantee"
+  ],
+  "properties": {
+    "profile_status": {
+      "type": "string",
+      "enum": ["UNCONFIGURED", "ACTIVE"]
+    },
+    "company_name": { "type": ["string", "null"] },
+    "turnover_eur": { "type": ["number", "null"], "minimum": 0 },
+    "regions": { "type": "array", "items": { "type": "string" } },
+    "capabilities": { "type": "array", "items": { "type": "string" } },
+    "certifications": { "type": "array", "items": { "type": "string" } },
+    "response_time_hours": { "type": ["number", "null"], "minimum": 0 },
+    "can_provide_financial_guarantee": { "type": ["boolean", "null"] }
+  }
+}
