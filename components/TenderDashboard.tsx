@@ -4,14 +4,14 @@ import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { NormalizedTender } from "@/lib/tenders";
 
-function euro(value: number) {
-  return value > 0
+function euro(value: number | null) {
+  return typeof value === "number"
     ? new Intl.NumberFormat("fi-FI", {
         style: "currency",
         currency: "EUR",
         maximumFractionDigits: 0,
       }).format(value)
-    : "Ei ilmoitettu";
+    : "Ei löydetty";
 }
 
 export default function TenderDashboard({
@@ -32,7 +32,7 @@ export default function TenderDashboard({
   );
 
   const maxRevenue = useMemo(
-    () => Math.max(0, ...notices.map((item) => item._revenue)),
+    () => Math.max(0, ...notices.map((item) => item._revenue ?? 0)),
     [notices],
   );
 
@@ -47,7 +47,7 @@ export default function TenderDashboard({
       notices.filter((item) => {
         const buyerOk = buyer === "ALL" || item._buyer === buyer;
         const decisionOk = decision === "ALL" || item._decision === decision;
-        const revenueOk = item._revenue <= revenueLimit;
+        const revenueOk = item._revenue == null || item._revenue <= revenueLimit;
         return buyerOk && decisionOk && revenueOk;
       }),
     [notices, buyer, decision, revenueLimit],
@@ -100,9 +100,7 @@ export default function TenderDashboard({
             <select value={buyer} onChange={(event) => setBuyer(event.target.value)}>
               <option value="ALL">Kaikki</option>
               {buyers.map((item) => (
-                <option key={item} value={item}>
-                  {item}
-                </option>
+                <option key={item} value={item}>{item}</option>
               ))}
             </select>
           </label>
@@ -120,15 +118,10 @@ export default function TenderDashboard({
 
           <label>
             GO / NO-GO
-            <select
-              value={decision}
-              onChange={(event) => setDecision(event.target.value)}
-            >
+            <select value={decision} onChange={(event) => setDecision(event.target.value)}>
               <option value="ALL">Kaikki</option>
               {decisions.map((item) => (
-                <option key={item} value={item}>
-                  {item}
-                </option>
+                <option key={item} value={item}>{item}</option>
               ))}
             </select>
           </label>
@@ -159,7 +152,7 @@ export default function TenderDashboard({
                 <tr>
                   <th>Hankinta</th>
                   <th>Ostaja</th>
-                  <th>Julkaistu</th>
+                  <th>Deadline</th>
                   <th>Liikevaihtoraja</th>
                   <th>Suositus</th>
                   <th>Riskit</th>
@@ -169,26 +162,20 @@ export default function TenderDashboard({
                 {filtered.map((item) => (
                   <tr
                     key={item._key}
-                    onClick={() =>
-                      router.push(`/tender/${encodeURIComponent(item._key)}`)
-                    }
+                    onClick={() => router.push(`/tender/${encodeURIComponent(item._key)}`)}
                   >
-                    <td>
-                      <strong>{item._title}</strong>
-                    </td>
+                    <td><strong>{item._title}</strong></td>
                     <td>{item._buyer}</td>
-                    <td>{item.publishedAt ?? item.published_at ?? "—"}</td>
+                    <td>{item.deadline ?? "Ei löydetty"}</td>
                     <td>{euro(item._revenue)}</td>
                     <td>
-                      <span
-                        className={
-                          item._decision === "GO"
-                            ? "badge badgeGo"
-                            : item._decision.includes("NO-GO")
-                              ? "badge badgeNo"
-                              : "badge"
-                        }
-                      >
+                      <span className={
+                        item._decision === "GO"
+                          ? "badge badgeGo"
+                          : item._decision.includes("NO-GO")
+                            ? "badge badgeNo"
+                            : "badge"
+                      }>
                         {item._decision}
                       </span>
                     </td>
