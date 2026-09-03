@@ -1,0 +1,52 @@
+name: TenderPulse ingest
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install OCR system packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-fin
+
+      - name: Install worker dependencies
+        run: pip install -r requirements-worker.txt
+
+      - name: Fetch Hilma notices and PDF attachments
+        env:
+          HILMA_GRAPHQL_URL: ${{ vars.HILMA_GRAPHQL_URL }}
+        run: python workers/fetch_hilma.py
+
+      - name: Extract PDF text with OCR fallback
+        run: python workers/extract_pdfs.py
+
+      - name: Upload ingest artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: tenderpulse-ingest
+          if-no-files-found: warn
+          path: |
+            data/hilma_raw.json
+            data/attachment_texts.json
+
+      # Next step:
+      # 1) Run the LLM analyzer against hilma_raw.json + attachment_texts.json.
+      # 2) Validate the output against schemas/tender_analysis.schema.json.
+      # 3) Write data/hilma_analysoitu.json.
+      # 4) Let the Vercel deployment build from the updated Git branch.
