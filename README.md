@@ -145,3 +145,6 @@ After the 100-notice validation:
 2. run a 14-day design-partner pilot
 3. measure time saved, missed-opportunity recovery and GO/NO-GO accuracy
 4. only then decide whether to build tender-drafting automation
+
+
+<!-- deploy-trigger: 2026-09-03 TenderPulse production sync -->
