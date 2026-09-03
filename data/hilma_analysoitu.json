@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "id": "2026-001234",
+    "title": "Kiinteistöjen LVI- ja sähköhuoltopalvelut 2026–2028",
+    "organisation": "Helsingin kaupungin tilapalvelut",
+    "publishedAt": "2026-09-02",
+    "go_no_go_suositus": "GO",
+    "perustelu": "Erittäin sopiva kohde. Liikevaihto- ja pätevyysvaatimukset täyttyvät, sopimuskausi 2v + 2v optio.",
+    "liikevaihto_vaatimus_eur": 800000,
+    "liikevaihto_evidenssi": "Tarjoajan liikevaihdon kolmelta viimeiseltä vahvistetulta tilikaudelta on oltava keskimäärin vähintään 800 000 euroa/tilikausi (Tarjouspyyntö s. 5, kohta 4.2).",
+    "pakolliset_vaatimukset": [
+      "Vähintään S2-sähköpätevyys",
+      "Nimettävä KVV-vastaava",
+      "24/7 päivystysvalmius max 2h vasteajalla"
+    ],
+    "vaatimukset_evidenssi": "Nimetyllä vastuuhenkilöllä on oltava voimassa oleva S2-pätevyys ja KVV-vastaavan pätevyys. Vasteaika hälytystehtävissä on enintään 2 tuntia ilmoituksesta (Liite 1 - Palvelukuvaus, s. 2).",
+    "sopimusriskit": [
+      "Sopimussakko vasteajan ylityksestä 500 € / alkava tunti",
+      "Tiukka kiinteä hinnoittelu ensimmäiset 12 kk"
+    ],
+    "riskit_evidenssi": "Mikäli valittu palveluntuottaja ei saavu kohteeseen 2 tunnin sisällä hälytyksestä, tilaajalla on oikeus periä 500 € sopimussakko jokaiselta alkavalta tunnilta (Sopimusehdot, kohta 8.1)."
+  }
+]
