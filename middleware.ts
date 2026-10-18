@@ -9,6 +9,9 @@ export function middleware(request: NextRequest) {
   if (
     pathname === "/login" ||
     pathname === "/api/login" ||
+    pathname === "/esittely" ||
+    pathname === "/urakkaluotsi/esimerkkikooste.pdf" ||
+    pathname.startsWith("/urakkaluotsi/") ||
     pathname.startsWith("/_next/") ||
     pathname === "/favicon.ico"
   ) {
