@@ -12,7 +12,7 @@ export type NormalizedTender = Tender & {
 export function isTenderActive(item: Pick<Tender, "deadline">, asOf = new Date()): boolean {
   const value = item.deadline;
   // Missing timezone or cutoff hour must not be treated as an open tender.
-  if (typeof value !== "string" || !/T\\d{2}:\\d{2}.*(?:Z|[+-]\\d{2}:\\d{2})$/.test(value)) {
+  if (typeof value !== "string" || !/T\d{2}:\d{2}.*(?:Z|[+-]\d{2}:\d{2})$/.test(value)) {
     return false;
   }
   const deadline = new Date(value);
