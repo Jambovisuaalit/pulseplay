@@ -1,0 +1,28 @@
+{
+  "validation_type": "saved_snapshot_offline",
+  "validated_at": "2026-10-19T02:49:24+03:00",
+  "input": "data/hilma_analysoitu.json",
+  "snapshot_records": 8,
+  "distinct_ids": 8,
+  "duplicate_or_missing_ids": 0,
+  "expired_verified_timezone": 2,
+  "deadline_invalid_or_ambiguous": 6,
+  "active": 0,
+  "top30_available": 0,
+  "processing_seconds": 0.000067,
+  "processing_seconds_scope": "Pure Python analyze(payload, as_of) only; not an end-to-end delivery latency",
+  "automated_regression_tests": {
+    "passed": 4,
+    "failed": 0
+  },
+  "precision_at_30": null,
+  "precision_gate": "NOT_VALIDATED",
+  "blockers": [
+    "data/hilma_raw.json absent",
+    "100 frozen human-reviewed labels absent",
+    "snapshot has zero currently active notices"
+  ],
+  "live_api_calls": 0,
+  "production_deploy": false,
+  "notes": "Three additional current example tenders appear in the attached public PDF, but are not part of this repository dataset and have no archived machine-readable source in the repository."
+}
