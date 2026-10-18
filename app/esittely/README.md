@@ -1,31 +1,34 @@
 # Urakkaluotsi – julkinen myyntisivu
 
-- Reitti: `/esittely` (säilyttää nykyisen suojatun dashboardin juurireitillä).
-- Copy, tietosisältö ja PDF-linkit: `page.tsx`.
-- Pilottihakemuksen väliaikainen yhteydenotto: `pilot-form.tsx` avaa täytetyn viestin käyttäjän sähköpostisovellukseen osoitteella `visualjambo@gmail.com`. Käyttäjän pitää lähettää se itse; selaimesta ei voida vahvistaa vastaanottoa eikä tietoja tallenneta sivustolle. Ei serveripuolen vastaanottoa.
-- Visuaalinen toteutus: `site.css`, Urakkaluotsin bränditokenit.
-- Logo: `public/urakkaluotsi/logo-primary.svg` ja `logo-white.svg`.
-- Nelisivuinen julkinen demo: `public/urakkaluotsi/esimerkkikooste.pdf`.
+Nykyinen design säilytetään. Julkiset reitit ovat `/esittely`, `/esittely/tietosuoja` ja `/urakkaluotsi/*`. Juurireitin dashboard säilyy suojattuna.
 
-## Ennen tuotantojulkaisua
+## Muokkaus
 
-1. Palveluntarjoaja on Tmi Jami Harju, **Y-tunnus 3581581-6** (käyttäjän ilmoittama 19.10.2026; muodollinen tarkistusnumero täsmää). Rekisteritietojen vastaavuus YTJ:ssä ja mahdolliset muut yritystiedot tulee vielä tarkistaa ennen julkaisua.
-2. `tietosuoja/page.tsx` kuvaa nykyistä mailto-yhteydenottoa, ei tulevaa API-lomaketta. Rekisterinpitäjän tulee vahvistaa rekisteritiedot, säilytyksen kriteerit ja tosiasialliset sähköposti-/hosting-palveluntarjoajat sekä mahdolliset kansainväliset siirrot. Jos käsittelytapa muuttuu, päivitä teksti ennen käyttöönottoa.
-3. Väliaikainen yhteysosoite on `visualjambo@gmail.com` (vahvista vielä Urakkaluotsin käyttöön). Varsinaista suoraa verkkolomakelähetystä varten toteuta palvelinpuoleinen vastaanotto, validointi, kaksoislähetysten esto ja virhetilat. Älä rinnasta `mailto`-avausta onnistuneeseen lähetykseen.
-4. Varmista pilottihinta, toimitusrytmi ja kaupalliset ehdot ennen tilausta.
-5. Domainit `urakkaluotsi.fi` ja `urakkaluotsi.online` on ostettu, mutta yhteyttä sivustoon ei ole asetettu. Vahvista varsinainen käyttödomen ennen canonical- ja Open Graph -osoitteita.
-6. Mittausvalmius: `pilot_cta_click`, `example_open`, `lead_submit_success` (vasta todellisen onnistumisen jälkeen); älä lähetä henkilötietoja analytiikkaan.
+- `page.tsx`: sivun teksti, hero ja nelisivuisen demon linkit.
+- `site.css`: nykyinen layout ja rajatut responsiivisuus-/saavutettavuuskorjaukset.
+- `contact.ts`: kenttien rajat, validointi ja mailto-luonnoksen muodostus.
+- `pilot-form.tsx`: virhetilat, fokus ja kopioitava varaviesti.
+- `tietosuoja/page.tsx`: nykyisen yhteydenottotavan tietosuojaseloste; lataa oman tyylitiedostonsa myös suoralla avauksella.
+- `JULKAISU-QA.md`: testien tulokset ja jäljellä olevat rajoitteet.
 
-## Tarkistukset
+## Palveluntarjoaja ja tietojen käsittely
 
-- `npx tsc --noEmit`: PASS 19.10.2026.
-- `npm run build`: PASS 19.10.2026, `/esittely` prerenderöity staattisesti.
-- Päivitetyn sähköpostiluonnoksen jälkeen `npm run build`: PASS 19.10.2026.
-- HTTP-savutestiä ei voitu suorittaa tässä ympäristössä: Next.js käynnistys pysähtyi `uv_interface_addresses`-järjestelmävirheeseen. Tämä ei ole osoitus reitin toimivuudesta tai viasta palvelimella.
-- PDF: neljä A4-sivua (`pdfinfo`).
-- Responsiivinen suunnittelu: 375 / 390 / 768 / 1440 px -breakpointit CSS:ssä; selaimen visuaalinen QA ja näppäimistötestaus vielä tekemättä.
-- 19.10.2026: uusi julkinen `/esittely/tietosuoja`-reitti, tietosuojalinkit lomakkeessa ja footerissa, `middleware.ts`-poikkeus. `npm run build`: PASS; molemmat sivut staattisesti prerenderöity; `git diff --check`: PASS.
-- Paikallinen Next.js HTTP-testi pysähtyi edelleen `uv_interface_addresses`-järjestelmävirheeseen. **Mobiili-/desktop-selaimessa ei ole vielä todennettua läpikäyntiä**, eikä PDF-linkin toimintaa vahvistettu toimivalla selaimella; pelkkä CSS-breakpointtien olemassaolo ei ole QA-hyväksyntä.
-- Repossa ei ole `npm test` -skriptiä, eikä toimivaa `next lint` -skriptiä nykyisellä Next.js-versiolla.
+Tmi Jami Harju, Y-tunnus **3581581-6**, väliaikainen yhteys **visualjambo@gmail.com**. Käyttäjä on antanut nimen, tunnuksen ja osoitteen. YTJ:n yrityshaussa 19.10.2026 tunnus löytyy yksityisenä elinkeinonharjoittajana, Verohallinnon perustiedoissa rekisterissä 24.11.2025 alkaen. Julkinen hakutulos ei näytä henkilön nimeä; sitä ei väitetä rekisteristä varmennetuksi.
 
-Ei julkaistu tuotantoon.
+Lomake muodostaa luonnoksen käyttäjän omaan sähköpostisovellukseen. Se ei lähetä viestiä palvelimelle, tallenna kenttiä tai vahvista vastaanottoa. Käyttäjä lähettää itse. Puuttuvan sähköpostisovelluksen varalle valmis teksti on kopioitavissa sivulta; suora sähköpostiosoite on aina näkyvissä. JavaScriptin puuttuessa näytetään suora yhteystieto ja piilotetaan toimimaton lomake.
+
+Tietosuojaselosteen säilytysraja ei-asiakkaiden yhteydenotoille on enintään kuusi kuukautta viimeisestä yhteydenotosta, jollei avoin selvitys tai vaade edellytä pidempää. Palveluntarjoajan tulee toteuttaa poistokäytäntö sähköpostissa; sivusto ei voi poistaa Gmail-viestejä. Sähköpostipalvelu on Gmail ja hosting Vercel. Tilikohtaisia sopimus-/siirtojärjestelyjä tai lokisäilytystä ei väitetä tarkastetuiksi. Teksti ei ole oikeudellisen vaatimustenmukaisuuden varmennus.
+
+## Toistettavat tarkistukset
+
+- `npm test`: Node 24, neljä lomakkeen validointi- ja encoding-testiä, ei ulkoisia kutsuja.
+- `npm run typecheck`: TypeScript.
+- `npm run build`: Next.js production build.
+- `node tests/browser-qa.cjs`: Chrome + Node 24, neljä viewportia, virhetilat, mailto-varapolku, näppäimistö, tekstin suurennus, JS pois käytöstä ja julkiset/suojatut HTTP-reitit. Käyttää vain Node- ja Chrome-vakiotyökaluja, ei uusia npm-riippuvuuksia.
+- `.github/workflows/urakkaluotsi-sales-qa.yml`: ajaa tarkistukset feature-haaran muutoksista; tulokset ja QA-kuvat ovat Actions-artifaktissa. Testien henkilötiedot ovat synteettisiä, sähköpostia ei lähetetä.
+
+Olemassa oleva `npm run lint` käyttää Next 15:ssä poistunutta `next lint` -komentoa; sitä ei nimetä toimivaksi lint-tarkistukseksi. Runtime-riippuvuuksia ei lisätty. Native iOS Safari ja todellisen sähköpostin vastaanotto eivät sisälly automatisoidun Chromen testiin.
+
+## Julkaisu
+
+Domainit on ostettu; DNS-/tuotantokytkentää ei tehdä tällä PR-korjauksella. Varmista kaupallinen hinta, toimitusrytmi ja ehdot ennen tilausta. Katso hyväksymispäätös QA-raportista. Ei mergeä eikä erillistä tuotantopromootiota tässä työssä.

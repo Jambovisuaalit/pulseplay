@@ -80,7 +80,7 @@ async function main() {
     await evaluate(`document.querySelector('[name=company]').focus()`); const order = [];
     for (let i = 0; i < 7; i++) { order.push(await evaluate(`({name:document.activeElement.name||document.activeElement.textContent.slice(0,30),outline:getComputedStyle(document.activeElement).outlineStyle})`)); await key('Tab'); }
     assert.deepEqual(order.slice(0, 5).map(x => x.name), ['company', 'name', 'email', 'region', 'work']); assert.ok(order.every(x => x.outline === 'solid')); pass('Keyboard form focus order', order);
-    await evaluate(`document.querySelector('summary').focus()`); await key('Enter'); assert.ok(await evaluate(`document.querySelector('details').open`)); pass('FAQ keyboard', 'Enter expands disclosure');
+    await evaluate(`document.querySelector('.ul-faq-items summary').focus()`); await key('Enter'); assert.ok(await evaluate(`document.querySelector('.ul-faq-items details').open`)); pass('FAQ keyboard', 'Enter expands FAQ disclosure');
     await evaluate(`document.documentElement.style.fontSize='200%'`); assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth')); pass('200% text resize', '1440px no horizontal overflow');
     await send('Emulation.setScriptExecutionDisabled', { value: true }); await navigate('http://127.0.0.1:3187/esittely');
     // Runtime.evaluate still inspects the DOM when page scripts are disabled.
