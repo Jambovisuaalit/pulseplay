@@ -15,7 +15,7 @@ API_BASE = "https://api.hankintailmoitukset.fi"
 SEARCH_URL = f"{API_BASE}/avp/eformnotices/docs/search"
 FULL_NOTICE_URL = f"{API_BASE}/avp-eforms/external-read/v1/notice"
 
-CPV_CODES = ["50000000", "50700000", "50710000", "50720000"]
+CPV_CODES = ["45000000", "45200000", "45400000", "45450000"]
 LOOKBACK_DAYS = 30
 PAGE_SIZE = 100
 TIMEOUT = 60
