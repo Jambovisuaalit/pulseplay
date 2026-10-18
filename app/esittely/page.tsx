@@ -26,12 +26,12 @@ const steps = [
 
 export default function EsittelyPage() {
   return <div className="ul-site">
-    <header className="ul-top"><div className="ul-container ul-nav">
+    <a className="ul-skip" href="#alku">Siirry sisältöön</a><header className="ul-top"><div className="ul-container ul-nav">
       <a href="#alku" aria-label="Urakkaluotsi – alkuun"><Image src="/urakkaluotsi/logo-primary.svg" alt="Urakkaluotsi" width={194} height={42} priority /></a>
       <nav aria-label="Päänavigaatio"><a href="#toiminta">Näin toimii</a><a href="#esimerkki">Esimerkkikooste</a><a href="#pilotti">Pilotti</a></nav>
       <a className="ul-btn ul-nav-cta" href="#hakemus">Hae pilottiin <span aria-hidden>↗</span></a>
     </div></header>
-    <main id="alku">
+    <main id="alku" tabIndex={-1}>
       <section className="ul-hero ul-container">
         <div className="ul-hero-copy"><span className="ul-kicker"><span className="ul-dot"/> Julkisten hankintojen seuranta rakennus- ja saneerausyrityksille</span>
           <h1>Mitkä julkiset urakat kannattaa selvittää <em>seuraavaksi?</em></h1>

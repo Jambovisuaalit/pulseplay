@@ -14,7 +14,8 @@ export function middleware(request: NextRequest) {
     pathname === "/urakkaluotsi/esimerkkikooste.pdf" ||
     pathname.startsWith("/urakkaluotsi/") ||
     pathname.startsWith("/_next/") ||
-    pathname === "/favicon.ico"
+    pathname === "/favicon.ico" ||
+    pathname === "/favicon.svg"
   ) {
     return NextResponse.next();
   }
