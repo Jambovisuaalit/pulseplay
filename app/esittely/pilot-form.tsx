@@ -37,6 +37,7 @@ export default function PilotForm() {
     <label>Toiminta-alue<input name="region" required maxLength={100} placeholder="Esim. Uusimaa" /></label>
     <label>Millaisia urakoita etsitte?<textarea name="work" required rows={3} maxLength={600} placeholder="Kerro palveluistanne ja kiinnostavista urakoista" /></label>
     <button className="ul-btn" type="submit">Avaa hakemus sähköpostiin ↗</button>
+    <p className="ul-privacy-inline">Tietojasi käytetään pilottiyhteydenoton käsittelyyn. Lue <a href="/esittely/tietosuoja">tietosuojatiedot</a> ennen viestin lähettämistä.</p>
     <p className="ul-form-info" role="status">{draftOpened ? "Sähköpostiluonnos pyydettiin avattavaksi. Varmista, että sähköpostisovellus avautui, ja lähetä viesti itse. Hakemusta ei ole vielä vahvistettu vastaanotetuksi." : "Painike avaa valmiin viestin omassa sähköpostisovelluksessasi. Tarkista ja lähetä viesti itse. Tietoja ei tallenneta tälle sivustolle."}</p>
     <p className="ul-contact-fallback">Jos sähköpostisovellus ei avaudu, kirjoita osoitteeseen <a href={`mailto:${PILOT_EMAIL}`}>{PILOT_EMAIL}</a>.</p>
   </form>;
