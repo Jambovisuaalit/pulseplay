@@ -21,14 +21,14 @@ jobs:
       - run: npm run build
       - name: Chromium browser QA
         run: node tests/browser-qa.cjs
-      - name: PDF page count
-        run: pdfinfo qa-output/esimerkkikooste.pdf | tee qa-output/pdfinfo.txt && test "$(pdfinfo qa-output/esimerkkikooste.pdf | awk '/Pages:/ {print $2}')" = 4
+      - name: Frozen PDF integrity and page count
+        run: node tests/verify-demo.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: urakkaluotsi-sales-qa
           path: |
             qa-output/results.json
-            qa-output/pdfinfo.txt
+            qa-output/pdf-verification.json
             qa-output/*.png
           if-no-files-found: warn
