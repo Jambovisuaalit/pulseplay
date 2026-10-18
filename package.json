@@ -6,9 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "test": "node --experimental-strip-types --test tests/pilot-contact.test.mjs",
-    "typecheck": "tsc --noEmit"
+    "lint": "tsc --noEmit --incremental false --noUnusedLocals --noUnusedParameters",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs && python3 -m unittest discover -s tests -v",
+    "typecheck": "tsc --noEmit",
+    "pull": "python3 workers/fetch_hilma.py"
   },
   "dependencies": {
     "next": "^15.5.0",

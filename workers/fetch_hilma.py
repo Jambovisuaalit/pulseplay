@@ -1,317 +1,143 @@
+"""Bounded official-API collection; no attachment, LLM or email actions."""
 from __future__ import annotations
 
-import base64
+import argparse
 import datetime as dt
 import json
 import os
 import re
-import time
 from pathlib import Path
-from urllib.parse import unquote, urlparse
 
-import requests
+from hilma_detail import decode_detail
+from hilma_cpv import TIER1, groups, search_expression
+from hilma_http import CPV_TREE, NOTICE, SEARCH, Client, HilmaError, utc_now
+from hilma_store import atomic_bytes, save_json, upsert
 
-API_BASE = "https://api.hankintailmoitukset.fi"
-SEARCH_URL = f"{API_BASE}/avp/eformnotices/docs/search"
-FULL_NOTICE_URL = f"{API_BASE}/avp-eforms/external-read/v1/notice"
-
-CPV_CODES = ["50000000", "50700000", "50710000", "50720000"]
-LOOKBACK_DAYS = 30
-PAGE_SIZE = 100
-TIMEOUT = 60
-
-DATA_DIR = Path("data")
-RAW_PATH = DATA_DIR / "hilma_raw.json"
-ATTACHMENT_DIR = Path("/tmp/attachments")
-FULL_NOTICE_DIR = Path("/tmp/full_notices")
-
-for directory in (DATA_DIR, ATTACHMENT_DIR, FULL_NOTICE_DIR):
-    directory.mkdir(parents=True, exist_ok=True)
-
-api_key = os.getenv("HILMA_API_KEY")
-if not api_key:
-    raise RuntimeError(
-        "HILMA_API_KEY puuttuu. Luo maksuton AVP-Read-tilaus Hilman API-portaalissa "
-        "ja tallenna avain ympäristömuuttujaan / GitHub Secretiin."
-    )
-
-session = requests.Session()
-session.headers.update(
-    {
-        "Accept": "application/json",
-        "User-Agent": "TenderPulse-MVP/0.2",
-        "Ocp-Apim-Subscription-Key": api_key,
-    }
-)
+ROOT = Path(__file__).resolve().parents[1]
+SELECT = 'noticeId,cpvCodes,datePublished,mainType,titleFi,organisationNameFi,descriptionFi,expirationDate'
 
 
-def cutoff_iso() -> str:
-    cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=LOOKBACK_DAYS)
-    return cutoff.replace(microsecond=0).isoformat().replace("+00:00", "Z")
+def timestamp(value, field):
+    if not isinstance(value, str) or not re.search(r'(Z|[+-]\d{2}:\d{2})$', value):
+        raise HilmaError(f'{field}: timezone required')
+    try:
+        return dt.datetime.fromisoformat(value.replace('Z', '+00:00')).astimezone(dt.timezone.utc)
+    except ValueError:
+        raise HilmaError(f'{field}: invalid timestamp') from None
 
 
-def request_with_retry(method: str, url: str, *, retries: int = 4, **kwargs):
-    for attempt in range(retries):
-        response = session.request(method, url, timeout=TIMEOUT, **kwargs)
-        if response.status_code == 429 or response.status_code >= 500:
-            if attempt == retries - 1:
-                response.raise_for_status()
-            retry_after = response.headers.get("Retry-After")
-            delay = float(retry_after) if retry_after else min(2 ** (attempt + 1), 20)
-            time.sleep(delay)
-            continue
-        response.raise_for_status()
-        return response
-    raise RuntimeError(f"Request failed: {method} {url}")
+def validate_notice(item, start, end):
+    if not isinstance(item, dict):
+        raise HilmaError('value item: expected object')
+    notice_id = item.get('noticeId')
+    if isinstance(notice_id, bool) or not isinstance(notice_id, (str, int)) or not re.fullmatch(r'\d+', str(notice_id)):
+        raise HilmaError('noticeId: expected numeric id')
+    if not isinstance(item.get('cpvCodes'), str):
+        raise HilmaError('cpvCodes: expected string')
+    if item.get('mainType') != 'ContractNotices':
+        raise HilmaError('mainType: unexpected value')
+    published = timestamp(item.get('datePublished'), 'datePublished')
+    if not start <= published <= end:
+        raise HilmaError('datePublished: outside locked window')
+    for field in ('titleFi', 'organisationNameFi', 'descriptionFi', 'expirationDate'):
+        if field not in item or (item[field] is not None and not isinstance(item[field], str)):
+            raise HilmaError(f'{field}: expected string or null')
+    if item['expirationDate'] is not None:
+        timestamp(item['expirationDate'], 'expirationDate')
+    codes = re.findall(r'(?<!\d)\d{8}(?!\d)', item['cpvCodes'])
+    if not codes:
+        raise HilmaError('cpvCodes: no recognized codes')
+    return str(notice_id), codes
 
 
-def cpv_filter() -> str:
-    parts = [f"search.ismatch('{code}', 'cpvCodes')" for code in CPV_CODES]
-    return "(" + " or ".join(parts) + ")"
-
-
-def fetch_search_notices() -> list[dict]:
-    cutoff = cutoff_iso()
-    select_fields = ",".join(
-        [
-            "noticeId",
-            "titleFi",
-            "organisationNameFi",
-            "organisationNationalRegistrationNumber",
-            "descriptionFi",
-            "cpvCodes",
-            "mainType",
-            "datePublished",
-            "expirationDate",
-            "nutsCodes",
-            "procedureType",
-            "procurementTypeCode",
-            "estimatedValue",
-            "eFormsId",
-            "procedureId",
-            "procurementDocumentsUrl",
-            "sendingSystem",
-        ]
-    )
-
-    filter_expr = (
-        f"datePublished ge {cutoff} and "
-        "mainType eq 'ContractNotices' and "
-        f"{cpv_filter()}"
-    )
-
-    notices: list[dict] = []
+def collect(client, expression, start_iso, end_iso, run):
+    start, end = timestamp(start_iso, 'start'), timestamp(end_iso, 'end')
+    notices = {}
+    count = None
     skip = 0
-
     while True:
-        body = {
-            "search": "*",
-            "top": PAGE_SIZE,
-            "skip": skip,
-            "count": True,
-            "orderby": "datePublished desc",
-            "searchMode": "any",
-            "queryType": "simple",
-            "select": select_fields,
-            "filter": filter_expr,
-        }
-
-        response = request_with_retry("POST", SEARCH_URL, json=body)
-        payload = response.json()
-        page = payload.get("value") or []
-        notices.extend(page)
-
-        if len(page) < PAGE_SIZE:
+        if skip >= 100000:
+            raise HilmaError('skip limit reached before completion')
+        body = {'search': expression, 'searchFields': 'cpvCodes', 'queryType': 'full',
+                'searchMode': 'any', 'filter': f"datePublished ge {start_iso} and datePublished le {end_iso} and mainType eq 'ContractNotices'",
+                'count': True, 'top': 100, 'skip': skip, 'select': SELECT,
+                'orderby': 'datePublished desc,noticeId asc'}
+        save_json(run / f'search-{skip}.request.json', body)
+        raw = client.request(SEARCH, body)
+        atomic_bytes(run / f'search-{skip}.response.json', raw)
+        payload = json.loads(raw)
+        if not isinstance(payload, dict) or not isinstance(payload.get('value'), list):
+            raise HilmaError('value: expected list')
+        current = payload.get('@odata.count')
+        if isinstance(current, bool) or not isinstance(current, int) or current < 0:
+            raise HilmaError('@odata.count: expected nonnegative integer')
+        if count is not None and current != count:
+            raise HilmaError('@odata.count: changed during pagination')
+        count = current
+        page = payload['value']
+        if len(page) > 100:
+            raise HilmaError('value: oversized page')
+        for item in page:
+            notice_id, codes = validate_notice(item, start, end)
+            if notice_id in notices:
+                raise HilmaError('noticeId: repeated across pages; pagination unstable')
+            notices[notice_id] = {'id': notice_id, 'title': item['titleFi'],
+                'description': item['descriptionFi'], 'organisation': item['organisationNameFi'],
+                'publishedAt': item['datePublished'], 'deadline': item['expirationDate'],
+                'cpv_codes': codes, 'raw_json': item, 'fetched_at': utc_now()}
+        skip += len(page)
+        if len(page) < 100:
+            if len(notices) != count:
+                raise HilmaError('@odata.count: differs from collected unique noticeIds')
             break
-
-        skip += PAGE_SIZE
-
-        # Azure Search has practical skip limits; 30 päivän MVP-aineistolle tämä
-        # yläraja estää hallitsemattoman haun broad CPV 50000000:lla.
-        if skip >= 1000:
-            break
-
-    return notices
+    return list(notices.values()), count
 
 
-def _find_xml_candidate(value) -> str | None:
-    if isinstance(value, str):
-        stripped = value.strip()
-        if stripped.startswith("<"):
-            return stripped
-        try:
-            decoded = base64.b64decode(stripped, validate=True).decode("utf-8")
-            if "<" in decoded and ">" in decoded:
-                return decoded
-        except Exception:
-            return None
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--measure', action='store_true', help='Collect metadata and measurement; do not update ingestion store')
+    parser.add_argument('--verify-detail', action='store_true', help='Preserve one real notice detail response without guessing its schema')
+    args = parser.parse_args()
+    client = Client(os.environ.get('HILMA_API_KEY', ''))
+    end = dt.datetime.now(dt.timezone.utc).replace(microsecond=0)
+    end_iso = end.isoformat().replace('+00:00', 'Z')
+    start_iso = (end - dt.timedelta(days=30)).isoformat().replace('+00:00', 'Z')
+    run = ROOT / 'data' / 'hilma-runs' / end.strftime('%Y%m%dT%H%M%SZ')
+    if run.exists():
+        raise HilmaError('run directory already exists')
+    run.mkdir(parents=True)
+    raw_tree = client.request(CPV_TREE)
+    atomic_bytes(run / 'cpv.response.json', raw_tree)
+    tree = json.loads(raw_tree)
+    group_codes = groups(tree)
+    save_json(ROOT / 'fixtures/cpv-main.json', {'source': CPV_TREE, 'fetched_at': utc_now(), 'tree': tree})
+    expression = search_expression(group_codes)
+    notices, count = collect(client, expression, start_iso, end_iso, run)
+    metadata = {'retrievedAt': utc_now(), 'publishedAfter': start_iso, 'publishedBefore': end_iso,
+                'cpvCodes': list(TIER1), 'api_count': count, 'unique_notice_ids': len(notices),
+                'group_vocabulary_sizes': {key: len(value) for key, value in group_codes.items()},
+                'group_notice_counts': {key: sum(bool(set(n['cpv_codes']) & set(value)) for n in notices)
+                                       for key, value in group_codes.items()},
+                'count_note': 'Notice IDs, not unique procurement procedures. Group counts overlap.',
+                'count_accuracy': 'API count accuracy not independently audited.'}
+    save_json(run / 'measurement.json', metadata)
+    save_json(run / 'notices.json', {'notices': notices})
+    if args.verify_detail and notices:
+        detail = client.request(NOTICE + notices[0]['id'])
+        atomic_bytes(run / 'detail.response', detail)
+        xml = decode_detail(detail, notices[0]['id'])
+        atomic_bytes(run / 'detail.xml', xml)
+        save_json(run / 'detail.metadata.json', {'noticeId': notices[0]['id'], 'bytes': len(detail),
+                                                'schema_status': 'id and base64 ContractNotice XML verified'})
+    counts = {'fetched': len(notices), 'new': 0, 'skipped': 0, 'failed': 0}
+    if not args.measure:
+        counts = upsert(ROOT / 'data/hilma_raw.json', notices, metadata)
+    print(json.dumps(counts))
 
-    if isinstance(value, dict):
-        for child in value.values():
-            found = _find_xml_candidate(child)
-            if found:
-                return found
 
-    if isinstance(value, list):
-        for child in value:
-            found = _find_xml_candidate(child)
-            if found:
-                return found
-
-    return None
-
-
-def fetch_full_notice_xml(notice_id: str) -> tuple[str | None, str | None]:
+if __name__ == '__main__':
     try:
-        response = request_with_retry(
-            "GET",
-            f"{FULL_NOTICE_URL}/{notice_id}",
-            headers={"Accept": "*/*"},
-        )
-
-        content_type = response.headers.get("Content-Type", "").lower()
-
-        if "xml" in content_type and response.text.strip().startswith("<"):
-            return response.text, None
-
-        try:
-            payload = response.json()
-            xml = _find_xml_candidate(payload)
-        except ValueError:
-            xml = _find_xml_candidate(response.text)
-
-        if not xml:
-            return None, "Täyttä eForms XML:ää ei voitu tunnistaa vastauksesta."
-
-        return xml, None
-    except Exception as exc:
-        return None, str(exc)
-
-
-URL_RE = re.compile(r"https?://[^\s<>\"']+")
-
-
-def extract_urls(*texts: str | None) -> list[str]:
-    urls: list[str] = []
-    for text in texts:
-        if not text:
-            continue
-        urls.extend(URL_RE.findall(text))
-    return list(dict.fromkeys(urls))
-
-
-def safe_filename(value: str) -> str:
-    value = unquote(value)
-    value = re.sub(r"[^\w.\-]+", "_", value, flags=re.UNICODE)
-    return value[:160] or "attachment.pdf"
-
-
-def download_if_pdf(url: str, notice_id: str, index: int) -> dict:
-    result = {"url": url, "downloaded": False, "local_path": None, "error": None}
-
-    try:
-        response = request_with_retry(
-            "GET",
-            url,
-            stream=True,
-            allow_redirects=True,
-            headers={"Ocp-Apim-Subscription-Key": api_key}
-            if url.startswith(API_BASE)
-            else {},
-        )
-
-        content_type = response.headers.get("Content-Type", "").lower()
-        final_url = response.url.lower()
-
-        if ".pdf" not in final_url and "application/pdf" not in content_type:
-            return result
-
-        basename = Path(urlparse(response.url).path).name
-        basename = safe_filename(basename or f"attachment_{index}.pdf")
-        if not basename.lower().endswith(".pdf"):
-            basename += ".pdf"
-
-        path = ATTACHMENT_DIR / f"{notice_id}_{index}_{basename}"
-        with path.open("wb") as handle:
-            for chunk in response.iter_content(256 * 1024):
-                if chunk:
-                    handle.write(chunk)
-
-        result["downloaded"] = True
-        result["local_path"] = str(path)
-    except Exception as exc:
-        result["error"] = str(exc)
-
-    return result
-
-
-def normalize_notice(item: dict) -> dict:
-    notice_id = str(item.get("noticeId") or "")
-    full_xml, full_notice_error = fetch_full_notice_xml(notice_id)
-
-    if full_xml:
-        xml_path = FULL_NOTICE_DIR / f"{notice_id}.xml"
-        xml_path.write_text(full_xml, encoding="utf-8")
-
-    candidate_urls = extract_urls(
-        item.get("procurementDocumentsUrl"),
-        full_xml,
-    )
-
-    downloads = [
-        download_if_pdf(url, notice_id, index)
-        for index, url in enumerate(candidate_urls, start=1)
-    ]
-
-    return {
-        "id": notice_id,
-        "title": item.get("titleFi"),
-        "description": item.get("descriptionFi"),
-        "organisation": item.get("organisationNameFi"),
-        "organisation_business_id": item.get(
-            "organisationNationalRegistrationNumber"
-        ),
-        "publishedAt": item.get("datePublished"),
-        "deadline": item.get("expirationDate"),
-        "cpv_codes": item.get("cpvCodes") or [],
-        "estimated_value": item.get("estimatedValue"),
-        "procedure_type": item.get("procedureType"),
-        "procurement_type": item.get("procurementTypeCode"),
-        "documents_url": item.get("procurementDocumentsUrl"),
-        "procedure_id": item.get("procedureId"),
-        "eforms_id": item.get("eFormsId"),
-        "sending_system": item.get("sendingSystem"),
-        "full_notice_xml_path": (
-            str(FULL_NOTICE_DIR / f"{notice_id}.xml") if full_xml else None
-        ),
-        "full_notice_error": full_notice_error,
-        "attachment_candidates": candidate_urls,
-        "downloadedAttachments": downloads,
-    }
-
-
-def main() -> None:
-    search_results = fetch_search_notices()
-    normalized: list[dict] = []
-
-    for index, item in enumerate(search_results, start=1):
-        print(f"[{index}/{len(search_results)}] {item.get('titleFi')}")
-        normalized.append(normalize_notice(item))
-
-    output = {
-        "retrievedAt": dt.datetime.now(dt.timezone.utc).isoformat(),
-        "publishedAfter": cutoff_iso(),
-        "cpvCodes": CPV_CODES,
-        "count": len(normalized),
-        "notices": normalized,
-    }
-
-    RAW_PATH.write_text(
-        json.dumps(output, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
-    print(f"Wrote {len(normalized)} notices to {RAW_PATH}")
-
-
-if __name__ == "__main__":
-    main()
+        main()
+    except HilmaError as exc:
+        print(json.dumps({'failed': 1, 'error_field': str(exc)}))
+        raise SystemExit(1)

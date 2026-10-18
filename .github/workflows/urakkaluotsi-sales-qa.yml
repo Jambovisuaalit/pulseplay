@@ -1,8 +1,7 @@
 name: Urakkaluotsi sales QA
 on:
   push:
-    branches: [feature/urakkaluotsi-sales-page]
-    paths: ['app/esittely/**', 'middleware.ts', 'tests/**', 'package.json', '.github/workflows/urakkaluotsi-sales-qa.yml']
+    branches: [feature/urakkaluotsi-sales-page, feature/urakkaluotsi-foundation]
   workflow_dispatch:
 permissions:
   contents: read
@@ -16,9 +15,15 @@ jobs:
         with:
           node-version: '24'
       - run: npm install --ignore-scripts --no-audit --no-fund
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm run lint
       - run: npm test
       - run: npm run typecheck
       - run: npm run build
+      - run: node tests/auth-http.cjs --missing
+      - run: node tests/auth-http.cjs
       - name: Chromium browser QA
         run: node tests/browser-qa.cjs
       - name: Frozen PDF integrity and page count

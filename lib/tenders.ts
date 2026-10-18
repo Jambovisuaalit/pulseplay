@@ -1,3 +1,6 @@
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { SESSION_COOKIE, verifySession } from "@/lib/session";
 import rawData from "@/data/hilma_analysoitu.json";
 import type { Tender } from "@/types/tender";
 
@@ -32,7 +35,8 @@ export function normalizeTender(item: Tender, index = 0): NormalizedTender {
   };
 }
 
-export function getTenders(): NormalizedTender[] {
+export async function getTenders(): Promise<NormalizedTender[]> {
+  if (!(await verifySession((await cookies()).get(SESSION_COOKIE)?.value))) redirect("/login");
   const notices = (Array.isArray(rawData)
     ? rawData
     : (rawData as { notices?: Tender[] }).notices ?? []) as Tender[];
@@ -40,8 +44,8 @@ export function getTenders(): NormalizedTender[] {
   return notices.map((item, index) => normalizeTender(item, index));
 }
 
-export function getTenderById(id: string): NormalizedTender | undefined {
-  return getTenders().find((item) => item._key === id);
+export async function getTenderById(id: string): Promise<NormalizedTender | undefined> {
+  return (await getTenders()).find((item) => item._key === id);
 }
 
 export function formatEuro(value: number | null | undefined) {

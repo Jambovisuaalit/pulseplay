@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const SESSION_TOKEN =
-  "7c141be1f3d8381cc58961458abf6e679f96b514fc26bb012130f78e60a0377a";
+import { verifySession } from "@/lib/session";
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (
@@ -22,11 +21,13 @@ export function middleware(request: NextRequest) {
 
   const actual = request.cookies.get("tp_session")?.value;
 
-  if (actual !== SESSION_TOKEN) {
+  if (!(await verifySession(actual))) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  return NextResponse.next();
+  const response = NextResponse.next();
+  response.headers.set("Cache-Control", "private, no-store");
+  return response;
 }
 
 export const config = {

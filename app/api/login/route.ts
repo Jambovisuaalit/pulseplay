@@ -1,43 +1,25 @@
-import { createHash, timingSafeEqual } from "crypto";
 import { NextRequest, NextResponse } from "next/server";
-
-const USERNAME = "asiakas";
-const PASSWORD_SHA256 =
-  "e1c5542fc93e1e2fcf1db991bfa2d852606e57851730c28c47e9dd468aee6cdc";
-const SESSION_TOKEN =
-  "7c141be1f3d8381cc58961458abf6e679f96b514fc26bb012130f78e60a0377a";
-
-function sha256(value: string) {
-  return createHash("sha256").update(value).digest("hex");
-}
-
-function equalText(left: string, right: string) {
-  const a = Buffer.from(left);
-  const b = Buffer.from(right);
-  return a.length === b.length && timingSafeEqual(a, b);
-}
-
+import { allowLogin, credentialsConfigured, sameOrigin, verifyCredentials } from "@/lib/login-auth";
+import { createSession, SESSION_COOKIE, SESSION_SECONDS } from "@/lib/session";
+export const runtime = "nodejs";
 export async function POST(request: NextRequest) {
-  const formData = await request.formData();
-  const username = String(formData.get("username") ?? "");
-  const password = String(formData.get("password") ?? "");
-
-  if (
-    !equalText(username, USERNAME) ||
-    !equalText(sha256(password), PASSWORD_SHA256)
-  ) {
+  if (!sameOrigin(request)) return new NextResponse(null, { status: 403 });
+  if (!credentialsConfigured()) return NextResponse.redirect(new URL("/login?config=1", request.url), 303);
+  // Vercel supplies this header; do not trust arbitrary forwarded headers on other hosts.
+  const ip = process.env.VERCEL ? request.headers.get("x-vercel-forwarded-for") ?? "unknown" : "local";
+  if (!allowLogin(ip)) return new NextResponse("Liian monta yritystä. Yritä minuutin kuluttua.", { status: 429, headers: { "Retry-After": "60" } });
+  const size = Number(request.headers.get("content-length"));
+  if (size > 4096) return new NextResponse(null, { status: 413 });
+  let form: FormData;
+  try { form = await request.formData(); } catch { return new NextResponse(null, { status: 400 }); }
+  const username = form.get("username"), password = form.get("password");
+  if (typeof username !== "string" || typeof password !== "string" || !(await verifyCredentials(username, password))) {
     return NextResponse.redirect(new URL("/login?error=1", request.url), 303);
   }
-
   const response = NextResponse.redirect(new URL("/", request.url), 303);
-
-  response.cookies.set("tp_session", SESSION_TOKEN, {
-    httpOnly: true,
-    secure: true,
-    sameSite: "lax",
-    path: "/",
-    maxAge: 60 * 60 * 12,
+  response.cookies.set(SESSION_COOKIE, await createSession(), {
+    httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "lax", path: "/", maxAge: SESSION_SECONDS,
   });
-
+  response.headers.set("Cache-Control", "no-store");
   return response;
 }
