@@ -10,7 +10,7 @@ export default async function TenderPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const tender = getTenderById(decodeURIComponent(id));
+  const tender = await getTenderById(decodeURIComponent(id));
 
   if (!tender) notFound();
 

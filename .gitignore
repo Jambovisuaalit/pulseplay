@@ -11,3 +11,13 @@ __pycache__/
 .DS_Store
 /tmp/
 attachments/
+
+# Local raw collection and private operational outputs
+data/hilma-runs/
+data/hilma_raw.json
+data/validation/
+data/*-dryrun/
+*.tsbuildinfo
+qa-output/
+
+node_modules
