@@ -55,6 +55,10 @@ jobs:
           python -B workers/guard_p0_notice_versions.py --input data/validation/p0_3d_nine_live_source_gates_2026-10-19.json --as-of 2026-10-19T07:35:00Z --output /tmp/p0_version_guard.json
           python -B workers/evaluate_p0_independent_acceptance.py --universe /tmp/p0_source_universe.json --reviews data/validation/p0_independent_source_reviews_2026-10-19.json --output /tmp/p0_independent_acceptance.json
           python -B -c 'import json; a=json.load(open("/tmp/p0_source_universe.json")); b=json.load(open("/tmp/p0_version_guard.json")); c=json.load(open("/tmp/p0_independent_acceptance.json")); assert a["real_unique_notices"] == 152 and a["verified_uusimaa_renovation_jobs"] == 0; assert b["cases"] == 9 and b["customer_go_count"] == 0; assert c["precision_at_30"] is None and c["acceptance_80_percent"] == "NOT_MEASURED"'
+      - name: Evaluate frozen top30 AI-silver review readiness
+        run: |
+          python -B workers/evaluate_p0_blind_ai_source_review.py --ranked data/validation/p0_frozen_ranked_100_2026-10-19.json --reviews data/validation/p0_blind_ai_silver_reviews_2026-10-19.json --output /tmp/p0_ai_source_review.json
+          python -B -c 'import json; x=json.load(open("/tmp/p0_ai_source_review.json")); assert x["frozen"]["sample_size"] == 30 and x["evaluation"]["ai_precision_at_30"] is None and x["evaluation"]["human_gold_precision_at_30"] is None'
       - run: node --test tests/*.test.mjs
       - run: python -B workers/build_validation_set.py
       - run: python -B workers/score_validation.py
