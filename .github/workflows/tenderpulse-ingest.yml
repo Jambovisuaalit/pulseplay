@@ -1,6 +1,11 @@
 name: TenderPulse ingest
 
 on:
+  push:
+    branches:
+      - feature/urakkaluotsi-p0-relevance-validation
+    paths:
+      - .github/workflows/tenderpulse-ingest.yml
   workflow_dispatch:
     inputs:
       mode:
@@ -76,7 +81,7 @@ jobs:
       # ground truth osoittaa, että relevance-signaali on riittävän tarkka.
 
   limited_sample:
-    if: github.event_name == 'workflow_dispatch' && inputs.mode == 'limited' && inputs.new_budget_approved == true
+    if: (github.event_name == 'push' && github.event.head_commit.message == 'RUN_LIMITED_HILMA_SAMPLE') || (github.event_name == 'workflow_dispatch' && inputs.mode == 'limited' && inputs.new_budget_approved == true)
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
