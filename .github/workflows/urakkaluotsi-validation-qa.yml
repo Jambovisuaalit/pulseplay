@@ -1,0 +1,43 @@
+name: Urakkaluotsi P0 and relevance regression
+
+on:
+  pull_request:
+    paths:
+      - 'workers/**'
+      - 'lib/**'
+      - 'app/**'
+      - 'components/**'
+      - 'tests/**'
+      - 'data/validation/**'
+      - 'schemas/**'
+      - 'package.json'
+      - '.github/workflows/urakkaluotsi-validation-qa.yml'
+  push:
+    branches: ['fix/urakkaluotsi-p0-validation']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: python -B -m unittest discover -s tests -p 'test_*.py' -v
+      - run: node --test tests/*.test.mjs
+      - run: python -B workers/build_validation_set.py
+      - run: python -B workers/score_validation.py
+      - name: Verify the independent-label gate remains closed
+        run: |
+          python -B -c 'import json; m=json.load(open("data/validation/independent_100/metrics.json")); assert m["rows_total"] == 100; assert m["rows_unreviewed"] == 0 or m["relevance_gate"] == "NOT MEASURED"'
+      - run: npm install --ignore-scripts --no-audit --no-fund --package-lock=false
+      - run: npm run typecheck
+      - run: npm run build

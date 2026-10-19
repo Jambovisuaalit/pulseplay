@@ -39,14 +39,14 @@ jobs:
         run: python workers/extract_pdfs.py
 
       - name: Build 100-notice manual validation set
-        run: python workers/build_validation_set.py
+        run: python workers/build_validation_set.py --input data/hilma_raw.json --output-dir data/validation/daily_candidates
 
       - name: Evaluate current company profile hard gates
         run: python workers/hard_gate_engine.py
 
       - name: Score validation labels when available
         continue-on-error: true
-        run: python workers/score_validation.py
+        run: python workers/score_validation.py --data-dir data/validation/daily_candidates
 
       - name: Upload pipeline artifacts
         uses: actions/upload-artifact@v4
@@ -57,8 +57,10 @@ jobs:
             data/hilma_raw.json
             data/attachment_texts.json
             data/profile_fit.json
-            data/validation/hilma_100_luokiteltavaksi.csv
-            data/validation/metrics.json
+            data/validation/daily_candidates/blind_review.csv
+            data/validation/daily_candidates/predictions.csv
+            data/validation/daily_candidates/gold_labels.csv
+            data/validation/daily_candidates/metrics.json
 
       # LLM-analyysi lisätään vasta, kun 100 ilmoituksen manuaalinen
       # ground truth osoittaa, että relevance-signaali on riittävän tarkka.
