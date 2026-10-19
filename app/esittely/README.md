@@ -33,3 +33,11 @@ Paikallinen esikatselu: `npm ci && npm run build && npm start`, sitten http://lo
 ## Esikatselun lähetys varmennettu
 
 19.10.2026: Preview-ympäristön lähettäjä Urakkaluotsi <urakkaluotsi@virellahelsinki.com>, vastaanottaja visualjambo@gmail.com. Virellahelsinki.com on Resendissä varmennettu; avain rajattu tämän domainin sähköpostilähetyksiin. Selaimen oikea lomakelähetys palautti 202 ja viesti löytyi Gmailin Saapuneet-kansiosta. Katso QA-raportin lisätarkistus. Tuotannon asetuksia ei muutettu. API-avainta ei pidä tulostaa tai lisätä tähän dokumenttiin.
+
+## Oman domainin julkaisuvalmistelu
+
+`lib/public-site.ts` rajaa julkisen juurireitin vain urakkaluotsi.fi- ja www.urakkaluotsi.fi-hosteihin. Middleware rewrite `/` → `/esittely`; muiden hostien juurireitti sekä operaattori- ja hankintareitit säilyvät suojattuina. Vercelin www-domain ohjaa 308:lla apex-domainiin.
+
+Canonical ja OG URL aktivoituvat vain erikseen asetettavalla `URAKKALUOTSI_PUBLIC_ORIGIN=https://urakkaluotsi.fi`-muuttujalla. Preview ilman muuttujaa säilyttää aiemman metatietokäytöksen. `tests/domain-http.cjs` testaa aidolla HTTP Host -otsakkeella molemmat domainit, suojatut reitit, väärän hostin ja julkisen PDF:n (11 tarkistusta).
+
+19.10.2026: molemmat domainit lisätty Vercelin tenderpulse-projektiin ja omistajuus hyväksytty (`verified=true`). DNS osoitti edelleen Zonerin IP:hen 84.34.166.69. Zonerin selainhallinta vaatii kirjautumisen; DNS:ää ei muutettu. Nimipalvelimet, MX- ja SPF-tietueet säilytetään. Tuotantodeploymentia tai domainin julkista liikenteensiirtoa ei tehty.

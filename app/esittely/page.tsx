@@ -1,14 +1,18 @@
 import Image from "next/image";
 import type { Metadata } from "next";
+import { confirmedPublicOrigin } from "@/lib/public-site";
 import { pilotOffer } from "./site-config";
 import PilotForm from "./pilot-form";
 import "./site.css";
 
+const publicOrigin = confirmedPublicOrigin(process.env.URAKKALUOTSI_PUBLIC_ORIGIN);
+
 export const metadata: Metadata = {
-  // Hosting URL verified through the tenderpulse project; no canonical or og:url until release.
-  metadataBase: new URL("https://tenderpulse-neon.vercel.app"),
+  // Enable canonical only in the separately configured release environment.
+  metadataBase: new URL(publicOrigin || "https://tenderpulse-neon.vercel.app"),
+  ...(publicOrigin ? { alternates: { canonical: publicOrigin + "/" } } : {}),
   title: "Urakkaluotsi | Julkiset hankinnat yrityksellesi",
-  openGraph: { title: "Urakkaluotsi | Julkiset hankinnat yrityksellesi", images: [{ url: "/urakkaluotsi/og.png", width: 1200, height: 630, alt: "Urakkaluotsi – Sopivat urakat. Selkeä seuraava askel." }], locale: "fi_FI", type: "website" },
+  openGraph: { ...(publicOrigin ? { url: publicOrigin + "/" } : {}), title: "Urakkaluotsi | Julkiset hankinnat yrityksellesi", images: [{ url: "/urakkaluotsi/og.png", width: 1200, height: 630, alt: "Urakkaluotsi – Sopivat urakat. Selkeä seuraava askel." }], locale: "fi_FI", type: "website" },
   description: "Urakkaluotsi seuloo Hilman hankintailmoituksia rakennus- ja saneerausyrityksille. Saat koosteen kiinnostavista urakoista, vaatimuksista ja seuraavista toimista.",
 };
 
