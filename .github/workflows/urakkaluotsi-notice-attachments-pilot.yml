@@ -25,6 +25,25 @@ jobs:
           HILMA_API_KEY: ${{ secrets.HILMA_API_KEY }}
         run: |
           python -B workers/pilot_notice_bound_hilma.py --output /tmp/urakkaluotsi_notice_attachments --download
+      - name: Emit sanitized original XML access-location evidence
+        run: |
+          python - <<'PY'
+          import json
+          p='/tmp/urakkaluotsi_notice_attachments/notice_discovery.json'
+          data=json.load(open(p,encoding='utf-8'))
+          for row in data.get('document_link_evidence',[]):
+              print('NOTICE',row['notice_id'],'COUNTS',row['counts'])
+              for link in row['links']:
+                  from urllib.parse import urlsplit
+                  u=urlsplit(link['url'])
+                  print('LINK',link['kind'],'HOST',u.hostname,'PATH',u.path,
+                        'XML_ELEMENT',link['source_pointer'])
+          for row in data.get('xml_url_field_audits',[]):
+              print('XML_URL_AUDIT',row['notice_id'],'COUNT',row['url_field_count'])
+              for field in row['url_fields']:
+                  print('FIELD',field['xml_path'],'HOST',field['host'],
+                        'CLASS',field['url_class'])
+          PY
       - name: Verify no automatic eligibility or gold decision
         run: |
           python -B -c 'import json; x=json.load(open("/tmp/urakkaluotsi_notice_attachments/notice_discovery.json")); assert x["api_calls"] <= 2 and x["complete_tender_packages"] == 0 and x["gold_positives"] == 0 and x["precision_at_30"] is None'
