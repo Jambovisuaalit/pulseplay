@@ -1,0 +1,33 @@
+name: Urakkaluotsi notice-bound Hilma attachment pilot
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  notice-attachments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install 'requests>=2.31,<3'
+      - name: Fetch two fixed original eForms notices and only explicitly linked public PDFs/ZIPs
+        env:
+          HILMA_API_KEY: ${{ secrets.HILMA_API_KEY }}
+        run: |
+          python -B workers/pilot_notice_bound_hilma.py --output /tmp/urakkaluotsi_notice_attachments --download
+      - name: Verify no automatic eligibility or gold decision
+        run: |
+          python -B -c 'import json; x=json.load(open("/tmp/urakkaluotsi_notice_attachments/notice_discovery.json")); assert x["api_calls"] <= 2 and x["complete_tender_packages"] == 0 and x["gold_positives"] == 0 and x["precision_at_30"] is None'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: urakkaluotsi-notice-linked-public-evidence
+          path: /tmp/urakkaluotsi_notice_attachments/
+          retention-days: 2
+          if-no-files-found: warn
