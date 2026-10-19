@@ -9,6 +9,10 @@ on:
         options:
           - limited
         default: limited
+      new_budget_approved:
+        description: 'New Hilma API-call authorization (previous 3/3 used)'
+        type: boolean
+        default: false
   schedule:
     - cron: "15 5 * * *"
 
@@ -72,7 +76,7 @@ jobs:
       # ground truth osoittaa, että relevance-signaali on riittävän tarkka.
 
   limited_sample:
-    if: github.event_name == 'workflow_dispatch' && inputs.mode == 'limited'
+    if: github.event_name == 'workflow_dispatch' && inputs.mode == 'limited' && inputs.new_budget_approved == true
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
