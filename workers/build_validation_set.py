@@ -8,6 +8,8 @@ from pathlib import Path
 
 RAW_PATH = Path("data/hilma_raw.json")
 OUTPUT_PATH = Path("data/validation/hilma_100_luokiteltavaksi.csv")
+# Frozen evaluation sample is immutable. Re-ranking goes to a separate path.
+RERANK_PATH = Path("data/validation/hilma_100_reranked_candidate.csv")
 VALID_LABELS = {"Relevantti", "Mahdollinen", "Epärelevantti"}
 
 # Renovation-first pilot. These are ranking hints, not validated eligibility rules.
@@ -94,6 +96,10 @@ def main() -> None:
     payload = json.loads(RAW_PATH.read_text(encoding="utf-8"))
     notices = payload.get("notices") or []
     existing = load_existing_labels()
+    if OUTPUT_PATH.exists():
+        output_path = RERANK_PATH
+    else:
+        output_path = OUTPUT_PATH
     # Snapshot timing prevents historical offline reruns from using today's date.
     retrieved = payload.get("retrievedAt")
     as_of = dt.datetime.fromisoformat(str(retrieved).replace("Z", "+00:00"))
@@ -117,7 +123,7 @@ def main() -> None:
         "rank", "notice_id", "title", "organisation", "published_at",
         "deadline", "cpv_codes", "priority_score", "manual_label", "manual_reason",
     ]
-    with OUTPUT_PATH.open("w", encoding="utf-8-sig", newline="") as handle:
+    with output_path.open("w", encoding="utf-8-sig", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
         for rank, notice in enumerate(ranked, start=1):
@@ -133,7 +139,7 @@ def main() -> None:
                 "priority_score": priority_score(notice),
                 "manual_label": label, "manual_reason": reason,
             })
-    print(f"Wrote {len(ranked)} active, unique rows to {OUTPUT_PATH}; snapshot {as_of.isoformat()}")
+    print(f"Wrote {len(ranked)} active, unique rows to {output_path}; snapshot {as_of.isoformat()}")
 
 
 if __name__ == "__main__":
