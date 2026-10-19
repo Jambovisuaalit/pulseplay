@@ -24,7 +24,7 @@ jobs:
           name: urakkaluotsi-limited-sample
           run-id: 39179825192
           github-token: ${{ github.token }}
-          path: .
+          path: data
       - name: Build rank-blinded review form without live API calls
         run: python -m workers.independent_validation prepare
       - name: Upload independent assessor form and original frozen ranking
