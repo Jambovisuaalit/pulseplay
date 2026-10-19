@@ -27,7 +27,7 @@ jobs:
           python -B workers/collect_public_tender_pdfs.py --manifest data/validation/public_pdf_manifest_2026-10-19.json --output /tmp/urakkaluotsi_public_pdf
       - name: Verify explicit no-gold policy
         run: |
-          python -B -c 'import json; x=json.load(open("/tmp/urakkaluotsi_public_pdf/acquisition.json")); assert x["complete_tender_packages"] == 0 and x["independent_gold_positives"] == 0 and x["official_precision_at_30"] is None'
+          python -B -c 'import json; x=json.load(open("/tmp/urakkaluotsi_public_pdf/acquisition.json")); assert x["complete_tender_packages"] == 0 and x["independent_gold_positives"] == 0 and x["official_precision_at_30"] is None; assert x["full_text_documents"] > 0, "No public PDF downloaded; do not report green acquisition"'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
