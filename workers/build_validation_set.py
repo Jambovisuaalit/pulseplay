@@ -37,12 +37,37 @@ def load_existing_labels() -> dict[str, tuple[str, str]]:
     return labels
 
 
+CANCELLED_TERMS = ("keskeytetty", "peruttu", "cancelled", "withdrawn")
+OUTSIDE = ("mäntyharju", "kaarina", "salo", "lapua", "raisio", "alavus", "joroinen", "kokkola", "kaustinen", "savukoski", "kalajoki", "joensuu", "nakkila", "suonenjoki", "tampere", "kuopio", "pori", "leppävirta", "parainen", "oulu", "mikkeli", "enontekiö", "kontiolahti")
+INSIDE = ("helsinki", "espoo", "vantaa", "hyvinkää", "mäntsälä", "sipoo", "tuusula", "lohja", "porvoo", "kerava", "järvenpää", "kirkkonummi", "nurmijärvi")
+
+def is_cancelled(notice: dict) -> bool:
+    title = str(notice.get("title") or "").casefold()
+    status = str(notice.get("status") or "").casefold()
+    return any(term in title for term in CANCELLED_TERMS) or status in {"cancelled", "withdrawn"}
+
+def location_adjustment(notice: dict) -> int:
+    text = " ".join(str(notice.get(k) or "") for k in ("title", "description", "municipality")).casefold()
+    if any(place in text for place in OUTSIDE):
+        return -40
+    if any(place in text for place in INSIDE):
+        return 10
+    return 0
+
+def normalize_cpv(value) -> str:
+    if isinstance(value, str):
+        return value.strip()
+    if isinstance(value, list):
+        return "|".join(str(item.get("code") or item.get("cpvCode") or "") if isinstance(item, dict) else str(item) for item in value)
+    return ""
+
+
 def priority_score(notice: dict) -> int:
     text = " ".join([
         str(notice.get("title") or ""),
         str(notice.get("description") or ""),
     ]).casefold()
-    return sum(weight for term, weight in POSITIVE_TERMS.items() if term in text) - sum(
+    return location_adjustment(notice) + sum(weight for term, weight in POSITIVE_TERMS.items() if term in text) - sum(
         weight for term, weight in NEGATIVE_TERMS.items() if term in text
     )
 
@@ -62,7 +87,7 @@ def parse_deadline(value: str | None) -> dt.datetime | None:
 
 def is_active(notice: dict, as_of: dt.datetime) -> bool:
     deadline = parse_deadline(notice.get("deadline"))
-    return deadline is not None and deadline > as_of
+    return not is_cancelled(notice) and deadline is not None and deadline > as_of
 
 
 def main() -> None:
@@ -104,7 +129,7 @@ def main() -> None:
                 "organisation": notice.get("organisation") or "",
                 "published_at": notice.get("publishedAt") or "",
                 "deadline": notice.get("deadline") or "",
-                "cpv_codes": "|".join(notice.get("cpv_codes") or []),
+                "cpv_codes": normalize_cpv(notice.get("cpv_codes")),
                 "priority_score": priority_score(notice),
                 "manual_label": label, "manual_reason": reason,
             })
