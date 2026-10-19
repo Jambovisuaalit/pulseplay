@@ -1,4 +1,4 @@
-"""Single Hilma search call, maximum 100 results, zero follow-up calls or attachments."""
+"""Single Hilma search call, maximum 200 results, zero follow-up calls or attachments."""
 import datetime as dt
 import json
 import os
@@ -16,7 +16,7 @@ def main():
     fields = ("noticeId,titleFi,organisationNameFi,descriptionFi,cpvCodes,"
               "datePublished,expirationDate,estimatedValue,procedureId")
     body = {
-        "search": "*", "top": 100, "skip": 0, "count": True,
+        "search": "*", "top": 200, "skip": 0, "count": True,
         "orderby": "datePublished desc", "searchMode": "any",
         "queryType": "simple", "select": fields,
         "filter": f"datePublished ge {cutoff} and mainType eq 'ContractNotices' and {cpv}",
@@ -27,7 +27,7 @@ def main():
     }, timeout=60)
     audit = {
         "retrievedAt": now.isoformat(), "api_calls": 1,
-        "http_status": response.status_code, "max_results": 100,
+        "http_status": response.status_code, "max_results": 200,
         "xml_requests": 0, "attachment_requests": 0, "cpv_codes": list(CODES),
     }
     audit_path = Path("data/validation/hilma_collection_audit.json")
