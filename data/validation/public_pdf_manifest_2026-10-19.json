@@ -1,0 +1,20 @@
+{
+  "schema_version": "2026-10-19-public-pdf-pilot-v1",
+  "selection": "TARGETED_DISCOVERY_NOT_RANDOM_HOLDOUT",
+  "documents": [
+    {
+      "candidate_id": "AANEKOSKI_KOIVISTO_PAINT_2026",
+      "document_id": "602658_tender_request",
+      "type": "tender_request",
+      "url": "https://web28.aanekoski.fi/dynasty10/vhp/202643420.43423.PDF",
+      "publisher": "Äänekosken kaupunki",
+      "expected_title": "Koiviston perinnetalon julkisivun maalausurakka",
+      "expected_notice_id": "602658",
+      "expected_worksite_municipality": "Äänekoski",
+      "evaluation_use": "HISTORICAL",
+      "source_discovery": "Original city-hosted tender PDF; search result inspected 2026-10-19",
+      "reviewer_prelabel": "OUT_OF_REGION",
+      "reviewer_prelabel_reason": "Worksite in Äänekoski outside allowed Helsinki/Espoo/Vantaa/Kauniainen/Kirkkonummi; not an eligible Uusimaa positive"
+    }
+  ]
+}
