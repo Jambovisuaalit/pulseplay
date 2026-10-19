@@ -19,7 +19,7 @@ module.exports=async function({origin,cookie}){
    results.push({test:width+'px layout, labels and controls',status:'PASS'});
    const image=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true});fs.writeFileSync(`qa-output/ops-${width}.png`,Buffer.from(image.data,'base64'));
   }
-  assert.equal(await evaluate(`[...document.querySelectorAll('.ops-actions button')].every(e=>e.disabled)`),true);results.push({test:'invalidated approval disables all exports',status:'PASS'});
+  assert.equal(await evaluate(`[...document.querySelectorAll('[data-export-actions] button')].every(e=>e.disabled)`),true);results.push({test:'invalidated approval disables all exports',status:'PASS'});
   // Exercise a real browser form, not a direct API call.
   await evaluate(`(()=>{const form=document.querySelector('.ops form');form.querySelector('select').value='';for(const [name,value] of [['name','Synteettinen selainasiakas'],['email','browser@example.invalid']]){const e=form.elements.namedItem(name);Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,value);e.dispatchEvent(new Event('input',{bubbles:true}));}form.querySelector('button').click();})()`);
   for(let i=0;i<50;i++){if(await evaluate(`document.querySelector('.ops').textContent.includes('Synteettinen selainasiakas')`))break;await delay(100);}

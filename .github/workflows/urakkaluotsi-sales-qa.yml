@@ -1,7 +1,7 @@
 name: Urakkaluotsi sales QA
 on:
   push:
-    branches: [feature/urakkaluotsi-sales-page, feature/urakkaluotsi-foundation, feature/urakkaluotsi-data-model]
+    branches: [feature/urakkaluotsi-sales-page, feature/urakkaluotsi-foundation, feature/urakkaluotsi-data-model, feature/urakkaluotsi-pilot-metrics]
   workflow_dispatch:
 permissions:
   contents: read
@@ -32,6 +32,8 @@ jobs:
         env:
           OPS_BROWSER_QA: 'true'
         run: node tests/ops-http.cjs
+      - name: Thirty-delivery synthetic metric rehearsal
+        run: node --experimental-strip-types scripts/run-pilot.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -42,4 +44,5 @@ jobs:
             qa-output/*.png
             qa-output/ops-browser.json
             qa-output/ops-simulation.pdf
+            qa-output/pilot/
           if-no-files-found: warn

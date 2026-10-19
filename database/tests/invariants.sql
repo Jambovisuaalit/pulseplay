@@ -51,6 +51,14 @@ insert into public.digest_versions(id,org_id,client_id,digest_id,profile_version
  ('90000000-0000-0000-0000-000000000001','20000000-0000-0000-0000-000000000001','30000000-0000-0000-0000-000000000001','80000000-0000-0000-0000-000000000001','40000000-0000-0000-0000-000000000001',1,'v1','{}',repeat('b',64),'10000000-0000-0000-0000-000000000001');
 select public.test_reject($q$update public.digest_versions set snapshot='{"changed":true}'$q$,'23514','delivery snapshot immutable');
 select public.test_reject($q$insert into public.delivery_events(org_id,digest_version_id,event_type,evidence_reference,idempotency_key,actor_id,occurred_at) values ('20000000-0000-0000-0000-000000000001','90000000-0000-0000-0000-000000000001','EXPORT_CREATED','synthetic',gen_random_uuid(),'10000000-0000-0000-0000-000000000001',now())$q$,'23514','unapproved export blocked');
+insert into public.work_sessions(id,org_id,client_id,actor_id,phase,mode,started_at) values
+ ('a0000000-0000-0000-0000-000000000001','20000000-0000-0000-0000-000000000001','30000000-0000-0000-0000-000000000001','10000000-0000-0000-0000-000000000001','DELIVERY','SIMULATION',now());
+select public.test_reject($q$insert into public.work_sessions(org_id,client_id,actor_id,phase,mode,started_at) values ('20000000-0000-0000-0000-000000000001','30000000-0000-0000-0000-000000000001','10000000-0000-0000-0000-000000000001','DELIVERY','SIMULATION',now())$q$,'23505','overlapping timers blocked');
+select public.test_reject($q$update public.work_sessions set ended_at=started_at-interval '1 second'$q$,'23514','negative timer rejected');
+update public.work_sessions set ended_at=started_at+interval '2 minutes';
+select public.test_reject($q$update public.work_sessions set ended_at=ended_at+interval '1 minute'$q$,'23514','stopped time immutable');
+select public.test_reject($q$insert into public.delivery_corrections(org_id,digest_version_id,category,reason,actor_id) values ('20000000-0000-0000-0000-000000000001','90000000-0000-0000-0000-000000000001','CONTENT','Synthetic','10000000-0000-0000-0000-000000000001')$q$,'23514','unexported correction rejected');
+select public.test_reject($q$insert into public.feedback(org_id,digest_version_id,assessment_id,label,mode,source,reason,evidence_reference,actor_id) values ('20000000-0000-0000-0000-000000000001','90000000-0000-0000-0000-000000000001','70000000-0000-0000-0000-000000000001','USEFUL','REAL','CUSTOMER','Synthetic','test','10000000-0000-0000-0000-000000000001')$q$,'23514','simulation cannot become customer feedback');
 set local request.jwt.claim.sub='10000000-0000-0000-0000-000000000002';
 set local role authenticated;
 select public.test_assert((select count(*)=1 from public.clients),'viewer reads own org');

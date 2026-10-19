@@ -1,0 +1,225 @@
+{
+  "mode": "SIMULATION",
+  "run_at": "2026-10-19T00:14:26.477Z",
+  "days_simulated": 30,
+  "actual_elapsed_ms": 134.072017,
+  "automated_median_ms": 3.904702499999999,
+  "automated_p95_ms": 5.530700000000024,
+  "blocked_export_checks": 32,
+  "metrics": {
+    "mode": "SIMULATION",
+    "delivery_count": 30,
+    "exported_versions": 32,
+    "correction_events": 2,
+    "corrected_deliveries": 2,
+    "correction_rate": 0.06666666666666667,
+    "active_delivery_seconds": null,
+    "onboarding_seconds": null,
+    "timed_client_days": 0,
+    "active_seconds_per_client_day": null,
+    "open_timers": 0,
+    "internal_feedback": {
+      "useful": 30,
+      "not_useful": 30,
+      "unknown": 30,
+      "pending": 0,
+      "final_items": 90,
+      "useful_share_assessed": 0.5
+    },
+    "customer_usefulness": {
+      "status": "NOT_MEASURED",
+      "useful": null,
+      "precision": null
+    },
+    "target_human_seconds_per_client_day": 600,
+    "human_time_target_status": "NOT_MEASURED"
+  },
+  "rows": [
+    {
+      "day": 1,
+      "automated_ms": 20.659555999999995,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 2,
+      "automated_ms": 4.306440999999992,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 3,
+      "automated_ms": 3.819632000000013,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 4,
+      "automated_ms": 3.7607650000000206,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 5,
+      "automated_ms": 4.4750899999999945,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 6,
+      "automated_ms": 2.8606149999999957,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 7,
+      "automated_ms": 4.209247000000005,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 8,
+      "automated_ms": 4.071584000000001,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 9,
+      "automated_ms": 3.4370770000000164,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 10,
+      "automated_ms": 4.505905000000013,
+      "injected_corrections": 1,
+      "final_items": 3
+    },
+    {
+      "day": 11,
+      "automated_ms": 5.530700000000024,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 12,
+      "automated_ms": 3.4962739999999997,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 13,
+      "automated_ms": 2.950028000000003,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 14,
+      "automated_ms": 3.545578000000006,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 15,
+      "automated_ms": 4.3083540000000085,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 16,
+      "automated_ms": 3.2055139999999938,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 17,
+      "automated_ms": 3.131596000000002,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 18,
+      "automated_ms": 4.61690999999999,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 19,
+      "automated_ms": 3.868403999999998,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 20,
+      "automated_ms": 4.421611000000013,
+      "injected_corrections": 1,
+      "final_items": 3
+    },
+    {
+      "day": 21,
+      "automated_ms": 4.0867959999999925,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 22,
+      "automated_ms": 2.8198360000000093,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 23,
+      "automated_ms": 3.2416589999999985,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 24,
+      "automated_ms": 2.856989999999996,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 25,
+      "automated_ms": 4.954569000000021,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 26,
+      "automated_ms": 2.952440999999993,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 27,
+      "automated_ms": 3.99387999999999,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 28,
+      "automated_ms": 3.941001,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 29,
+      "automated_ms": 4.645713000000001,
+      "injected_corrections": 0,
+      "final_items": 3
+    },
+    {
+      "day": 30,
+      "automated_ms": 2.928034999999994,
+      "injected_corrections": 0,
+      "final_items": 3
+    }
+  ],
+  "limitations": [
+    "No live API, LLM, external sending or real customer",
+    "Automation wall time is not human delivery time",
+    "Two correction scenarios intentionally injected; not observed production defect rate",
+    "Internal labels predeclared synthetic fixture outcomes; not real precision or customer usefulness"
+  ]
+}

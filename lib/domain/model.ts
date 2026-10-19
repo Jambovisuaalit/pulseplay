@@ -1,3 +1,4 @@
+import type { Measurements } from "./metrics.ts";
 export type Verification = "UNKNOWN" | "INFERRED" | "CONFIRMED";
 export interface ProfileFact {
  key: string; value: string | number | boolean | null; verification: Verification;
@@ -38,7 +39,7 @@ export interface DeliveryEvent {
  snapshot: DeliverySnapshot; actor: string; occurred_at: string; reference: string;
 }
 export interface WorkflowState {
- schema_version: 1; mode: "SIMULATION"; revision: number; clients: Client[]; profiles: ProfileVersion[];
+ measurements?: Measurements; schema_version: 1; mode: "SIMULATION"; revision: number; clients: Client[]; profiles: ProfileVersion[];
  notices: NoticeVersion[]; assessments: Assessment[]; digests: Digest[]; events: DeliveryEvent[];
 }
 export const emptyState = (): WorkflowState => ({schema_version:1,mode:"SIMULATION",revision:0,clients:[],profiles:[],notices:[],assessments:[],digests:[],events:[]});

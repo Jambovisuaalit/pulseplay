@@ -1,3 +1,4 @@
+import { measure } from "./measurement-commands.ts";
 import { randomUUID } from "node:crypto";
 import type { Digest, WorkflowState } from "./model.ts";
 import { approve, assessmentFor, contentHash, currentProfile, invalidate } from "./workflow.ts";
@@ -5,7 +6,9 @@ import { https, profileFacts, strings, text, timestamp, WorkflowError } from "./
 export function command(state:WorkflowState,input:Record<string,unknown>,actor:string,now=Date.now()) {
  if(input.expected_revision!==state.revision)throw new WorkflowError("Työtila muuttui. Lataa uusi tila.",409);
  const at=new Date(now).toISOString(),action=input.action;
- if(action==="client") {
+ if(["timer_start","timer_stop","correction","feedback"].includes(String(action))) {
+  measure(state,input,actor,now);
+ } else if(action==="client") {
   const email=text(input.delivery_email,"Sähköposti",254);if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||/[\r\n]/.test(email))throw new WorkflowError("Sähköposti on virheellinen");
   const existing=state.clients.find(c=>c.id===input.client_id);
   if(existing){existing.name=text(input.name,"Yritys",200);existing.delivery_email=email;}
@@ -43,6 +46,6 @@ export function command(state:WorkflowState,input:Record<string,unknown>,actor:s
   // Simulations cannot be counted as external customer deliveries.
   throw new WorkflowError("Simulaatiosta ei voi kirjata oikeaa lähetystä",422);
  } else throw new WorkflowError("Tuntematon toiminto");
- invalidate(state);state.revision++;
+ invalidate(state,now);state.revision++;
  return state;
 }
