@@ -1,0 +1,32 @@
+name: Hilma known XML - two reads only
+
+on:
+  push:
+    branches: [fix/hilma-offline-safety-validation]
+    paths: [.github/workflows/hilma-verify-known-xml-once.yml]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    if: github.event.head_commit.message == 'RUN_TWO_KNOWN_HILMA_XML_READS'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install requests==2.32.3
+      - name: Exactly two XML requests, no attachments
+        env:
+          HILMA_API_KEY: ${{ secrets.HILMA_API_KEY }}
+        run: python workers/verify_known_xml.py
+      - name: Preserve XML evidence and result even if verification fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hilma-known-xml-evidence
+          path: data/validation/hilma_known_xml/
+          if-no-files-found: warn

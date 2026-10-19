@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -21,6 +22,7 @@ gate_engine = module_from_path("gate_engine", ROOT / "workers/hard_gate_engine.p
 ingest = module_from_path("ingest", ROOT / "workers/fetch_hilma.py")
 xml_audit = module_from_path("xml_audit", ROOT / "workers/eforms_document_audit.py")
 live_probe = module_from_path("live_probe", ROOT / "workers/live_xml_probe.py")
+known_xml = module_from_path("known_xml", ROOT / "workers/verify_known_xml.py")
 
 
 def fixture_xml(tender_time="12:00:00+03:00", other_time=None):
@@ -231,6 +233,45 @@ class OfflineSafetyTests(unittest.TestCase):
         self.assertEqual(result["requests_attempted"], 1)
         self.assertEqual(session.calls, 1)
         self.assertEqual(result["status"], "INCOMPLETE")
+
+    def test_known_xml_reads_only_two_ids_and_preserves_source(self):
+        class FakeResponse:
+            status_code = 200
+            text = fixture_xml(tender_time="12:00:00+03:00")
+
+        class FakeSession:
+            def __init__(self):
+                self.calls = []
+
+            def request(self, method, url, **kwargs):
+                self.calls.append((method, url, kwargs))
+                return FakeResponse()
+
+        session = FakeSession()
+        with tempfile.TemporaryDirectory() as directory:
+            result = known_xml.verify(session, "mock-only", Path(directory))
+            self.assertEqual(result["requests_attempted"], 2)
+            self.assertEqual([u.rsplit("/", 1)[-1] for _, u, _ in session.calls], ["59709", "59708"])
+            self.assertTrue(all(m == "GET" and k["allow_redirects"] is False for m, _, k in session.calls))
+            self.assertTrue((Path(directory) / "notice_59709.xml").exists())
+            self.assertEqual(len(json.loads((Path(directory) / "result.json").read_text())["records"]), 2)
+            self.assertTrue(all(not row["deadline_verified"] for row in result["records"]))
+
+    def test_known_xml_failure_has_no_retry(self):
+        class FakeSession:
+            def __init__(self):
+                self.calls = 0
+
+            def request(self, *_args, **_kwargs):
+                self.calls += 1
+                raise TimeoutError("offline failure")
+
+        session = FakeSession()
+        with tempfile.TemporaryDirectory() as directory:
+            result = known_xml.verify(session, "mock-only", Path(directory))
+        self.assertEqual(session.calls, 2)
+        self.assertEqual(result["requests_attempted"], 2)
+        self.assertTrue(all(not record["xml_retrieved"] for record in result["records"]))
 
 
 if __name__ == "__main__":
