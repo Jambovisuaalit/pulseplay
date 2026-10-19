@@ -1,0 +1,733 @@
+{
+  "schema_version": "P0.3d-frozen-2026-10-19-v1",
+  "purpose": "SOURCE_SCREENING_COHORT_NOT_VERIFIED_UUSIMAA_WORKSITES_NOT_GOLD",
+  "source_count": [
+    100,
+    52
+  ],
+  "unique_notice_universe": 152,
+  "selection_rule": "place-name heuristic title+description; includes negative controls and false positives for review; 30 is candidate count not verified municipality count",
+  "preliminary_review_queue_count": 30,
+  "verified_uusimaa_worksites": 0,
+  "complete_tender_packages": 0,
+  "gold_positives": 0,
+  "precision_at_30": null,
+  "records": [
+    {
+      "notice_id": "57518",
+      "title": "Vt 4 Lahdenväylä välillä Kehä I - Kehä III ja Ilmasillan eritasoliittymä, allianssi; Alustava tarjouspyyntö",
+      "source_files": [
+        "data/validation/holdout_52_2026-10-19/holdout_raw.json"
+      ],
+      "publication_time": "2026-09-22T02:05:05.972Z",
+      "deadline_utc": "2026-09-28T10:00:00Z",
+      "cpv_codes": "45000000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 36349,
+      "text_location_signal": [
+        "Helsinki"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Vt 4 Lahdenväylä välillä Kehä I - Kehä III ja Ilmasillan eritasoliittymä, allianssi; Alustava tarjouspyyntö Tällä hankintailmoituksella Väylävirasto ja Helsingin kaupunki käynnistävät hankintamenettelyn koskien \"Vt 4 Lahdenväylä välillä Kehä I - Kehä III ja Ilmasillan eritasoliittymä\" -urakan rakentamista.\n\nVäylävirasto ja Helsingin kaupunki hakevat ehdokkaita ja ehdokasryhmittymiä Vt 4 Lahdenväylä välillä Kehä I - Kehä III ja Ilmasillan eritasoliittymä -hankkeen toteuttajaksi. Hanke tullaan tot",
+      "provisional_scope_lead": "UNKNOWN",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "57571",
+      "title": "Veturitien alikulkukäytävä, kokonaisurakka",
+      "source_files": [
+        "data/validation/holdout_52_2026-10-19/holdout_raw.json"
+      ],
+      "publication_time": "2026-09-21T11:39:48.87Z",
+      "deadline_utc": "2026-10-15T10:00:00Z",
+      "cpv_codes": "45200000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 37507,
+      "text_location_signal": [
+        "Helsinki"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Veturitien alikulkukäytävä, kokonaisurakka Urakka käsittää Veturitien rakentamisen vaatimat työt urakka-asiakirjojen osoittamassa laajuudessa tarjouspyyntöasiakirjojen mukaisesti kaikkine liittyvine töineen ja hankintoineen täysin valmiiksi.\n\nUrakka sisältää koskee louhintaa, tukimuurin rakentamistöitä, baanan rakentamistöitä, tilapäisen raitin rakentamista, hulevesiviemärin rakennustöitä sekä täydennysistutus- ja maisemointitöitä.\n\nRakennuttaja on Helsingin kaupungin kaupunkiympäristön toimiala",
+      "provisional_scope_lead": "UNKNOWN",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "57574",
+      "title": "Suvilahdenkatu ja Vilhonvuorenkatu, kokonaisurakka",
+      "source_files": [
+        "data/validation/holdout_52_2026-10-19/holdout_raw.json"
+      ],
+      "publication_time": "2026-09-21T11:43:44.12Z",
+      "deadline_utc": "2026-10-12T10:00:00Z",
+      "cpv_codes": "45200000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 37509,
+      "text_location_signal": [
+        "Helsinki"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Suvilahdenkatu ja Vilhonvuorenkatu, kokonaisurakka Urakka käsittää Vilhonvuorenkatu ja Suvilahdenkatu hankkeen rakentamisen vaatimat työt urakka-asiakirjojen osoittamassa laajuudessa tarjouspyyntöasiakirjojen mukaisesti kaikkine liittyvine töineen ja hankintoineen täysin valmiiksi.\n\nUrakka sisältää muun muassa Suvilahdenkadun ja Vilhonvuorenkadun välillä Hämeentie-Sörnäisten rantatien katujen ja vesihuollon rakentaminen urakka-asiakirjojen osoittamassa laajuudessa. Hankkeeseen kuuluu myös Hämeen",
+      "provisional_scope_lead": "LIKELY_OUTSIDE_RENOVATION_SCOPE",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "57598",
+      "title": "Lempäälän Uuden Jäteaseman rakennusurakka",
+      "source_files": [
+        "data/validation/holdout_52_2026-10-19/holdout_raw.json"
+      ],
+      "publication_time": "2026-09-23T02:05:02.962Z",
+      "deadline_utc": "2026-10-22T13:00:00Z",
+      "cpv_codes": "45000000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 37524,
+      "text_location_signal": [],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Lempäälän Uuden Jäteaseman rakennusurakka Rakennuskohteena on Lempäälään rakennettava uusi jäteasema. Kohdetta varten on olemassa tontti osoitteessa Kalliokummuntie 16, Lempäälä.\nHankinta toteutetaan tämän tarjouspyynnön mukaisena kokonaishintaurakkana, tehtyjen suunnitelmien mukaisesti.,",
+      "provisional_scope_lead": "UNKNOWN",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "57634",
+      "title": "Kipparlahden laiturin korjaus, kokonaisurakka",
+      "source_files": [
+        "data/validation/holdout_52_2026-10-19/holdout_raw.json"
+      ],
+      "publication_time": "2026-09-22T08:02:03.554Z",
+      "deadline_utc": "2026-09-28T10:00:00Z",
+      "cpv_codes": "45200000",
+      "metadata_estimated_value_eur": 150000,
+      "procedure_id": 36552,
+      "text_location_signal": [
+        "Helsinki"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Kipparlahden laiturin korjaus, kokonaisurakka Rakennustyö käsittää Kipparlahden laiturin korjauksen tarjouspyyntöasiakirjojen mukaisesti kaikkine töineen ja hankintoineen täysin valmiiksi.\n\nKipparlahden laituri sijaitsee Helsingissä Herttoniemenrannassa. Laituri koostuu kahdeksasta osasta ja se on tyypiltään teräsbetoninen palkkilaituri.\nOsoite: Amiraali Cronstedtin tori, 00810 Helsinki.\n\nUrakka sisältää muun muassa; Uusitaan laakerit, korjataan haljennut betoninen palkki ja uusittaan elementit ",
+      "provisional_scope_lead": "LIKELY_OUTSIDE_RENOVATION_SCOPE",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "57644",
+      "title": "Kuusijärven esteetön uimapaikka sekä reitti",
+      "source_files": [
+        "data/validation/holdout_52_2026-10-19/holdout_raw.json"
+      ],
+      "publication_time": "2026-09-22T08:34:50.253Z",
+      "deadline_utc": "2026-10-09T05:30:00Z",
+      "cpv_codes": "45200000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 37549,
+      "text_location_signal": [
+        "Vantaa"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Kuusijärven esteetön uimapaikka sekä reitti Kohde sijaitsee Vantaan 97. kaupunginosassa Kuninkaanmäessä.\n\nRakennushanke käsittää Kuusijärven ulkoilualueella sijaitsevan, uimarantaa reunustavan esteettömän reitin rakentamisen. Osittain pihatiilillä kivetty reitti kulkee pysäköintialueelta kohti rannan savusaunaa. Savusaunalla reitti liittyy aiemmin rakennettuun, tulipaikalle johtavaan esteettömän reitin osaan. Reitti toimii myös pelastus- ja huoltoreittinä. Reitin varren kalusteet uusitaan. Lisäk",
+      "provisional_scope_lead": "UNKNOWN",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "57691",
+      "title": "Kokonaisurakka Kiinteistö Oy Leppävaaran Esplanadinkulma B-rakennuksen LVIASJ-linjasaneeraushanke",
+      "source_files": [
+        "data/validation/holdout_52_2026-10-19/holdout_raw.json"
+      ],
+      "publication_time": "2026-09-22T18:02:20.406Z",
+      "deadline_utc": "2026-10-09T13:00:00Z",
+      "cpv_codes": "45000000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 37577,
+      "text_location_signal": [],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Kokonaisurakka Kiinteistö Oy Leppävaaran Esplanadinkulma B-rakennuksen LVIASJ-linjasaneeraushanke Kiinteistö Oy Leppävaaran Esplanadinkulma pyytää tarjouksia yllä mainitusta urakasta liitteenä olevien tarjouspyyntöasiakirjojen mukaisesti.\n\nKilpailutuksen kohteena oleva rakennuskohde käsittää kiinteistön B-rakennuksen LVIASJ-linjasaneeraushanketta sekä A- ja B-rakennuksien vesikattojen korjaushanketta liitteenä olevien urakkalaskenta-asiakirjojen mukaisesti. B-rakennuksen urakka-alueella ei ole h",
+      "provisional_scope_lead": "RENOVATION_TEXT_LEAD",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "57880",
+      "title": "Kokonaisurakka, peruskorjaus, Helsinki, Heka Itäkeskus Asiakkaankatu 4",
+      "source_files": [
+        "data/validation/holdout_52_2026-10-19/holdout_raw.json"
+      ],
+      "publication_time": "2026-09-25T03:05:07.152Z",
+      "deadline_utc": "2026-10-12T09:00:00Z",
+      "cpv_codes": "45000000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 36386,
+      "text_location_signal": [
+        "Helsinki"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Kokonaisurakka, peruskorjaus, Helsinki, Heka Itäkeskus Asiakkaankatu 4 Hankinnan kohteena on Helsingin Itäkeskuksessa sijaitsevien asuinkerrostalojen peruskorjaus kiinteähintaisena kokonaisurakkana sisältäen rakennusteknisten töiden lisäksi kaikki LVISA-työt. \n\nPeruskorjauksen kohteena on Helsingin kaupungin asunnot Oy:n omistama vuokratalokohde, joka sijaitsee Helsingin kaupungin tontilla 45053/1 (Asiakkaankatu 4, 00930 Helsinki)\n\nUrakan arvioitu alkamisajankohta on 01.02.2027 ja rakentamisen a",
+      "provisional_scope_lead": "LIKELY_OUTSIDE_RENOVATION_SCOPE",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "57882",
+      "title": "Espoon kulttuurikeskus, Tapiolasalin akustiset parannukset",
+      "source_files": [
+        "data/validation/holdout_52_2026-10-19/holdout_raw.json"
+      ],
+      "publication_time": "2026-09-24T11:35:51.137Z",
+      "deadline_utc": "2026-11-02T10:00:00Z",
+      "cpv_codes": "45000000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 37689,
+      "text_location_signal": [
+        "Espoo"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Espoon kulttuurikeskus, Tapiolasalin akustiset parannukset Espoon kaupunki Tilapalvelut-liikelaitos (myöhemmin Tilaajan edustaja) pyytää tarjouksia Tapiolasalin akustisista parannuksista. Tilaajana hankkeessa toimii Espoon kulttuurikeskus. \nUrakan sisältö lyhyesti: salin akustiikkaa ja näyttämön toiminnallisuutta parannetaan. Näyttämön sivulla olevat siirtoseinät sekä takaseinän pintarakenteet ja akustiset osat uusitaan. Salin akustiset verhot uusitaan. Katsomon kattoon asennetaan akustiikkaa pa",
+      "provisional_scope_lead": "UNKNOWN",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "58351",
+      "title": "OSALLISTUMISPYYNTÖ: HUS Meilahden sairaala-alue, Pysäköinnin uudisrakennushanke",
+      "source_files": [
+        "data/validation/snapshot_2026-10-19/hilma_raw.json"
+      ],
+      "publication_time": "2026-10-02T02:05:01.32Z",
+      "deadline_utc": "2026-11-03T10:00:00Z",
+      "cpv_codes": "45000000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 37970,
+      "text_location_signal": [
+        "Helsinki"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "OSALLISTUMISPYYNTÖ: HUS Meilahden sairaala-alue, Pysäköinnin uudisrakennushanke Tämä osallistumispyyntö koskee Helsingin Meilahteen Oksakoskenpolulle tulevaa pysäköintitalon uudisrakennushanketta. Urakka kilpailutetaan kokonaisurakkana. Hankkeen pääurakoitsija vastaa myös sähkö- ja LVI-urakoista. Hankkeen tavoitteena on parantaa Meilahden sairaala-alueen pysäköintipaikkatilannetta. \n\nPysäköintitaloon suunnitellaan paikkoja n. 400 ajoneuvolle. Pysäköintitalo on viisikerroksinen, ratkaisultaan nou",
+      "provisional_scope_lead": "LIKELY_OUTSIDE_RENOVATION_SCOPE",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "58430",
+      "title": "Espoon Asunnot Oy / Yhdeksän (9) kiinteistön lämpötekniset työt",
+      "source_files": [
+        "data/validation/snapshot_2026-10-19/hilma_raw.json"
+      ],
+      "publication_time": "2026-10-01T09:32:24.127Z",
+      "deadline_utc": "2026-10-13T09:00:00Z",
+      "cpv_codes": "45000000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 38027,
+      "text_location_signal": [
+        "Espoo"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Pyydämme tarjousta Espoon Asunnot Oy:n omistaman Yhdeksän (9) kiinteistön lämpöteknisten töiden kokonaisurakoista työselostuksen ja suunnitelmien mukaan. \n\nHaukilahdenranta 25, Lämminkäyttövesiverkoston säätö ja venttiilien uusiminen\nKomentajankatu 6, Lämminkäyttövesiverkoston säätö ja venttiilien uusiminen\nKulkurinmäki 1 - Mustanotko 3, Lämminkäyttövesiverkoston säätö ja venttiilien uusiminen\nSamariantie 8, Lämminkäyttövesiverkoston säätö ja venttiilien uusiminen\nUllantorppa 13, Lämminkäyttöves",
+      "provisional_scope_lead": "UNKNOWN",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "58591",
+      "title": "2825001912 / SR-urakka, Uudisrakennus, Helsinki, Lassila, Heka Lassila Hopeatie 14-16 ER Vaihe 1",
+      "source_files": [
+        "data/validation/snapshot_2026-10-19/hilma_raw.json"
+      ],
+      "publication_time": "2026-10-04T13:05:03.097Z",
+      "deadline_utc": "2026-11-24T10:00:00Z",
+      "cpv_codes": "45000000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 35100,
+      "text_location_signal": [
+        "Helsinki"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "2825001912 / SR-urakka, Uudisrakennus, Helsinki, Lassila, Heka Lassila Hopeatie 14-16 ER Vaihe 1 Hankinnan kohteena on seniorikeskuksen viitesuunnitelman mukaisen vaiheen 1 rakentaminen Helsingin Lassilaan kiinteähintaisena SR-urakkana sisältäen rakennusteknisten töiden lisäksi kaikki LVISA-työt sekä kaiken tarvittavan suunnittelun.\n\nRakennettava kohde sijaitsee Haagan kaupunginosassa Lassilassa kehäradan itäpuolella. Hanke on purkavaa uudisrakentamista. \nNykyisestä korttelista 29176 puretaan 3 ",
+      "provisional_scope_lead": "LIKELY_OUTSIDE_RENOVATION_SCOPE",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "58603",
+      "title": "Pengerpuiston porras- ja kivityöt",
+      "source_files": [
+        "data/validation/snapshot_2026-10-19/hilma_raw.json"
+      ],
+      "publication_time": "2026-10-02T15:03:18.746Z",
+      "deadline_utc": "2026-10-21T09:00:00Z",
+      "cpv_codes": "45000000 45262620",
+      "metadata_estimated_value_eur": 220000,
+      "procedure_id": 38143,
+      "text_location_signal": [
+        "Helsinki"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Pengerpuiston porras- ja kivityöt TARJOUSPYYNTÖ\n\nStara, Helsingin kaupungin Rakentamispalveluliikelaitos, pyytää tarjoustanne Pengerpuiston porras- ja kivitöiden kunnostusurakasta tämän tarjouspyynnön ja liitteenä olevien tarjouspyyntöasiakirjojen mukaisesti.\n\nHankintayksikkö on Stara. Hankinta tulee Staran Kaupunki-infran rakentamisen osaston käyttöön. Työkohde sijaitsee Torkkelinmäellä, Kallion (11.) kaupunginosassa. Urakan kohteena olevat työt on määritelty urakkaohjelman kohdassa 3.1.1. ja u",
+      "provisional_scope_lead": "LIKELY_OUTSIDE_RENOVATION_SCOPE",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "58829",
+      "title": "SR-urakka, Uudisrakennus, Helsinki, Hermanni, Heka Hermanninranta Albumikatu 3",
+      "source_files": [
+        "data/validation/snapshot_2026-10-19/hilma_raw.json"
+      ],
+      "publication_time": "2026-10-08T03:05:01.801Z",
+      "deadline_utc": "2027-01-22T10:00:00Z",
+      "cpv_codes": "45000000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 37585,
+      "text_location_signal": [
+        "Helsinki"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "SR-urakka, Uudisrakennus, Helsinki, Hermanni, Heka Hermanninranta Albumikatu 3 Hankinnan kohteena on asuinkerrostalojen rakentaminen Helsingin Hermanninrantaan SR-urakkana sisältäen kokonaissuunnittelun (mm. ark, rak, lvias, energia, pohjarakennus, elinkaari, akustiikka) ja rakennusteknisten töiden lisäksi kaikki LVIAS- ja pihatyöt. \n\nKokonaisurakkaan lukeutuvat: \n- Tontit 21685/2 ja 21685/3 (yhdistetään mahdollisesti myöhemmin) Heka Hermanninranta Albumikatu 3\n\nHankkeen erityispiirteitä: \n- Koh",
+      "provisional_scope_lead": "LIKELY_OUTSIDE_RENOVATION_SCOPE",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "58875",
+      "title": "Haruspuisto, kokonaisurakka",
+      "source_files": [
+        "data/validation/snapshot_2026-10-19/hilma_raw.json"
+      ],
+      "publication_time": "2026-10-08T03:05:05.64Z",
+      "deadline_utc": "2026-10-26T11:00:00Z",
+      "cpv_codes": "45200000",
+      "metadata_estimated_value_eur": 6000000,
+      "procedure_id": 37252,
+      "text_location_signal": [
+        "Helsinki"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Haruspuisto, kokonaisurakka Rakennustyö käsittää Haruspuisto hankkeen rakentamisen tarjouspyyntöasiakirjojen mukaisesti kaikkine töineen ja hankintoineen täysin valmiiksi.\n\nRakentaminen liittyy koko Haruspuiston toiminta-alueiden täydelliseen peruskorjaukseen. Työhön sisältyy toiminnallisten alueiden lisäksi myös raittien ja luonto alueiden kunnostaminen. \n\nHaruspuisto on Meri-Rastilan alueen kaupunkiuudistuskohde. Puiston teemana on Itämerivedenalainen luonto. Tavoitteena on, että teema näkyy y",
+      "provisional_scope_lead": "LIKELY_OUTSIDE_RENOVATION_SCOPE",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "58877",
+      "title": "Sigurd Frosteriuksen puiston esirakentaminen, kokonaisurakka",
+      "source_files": [
+        "data/validation/snapshot_2026-10-19/hilma_raw.json"
+      ],
+      "publication_time": "2026-10-07T08:31:54.961Z",
+      "deadline_utc": "2026-10-16T10:00:00Z",
+      "cpv_codes": "45200000",
+      "metadata_estimated_value_eur": 5100000,
+      "procedure_id": 37521,
+      "text_location_signal": [
+        "Helsinki"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Sigurd Frosteriuksen puiston esirakentaminen, kokonaisurakka Rakennustyö käsittää Sigurd Frosteriuksen puiston esirakentamisen työt tarjouspyyntöasiakirjojen mukaisesti kaikkine töineen ja hankintoineen täysin valmiiksi.\n\nRakennuttaja on Helsingin kaupungin kaupunkiympäristön toimialan Yleiset alueet -palvelu, joka toimii myös YSE 98 mukaisena tilaajana.\n\nUrakka-asiakirjojen mukaisten töiden tulee olla valmiina ja vastaanotettuna sekä viranomaisten ja tarkastavien laitosten vaatimat tarkastukset",
+      "provisional_scope_lead": "LIKELY_OUTSIDE_RENOVATION_SCOPE",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "59022",
+      "title": "2825003110 / Kokonaisurakka, peruskorjaus, Helsinki, Heka Maunula Koivikkotie 2",
+      "source_files": [
+        "data/validation/snapshot_2026-10-19/hilma_raw.json"
+      ],
+      "publication_time": "2026-10-09T03:05:01.872Z",
+      "deadline_utc": "2026-11-09T10:00:00Z",
+      "cpv_codes": "45000000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 38025,
+      "text_location_signal": [
+        "Helsinki"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "2825003110 / Kokonaisurakka, peruskorjaus, Helsinki, Heka Maunula Koivikkotie 2 Hankinnan kohteena on Helsingin Oulunkylän kaupunginosassa Maunulan osa-alueella sijaitsevien asuinkerrostalojen peruskorjaus kiinteähintaisena kokonaisurakkana sisältäen rakennusteknisten töiden lisäksi kaikki LVISA-työt. \n\nPeruskorjauksen kohteena on Helsingin kaupungin asunnot Oy:n omistama vuokratalokohde, joka sijaitsee Helsingin kaupungin tontilla 28289/2 (Koivikkotie 2, 4, 6, 8 ja Männikkötie 3, 00630 Helsinki",
+      "provisional_scope_lead": "RENOVATION_TEXT_LEAD",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "59078",
+      "title": "Osallistumispyyntö: Malmin uusi sairaala, perhekeskus ja terveys- ja hyvinvointikeskus, talotekniikkaurakoitsijan hankinta",
+      "source_files": [
+        "data/validation/snapshot_2026-10-19/hilma_raw.json"
+      ],
+      "publication_time": "2026-10-10T15:05:01.266Z",
+      "deadline_utc": "2026-11-09T11:00:00Z",
+      "cpv_codes": "45000000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 38441,
+      "text_location_signal": [],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Osallistumispyyntö: Malmin uusi sairaala, perhekeskus ja terveys- ja hyvinvointikeskus, talotekniikkaurakoitsijan hankinta Hankinnan kohteena on talotekniikkaurakoitsijan hankinta Malmin uuden sairaalan, perhekeskuksen ja terveys- ja hyvinvointikeskuksen talotekniikkakokonaisuuden toteuttamiseen osana hankkeen allianssiorganisaatiota. Talotekniikkaurakoitsija toimii yhteistoiminnassa muiden hankeosapuolten kanssa ja vastaa hankkeen taloteknisten ratkaisujen suunnittelusta, kehittämisestä ja tote",
+      "provisional_scope_lead": "UNKNOWN",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "59139",
+      "title": "A202249 HEV porttirakennus, sisäilmakorjaus",
+      "source_files": [
+        "data/validation/snapshot_2026-10-19/hilma_raw.json"
+      ],
+      "publication_time": "2026-10-18T08:05:00.651Z",
+      "deadline_utc": "2026-10-30T10:00:00Z",
+      "cpv_codes": "45000000",
+      "metadata_estimated_value_eur": 3000000,
+      "procedure_id": 38481,
+      "text_location_signal": [
+        "Helsinki"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "A202249 Helsingin vankilan porttirakennuksen sisäilmakorjaus kiinteähintaisena kokonaisurakkana.\nKohde on v.1881 rakennetun Helsingin vankilan porttirakennus, joka on peruskorjattu aiemmin vuosina 2004-2006.  Rakennus on suojeltu (sr-1) ja hankkeessa saneerataan muun muassa 1. kerroksen iso neuvotteluhuone ja 2.kerroksen toimistotilat nykyaikaisiksi monitilaympäristöksi sekä tehdään korjauksia rakennuksen muissa tiloissa. Välipohjista poistetaan esim. kaikki sisäilman laatua heikentävät eristeet",
+      "provisional_scope_lead": "RENOVATION_TEXT_LEAD",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "59188",
+      "title": "Koy Espoon Tietotie 1, BIZ vuokralaismuutos",
+      "source_files": [
+        "data/validation/snapshot_2026-10-19/hilma_raw.json"
+      ],
+      "publication_time": "2026-10-09T11:28:27.295Z",
+      "deadline_utc": "2026-11-04T10:00:00Z",
+      "cpv_codes": "45000000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 38514,
+      "text_location_signal": [
+        "Espoo"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Koy Espoon Tietotie 1, BIZ vuokralaismuutos Kiinteähintainen kokonaisurakka. \n\nEspoon Otaniemen kaupunginosassa sijaitseva Aalto-yliopiston omistama tutkimuslaitosrakennus osoitteessa Tietotie 2A.\n\nHankkeessa kiinteistön A-talon nykyiset tilat remontoidaan käyttäjän toiminnoille sopiviksi ja tiloihin tehdään pintaremontti. Tiloihin muuttaa Kauppakorkeakoulun Taloustieteen laitos. \n\nTietotie 2A:n kolmeen kerrokseen on haettu osittainen käyttötarkoituksen \nmuutos. Pohjakerroksen toimistotila muute",
+      "provisional_scope_lead": "RENOVATION_TEXT_LEAD",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "59230",
+      "title": "A202183 Dynamicum Ilmatieteen laitos, työympäristömuutokset",
+      "source_files": [
+        "data/validation/snapshot_2026-10-19/hilma_raw.json"
+      ],
+      "publication_time": "2026-10-09T15:00:30.487Z",
+      "deadline_utc": "2026-10-27T10:00:00Z",
+      "cpv_codes": "45000000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 37450,
+      "text_location_signal": [
+        "Helsinki"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "A202183 Dynamicum Ilmatieteen laitos, työympäristömuutokset Rakennushanke käsittää Ilmatieteen laitoksen (os. Dynamicum, Erik Palménin aukio 1, 00560 Helsinki) työympäristömuutoksen suunnitelma-asiakirjoissa esitetyt muutostyöt. Hankkeen toteutusmuotona on kokonaisurakka, jossa urakoitsija toimii pääurakoitsijana ja -toteuttajana. Kokonaisurakan sisältö on esitetty tarjouspyynnön liitteessä urakkaohjelma sekä muissa tarjouspyynnön liite-asiakirjoissa.,",
+      "provisional_scope_lead": "RENOVATION_TEXT_LEAD",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "59294",
+      "title": "Katukunnostustyöurakan hankinta 2027-2031",
+      "source_files": [
+        "data/validation/snapshot_2026-10-19/hilma_raw.json"
+      ],
+      "publication_time": "2026-10-12T11:06:37.904Z",
+      "deadline_utc": "2026-11-16T10:00:00Z",
+      "cpv_codes": "45200000",
+      "metadata_estimated_value_eur": 1000000,
+      "procedure_id": 38588,
+      "text_location_signal": [
+        "Espoo"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Katukunnostustyöurakan hankinta 2027-2031 Espoon kaupunki (myöhemmin myös Tilaaja) pyytää tarjousta katukunnostustöihin. Urakan kohteena ovat Espoon kaupungin alueella sijaitsevat katu- ja kiinteistöalueet. Tarkempi kuvaus urakasta on tarjouspyynnön liitteellä 1. \"Urakkaohjelma\".\n\nPuitesopimuksen on määrä alkaa 1.5.2027. Sopimuskausi on neljä (4) vuotta allekirjoittamisesta lukien, kuitenkin enintään 30.4.2031 saakka.\n\nTilaaja valitsee puitejärjestelyyn enintään viisi (5) halvimman hinnan katuku",
+      "provisional_scope_lead": "LIKELY_OUTSIDE_RENOVATION_SCOPE",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "59352",
+      "title": "KESKEYTETTY Maunulan kirkon tekninen peruskorjausurakka",
+      "source_files": [
+        "data/validation/snapshot_2026-10-19/hilma_raw.json"
+      ],
+      "publication_time": "2026-10-13T07:20:53.702Z",
+      "deadline_utc": "2026-10-27T10:00:00Z",
+      "cpv_codes": "45000000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 37861,
+      "text_location_signal": [
+        "Helsinki",
+        "Kirkkonummi"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "KESKEYTETTY Maunulan kirkon tekninen peruskorjausurakka Helsingin seurakuntayhtymä pyytää urakkatarjoustanne Maunulan kirkon teknisestä peruskorjausurakasta tämän tarjouspyynnön ja sen liitteiden mukaisesti.\n\nRakennuttaja edellyttää, että urakoitsija on tutustunut rakennuspaikkaan ja siellä vallitseviin olosuhteisiin ennen tarjouksen antamista. Kohdekäynnistä on sovittava projektin johtajan, Matti Prihan kanssa (matti.priha@evl.fi). Tutustumiskäynti kohteeseen on edellytys tarjouksen tekemiselle",
+      "provisional_scope_lead": "CANCELLED_NOTICE",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "59375",
+      "title": "Kastevuoren päiväkodin elinkaarta jatkavat korjaustyöt",
+      "source_files": [
+        "data/validation/snapshot_2026-10-19/hilma_raw.json"
+      ],
+      "publication_time": "2026-10-13T09:46:20.962Z",
+      "deadline_utc": "2026-10-30T10:00:00Z",
+      "cpv_codes": "45000000 45112000 45331000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 37663,
+      "text_location_signal": [
+        "Espoo"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Kastevuoren päiväkodin elinkaarta jatkavat korjaustyöt Espoon kaupunki Tilapalvelut-liikelaitos (myöhemmin Tilaaja) pyytää tarjouksia Kastevuoren päiväkodin elinkaarta jatkavasta korjauksesta tarjouspyynnön liitteenä olevien asiakirjojen mukaisesti täyteen käyttökuntoon saatettuna. Korjaustyö toteutetaan kokonaisurakkamuodolla. Kaikki tarjouspyynnössä esitetyt työt ja hankinnat sisältyvät kokonaisurakkaan. Valittu toimittaja toimii hankkeessa pääurakoitsijana sekä valtioneuvoston asetuksen raken",
+      "provisional_scope_lead": "RENOVATION_TEXT_LEAD",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "59399",
+      "title": "Maunulan kirkon tekninen peruskorjausurakka",
+      "source_files": [
+        "data/validation/snapshot_2026-10-19/hilma_raw.json"
+      ],
+      "publication_time": "2026-10-13T11:36:04.65Z",
+      "deadline_utc": "2026-11-03T10:00:00Z",
+      "cpv_codes": "45000000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 38647,
+      "text_location_signal": [
+        "Helsinki",
+        "Kirkkonummi"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Maunulan kirkon tekninen peruskorjausurakka Helsingin seurakuntayhtymä pyytää urakkatarjoustanne Maunulan kirkon teknisestä peruskorjausurakasta tämän tarjouspyynnön ja sen liitteiden mukaisesti.\n\nRakennuttaja edellyttää, että urakoitsija on tutustunut rakennuspaikkaan ja siellä vallitseviin olosuhteisiin ennen tarjouksen antamista. Kohdekäynnistä on sovittava projektin johtajan, Matti Prihan kanssa (matti.priha@evl.fi). Tutustumiskäynti kohteeseen on edellytys tarjouksen tekemiselle. Tilaaja su",
+      "provisional_scope_lead": "RENOVATION_TEXT_LEAD",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "59417",
+      "title": "Kiinteistö Oy Korsontie 2:n kevythissin uusinta 2026",
+      "source_files": [
+        "data/validation/snapshot_2026-10-19/hilma_raw.json"
+      ],
+      "publication_time": "2026-10-13T13:27:30.281Z",
+      "deadline_utc": "2026-11-17T10:00:00Z",
+      "cpv_codes": "45000000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 38660,
+      "text_location_signal": [
+        "Vantaa"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Kiinteistö Oy Korsontie 2:n kevythissin uusinta 2026 Kohde on Vantaan kaupungin osittain omistaman liike ja toimistokiinteistön kevyt henkilöhissi Korsossa Vantaalla.\n\nKorjaustarve: Korsontie 2:sen kevyen henkilöhissin 1kpl uusiminen.\nOsoite: Korsontie 2 , 01450 Vantaa.\n\nKohteessa on 1 hissi:\nKevythissi on Geijer oy:n rakentama v.1984. \n\nValtuutetun hissitarkastuslaitoksen Inscpectan suorittama hissitarkastus on tehty 2024. \n\nHankinta sisältää vuonna 1984 valmistuneen kevythissin uusimisen.\n \nTa",
+      "provisional_scope_lead": "RENOVATION_TEXT_LEAD",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "59423",
+      "title": "Ulkokehän aitaaminen, Maanrakennus- ja pihaurakka",
+      "source_files": [
+        "data/validation/snapshot_2026-10-19/hilma_raw.json"
+      ],
+      "publication_time": "2026-10-18T08:05:00.81Z",
+      "deadline_utc": "2026-11-10T10:00:00Z",
+      "cpv_codes": "45000000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 38664,
+      "text_location_signal": [
+        "Vantaa"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Ulkokehän aitaaminen, Maanrakennus- ja pihaurakka Hankinnan kohteena on Senaatti-konsernin omistaman Vantaan Jokiniemessä sijaitsevan kiinteistön aitaamiseen liittyvä maanrakennus- ja pihaurakka.\n\nLisäksi urakkaan pyydetään optiona kiinteistön koillispuolen olemassa olevan aidan uusimiseen liittyvät purkutyöt sekä maanrakennus- ja pihaurakan työt.,",
+      "provisional_scope_lead": "LIKELY_OUTSIDE_RENOVATION_SCOPE",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "59464",
+      "title": "Espoon Asunnot Oy / Yhdeksän (9) kiinteistön lämpötekniset työt",
+      "source_files": [
+        "data/validation/snapshot_2026-10-19/hilma_raw.json"
+      ],
+      "publication_time": "2026-10-14T09:16:36.696Z",
+      "deadline_utc": "2026-10-23T09:00:00Z",
+      "cpv_codes": "45000000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 38686,
+      "text_location_signal": [
+        "Espoo"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Pyydämme tarjousta Espoon Asunnot Oy:n omistaman Yhdeksän (9) kiinteistön lämpöteknisten töiden kokonaisurakoista työselostuksen ja suunnitelmien mukaan. \n\nHaukilahdenranta 25, Lämminkäyttövesiverkoston säätö ja venttiilien uusiminen\nKomentajankatu 6, Lämminkäyttövesiverkoston säätö ja venttiilien uusiminen\nKulkurinmäki 1 - Mustanotko 3, Lämminkäyttövesiverkoston säätö ja venttiilien uusiminen\nSamariantie 8, Lämminkäyttövesiverkoston säätö ja venttiilien uusiminen\nUllantorppa 13, Lämminkäyttöves",
+      "provisional_scope_lead": "UNKNOWN",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "59621",
+      "title": "Omastadi 3.0 Pikku Huopalahden ulkoilureitille näköalapaikka, kokonaisurakka",
+      "source_files": [
+        "data/validation/snapshot_2026-10-19/hilma_raw.json"
+      ],
+      "publication_time": "2026-10-15T12:32:52.605Z",
+      "deadline_utc": "2026-11-11T11:00:00Z",
+      "cpv_codes": "45200000",
+      "metadata_estimated_value_eur": 220000,
+      "procedure_id": 38775,
+      "text_location_signal": [
+        "Helsinki"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Omastadi 3.0 Pikku Huopalahden ulkoilureitille näköalapaikka, kokonaisurakka Urakka käsittää Omastadi 3.0 Pikku Huopalahden ulkoilureitille näköalapaikka rakentamisen vaatimat työt urakka-asiakirjojen osoittamassa laajuudessa tarjouspyyntöasiakirjojen mukaisesti kaikkine liittyvine töineen ja hankintoineen täysin valmiiksi.\n\nKohde sijaitsee Pikku Huopalahden länsirannalla ja linkittyy osaksi Tilkanniityn luontopolkua. Rakennushanke on asukkaiden toteutettavaksi vuonna 2024 äänestämä Oma Stadi3 -",
+      "provisional_scope_lead": "UNKNOWN",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "59641",
+      "title": "Säterinpuistontie välillä Leppävaarankatu – Turuntie",
+      "source_files": [
+        "data/validation/snapshot_2026-10-19/hilma_raw.json"
+      ],
+      "publication_time": "2026-10-16T06:22:21.905Z",
+      "deadline_utc": "2026-11-02T10:00:00Z",
+      "cpv_codes": "45200000",
+      "metadata_estimated_value_eur": null,
+      "procedure_id": 37638,
+      "text_location_signal": [
+        "Helsinki"
+      ],
+      "selection_basis": "PLACE_NAME_IN_TITLE_OR_DESCRIPTION_HEURISTIC",
+      "metadata_excerpt": "Säterinpuistontie välillä Leppävaarankatu – Turuntie Säterinpuistontie välillä Leppävaarankatu – Turuntie on uusi alueellinen kokoojakatu, jolla parannetaan liikenteen toimivuutta ja turvallisuutta Leppävaaran alueella. Katu muodostaa uuden auto-, pyörä- ja jalankulkuliikenteen yhteyden Turuntien ja Leppävaarankadun välille.\nKatu alittaa Helsinki-Turku rautatien ja radan pohjoispuolelle suunnitteilla olevan Rantaradanbaanan. \n\nTyö käsittää, katujen ja vesihuollon rakennustöitä. Töitä tehdään rau",
+      "provisional_scope_lead": "LIKELY_OUTSIDE_RENOVATION_SCOPE",
+      "worksite_municipality_verified": null,
+      "full_tender_documents_verified": false,
+      "individual_lot_value_verified": false,
+      "bidder_eligibility_verified": false,
+      "eligibility_status": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "source_gold_label": "UNREVIEWED"
+    }
+  ]
+}
