@@ -1,0 +1,52 @@
+{
+  "schema_version": "2026-10-19-icp-document-coverage-v1",
+  "policy": "SOURCE_COVERAGE_QUEUE_NOT_GOLD_NOT_PRECISION_HOLDOUT",
+  "candidates": [
+    {
+      "case_id": "HILMA_59188",
+      "title": "Koy Espoon Tietotie 1 BIZ vuokralaismuutos",
+      "municipality": "Espoo",
+      "scope": "MATCH",
+      "region": "IN",
+      "notice_url": "https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon/?tpId=631619",
+      "notice_source_status": "ORIGINAL_XML_REVIEWED",
+      "source_documents": [],
+      "required_documents": [
+        "tender_request",
+        "eligibility_terms",
+        "scope_annexes",
+        "pricing_schedule",
+        "site_visit_conditions"
+      ],
+      "verified_single_contract_value": false,
+      "verified_company_eligibility": false,
+      "source_gold_label": "UNREVIEWED",
+      "blocker": "Portal-linked original tender annexes unavailable in unauthenticated public retrieval; no verified individual contract value",
+      "deadline_local": "2026-11-04T12:00:00",
+      "historical_snapshot": true
+    },
+    {
+      "case_id": "HILMA_59375",
+      "title": "Kastevuoren päiväkodin elinkaarta jatkavat korjaustyöt",
+      "municipality": "Espoo",
+      "scope": "MATCH",
+      "region": "IN",
+      "notice_url": "https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon/?tpId=611165",
+      "notice_source_status": "ORIGINAL_XML_REVIEWED",
+      "source_documents": [],
+      "required_documents": [
+        "tender_request",
+        "eligibility_terms",
+        "scope_annexes",
+        "pricing_schedule",
+        "site_visit_conditions"
+      ],
+      "verified_single_contract_value": false,
+      "verified_company_eligibility": false,
+      "source_gold_label": "UNREVIEWED",
+      "blocker": "Mandatory site visits and bidder attendance evidence unresolved; original annexes unavailable in unauthenticated public retrieval",
+      "deadline_local": "2026-10-30T12:00:00",
+      "historical_snapshot": true
+    }
+  ]
+}
