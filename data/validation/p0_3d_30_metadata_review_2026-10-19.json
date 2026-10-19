@@ -257,7 +257,7 @@
       "deadline_status_at_audit": "EXPIRED_BY_METADATA_DEADLINE",
       "cancellation_status": "NO_EXPLICIT_CANCELLATION_IN_FROZEN_TITLE_NOT_LIVE_VERIFIED",
       "potential_same_procurement_group": "ESPOO_9_HEATING_WORKS",
-      "duplicate_resolution_status": "NEEDS_OFFICIAL_NOTICE_VERSION_LINKAGE",
+      "duplicate_resolution_status": "EARLIER_EXPIRED_COMPETITION",
       "source_provenance": [
         "data/validation/snapshot_2026-10-19/hilma_raw.json"
       ],
@@ -265,7 +265,17 @@
       "document_package_complete": false,
       "individual_lot_value_verified": false,
       "offer_eligibility_verified": false,
-      "gold_label": "UNREVIEWED"
+      "gold_label": "UNREVIEWED",
+      "version_review": {
+        "status": "PREVIOUS_COMPETITION_DEADLINE_PASSED",
+        "portal_publication_id": "629798",
+        "portal_notice_url": "https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon/?tpId=629798",
+        "published_at_local": "2026-10-01T12:35:00+03:00",
+        "deadline_local": "2026-10-13T12:00:00+03:00",
+        "related_notice_id": "59464",
+        "relation": "SAME_BUYER_AND_MULTISITE_SCOPE; FORMAL_REPLACEMENT_UNVERIFIED",
+        "delivery_state": "EXCLUDE_EXPIRED"
+      }
     },
     {
       "notice_id": "58591",
@@ -545,7 +555,7 @@
       "deadline_status_at_audit": "FUTURE_IN_FROZEN_METADATA_CHECK_LIVE",
       "cancellation_status": "EXPLICITLY_CANCELLED_IN_TITLE",
       "potential_same_procurement_group": "MAUNULA_CHURCH_TECH_RENOVATION",
-      "duplicate_resolution_status": "NEEDS_OFFICIAL_NOTICE_VERSION_LINKAGE",
+      "duplicate_resolution_status": "CANCELLED_NOTICE_EXCLUDE",
       "source_provenance": [
         "data/validation/snapshot_2026-10-19/hilma_raw.json"
       ],
@@ -553,7 +563,16 @@
       "document_package_complete": false,
       "individual_lot_value_verified": false,
       "offer_eligibility_verified": false,
-      "gold_label": "UNREVIEWED"
+      "gold_label": "UNREVIEWED",
+      "version_review": {
+        "status": "CONFIRMED_CANCELLATION_RECORD",
+        "portal_publication_id": "629772",
+        "portal_notice_url": "https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon?p=472&tpId=632427",
+        "evidence": "Tarjouspalvelu 629772 KESKEYTYSILMOITUS; E4 result",
+        "related_notice_id": "59399",
+        "relation": "SAME_NAMED_PROJECT_PUBLISHED_AFTER_CANCELLATION_NOT_TECHNICALLY_LINKED_BY_NOTICE_REFERENCE",
+        "delivery_state": "EXCLUDE_CANCELLED"
+      }
     },
     {
       "notice_id": "59375",
@@ -593,7 +612,7 @@
       "deadline_status_at_audit": "FUTURE_IN_FROZEN_METADATA_CHECK_LIVE",
       "cancellation_status": "NO_EXPLICIT_CANCELLATION_IN_FROZEN_TITLE_NOT_LIVE_VERIFIED",
       "potential_same_procurement_group": "MAUNULA_CHURCH_TECH_RENOVATION",
-      "duplicate_resolution_status": "NEEDS_OFFICIAL_NOTICE_VERSION_LINKAGE",
+      "duplicate_resolution_status": "PREFER_NEW_COMPETITION_OVER_CANCELLED_IF_VERIFIED_CURRENT",
       "source_provenance": [
         "data/validation/snapshot_2026-10-19/hilma_raw.json"
       ],
@@ -601,7 +620,18 @@
       "document_package_complete": false,
       "individual_lot_value_verified": false,
       "offer_eligibility_verified": false,
-      "gold_label": "UNREVIEWED"
+      "gold_label": "UNREVIEWED",
+      "version_review": {
+        "status": "NEW_PUBLIC_COMPETITION_FOR_SAME_NAMED_PROJECT",
+        "portal_publication_id": "632428",
+        "portal_notice_url": "https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon/?tpId=632428",
+        "published_at_local": "2026-10-13T14:53:00+03:00",
+        "deadline_local": "2026-11-03T12:00:00+02:00",
+        "site_visit_required": true,
+        "related_notice_id": "59352",
+        "relation": "CANCELLATION_AND_LATER_COMPETITION_FOR_SAME_NAMED_PROJECT; OFFICIAL_CROSS_NOTICE_IDENTIFIER_UNVERIFIED",
+        "delivery_state": "CONDITIONAL_ACTIVE_CHECK_SITE_VISIT_AND_DOCUMENTS"
+      }
     },
     {
       "notice_id": "59417",
@@ -665,7 +695,7 @@
       "deadline_status_at_audit": "FUTURE_IN_FROZEN_METADATA_CHECK_LIVE",
       "cancellation_status": "NO_EXPLICIT_CANCELLATION_IN_FROZEN_TITLE_NOT_LIVE_VERIFIED",
       "potential_same_procurement_group": "ESPOO_9_HEATING_WORKS",
-      "duplicate_resolution_status": "NEEDS_OFFICIAL_NOTICE_VERSION_LINKAGE",
+      "duplicate_resolution_status": "PREFER_LATER_COMPETITION_PENDING_OFFICIAL_VERSION_LINK",
       "source_provenance": [
         "data/validation/snapshot_2026-10-19/hilma_raw.json"
       ],
@@ -673,7 +703,17 @@
       "document_package_complete": false,
       "individual_lot_value_verified": false,
       "offer_eligibility_verified": false,
-      "gold_label": "UNREVIEWED"
+      "gold_label": "UNREVIEWED",
+      "version_review": {
+        "status": "NEW_COMPETITION_AFTER_PREVIOUS_DEADLINE",
+        "portal_publication_id": "632650",
+        "portal_notice_url": "https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon/?tpId=632650",
+        "published_at_local": "2026-10-14T07:16:00+03:00",
+        "deadline_local": "2026-10-23T12:00:00+03:00",
+        "related_notice_id": "58430",
+        "relation": "SAME_BUYER_AND_MULTISITE_SCOPE; FORMAL_REPLACEMENT_UNVERIFIED",
+        "delivery_state": "CONDITIONAL_ACTIVE_CHECK_LOTS_AND_DOCUMENTS"
+      }
     },
     {
       "notice_id": "59621",
@@ -736,5 +776,26 @@
     "gold_positive": 0,
     "precision_at_30": null
   },
-  "note": "Manual model-assisted reading of saved real Hilma descriptions; do not treat this metadata review as independent original-source gold, or as live cancellation/version check."
+  "note": "Manual model-assisted reading of saved real Hilma descriptions; do not treat this metadata review as independent original-source gold, or as live cancellation/version check.",
+  "version_review_summary": {
+    "reviewed_notice_ids": [
+      "59352",
+      "59399",
+      "58430",
+      "59464"
+    ],
+    "cancelled_exclusions": [
+      "59352"
+    ],
+    "expired_previous_versions": [
+      "58430"
+    ],
+    "latest_candidate_notices": [
+      "59399",
+      "59464"
+    ],
+    "official_cross_notice_reference_verified": false,
+    "source_kind": "PUBLIC_TARJOUSPALVELU_NOTICE_PAGES",
+    "independent_gold_positive_increment": 0
+  }
 }
