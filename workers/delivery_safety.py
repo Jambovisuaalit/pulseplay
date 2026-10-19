@@ -42,6 +42,9 @@ def attachment_status(tender: dict) -> str:
 def delivery_decision(tender: dict, profile_decision: str, now: dt.datetime | None = None) -> dict:
     deadline = deadline_status(tender.get("deadline"), now)
     attachments = attachment_status(tender)
+    visit_required = tender.get("mandatory_site_visit_required") is True
+    visit_confirmed = tender.get("mandatory_site_visit_attended") is True and bool(str(tender.get("mandatory_site_visit_evidence") or "").strip())
+    visit_status = "VERIFIED" if visit_required and visit_confirmed else "UNVERIFIED" if visit_required else "NOT_FLAGGED"
     reasons = []
     if CANCELLED_TITLE.search(str(tender.get("title") or tender.get("hankinta") or "")):
         reasons.append("Ilmoituksen otsikko ilmaisee keskeytyksen tai peruutuksen; tarkista lähteestä.")
@@ -54,7 +57,7 @@ def delivery_decision(tender: dict, profile_decision: str, now: dt.datetime | No
         reasons.append("Lähdeilmoituksen asiakassoveltuvuutta ei ole arvioitu.")
     elif tender.get("go_no_go_suositus") == "NO-GO" or profile_decision == "NO-GO":
         decision = "NO-GO"
-    elif deadline != "OPEN" or attachments != "COMPLETE" or profile_decision != "GO":
+    elif deadline != "OPEN" or attachments != "COMPLETE" or profile_decision != "GO" or visit_status == "UNVERIFIED":
         decision = "CONDITIONAL_GO"
         if deadline != "OPEN":
             reasons.append("Tarjousmääräaikaa ei ole vahvistettu avoimeksi.")
@@ -62,11 +65,14 @@ def delivery_decision(tender: dict, profile_decision: str, now: dt.datetime | No
             reasons.append("Tarjousliitteiden täydellistä tarkistusta ei ole vahvistettu.")
         if profile_decision != "GO":
             reasons.append("Yrityksen soveltuvuutta ei ole vahvistettu.")
+        if visit_status == "UNVERIFIED":
+            reasons.append("Pakollista kohdekäyntiä ei ole vahvistettu suoritetuksi.")
     else:
         decision = "GO" if tender.get("go_no_go_suositus") == "GO" else "CONDITIONAL_GO"
     return {
         "delivery_decision": decision,
         "deadline_status": deadline,
         "attachment_status": attachments,
+        "mandatory_site_visit_status": visit_status,
         "delivery_reasons": reasons,
     }
