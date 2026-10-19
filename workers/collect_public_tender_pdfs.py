@@ -16,6 +16,7 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 from pypdf import PdfReader
+from extract_public_pdf_requirements import leads_by_page
 
 MAX_DOCUMENTS = 8
 MAX_BYTES = 12 * 1024 * 1024
@@ -83,6 +84,9 @@ def collect(manifest: dict, out: Path) -> dict:
             (out / f"{ident}.pdf").write_bytes(data)
             text, pages = extract_pdf_text(data)
             (out / f"{ident}.txt").write_text(text, encoding="utf-8")
+            lead_report = leads_by_page(text, url)
+            (out / f"{ident}.requirements.json").write_text(json.dumps(lead_report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+            item["requirement_lead_counts"] = {k:len(v) for k,v in lead_report["categories"].items()}
             item["pages"] = pages
             item["text_characters"] = len(text)
             item["source_status"] = "VERIFIED_FULL_TEXT" if len(text.strip()) >= 250 else "PDF_TEXT_INSUFFICIENT"
