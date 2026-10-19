@@ -10,7 +10,7 @@ import os
 from pathlib import Path
 import requests
 from collect_hilma_notice_attachments import discover, collect
-from extract_eforms_document_links import extract as extract_document_links
+from extract_eforms_document_links import extract as extract_document_links, audit_url_fields
 
 IDS = ("59188", "59375")
 URL = "https://api.hankintailmoitukset.fi/avp-eforms/external-read/v1/notice/"
@@ -38,6 +38,7 @@ def main():
     records=[]
     responses=[]
     document_links=[]
+    xml_url_field_audits=[]
     calls=0
     for notice_id in IDS:
         calls+=1
@@ -55,6 +56,7 @@ def main():
                     record=discover(xml,notice_id,verified_endpoint=True)
                     records.append(record)
                     document_links.append(extract_document_links(xml, notice_id=notice_id, source_pointer=f'original_hilma_notice/{notice_id}.xml'))
+                    xml_url_field_audits.append({'notice_id':notice_id, **audit_url_fields(xml)})
                     entry.update({"source_status":"ORIGINAL_XML_PARSED",
                                   "original_xml_sha256":record["xml_sha256"],
                                   "explicit_public_attachment_links":record["attachment_count"]})
@@ -67,7 +69,8 @@ def main():
                    "error_type":type(exc).__name__}
         responses.append(entry)
     manifest={"source":"ORIGINAL_HILMA_EFORMS_XML","api_calls":calls,"max_api_calls":MAX_API_CALLS,
-              "notices":records,"requests":responses,"document_link_evidence":document_links,"complete_tender_packages":0,
+              "notices":records,"requests":responses,"document_link_evidence":document_links,
+              "xml_url_field_audits":xml_url_field_audits,"complete_tender_packages":0,
               "gold_positives":0,"precision_at_30":None}
     (args.output/"notice_discovery.json").write_text(
         json.dumps(manifest,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
@@ -82,6 +85,7 @@ def main():
                       "public_attachment_links":sum(r["attachment_count"] for r in records),
                       "downloaded":manifest["attachment_acquisition"].get("downloaded",0),
                       "eforms_document_access_leads":sum(len(x["links"]) for x in document_links),
+                      "xml_url_field_count":sum(x["url_field_count"] for x in xml_url_field_audits),
                       "complete_tender_packages":0,"gold_positives":0,
                       "precision_at_30":None},ensure_ascii=False,indent=2))
 
