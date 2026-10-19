@@ -45,6 +45,7 @@ def extract(xml: str, *, notice_id: str, source_pointer: str) -> dict:
     sha=hashlib.sha256(xml.encode("utf-8")).hexdigest()
     leads=[]
     seen=set()
+    submission_endpoints=[]
     def visit(node: ET.Element, path: str, context: tuple[str,...]) -> None:
         tag=local(node.tag)
         next_context=context+(tag,)
@@ -54,6 +55,12 @@ def extract(xml: str, *, notice_id: str, source_pointer: str) -> dict:
             "ProcurementDocument","CallForTendersDocumentReference","DocumentReference",
             "DocumentLocation"} for n in next_context) or (
             "TenderingTerms" in next_context and tag in {"URI","WebsiteURI","EndpointURI","DocumentLocation"})
+        if tag == "EndpointID" and "TenderRecipientParty" in next_context:
+            for m in LINK_RE.finditer(node.text or ""):
+                url=m.group(0).rstrip(".,;)]}")
+                submission_endpoints.append({"url":url,"kind":"TENDER_SUBMISSION_ENDPOINT",
+                    "notice_id":notice_id,"source_pointer":f"{source_pointer}#{path}/text",
+                    "source_xml_sha256":sha,"access_verified":False})
         if relevant:
             fields=[("text",node.text or "")]+[("@"+local(k),v) for k,v in node.attrib.items()]
             for field,raw in fields:
@@ -74,7 +81,7 @@ def extract(xml: str, *, notice_id: str, source_pointer: str) -> dict:
             visit(child,f"{path}/{child_tag}[{counts[child_tag]}]",next_context)
     visit(root,"/"+local(root.tag)+"[1]",())
     return {"notice_id":notice_id,"source_pointer":source_pointer,"source_xml_sha256":sha,
-            "links":leads,"counts":{k:sum(r["kind"]==k for r in leads) for k in
+            "links":leads,"submission_endpoints":submission_endpoints,"counts":{k:sum(r["kind"]==k for r in leads) for k in
                 ("DIRECT_PUBLIC_DOCUMENT","PUBLIC_PORTAL","ACCESS_RESTRICTED_OR_UNKNOWN")},
             "package_complete":False,"gold_label":"UNREVIEWED","precision_at_30":None}
 
