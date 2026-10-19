@@ -1,7 +1,24 @@
 name: TenderPulse ingest
 
 on:
+  push:
+    branches:
+      - feature/urakkaluotsi-p0-relevance-validation
+    paths:
+      - .github/workflows/tenderpulse-ingest.yml
+      - workers/collect_hilma_limited.py
   workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Only the bounded one-call sample collector is allowed manually'
+        type: choice
+        options:
+          - limited
+        default: limited
+      new_budget_approved:
+        description: 'New Hilma API-call authorization (previous 3/3 used)'
+        type: boolean
+        default: false
   schedule:
     - cron: "15 5 * * *"
 
@@ -10,6 +27,7 @@ permissions:
 
 jobs:
   ingest:
+    if: github.event_name == 'schedule'
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
@@ -62,3 +80,37 @@ jobs:
 
       # LLM-analyysi lisätään vasta, kun 100 ilmoituksen manuaalinen
       # ground truth osoittaa, että relevance-signaali on riittävän tarkka.
+
+  limited_sample:
+    if: (github.event_name == 'push' && github.event.head_commit.message == 'RUN_LIMITED_HILMA_SAMPLE') || (github.event_name == 'workflow_dispatch' && inputs.mode == 'limited' && inputs.new_budget_approved == true)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install request dependency
+        run: python -m pip install requests
+      - name: Collect at most 100 Hilma results in one API call
+        env:
+          HILMA_API_KEY: ${{ secrets.HILMA_API_KEY }}
+        run: python workers/collect_hilma_limited.py
+      - name: Build frozen validation ranking
+        run: python -m workers.build_validation_set
+      - name: Print saved snapshot QA
+        run: python -m workers.validate_saved_data --input data/hilma_raw.json
+      - name: Upload sample and call audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: urakkaluotsi-limited-sample
+          if-no-files-found: warn
+          path: |
+            data/hilma_raw.json
+            data/validation/hilma_collection_audit.json
+            data/validation/hilma_100_luokiteltavaksi.csv

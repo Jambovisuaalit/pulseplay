@@ -9,6 +9,16 @@ export type NormalizedTender = Tender & {
   _decision: string;
 };
 
+export function isTenderActive(item: Pick<Tender, "deadline">, asOf = new Date()): boolean {
+  const value = item.deadline;
+  // Missing timezone or cutoff hour must not be treated as an open tender.
+  if (typeof value !== "string" || !/T\d{2}:\d{2}.*(?:Z|[+-]\d{2}:\d{2})$/.test(value)) {
+    return false;
+  }
+  const deadline = new Date(value);
+  return Number.isFinite(deadline.getTime()) && deadline.getTime() > asOf.getTime();
+}
+
 export function normalizeTender(item: Tender, index = 0): NormalizedTender {
   const organisationName =
     typeof item.organisation === "object" && item.organisation
@@ -37,7 +47,7 @@ export function getTenders(): NormalizedTender[] {
     ? rawData
     : (rawData as { notices?: Tender[] }).notices ?? []) as Tender[];
 
-  return notices.map((item, index) => normalizeTender(item, index));
+  return notices.filter((item) => isTenderActive(item)).map((item, index) => normalizeTender(item, index));
 }
 
 export function getTenderById(id: string): NormalizedTender | undefined {
