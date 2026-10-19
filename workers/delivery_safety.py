@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 import datetime as dt
+import re
 from zoneinfo import ZoneInfo
 
 HELSINKI = ZoneInfo("Europe/Helsinki")
+CANCELLED_TITLE = re.compile(r"^\s*(?:KESKEYTETTY|PERUTTU)(?:\b|\s|:|-)", re.IGNORECASE)
 
 
 def deadline_status(value: str | None, now: dt.datetime | None = None) -> str:
@@ -41,7 +43,10 @@ def delivery_decision(tender: dict, profile_decision: str, now: dt.datetime | No
     deadline = deadline_status(tender.get("deadline"), now)
     attachments = attachment_status(tender)
     reasons = []
-    if deadline == "EXPIRED":
+    if CANCELLED_TITLE.search(str(tender.get("title") or tender.get("hankinta") or "")):
+        reasons.append("Ilmoituksen otsikko ilmaisee keskeytyksen tai peruutuksen; tarkista lähteestä.")
+        decision = "CANCELLED"
+    elif deadline == "EXPIRED":
         reasons.append("Tarjousmääräaika on päättynyt.")
         decision = "EXPIRED"
     elif tender.get("go_no_go_suositus") is None:

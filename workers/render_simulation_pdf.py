@@ -23,6 +23,7 @@ PALE, WARN = "#F4F7F8", "#8A4B0F"
 
 def render(summary_path: Path = DEFAULT_SUMMARY, output: Path = DEFAULT_OUTPUT, logo: Path | None = None) -> None:
     data = json.loads(summary_path.read_text(encoding="utf-8"))
+    ai_round = data.get("simulation_round") == "AI_SILVER_SECOND_OFFLINE_DRY_RUN"
     pdfmetrics.registerFont(TTFont("DV", "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"))
     pdfmetrics.registerFont(TTFont("DVB", "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"))
     title = ParagraphStyle("title", fontName="DVB", fontSize=19, leading=26, textColor=colors.HexColor(INK), spaceAfter=14)
@@ -59,7 +60,7 @@ def render(summary_path: Path = DEFAULT_SUMMARY, output: Path = DEFAULT_OUTPUT, 
             c.drawString(43, 807, "Urakkaluotsi")
         c.setFont("DV", 8)
         c.setFillColor(colors.HexColor(MUTED))
-        c.drawRightString(width - 43, 804, "Uusi offline-toimitussimulaatio")
+        c.drawRightString(width - 43, 804, "AI-uusintasimulaatio" if ai_round else "Uusi offline-toimitussimulaatio")
         c.setStrokeColor(colors.HexColor(LINE))
         c.line(43, 790, width - 43, 790)
         c.setFont("DVB", 7.25)
@@ -102,7 +103,8 @@ def render(summary_path: Path = DEFAULT_SUMMARY, output: Path = DEFAULT_OUTPUT, 
         Spacer(1, 16),
         p("Koneellinen ennakkoseulonta – EI vertailutotuus", heading),
         p(f"Alustavasti relevantteja {classes.get('Relevantti',0)}, ehdollisia {classes.get('Mahdollinen',0)} ja epärelevantteja {classes.get('Epärelevantti',0)}. Luokat perustuvat testattavaan avainsanapainotukseen; ne eivät osoita oikeaa osuvuutta."),
-        p("100 ilmoituksen riippumaton luokitus: 0/100. Precision, väärät positiiviset ja väärät negatiiviset ovat NOT MEASURED.", warning),
+        p("100 ilmoituksen riippumaton luokitus: 0/100. Virallinen precision NOT MEASURED." if ai_round else
+          "100 ilmoituksen riippumaton luokitus: 0/100. Precision, väärät positiiviset ja väärät negatiiviset ovat NOT MEASURED.", warning),
         p("Kaikkien ilmoitusten määräajat arvioitiin lähteen jäädytyshetkellä. 93:n määräaika oli silloin avoin ja seitsemän oli jo päättynyt. Määräaikojen lähdekenttiä ei ole tarkistettu täysistä tarjousasiakirjoista.", body),
         PageBreak(),
         p("Toimituksen QA ja ratkaisevat estot", title),
@@ -118,6 +120,35 @@ def render(summary_path: Path = DEFAULT_SUMMARY, output: Path = DEFAULT_OUTPUT, 
         p("Jäädytetty Github Actions -aineisto: artefakti 12155822339, hilma_raw.json (100 ilmoitusta) ja keruuloki. Id-tason linkitys on toimitettu classified_notices.csv-taulukossa. Ei uusia Hilma-kutsuja, ei lähetyksiä, ei Vercel-julkaisua. Aineistossa ei ole täydellisiä tarjousliitteitä eikä se takaa markkinakattavuutta.", small),
         p("CONDITIONAL PASS – tekninen turvaportti toimii; ensimmäisen maksavan asiakkaan toimitusta EI hyväksytä.", warning),
     ]
+    if ai_round:
+        ai = data["ai_review_metrics"]
+        counts = data["ai_review_label_counts"]
+        story = [
+            p("Hankinnat päätöksenteon tueksi", title),
+            p("Uudenmaan Korjausrakentajat Oy – kuvitteellinen 8 työntekijän korjaus- ja saneerausyritys."),
+            p(f"Jäädytetty Hilma-hakumetadata {source}. Yksi offline-testi, ei 30 päivän toteutunut seuranta.", small),
+            Spacer(1, 8), board, Spacer(1, 18),
+            p("AI-uusintasimulaation tulos", heading),
+            panel("0 vahvistettua tarjousehdotusta", "Erillinen, sokkoutettu AI-lähdearvio osoittaa ennakkoseulonnan osuvuusongelman. Täysiä tarjousasiakirjoja ja yrityskelpoisuutta ei ole tarkistettu."),
+            Spacer(1, 16),
+            p("100 AI-silver-luokkaa – ei ihmisen gold", heading),
+            p(f"Hakumetadatan AI-arvio: relevantti {counts.get('Relevantti',0)}, ehdollinen {counts.get('Mahdollinen',0)}, epärelevantti {counts.get('Epärelevantti',0)}, arvioimatta {counts.get('NOT_EVALUATED',0)}. Algoritmin ennusteita ei käytetty AI-luokkia kirjoitettaessa."),
+            p("100 AI-luokittelua mutta 0 ulkoista gold-arviota. Virallinen vähintään 80 % precision: NOT MEASURED.", warning),
+            p("Määräajat: 93 avoinna ja 7 päättynyt metadatahetkellä. Yksi ilmoitus on otsikon mukaan KESKEYTETTY tulevasta määräajasta huolimatta ja estetään turvaportissa. Ajantasaisuus vaatii alkuperäisen lähteen tarkistuksen."),
+            PageBreak(),
+            p("QA, osuvuus ja ratkaisevat estot", title),
+            panel("Keskeytys, määräajat ja liitteet – PASS", "Otsikossa KESKEYTETTY tai PERUTTU estää GO-tilan. Päättyneet määräajat, puuttuvat tarjousliitteet ja vahvistamattomat asiakastiedot estävät myönteisen toimituspäätöksen."),
+            Spacer(1, 16),
+            p("AI-osuvuuden alustava mittaus", heading),
+            p(f"Seulonta nosti relevantiksi 15 ilmoitusta. AI-vertailun ratkaistuissa luokissa: oikein nostettuja {ai['observed_tp']}, vääriä positiivisia {ai['observed_fp']} ja vääriä negatiivisia {ai['observed_fn']}. Epävarmuus huomioiden FP {ai['fp_range'][0]}–{ai['fp_range'][1]}, FN {ai['fn_range'][0]}–{ai['fn_range'][1]}; precisionin AI-väli {100*ai['precision_range'][0]:.1f}–{100*ai['precision_range'][1]:.1f} %. Ei tuotannon KPI."),
+            p("Mahdollinen jatkoselvityskohde", heading),
+            p("Hilma 59188 – Espoon Tietotie 1:n vuokralaismuutos. Pintaremontin lisäksi LVIS-muutoksia. Urakkakoko, tarjousliitteet, kelpoisuusehdot ja yrityksen kapasiteetti ovat avoimia. Lähdemetadatan deadline 4.11.2026 klo 10.00 UTC, joka pitää vahvistaa alkuperäisestä ilmoituksesta. Lisäksi seitsemän AI-ehdollista kohdetta; ei GO-suosituksia."),
+            p("Seuraavat toimenpiteet", heading),
+            p("Tarkista ID 59188:n ja ehdollisten ilmoitusten tarjousliitteet, kysymys- ja tarjousmääräajat, urakkalaajuus ja yrityksen todellinen kyvykkyys. Mittaa osuvuus myöhemmin ulkoisesti varmennetuilla vertailuluokilla. Älä lähetä tätä testikoostetta asiakkaalle."),
+            p("Lähteet ja rajaukset", heading),
+            p("Hilma-hakumetadata, snapshot_2026-10-19/hilma_raw.json; artefakti 12155822339. AI-luokat: ai_silver_labels.csv, lukittu hash ja lähdeotteet. Rivikohtainen jäljitys: classified_notices.csv. Ei live-Hilma-kutsuja, lähetyksiä tai Vercel-julkaisua.", small),
+            p("CONDITIONAL PASS vain tekniselle turvaportille. Ensimmäisen maksavan asiakkaan toimitus EI HYVÄKSYTTY.", warning),
+        ]
     output.parent.mkdir(parents=True, exist_ok=True)
     doc = SimpleDocTemplate(str(output), pagesize=A4, leftMargin=43, rightMargin=43,
                             topMargin=89, bottomMargin=72, title="Urakkaluotsi – sisäinen uusi toimitussimulaatio")

@@ -1,5 +1,6 @@
 import datetime as dt
 import ast
+import csv
 import json
 import tempfile
 import unittest
@@ -15,6 +16,9 @@ from hard_gate_engine import evaluate_gate, evaluate_tender
 from score_validation import calculate
 from simulate_delivery import simulate
 from prepare_independent_review import prepare, title_fingerprint
+from freeze_ai_silver_review import freeze
+from score_ai_silver import compare
+from simulate_ai_silver_delivery import run as simulate_ai_silver
 
 
 class DeliveryP0Tests(unittest.TestCase):
@@ -33,6 +37,16 @@ class DeliveryP0Tests(unittest.TestCase):
         tender = {"deadline": "2026-10-18", "go_no_go_suositus": "GO",
                   "attachment_review_status": "COMPLETE", "attachment_review_evidence": "Checked all annexes at source"}
         self.assertEqual(delivery_decision(tender, "GO", self.NOW)["delivery_decision"], "EXPIRED")
+
+    def test_cancelled_title_overrides_future_deadline_and_positive_source(self):
+        tender = {"title": "KESKEYTETTY Maunulan kirkon tekninen peruskorjausurakka",
+                  "deadline": "2026-10-27T10:00:00Z", "go_no_go_suositus": "GO",
+                  "attachment_review_status": "COMPLETE", "attachment_review_evidence": "All annexes checked"}
+        self.assertEqual(delivery_decision(tender, "GO", self.NOW)["delivery_decision"], "CANCELLED")
+        tender["title"] = "  Peruttu: pienkorjausurakka"
+        self.assertEqual(delivery_decision(tender, "GO", self.NOW)["delivery_decision"], "CANCELLED")
+        tender["title"] = "Keskeytyksetön pintaremontti"
+        self.assertEqual(delivery_decision(tender, "GO", self.NOW)["delivery_decision"], "GO")
 
     def test_source_metadata_is_not_a_positive_or_conditional_eligibility_assessment(self):
         notice = {"deadline": "2026-11-01T12:00:00+02:00"}
@@ -71,6 +85,15 @@ class DeliveryP0Tests(unittest.TestCase):
         self.assertEqual(len({str(row["id"]) for row in notices}), 100)
         self.assertEqual(sum(bool(row.get("deadline")) for row in notices), 100)
 
+    def test_test_profile_stays_unverified_and_exactly_five_municipalities(self):
+        profile = json.loads((ROOT / "data/validation/simulation_ai_2026-10-19/yritysprofiili.json").read_text(encoding="utf-8"))
+        self.assertEqual(profile["profile_status"], "UNCONFIGURED")
+        self.assertEqual(set(profile["regions"]), {"Helsinki", "Espoo", "Vantaa", "Kauniainen", "Kirkkonummi"})
+        self.assertEqual(len(profile["regions"]), 5)
+        self.assertIsNone(profile["turnover_eur"])
+        self.assertIsNone(profile["can_provide_financial_guarantee"])
+        self.assertNotIn("verification_evidence", profile)
+
     def test_ingest_cpv_seeds_target_construction_not_lvi_maintenance(self):
         tree = ast.parse((ROOT / "workers/fetch_hilma.py").read_text(encoding="utf-8"))
         constants = [node.value for node in tree.body if isinstance(node, ast.Assign)
@@ -79,6 +102,72 @@ class DeliveryP0Tests(unittest.TestCase):
 
 
 class BlindEvaluationTests(unittest.TestCase):
+    def test_silver_metrics_do_not_claim_human_precision(self):
+        predictions = [
+            {"notice_id": str(i), "priority_score": str(5-i),
+             "model_label": "Relevantti" if i < 2 else "Epärelevantti"}
+            for i in range(4)
+        ]
+        labels = [
+            {"notice_id": str(i), "ai_label": label, "reason_code": "SCOPE",
+             "exact_source_phrase": "literal", "source_pointer": "archive#id=" + str(i),
+             "adjudicator": "AI_SOURCE_ONLY_BLIND_V1_NOT_HUMAN_GOLD"}
+            for i, label in enumerate(("Relevantti", "Epärelevantti", "Relevantti", "Mahdollinen"))
+        ]
+        m, rows = compare(predictions, labels, expected_size=4, topk=2)
+        self.assertEqual((m["ai_observed_true_positives"], m["ai_observed_false_positives"],
+                          m["ai_observed_false_negatives"]), (1, 1, 1))
+        self.assertEqual(m["ai_based_false_positive_range"], [1, 1])
+        self.assertEqual(m["ai_based_false_negative_range"], [1, 2])
+        self.assertEqual(m["official_independent_precision_gate"], "NOT MEASURED")
+        self.assertEqual(m["topk_ai_precision_range"], [0.5, 0.5])
+        self.assertEqual(len(rows), 4)
+        labels[0]["notice_id"] = "2"
+        with self.assertRaises(ValueError):
+            compare(predictions, labels, expected_size=4, topk=2)
+
+    def test_ai_silver_review_is_blinded_and_source_quotes_exist(self):
+        source = json.loads((ROOT / "data/validation/snapshot_2026-10-19/hilma_raw.json").read_text(encoding="utf-8"))
+        with (ROOT / "data/validation/independent_100/ai_blind_seed.tsv").open(encoding="utf-8", newline="") as handle:
+            seed = list(csv.DictReader(handle, delimiter="\t"))
+        by_id = {str(item["id"]): item for item in source["notices"]}
+        unsupported = []
+        for row in seed:
+            item = by_id[row["notice_id"]]
+            phrase = row["source_phrase"]
+            text = (str(item.get("title") or "") + "\n" + str(item.get("description") or ""))
+            if row["reason_code"] not in {"SIZE", "NO_SOURCE"} and phrase.casefold() not in text.casefold():
+                unsupported.append((row["notice_id"], phrase))
+        self.assertEqual(unsupported, [])
+        result = freeze(source, seed, "2026-10-19T00:00:00+00:00", "test-sha")
+        self.assertEqual(len(result), 100)
+        self.assertTrue(all("AI_" in row["adjudicator"] and row["requires_independent_confirmation"] == "YES"
+                            for row in result))
+        self.assertNotIn("model_label", result[0])
+
+    def test_ai_silver_second_simulation_fails_closed_and_hashes_are_locked(self):
+        import hashlib
+        source_path = ROOT / "data/validation/snapshot_2026-10-19/hilma_raw.json"
+        labels_path = ROOT / "data/validation/independent_100/ai_silver_labels.csv"
+        source_bytes = source_path.read_bytes()
+        label_bytes = labels_path.read_bytes()
+        payload = json.loads(source_bytes)
+        labels = list(csv.DictReader(label_bytes.decode("utf-8-sig").splitlines()))
+        metrics = json.loads((ROOT / "data/validation/independent_100/ai_silver_metrics.json").read_text(encoding="utf-8"))
+        manifest = json.loads((ROOT / "data/validation/independent_100/ai_silver_manifest.json").read_text(encoding="utf-8"))
+        self.assertEqual(hashlib.sha256(source_bytes).hexdigest(), manifest["source_sha256"])
+        summary, rows = simulate_ai_silver(payload, labels, metrics, manifest, source_bytes, label_bytes)
+        self.assertEqual(len(rows), 100)
+        self.assertEqual(summary["verified_customer_recommendations"], 0)
+        self.assertEqual(summary["relevance_precision"], None)
+        self.assertEqual(summary["delivery_decision_counts"].get("CANCELLED"), 1)
+        self.assertEqual(next(row for row in rows if row["notice_id"] == "59352")["delivery_decision"], "CANCELLED")
+        self.assertEqual(next(row for row in rows if row["notice_id"] == "59188")["ai_silver_label_not_gold"], "Relevantti")
+        with self.assertRaises(ValueError):
+            simulate_ai_silver(payload, labels, metrics, manifest, source_bytes + b" ", label_bytes)
+        with self.assertRaises(ValueError):
+            simulate_ai_silver(payload, labels, metrics, manifest, source_bytes, label_bytes + b" ")
+
     def make_rows(self):
         predictions, labels = [], []
         for i in range(100):

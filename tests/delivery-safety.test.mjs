@@ -34,6 +34,15 @@ test("raw search metadata stays NOT_EVALUATED", () => {
   assert.equal(safeSourceDecision({ deadline: "2026-11-01T12:00:00+02:00" }, now).decision, "NOT_EVALUATED");
 });
 
+test("cancelled or withdrawn source title blocks even a future GO", () => {
+  const verified = { title: "KESKEYTETTY Maunulan kirkon tekninen peruskorjausurakka",
+    deadline: "2026-10-27T10:00:00Z", go_no_go_suositus: "GO",
+    attachment_review_status: "COMPLETE", attachment_review_evidence: "All annexes" };
+  assert.equal(safeSourceDecision(verified, now).decision, "CANCELLED");
+  assert.equal(safeSourceDecision({ ...verified, title: " Peruttu: pienkorjausurakka" }, now).decision, "CANCELLED");
+  assert.equal(safeSourceDecision({ ...verified, title: "Peruskorjaus" }, now).decision, "GO");
+});
+
 test("PASS requires source and separately verified company evidence", () => {
   assert.equal(evaluateHardGates([gate], active).results[0].status, "UNKNOWN");
   const verified = { ...active, verification_evidence: { capabilities: "Signed and checked" } };

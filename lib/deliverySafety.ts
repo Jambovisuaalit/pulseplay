@@ -1,7 +1,7 @@
 import type { Tender } from "@/types/tender";
 
 export type DeadlineStatus = "OPEN" | "EXPIRED" | "UNKNOWN";
-export type DeliveryDecision = "GO" | "NO-GO" | "CONDITIONAL_GO" | "EXPIRED" | "NOT_EVALUATED";
+export type DeliveryDecision = "GO" | "NO-GO" | "CONDITIONAL_GO" | "EXPIRED" | "CANCELLED" | "NOT_EVALUATED";
 
 export function deadlineStatus(value: string | null | undefined, now = new Date()): DeadlineStatus {
   if (!value || !Number.isFinite(now.getTime())) return "UNKNOWN";
@@ -33,6 +33,9 @@ export function safeSourceDecision(tender: Tender, now = new Date()): {
   const attachments = attachmentStatus(tender);
   const sourceDecision = tender.go_no_go_suositus;
   const reasons: string[] = [];
+  if (/^\s*(KESKEYTETTY|PERUTTU)(\b|\s|:|-)/i.test(tender.title ?? tender.hankinta ?? "")) {
+    return { decision: "CANCELLED", deadline, attachments, reasons: ["Ilmoituksen otsikko ilmaisee keskeytyksen tai peruutuksen; tarkista lähteestä."] };
+  }
   if (deadline === "EXPIRED") {
     return { decision: "EXPIRED", deadline, attachments, reasons: ["Tarjousmääräaika on päättynyt."] };
   }
