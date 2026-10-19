@@ -40,7 +40,7 @@ class NoticeAttachmentTests(unittest.TestCase):
         self.assertEqual(record["attachment_count"], 0)
 
     def test_fake_fetch_and_no_gold(self):
-        record = discover(XML, "59188")
+        record = discover(XML, "59188", verified_endpoint=True)
         with tempfile.TemporaryDirectory() as temp:
             report = collect([record], Path(temp), fetcher=lambda _: (b"%PDF-1.4\nmock", "PDF"))
             self.assertEqual(report["downloaded"], 1)
