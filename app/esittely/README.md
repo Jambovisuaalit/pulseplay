@@ -29,3 +29,7 @@ Asetukset: `RESEND_API_KEY`, `URAKKALUOTSI_CONTACT_FROM`, `URAKKALUOTSI_CONTACT_
 Vercelin tenderpulse-projekti ja nykyinen hosting-osoite tenderpulse-neon.vercel.app varmennettu connectorilla 19.10.2026. MetadataBase käyttää tätä hostia; canonical ja og:url jätetty asettamatta julkaisuosoitteen vahvistamiseen asti. Analytiikkaa ei löytynyt eikä sitä lisätty. Ei Hilma-kutsuja, ei liitteiden lataamista eikä tuotantojulkaisua.
 
 Paikallinen esikatselu: `npm ci && npm run build && npm start`, sitten http://localhost:3000/esittely.
+
+## Esikatselun lähetys varmennettu
+
+19.10.2026: Preview-ympäristön lähettäjä Urakkaluotsi <urakkaluotsi@virellahelsinki.com>, vastaanottaja visualjambo@gmail.com. Virellahelsinki.com on Resendissä varmennettu; avain rajattu tämän domainin sähköpostilähetyksiin. Selaimen oikea lomakelähetys palautti 202 ja viesti löytyi Gmailin Saapuneet-kansiosta. Katso QA-raportin lisätarkistus. Tuotannon asetuksia ei muutettu. API-avainta ei pidä tulostaa tai lisätä tähän dokumenttiin.

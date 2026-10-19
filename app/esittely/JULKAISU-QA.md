@@ -42,3 +42,19 @@ React-tarkistus: sivu säilyy palvelinkomponenttina; vain lomake on asiakaskompo
 - Maksullinen pilotti aloitetaan vasta erillisen toimitusvalmiuden varmistamisen jälkeen.
 
 GitHub Actionsin tarkistus ei korvaa tässä dokumentoitua paikallista näyttöä: ensimmäinen ajo oli raportin kirjoitushetkellä jonossa. Vanha `tests/browser-qa.cjs` kuvaa aiempaa mailto-toteutusta; uusi workflow käyttää `sales-polish-qa.cjs`-tiedostoa.
+
+## Todellinen esikatselun vastaanottotesti 19.10.2026
+
+Tämä lisätarkistus sulkee esikatselun todellista sähköpostivastaanottoa koskevan avoimen kohdan. Aiemmat simuloidut testitulokset yllä säilyvät erillisinä.
+
+- Esikatselu: https://tenderpulse-n9trl4boh-info-32533854s-projects.vercel.app/esittely
+- Deployment: `dpl_EhiaqYnywHykdRyGCDnkRv7h9DvC`; sovelluskoodi `7b8c6dadcb8b8fc29b936d41a7c3814b44f0c3c2`.
+- Verceliin tallennettu vain Preview-ympäristöön `RESEND_API_KEY`, `URAKKALUOTSI_CONTACT_FROM` ja `URAKKALUOTSI_CONTACT_TO`. Avain on lähetyskohtainen ja rajattu varmennettuun virellahelsinki.com-domainiin. Salaista arvoa ei tallennettu lähdekoodiin tai raporttiin.
+- Tekninen lähettäjä: Urakkaluotsi <urakkaluotsi@virellahelsinki.com>. Vastaanottaja: käyttäjän vahvistama visualjambo@gmail.com.
+- Suora lomake-API-testi `UL-20261019-1941`: HTTP 202; Resend `delivered`; Gmailissa Saapuneet-kansiossa klo 19.45.57 Suomen aikaa.
+- Selaimen lomaketesti `UL-20261019-1948`: kenttien täyttö → Lähetä pilottihakemus → HTTP 202 → pyydetty kiitosviesti. Resend `delivered`; viesti Gmailin Saapuneet-kansiossa klo 19.46.43 Suomen aikaa. [Selainnäyttö](../../docs/sales-qa/live-contact-browser.json), [HTTP-näyttö](../../docs/sales-qa/live-contact-http.json).
+- Lähetettiin yhteensä kaksi selvästi teknisiksi testeiksi merkittyä viestiä, molemmat vahvistettuun vastaanottajaosoitteeseen. Ei asiakashakemuksia tai tilauksia.
+- Alkuperäinen selainyritys estyi automaattisessa tarkistuksessa Vercel-kirjautumissivun ulkopuolisen Sentry-telemetrian vuoksi. Onnistunut testi salli vain täsmälleen tämän esikatselun originin ja esti muut verkko-osoitteet. Paikallisen testiproxyn vuoksi QA-selaimen sertifikaattivirheet ohitettiin; sovelluksen TLS-asetuksia ei muutettu.
+- Vercelin Deployment Protection säilyi käytössä. Testin tilapäinen, deployment-kohtainen jakolinkki peruttiin testin jälkeen. Tuotantoympäristön asetuksia ei muutettu eikä tuotantojulkaisua tehty.
+
+**Jäljellä ennen tuotantoa:** lopullinen julkaisuosoite, tuotannon erilliset lähetysasetukset ja tietosuojakäytäntöjen operatiivinen vahvistus. Sisäisen portaalin tuotannon tunnistautumis- ja tallennusasetukset käsitellään erikseen. Maksullisen asiakaspilotin toimitusvalmius on erillinen portti.
