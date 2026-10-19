@@ -2,3 +2,5 @@ Urakkaluotsi bounded notice-bound Hilma live pilot trigger.
 Allowed notice IDs: 59188, 59375.
 At most 2 Hilma API calls. Public attachments only.
 No customer deliveries, no PR merge, no production deployment.
+
+P0.3b controlled source verification: 59188 and 59375 only; record sanitized XML element URL paths and hosts. No new unrelated IDs.
