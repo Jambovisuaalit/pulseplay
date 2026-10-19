@@ -1,0 +1,30 @@
+[
+  {
+    "test": "375px layout, labels and controls",
+    "status": "PASS"
+  },
+  {
+    "test": "390px layout, labels and controls",
+    "status": "PASS"
+  },
+  {
+    "test": "768px layout, labels and controls",
+    "status": "PASS"
+  },
+  {
+    "test": "1440px layout, labels and controls",
+    "status": "PASS"
+  },
+  {
+    "test": "invalidated approval disables all exports",
+    "status": "PASS"
+  },
+  {
+    "test": "browser client form saves persistent state",
+    "status": "PASS"
+  },
+  {
+    "test": "visible keyboard focus",
+    "status": "PASS"
+  }
+]

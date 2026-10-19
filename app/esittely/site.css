@@ -39,3 +39,8 @@
 .ul-footer :focus-visible{outline-color:#26bbc2}.ul-honeypot{display:none}
 @media(max-width:800px){.ul-nav{flex-wrap:wrap;padding-top:16px;padding-bottom:8px}.ul-nav nav{display:flex;order:3;width:100%;justify-content:space-between;gap:8px;font-size:.8rem}.ul-product-foot{align-items:flex-start}.ul-product-intro h2{max-width:24ch}}
 @media(prefers-reduced-motion:reduce){.ul-site *,.ul-site *::before,.ul-site *::after{animation:none!important;transition:none!important;transform:none!important;scroll-behavior:auto!important}}
+/* Keep long Finnish words and enlarged text within the available column. */
+.ul-site{overflow-wrap:anywhere}.ul-hero>*,.ul-step{min-width:0}
+.ul-nav nav{flex-wrap:wrap}.ul-product-head{flex-wrap:wrap}
+@media(max-width:800px){.ul-hero,.ul-step-grid{grid-template-columns:minmax(0,1fr)}.ul-site h1{max-width:17ch}.ul-evidence dd{margin-left:0}.ul-nav nav{justify-content:flex-start;column-gap:24px}.ul-kicker{align-items:flex-start}.ul-dot{margin-top:6px}}
+@media(min-width:431px) and (max-width:800px){.ul-step-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

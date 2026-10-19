@@ -57,7 +57,7 @@ async function main(){
    await page.locator('[name=email]').fill(valid.email);await page.locator('.ul-form button').click();await page.getByRole('status').filter({hasText:'Lähetys ei ole vielä käytössä'}).waitFor();
    assert.equal(await page.locator('[name=company]').inputValue(),valid.company);
    await page.screenshot({path:`qa-output/polish-${width}.png`,fullPage:true});
-   await page.evaluate(()=>document.documentElement.style.fontSize='200%');assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+   await page.evaluate(()=>document.documentElement.style.fontSize='200%');assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth), JSON.stringify(await page.evaluate(()=>Array.from(document.querySelectorAll('.ul-site *')).filter(el=>el.getBoundingClientRect().right>innerWidth).map(el=>({tag:el.tagName,cls:el.className,width:el.getBoundingClientRect().width,right:el.getBoundingClientRect().right})))));
    await page.evaluate(()=>document.documentElement.style.fontSize='');
    pass(`${width}px: no overflow, one H1, metadata, all anchors, validation, unavailable state, 200% text resize`);
   }

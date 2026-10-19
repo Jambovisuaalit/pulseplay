@@ -1,85 +1,44 @@
-# Urakkaluotsi – myyntisivun korjaus ja QA
+# Urakkaluotsi – myyntisivun QA 19.10.2026
 
-Päivä: 19.10.2026 (Europe/Helsinki). PR: [#3](https://github.com/Jambovisuaalit/pulseplay/pull/3). Nykyinen design, sisältöjärjestys ja PDF säilytetty. Ei tuotantomergen tai tuotantodomainin hyväksyntää.
+## Päätös
 
-## Korjaukset
+Muutos valmis tarkistettavaksi. Ei tuotantojulkaisua. Verokohtelu, juridinen myyjä, lopullinen julkaisuosoite ja todellinen sähköpostitoimitus vahvistetaan ennen tuotantoa.
 
-- Nykyiseen sivuun lisätty näppäimistön ohituslinkki; fokus säilyy näkyvänä myös lomakkeen ja tietosuojalinkin kohdalla.
-- Mobiililogo vähintään 140 px, pääpainike vähintään 44 px. Lomakkeen kentät 16 px, jotta pienet fontit eivät aiheuta tarpeetonta iOS-zoomausta. 768 px käyttää nyt yhden palstan pääasettelua.
-- Olennaiset korttien tilat eivät katoa pienissä näkymissä. Kapeiden palstojen min-width ja pitkien tekstien rivitys korjattu.
-- Pakollisille kentille omat suomenkieliset virheet, `aria-invalid`, kenttäkohtainen `aria-describedby`, virheyhteenveto ja fokus ensimmäiseen virheeseen. Pelkkä välilyönti ei kelpaa sisällöksi.
-- Mailto-luonnos muodostetaan vasta kelvollisista arvoista; ääkköset, `&`, `+` ja rivinvaihdot URL-koodataan. Viestiä ei lähetetä testissä tai sivustolta.
-- Sähköpostisovelluksen puuttuessa valmis viesti on kopioitavissa; suora osoite näkyy aina. Ei väärää vastaanottokuittausta. JavaScriptin puuttuessa suora osoite korvaa lomakkeen.
-- Tietosuojasivu lataa oman CSS:n myös suoraan avattaessa. Seloste kuvaa mailto-polun, kerättävät tiedot, käyttötarkoituksen, Gmailin/Vercelin, kansainvälisen käsittelyn, säilytyksen, pyynnöt ja tekniset lokit. Epäselvä jälkiseuranta korvattu kuuden kuukauden poistokäytännöllä ei-asiakkaiden yhteydenotoille.
-- `/favicon.svg` sallitaan julkisesti. Muun sovelluksen kirjautumiskäyttäytymistä ei muutettu.
-- Lisätty neljä Node-testiä, TypeScript-komento ja dependency-vapaa Chrome QA GitHub Actionsiin.
+## Suoritetut tarkistukset
 
-## Palveluntarjoajan tarkistus
+| Tarkistus | Tulos |
+|---|---|
+| `npm test` | PASS: 20 Node- ja 18 Python-testiä |
+| `npm run lint` | PASS: projektin nykyinen TypeScript/noUnused-tarkistus, ei ESLint |
+| `npm run typecheck` | PASS |
+| `npm run build` | PASS: Next 15.5.28, kaikki julkiset ja sisäiset reitit mukana |
+| `node tests/auth-http.cjs --missing` ja ilman lippua | PASS: 3 + 17 tarkistusta |
+| `node tests/sales-polish-qa.cjs` | PASS: 19 tarkistusryhmää; [tulokset](../../docs/sales-qa/browser-results.json) |
+| PDF:n SHA-256, sivumäärä ja HTTP | PASS: alkuperäinen 81 071 tavua, 4 sivua; [tulokset](../../docs/sales-qa/pdf-verification.json) |
+| `OPS_BROWSER_QA=true node tests/ops-http.cjs` | PASS: 39 HTTP- ja 7 selaintarkistusta; [selain](../../docs/sales-qa/ops-browser-results.json) |
+| `git diff --check` | PASS |
 
-Käyttäjän ilmoittamat tiedot: **Tmi Jami Harju**, **3581581-6**, **visualjambo@gmail.com**. Nämä näkyvät sivulla.
+Selain: Chrome Headless Shell 131, Playwright QA-ympäristöstä. Ei uusia sovellusriippuvuuksia.
 
-[YTJ:n yrityshaku](https://tietopalvelu.ytj.fi/yritys/3581581-6) avattu ja luettu 19.10.2026:
+Testattu 375 / 390 / 768 / 1440 CSS-pikselin leveydet; ei vaakaylivuotoa normaalisti eikä 200 % tekstisuurennuksella. Lisäksi 1440 → 720 CSS-pikselin näkymä vastaa 200 % zoomin aiheuttamaa uudelleenrivitystä. Fyysistä iOS-laitetta tai selaimen natiivia zoom-valikkoa ei testattu.
 
-- Y-tunnus 3581581-6 löytyy.
-- Yritysmuoto: yksityinen elinkeinonharjoittaja.
-- Tunnus annettu 23.11.2025.
-- Verohallinnon perustiedoissa rekisterissä 24.11.2025 alkaen.
-- Julkinen haku ei näytä henkilön nimeä tai osoitetta. Nimen vastaavuutta ei siten väitetä viranomaisrekisteristä varmennetuksi; nimitieto perustuu käyttäjän ilmoitukseen. Kaupparekisterimerkintää tai verorekistereitä ei päätellä pelkästä Y-tunnuksesta.
+CTA-ankkurit, yksi H1, labelit, virhekentän fokus, näppäimistön siirtymisjärjestys, skip-linkki, FAQ, prefers-reduced-motion, no-JavaScript-varapolku ja tietosuojan suora avaus läpäisivät. PDF palauttaa 200/application/pdf julkisesta polusta myös mobiilinäkymässä; natiivia iOS PDF -katselinta ei testattu.
 
-PRH:n open data -rajapinnan nollatulos ei tarkoita virheellistä tunnusta: palvelu ei sisällä yksityisiä elinkeinonharjoittajia. [YTJ:n rajauksen kuvaus](https://www.ytj.fi/index/avoindata.html).
+Palvelinvalidointi ja API:n origin-, tyyppi- ja kokorajat testattu. Puuttuva konfiguraatio antaa 503. Honeypot ei väitä vastaanottoa. Lähetyspalvelun hylkäys, virheellinen kuittaus ja verkkovirhe palauttavat 502. Hyväksytty kuittaus antaa 202. Nämä ovat simuloituja lähetyspalvelun vastauksia; oikeaa sähköpostia ei lähetetty. Selaimessa testattiin onnistuminen, ei-JSON-virhe, lomaketietojen säilyminen virheessä, lataustila ja synkronisen kaksoislähetyksen esto. localStorageen ei tallennettu tietoja.
 
-## Testien käyttäjätarina
+React-tarkistus: sivu säilyy palvelinkomponenttina; vain lomake on asiakaskomponentti. Yhteinen validointi, ref-pohjainen lähetyslukko, vakaat listojen avaimet, ei tarpeettomia efektejä tai uusia UI-kirjastoja. Analytiikkaa ei löytynyt eikä lisätty.
 
-Vierailija avaa julkisen esittelyn → tutustuu nelisivuiseen PDF:ään → täyttää pilottiyhteydenoton → korjaa mahdolliset virheet → avaa sähköpostiluonnoksen tai kopioi tekstin → lähettää itse omassa sähköpostissaan. Sivusto ei ole vastaanottava lomakepalvelu eikä väitä hakemusta vastaanotetuksi.
+## Korjattu testihavainto
 
-## Tulokset
+200 % tekstisuurennus paljasti pitkien suomenkielisten sanojen venyttävän mobiiligridiä. Korjattu sarakkeiden vähimmäisleveydet ja pitkien sanojen rivittyminen; koko selainajo uusittiin onnistuneesti.
 
-| Tarkistus | Tulos | Näyttö |
-|---|---|---|
-| npm test | PASS | 4/4 validointi-/URL-koodauksen testiä, paikallisesti ja CI:ssä |
-| npm run typecheck | PASS | Paikallinen ja Actions TypeScript |
-| npm run build | PASS | Paikallinen ja Actions Next.js 15.5.28 production build |
-| 375 px | PASS | Ei vaakaylivuotoa; logo 140 px; pääpainike 46.5 px; kentät 16 px; kaikki kolme virhe-/hakemustilaa |
-| 390 px | PASS | Ei vaakaylivuotoa; logo 140 px; pääpainike 46.5 px; kentät 16 px; kaikki kolme virhe-/hakemustilaa |
-| 768 px | PASS | Yksi palsta; logo 155 px; pääpainike 48.5 px; kentät 16 px; virhe-/hakemustilat |
-| 1440 px | PASS | Nykyinen kahden palstan hero; logo 194 px; pääpainike 54.5 px; virhe-/hakemustilat |
-| Tietosuojasivu, neljä leveyttä | PASS | Suora avaus, tyylit, ei vaakaylivuotoa |
-| Lomakkeen tyhjät kentät | PASS | 5 kenttävirhettä; ensimmäinen kenttä fokukseen |
-| Virheellinen sähköposti | PASS | Vain sähköpostivirhe, fokus ja ohjelmallinen virhekuvaus |
-| Kelvollinen hakemus | PASS | Koodattu mailto ja valmis kopioitava viesti; ei vastaanottoväitettä |
-| Näppäimistön ohituslinkki | PASS | Ensimmäinen Tab näyttää ohituksen; Enter siirtää fokuksen mainiin |
-| Lomakkeen tabulaattorijärjestys | PASS | Yritys → Nimi → sähköposti → alue → työt → tietosuoja → painike; näkyvä fokus |
-| PDF ja julkiset reitit | PASS HTTP | 200 application/pdf; 81 071 tavua; neljä A4-sivua. Esittely, tietosuoja, logo ja favicon 200 |
-| Dashboardin suojaus | PASS HTTP | Juurireitti ilman istuntoa: 307 /login |
-| Visuaalinen tarkastus | PASS rajatusti | Actionsin neljä sivukuvaa tarkastettu; mobiilin hero ja lomake sekä desktop-hero myös erillisinä rajauksina |
-| FAQ Enter | PASS | Natiivi details avautuu Enterillä |
-| Tekstin suurennus 200 % | PASS | 1440 px, ei vaakaylivuotoa; tämä on tekstisuurennus, ei natiivin selaimen zoom-sertifiointi |
-| JavaScript pois käytöstä | PASS | Toimimaton lomake piiloutuu ja suora sähköpostilinkki näkyy |
-| JavaScript-runtime | PASS | Runtime.exceptionThrown: 0 |
-| Jäädytetyn PDF:n eheys | PASS paikallisesti ja CI:ssä | SHA-256 36762a526ae0a7299098c77e8e64a9ca78d15b4a3ac0b9a4624b7b9e4ad1e69b; 4 sivudictionaryä; pdfinfo erikseen 4 sivua |
+## Julkaisua edeltävät avoimet asiat
 
-Selaintestit: Chrome headless Linuxissa, viewportit CSS-pikseleinä; tämä ei ole fyysisen iPhone-laitteen Safari-testi. Ensimmäiset kaksi CI-ajoa pysähtyivät natiivin FAQ-kontrollin Enter-simulaatioon: keyDown/keyUp ilman tarvittavaa keypress-tekstiä. Tuotteen lomake-/layout-tarkistukset läpäisivät jo näissä ajoissa. Kolmas ajo läpäisi kaikki 22 selaincheckiä, mutta ajon kokonaisuus jäi punaiseksi runnerin puuttuvan pdfinfo-ohjelman vuoksi. Se korvattiin fixturekohtaisella SHA-256- ja sivumäärätestillä; kyse ei ole yleiskäyttöisestä PDF-parserista. Lopullinen ajotulos kirjataan erikseen alla.
+- 249 € / 30 päivää on vahvistettu hintapäätös. Verokohtelu on tarkoituksella `null` konfiguraatiossa.
+- Aiemman repon Tmi Jami Harju / 3581581-6 / visualjambo@gmail.com säilytetty; uusin materiaalipaketti edellyttää myyjän ja rekisterinpitäjän lopullista vahvistusta.
+- `RESEND_API_KEY`, `URAKKALUOTSI_CONTACT_FROM`, `URAKKALUOTSI_CONTACT_TO`, lähettäjän varmennus ja todellinen inbox-vastaanotto testattava tuotantoympäristöön erikseen.
+- Tietosuojakäytännön käytännön toteutus palveluntarjoajilla vahvistettava; tämä QA ei ole oikeudellinen arvio.
+- MetadataBase käyttää Vercelistä varmennettua tenderpulse-neon.vercel.app-hostia. Canonical ja og:url odottavat julkaisuosoitteen päätöstä.
+- Maksullinen pilotti aloitetaan vasta erillisen toimitusvalmiuden varmistamisen jälkeen.
 
-## Tietosuojan ja toimituksen käytännön rajaus
-
-Sähköpostin kuuden kuukauden poistokäytäntö on tässä työssä määritelty toimintatapa. Sitä ei ole automatisoitu Gmailiin eikä käyttäjän postilaatikosta ole poistettu viestejä. Tilikohtainen Google-/Vercel-sopimus, käytännön lokisäilytys, kansainvälisten siirtojen suojatoimet ja rekisterinpitäjän säilytyskäytännön noudattaminen eivät ole tämän ohjelmistotestin todentamia.
-
-Virallista GDPR-tekstiä haettiin EUR-Lexistä, mutta Lakimies AI -ohjeen edellyttämiä artikla- ja ajallisuusvarmennuksen MCP-työkaluja ei ollut tässä sessiossa saatavilla. **Lähdevarmennus epäonnistui – en voi vahvistaa oikeustilaa.** Virhekoodi: `TOOL_UNAVAILABLE`. Selostetta ei ole merkitty juridisesti varmennetuksi tai täydelliseksi vaatimustenmukaisuustodistukseksi. [Tarkastettu EUR-Lex-lähde](https://eur-lex.europa.eu/legal-content/FI/TXT/?uri=CELEX:02016R0679-20160504).
-
-Säilytys-/siirtokäytännön vahvistus on erotettu teknisestä QA:sta. Myös natiivin iOS Safarin, Androidin sähköpostisovelluksen sekä todellisen vastaanottajan inbox-toimituksen testi on erillinen laite-/palvelutesti. Tässä työssä ei lähetetä oikeaa hakemusta.
-
-## Toistaminen ja näyttö
-
-Node 24: `npm test`, `npm run typecheck`, `npm run build`. Chromium: `node tests/browser-qa.cjs`, jonka ajossa Chrome löytyy oletuksena komennolla `google-chrome`; vaihtoehtoinen binääri voidaan antaa `CHROME_PATH`-muuttujalla. Tulokset kirjoitetaan `qa-output/results.json`-tiedostoon; mukana on neljä näkymäkuvaa. QA-tiedot ovat synteettisiä.
-
-Paikallinen production build, TypeScript ja yksikkötestit onnistuivat. Tavallinen `next start` ja paikallisen Chromen käynnistys estyivät ympäristörajoituksiin; Chrome-testit suoritettiin siksi GitHub Actionsissa. HTTP-savutesti suoritettiin production-buildin Next-request handlerilla samassa prosessiympäristössä, ilman runtime-koodin kiertopaikkauksia.
-
-Vanha `npm run lint` viittaa Next 15:ssä poistuneeseen `next lint` -komentoon. Erillistä ESLint-tarkistusta ei väitetä suoritetuksi, eikä tämän työn vuoksi lisätty npm-riippuvuuksia. Juurireitin vanha autentikointitoteutus ei ole kokonaisuutena turvallisuusauditoitu tässä myyntisivun työssä.
-
-## Hyväksymispäätös
-
-**Tekninen QA hyväksytty testatussa laajuudessa.** Julkisen myyntisivun ja mailto-yhteydenottopolun suoritetuissa tarkistuksissa ei löytynyt kriittisiä toiminnallisia, näppäimistökäytön tai responsiivisuuden virheitä. Tämä ei ole koko WCAG-kriteeristön sertifiointi.
-
-Lopullinen [GitHub Actions -ajo 39176008504](https://github.com/Jambovisuaalit/pulseplay/actions/runs/39176008504): **completed / success**, job sales-qa **success**, kaikki pakolliset vaiheet onnistuneet. Testattu commit: `87cc22631184f1519823ff7208d4bae8fec17628`. Neljä yksikkötestiä, TypeScript, build, 22 selaintarkistusta sekä PDF:n eheys/sivumäärä läpäisevät. Ensimmäiset epäonnistuneet ajot eivät ole hyväksynnän peruste.
-
-Lopullinen raporttipäivitys on vain Markdown-muutos; sovelluksen ja testien lähteet vastaavat tätä vihreänä testattua committia. Tuotantomergelle tai domainin käyttöönotolle ei anneta tällä teknisellä testillä erillistä hyväksyntää. Rekisterinpitäjän todellisten käsittely-/säilytys-/siirtokäytäntöjen vahvistus sekä natiivien sähköpostisovellusten ja todellisen vastaanoton testi ovat edellä yksilöidyt rajaukset.
+GitHub Actionsin tarkistus ei korvaa tässä dokumentoitua paikallista näyttöä: ensimmäinen ajo oli raportin kirjoitushetkellä jonossa. Vanha `tests/browser-qa.cjs` kuvaa aiempaa mailto-toteutusta; uusi workflow käyttää `sales-polish-qa.cjs`-tiedostoa.
