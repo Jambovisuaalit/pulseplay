@@ -15,6 +15,20 @@
       "source_discovery": "Original city-hosted tender PDF; search result inspected 2026-10-19",
       "reviewer_prelabel": "OUT_OF_REGION",
       "reviewer_prelabel_reason": "Worksite in Äänekoski outside allowed Helsinki/Espoo/Vantaa/Kauniainen/Kirkkonummi; not an eligible Uusimaa positive"
+    },
+    {
+      "candidate_id": "LIPERI_PALOAUKEA_REPAIR_2025",
+      "document_id": "555505_bid_comparison",
+      "type": "public_bid_comparison",
+      "url": "https://tarjouspalvelu.fi/Julkiset/AvaaViesTied/4ebfa1ec-b55e-4f66-b0f1-6328f17db598?naytaSelaimessa=False",
+      "publisher": "Pohjois-Karjalan hankintatoimi",
+      "expected_title": "Paloaukean kouluyksikön ja päiväkodin sekä Jyrin liikuntahallin korjaustyöt",
+      "expected_notice_id": "555505",
+      "expected_worksite_municipality": "Liperi",
+      "evaluation_use": "HISTORICAL",
+      "source_discovery": "Publicly indexed Tarjouspalvelu bid comparison PDF, includes exact reference requirement; not complete tender request or annexes",
+      "reviewer_prelabel": "OUT_OF_REGION",
+      "reviewer_prelabel_reason": "Liperi is outside target Uusimaa municipalities; bid comparison is supplementary evidence only"
     }
   ]
 }
