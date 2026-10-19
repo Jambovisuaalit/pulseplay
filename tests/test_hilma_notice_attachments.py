@@ -15,7 +15,7 @@ XML = f"<Notice><ID>59188</ID><DocumentURL>{URL}</DocumentURL></Notice>"
 
 class NoticeAttachmentTests(unittest.TestCase):
     def test_notice_id_and_original_xml_provenance(self):
-        record = discover(XML, "59188")
+        record = discover(XML, "59188", verified_endpoint=True)
         self.assertEqual(record["attachment_count"], 1)
         self.assertEqual(record["attachments"][0]["notice_id"], "59188")
         self.assertEqual(record["gold_label"], "UNREVIEWED")
@@ -62,8 +62,14 @@ class NoticeAttachmentTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             fetch_attachment(URL, opener=Opener())
 
-    def test_reject_wrong_notice_link_binding(self):
+    def test_unverified_local_xml_cannot_download(self):
         record=discover(XML, "59188")
+        with tempfile.TemporaryDirectory() as temp:
+            with self.assertRaises(ValueError):
+                collect([record], Path(temp), fetcher=lambda _: (b"%PDF-1.4", "PDF"))
+
+    def test_reject_wrong_notice_link_binding(self):
+        record=discover(XML, "59188", verified_endpoint=True)
         record["attachments"][0]["notice_id"]="59375"
         with tempfile.TemporaryDirectory() as temp:
             with self.assertRaises(ValueError):
