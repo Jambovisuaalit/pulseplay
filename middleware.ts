@@ -9,6 +9,7 @@ export async function middleware(request: NextRequest) {
     pathname === "/login" ||
     pathname === "/api/login" ||
     pathname === "/esittely" ||
+    pathname === "/esittely/api/contact" ||
     pathname === "/esittely/tietosuoja" ||
     pathname === "/urakkaluotsi/esimerkkikooste.pdf" ||
     pathname.startsWith("/urakkaluotsi/") ||
