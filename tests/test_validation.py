@@ -14,6 +14,7 @@ from delivery_safety import attachment_status, deadline_status, delivery_decisio
 from hard_gate_engine import evaluate_gate, evaluate_tender
 from score_validation import calculate
 from simulate_delivery import simulate
+from prepare_independent_review import prepare, title_fingerprint
 
 
 class DeliveryP0Tests(unittest.TestCase):
@@ -139,6 +140,35 @@ class BlindEvaluationTests(unittest.TestCase):
         self.assertEqual(stats["verified_customer_recommendations"], 0)
         self.assertEqual(len(rows), 100)
         self.assertTrue(all(row["attachment_status"] == "UNKNOWN" for row in rows))
+
+    def test_blind_source_preflight_never_claims_gold_or_reads_predictions(self):
+        payload = json.loads((ROOT / "data/validation/snapshot_2026-10-19/hilma_raw.json").read_text(encoding="utf-8"))
+        audit, rows = prepare(payload, "snapshot-sha")
+        self.assertEqual(audit["unreviewed_count"], 100)
+        self.assertEqual(audit["estimated_value_present"], 35)
+        self.assertEqual(len(rows), 100)
+        self.assertEqual(len({row["notice_id"] for row in rows}), 100)
+        self.assertTrue(all(row["independent_gold_review"] == "PENDING" for row in rows))
+        self.assertTrue(all(row["full_notice_checked"] == "NO" for row in rows))
+        self.assertNotIn("model_label", rows[0])
+        self.assertNotIn("priority_score", rows[0])
+        self.assertNotIn("manual_label", rows[0])
+        self.assertIn(["58430", "59464"], audit["possible_duplicate_title_groups"])
+        self.assertIn(["59352", "59399"], audit["possible_duplicate_title_groups"])
+        self.assertIn("59352", audit["cancelled_in_title_ids"])
+
+    def test_source_preflight_excerpts_are_verbatim_and_not_verdicts(self):
+        sample = {"retrievedAt": "2026-10-19T00:12:27Z", "notices": [
+            {"id": str(i), "title": "Helsingin huoneistoremontti", "description": "Pintaremontti Helsingissä."}
+            for i in range(100)
+        ]}
+        audit, rows = prepare(sample, "test-sha")
+        self.assertEqual(audit["independent_gold_labels"], 0)
+        self.assertTrue(all("Pintaremontti" in row["service_cue_quote_not_verdict"]
+                            or "huoneisto" in row["service_cue_quote_not_verdict"].lower() for row in rows))
+        self.assertTrue(all(row["area_name_quote_not_verified_worksite"] for row in rows))
+        self.assertEqual(title_fingerprint("KESKEYTETTY Maunulan kirkon tekninen peruskorjausurakka"),
+                         title_fingerprint("Maunulan kirkon tekninen peruskorjausurakka"))
 
 
 if __name__ == "__main__":
