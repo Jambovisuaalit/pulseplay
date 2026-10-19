@@ -29,6 +29,20 @@
       "source_discovery": "Publicly indexed Tarjouspalvelu bid comparison PDF, includes exact reference requirement; not complete tender request or annexes",
       "reviewer_prelabel": "OUT_OF_REGION",
       "reviewer_prelabel_reason": "Liperi is outside target Uusimaa municipalities; bid comparison is supplementary evidence only"
+    },
+    {
+      "candidate_id": "LIPERI_PUMP_REPAIR_2026",
+      "document_id": "588687_bid_comparison",
+      "type": "public_bid_comparison",
+      "url": "https://tarjouspalvelu.fi/Julkiset/AvaaViesTied/30041e6e-4ed1-4de9-b231-2dcec9af5bd2?naytaSelaimessa=False",
+      "publisher": "Pohjois-Karjalan hankintatoimi",
+      "expected_title": "Liperin kunnan jätevedenpumppaamoiden huolto- ja korjaustyöt 2026–2029",
+      "expected_notice_id": "588687",
+      "expected_worksite_municipality": "Liperi",
+      "evaluation_use": "HISTORICAL",
+      "source_discovery": "Publicly indexed comparison PDF, 2026; not full tender package",
+      "reviewer_prelabel": "OUT_OF_REGION_AND_SCOPE",
+      "reviewer_prelabel_reason": "Outside allowed worksite region; wastewater pump service also outside surface renovation ICP"
     }
   ]
 }
