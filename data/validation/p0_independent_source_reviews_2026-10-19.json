@@ -1,0 +1,6 @@
+{
+  "schema_version": "p0-independent-review-v1",
+  "selection": "NOT_YET_RANKED_OR_SOURCE_ADJUDICATED",
+  "reviews": [],
+  "note": "No independent gold review completed: remain null; no synthetic reviewer labels."
+}
