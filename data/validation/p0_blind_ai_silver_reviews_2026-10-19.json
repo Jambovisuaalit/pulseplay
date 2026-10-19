@@ -1,7 +1,1330 @@
 {
   "schema_version": "p0-blind-ai-silver-v1",
   "reviewer_policy": "AI_ONLY_NO_EXTERNAL_HUMAN",
-  "review_basis": "ORIGINAL_SOURCE_DOCUMENTS_REQUIRED_NOT_MODEL_PREDICTION",
-  "reviews": [],
-  "note": "30 ranked IDs frozen separately; no complete original tender package or AI source review provided yet, so no AI precision is measured."
+  "review_basis": "SAVED_HILMA_METADATA_ONLY_SOURCE_CITED_NOT_COMPLETE_TENDER",
+  "frozen_top30_source": "data/validation/p0_frozen_ranked_100_2026-10-19.json",
+  "review_date": "2026-10-19",
+  "reviews": [
+    {
+      "notice_id": "56184",
+      "label": "NOT_RELEVANT",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Nakkilan kirkon työt",
+      "error_type": "SCOPE_LOCATION_OR_EXPIRED_EXCLUSION",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Nakkilan kirkon sisäpuoliset perusparannustyöt tarjouspyyntöasiakirjojen esittämässä laajuudessa. Urakka toteutetaan jaettuna urakkana (pää- ja rakennusurakka, ilmanvaihtourakka, putkiurakka, sähköurakka, kalusteurakka), jossa rakennusteknisten töiden urakoitsija toimii pääurakoitsijana sekä lainsäädännön tarkoittamana päätoteuttajana.\n\nRakennuttaja edellyttää, että tarjouksen antaja tutustuu kohteeseen 21-22.10.2026. Kohdenäytön tarkempi ajankoh",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Nakkilan kirkon sisäpuolen perusparannustyöt, jaettu urakka (pää- ja rakennusurakka, ilmanvaihtourakka, putkiurakka, sähköurakka, kiintokalusteurakka)",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-11-09T10:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "57430",
+      "label": "UNKNOWN",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Oopperatalon kivityöurakan sijainti ja urakka-arvo eivät varmistu kuvauksesta",
+      "error_type": "MISSING_SOURCE_EVIDENCE",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Oopperatalon peruskorjaus 2026-2028 - Kivityöurakka Oopperatalon peruskorjaus 2026-2028 - Kivityöurakka,",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Oopperatalon peruskorjaus 2026-2028 - Kivityöurakka",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-10-30T14:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "58253",
+      "label": "NOT_RELEVANT",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Enontekiön tiehanke",
+      "error_type": "SCOPE_LOCATION_OR_EXPIRED_EXCLUSION",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Osallistumispyyntö: Valtatien 21 parantaminen välillä Kuttanen-Jatuni ST, Enontekiö Urakka on kokonaisperusteinen Suunnittele ja toteuta -urakka (ST).\n\nTarjoukseen ei edellytä liitettäväksi alustavaa rakentamissuunnitelmaa. Kuitenkin urakoitsija vastaa tarjousratkaisujensa tuotevaatimusten mukaisuudesta.\n\nUrakkaan sisältyy Vt 21 parantaminen välillä Palojoensuu - Maunu, Enontekiö, tiesuunnitelma plv. 600-3040 sekä 19000-29060 hankkeen rakentamiss",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Osallistumispyyntö: Valtatien 21 parantaminen välillä Kuttanen-Jatuni ST, Enontekiö",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-11-03T11:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "58338",
+      "label": "NOT_RELEVANT",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Lapin ja lähialueiden kiinteistöjä; ei Uusimaa",
+      "error_type": "SCOPE_LOCATION_OR_EXPIRED_EXCLUSION",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Lapin yliopisto, Lapin AMK ja REDU pyytää tarjoustanne kiinteistöjen rakennus-, sähkö- ja LVI-töistä, sekä sähköautomaatio töistä. Hankinnan kohteena on vuosikorjaus-, korjaus- ja muutostyöt tarvikkeineen sekä investoinnit.\n\nLapin yliopisto hallinnoi ja ylläpitää Rovaniemen kaupungissa vuokraamiaan kiinteistöjä sekä niiden yhteydessä olevia muita rakennuksia. \n\nLapin Ammattikorkeakoulu hallinnoi ja ylläpitää Rovaniemen, Kemin ja Tornion kaupungis",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Lapin yliopisto, Lapin AMK ja REDU Vuosikorjaustyöt ja investoinnit 2027-2030",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-11-06T10:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": "15000000",
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "58415",
+      "label": "NOT_RELEVANT",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Tarjousaika päättyi 9.10.2026",
+      "error_type": "SCOPE_LOCATION_OR_EXPIRED_EXCLUSION",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Oopperan peruskorjaus 2026-2028 - Ikkunoiden kunnostamis- ja uusintaurakka Oopperatalon peruskorjaus 2026-2028 ikkunoiden kunnostamis- ja uusintaurakka. Tarkemmat hankinnan tiedot on esitetty tarjouspyynnössä.,",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Oopperan peruskorjaus 2026-2028 - Ikkunoiden kunnostamis- ja uusintaurakka",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-10-09T11:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "58444",
+      "label": "UNKNOWN",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Huoneistoremonttien kohdesijainti epäselvä, määräaika päättynyt",
+      "error_type": "MISSING_SOURCE_EVIDENCE",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Huoneistoremontit ajalle 2027 - 2028 + optiovuosi 2029 Hankinta koskee Kiinteistö Oy Kummatin omistamien kiinteistöjen ja osakkeidenhuoneistoremontteja.\nValitaan kolme urakoitsijaa puitesopimuksella, ajalle 2027 – 2028 + optiovuosi 2029.\nKts. liite 1. Hankinnan kuvaus,",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Huoneistoremontit ajalle 2027 - 2028 + optiovuosi 2029",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-10-16T13:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "58502",
+      "label": "UNKNOWN",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Hyria: Hyvinkää ja Riihimäki, puitesopimuksen osat ja yksittäisarvot puuttuvat",
+      "error_type": "MISSING_SOURCE_EVIDENCE",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Rakennustöiden puitesopimus 2027-2028 (sekä optio + 2 vuotta) Hyria koulutus Oy:n kiinteistöpalvelut huolehtivat Hyria koulutuksen kiinteistöiden kunnossapidosta sekä kiinteistöhoidosta. Yksiköitä on tällä hetkellä yhteensä kuusi: Riihimäellä kaksi (Sakonkatu 1 ja Teollisuuskatu 22a) ja Hyvinkäällä neljä (Karankatu 3–5, Kauppalankatu 18, Uudenmaankatu 249 ja Uudenmaankatu 20). Yksiköiden yhteenlaskettu bruttoala on noin 50.000 m2. Yksiköt ovat va",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Rakennustöiden puitesopimus 2027-2028 (sekä optio + 2 vuotta)",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-11-13T10:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "58512",
+      "label": "NOT_RELEVANT",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Paraisten sataman laituriurakka",
+      "error_type": "SCOPE_LOCATION_OR_EXPIRED_EXCLUSION",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Paraisten Kalkholmenin sataman laituriurakka, vaihe 1 Paraisten Kalkholmenin satamaa on tarkoitus uudistaa ja sen toimintoja kehittää.\nUrakka sisältää sataman kiinteiden laituri- ja maapengerrakenteiden purku-, muutos- ja rakennustyön, tämän tarjouspyynnön ja urakkaohjelman osoittamassa laajuudessa, suunnitelmapiirustusten ja työselostuksen mukaisesti.,",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Paraisten Kalkholmenin sataman laituriurakka, vaihe 1",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-10-30T15:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "58545",
+      "label": "NOT_RELEVANT",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Lahden Asuntojen urakka, 350 000 €",
+      "error_type": "SCOPE_LOCATION_OR_EXPIRED_EXCLUSION",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Lautamiehenkatu 5 käyttövesijärjestelmän saneeraus  Urakka käsittää kokonaisurakan kokonaishinnalla. Kokonaisurakkaan kuuluukaikkien urakkaan liittyvien rakennustöiden lisäksi kaikki, LVIA – työt ja sähkötyötsekä tiedottaminen urakkatarjouspyyntöasiakirjojen mukaan.,",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Lautamiehenkatu 5 käyttövesijärjestelmän saneeraus ",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-10-19T11:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": "350000",
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "58587",
+      "label": "NOT_RELEVANT",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Mikkelissä aurinkosähköurakka",
+      "error_type": "SCOPE_LOCATION_OR_EXPIRED_EXCLUSION",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Mikkelin kaupungin virastotalon aurinkosähköjärjestelmä Mikkelin kaupungin Talonrakennuspalvelut pyytää tarjoustanne kaupungin virastotalon aurinkosähköjärjestelmästä avaimet käteen periaatteella, tämän tarjouspyynnön mukaisesti. \n\nKohteen osoite on Maaherrankatu 9-11, 50100 Mikkeli. Virastotalo on toiminnassa ja siellä toimitaan turvallisuusohjeiden mukaisesti. mm. käyttäjien turvallisuus ja tarpeet huomioon ottaen.\n\nRakennuksen pohjoispäädyssä ",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Mikkelin kaupungin virastotalon aurinkosähköjärjestelmä",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-10-26T10:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "58626",
+      "label": "NOT_RELEVANT",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Raision kaupungin katsomourakka",
+      "error_type": "SCOPE_LOCATION_OR_EXPIRED_EXCLUSION",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Kerttulan urheilukentän katsomon saneeraus Kohde pitää sisällään urheilukentän länsipuolella sijaitsevan betonikatsomon peruskorjauksen.\nNykyinen betonikatsomon pinta on kauttaaltaan rapautunut ja sammaloitunut. Nykyinen betonikatsomo tullaan säilyttämään kokonaisuudessaan. Sen pinta tullaan puhdistamaan sammaleesta ja sen päälle tullaan rakentamaan sekä pohjois-, että eteläpäätyyn puurakenteiset istuskeluun soveltuvat katsomot suunnitelman mukai",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Kerttulan urheilukentän katsomon saneeraus",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-10-23T06:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": "50000",
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "58637",
+      "label": "NOT_RELEVANT",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Tampereen kokonaissuunnittelupalvelu, ei korjaustöiden toteutusurakka",
+      "error_type": "SCOPE_LOCATION_OR_EXPIRED_EXCLUSION",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "TALONRAKENNUKSEN KOKONAISSUUNNITTELU, KÄSITTÄEN ARKKITEHTI-, RAKENNE-, LVISA JA GEO SEKÄ MUUT KORJAUSRAKENTAMISEEN SEKÄ LUVITTAMISEEN LIITTYVÄT SUUNNITTELUTYÖT 1 Hankinnan kuvaus ja hankkeen tiedot \n1.1  Tilaaja \nKokonaissuunnittelun tilaajana toimii SASKY koulutuskuntayhtymä perustettavan Kiinteistö Oy Tampereen Hämeenkatu 24 lukuun. SASKY koulutuskuntayhtymä omistaa 100% perustettavan Kiinteistö Oy Tampereen Hämeenkatu 24. \n\n1.2 Käyttäjä  \nOppi",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "TALONRAKENNUKSEN KOKONAISSUUNNITTELU, KÄSITTÄEN ARKKITEHTI-, RAKENNE-, LVISA JA GEO SEKÄ MUUT KORJAUSRAKENTAMISEEN SEKÄ LUVITTAMISEEN LIITTYVÄT SUUNNITTELUTYÖT",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-10-28T10:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": "250000",
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "58709",
+      "label": "NOT_RELEVANT",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Kokkolan päiväkoti",
+      "error_type": "SCOPE_LOCATION_OR_EXPIRED_EXCLUSION",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Koivurinteen päiväkodin peruskorjaus ja -parannus Kokkolan kaupunki (jäljempänä myös \"Tilaaja\") pyytää tarjousta Koivurinteen päiväkodin muutostöistä tarjouspyyntöasiakirjoissa esitetyssä laajuudessa. \n\nHankkeen urakkamuotona on kokonaisurakka, jossa rakennusurakoitsija toimii projektin pääurakoitsijana. Rakennusurakoitsija vastaa pääurakoitsijana hankkeen kokonaisuudesta sekä aliurakoiden yhteensovittamisesta.\n\nHankinnan kohde on tarkemmin kuvat",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Koivurinteen päiväkodin peruskorjaus ja -parannus",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-11-02T10:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "58786",
+      "label": "UNKNOWN",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Lyytikkälän talomuseon paikkakunta ei yksilöidy lähdetiedossa",
+      "error_type": "MISSING_SOURCE_EVIDENCE",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Lyytikkälän talomuseo, päärakennuksen maalaus ja katon uusiminen Lyytikkälän talomuseo, päärakennuksen maalaus ja katon uusiminen tarjouspyyntöasiakirjojen mukaisesti.,",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Lyytikkälän talomuseo, päärakennuksen maalaus ja katon uusiminen",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-10-30T12:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": "200000",
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "58829",
+      "label": "NOT_RELEVANT",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Helsingin uudisrakennus, ei saneeraus",
+      "error_type": "SCOPE_LOCATION_OR_EXPIRED_EXCLUSION",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "SR-urakka, Uudisrakennus, Helsinki, Hermanni, Heka Hermanninranta Albumikatu 3 Hankinnan kohteena on asuinkerrostalojen rakentaminen Helsingin Hermanninrantaan SR-urakkana sisältäen kokonaissuunnittelun (mm. ark, rak, lvias, energia, pohjarakennus, elinkaari, akustiikka) ja rakennusteknisten töiden lisäksi kaikki LVIAS- ja pihatyöt. \n\nKokonaisurakkaan lukeutuvat: \n- Tontit 21685/2 ja 21685/3 (yhdistetään mahdollisesti myöhemmin) Heka Hermanninran",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "SR-urakka, Uudisrakennus, Helsinki, Hermanni, Heka Hermanninranta Albumikatu 3",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2027-01-22T10:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "58875",
+      "label": "NOT_RELEVANT",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Puiston kunnostus, eikä rakennussaneeraus; arvo 6 M€",
+      "error_type": "SCOPE_LOCATION_OR_EXPIRED_EXCLUSION",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Haruspuisto, kokonaisurakka Rakennustyö käsittää Haruspuisto hankkeen rakentamisen tarjouspyyntöasiakirjojen mukaisesti kaikkine töineen ja hankintoineen täysin valmiiksi.\n\nRakentaminen liittyy koko Haruspuiston toiminta-alueiden täydelliseen peruskorjaukseen. Työhön sisältyy toiminnallisten alueiden lisäksi myös raittien ja luonto alueiden kunnostaminen. \n\nHaruspuisto on Meri-Rastilan alueen kaupunkiuudistuskohde. Puiston teemana on Itämeriveden",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Haruspuisto, kokonaisurakka",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-10-26T11:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": "6000000",
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "58877",
+      "label": "NOT_RELEVANT",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Puiston esirakentaminen ja päättynyt tarjousaika",
+      "error_type": "SCOPE_LOCATION_OR_EXPIRED_EXCLUSION",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Sigurd Frosteriuksen puiston esirakentaminen, kokonaisurakka Rakennustyö käsittää Sigurd Frosteriuksen puiston esirakentamisen työt tarjouspyyntöasiakirjojen mukaisesti kaikkine töineen ja hankintoineen täysin valmiiksi.\n\nRakennuttaja on Helsingin kaupungin kaupunkiympäristön toimialan Yleiset alueet -palvelu, joka toimii myös YSE 98 mukaisena tilaajana.\n\nUrakka-asiakirjojen mukaisten töiden tulee olla valmiina ja vastaanotettuna sekä viranomaist",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Sigurd Frosteriuksen puiston esirakentaminen, kokonaisurakka",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-10-16T10:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": "5100000",
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "58922",
+      "label": "NOT_RELEVANT",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Alavuden kiinteistön sisäilmakorjaus",
+      "error_type": "SCOPE_LOCATION_OR_EXPIRED_EXCLUSION",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Tervashovin sisäilmakorjaus Hankinnan kohteena on Alavudella sijaitsevan tervashovin sisäilmakorjaukset. Hankinta sisältää lattiapintojen uusimisen kuivien tilojen osalta n. 965m2 ja kuitukorjaukset tarjouspyynnön mukaisesti. Lisäksi optiohinta kosteiden tilojen lattioista ja seinäkorjauksista.\n\nKorjaustyöt voidaan aloittaa marraskuussa 2026 kun päätös on lainvoimainen ja tavoitteena on, että urakka on valmis 1.2.2027 mennessä.\n\nUrakkalaskentaan ",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Tervashovin sisäilmakorjaus",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-10-21T11:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": "150000",
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "59022",
+      "label": "UNKNOWN",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Hekan laaja kerrostalojen peruskorjaus, urakka-arvo ja kelpoisuus avoimia",
+      "error_type": "MISSING_SOURCE_EVIDENCE",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2825003110 / Kokonaisurakka, peruskorjaus, Helsinki, Heka Maunula Koivikkotie 2 Hankinnan kohteena on Helsingin Oulunkylän kaupunginosassa Maunulan osa-alueella sijaitsevien asuinkerrostalojen peruskorjaus kiinteähintaisena kokonaisurakkana sisältäen rakennusteknisten töiden lisäksi kaikki LVISA-työt. \n\nPeruskorjauksen kohteena on Helsingin kaupungin asunnot Oy:n omistama vuokratalokohde, joka sijaitsee Helsingin kaupungin tontilla 28289/2 (Koivi",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2825003110 / Kokonaisurakka, peruskorjaus, Helsinki, Heka Maunula Koivikkotie 2",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-11-09T10:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "59046",
+      "label": "NOT_RELEVANT",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Tarjousaika päättyi 14.10.2026",
+      "error_type": "SCOPE_LOCATION_OR_EXPIRED_EXCLUSION",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Oopperatalon peruskorjaus 2026-2028 - Lasiseinä- ja kattoikkunaurakka Tarjouspyyntö Oopperatalon peruskorjaus 2026-2028 lasiseinä- ja kattoikkunaurakasta,",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Oopperatalon peruskorjaus 2026-2028 - Lasiseinä- ja kattoikkunaurakka",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-10-14T11:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "59139",
+      "label": "NOT_RELEVANT",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Helsingin vankilan hanke: arvo 3 M€, turvallisuusluokitus TLIV",
+      "error_type": "SCOPE_LOCATION_OR_EXPIRED_EXCLUSION",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "A202249 Helsingin vankilan porttirakennuksen sisäilmakorjaus kiinteähintaisena kokonaisurakkana.\nKohde on v.1881 rakennetun Helsingin vankilan porttirakennus, joka on peruskorjattu aiemmin vuosina 2004-2006.  Rakennus on suojeltu (sr-1) ja hankkeessa saneerataan muun muassa 1. kerroksen iso neuvotteluhuone ja 2.kerroksen toimistotilat nykyaikaisiksi monitilaympäristöksi sekä tehdään korjauksia rakennuksen muissa tiloissa. Välipohjista poistetaan ",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "A202249 HEV porttirakennus, sisäilmakorjaus",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-10-30T10:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": "3000000",
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "59188",
+      "label": "UNKNOWN",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Espoon sisätilamuutos, urakka-arvo ja kelpoisuus puuttuvat",
+      "error_type": "MISSING_SOURCE_EVIDENCE",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Koy Espoon Tietotie 1, BIZ vuokralaismuutos Kiinteähintainen kokonaisurakka. \n\nEspoon Otaniemen kaupunginosassa sijaitseva Aalto-yliopiston omistama tutkimuslaitosrakennus osoitteessa Tietotie 2A.\n\nHankkeessa kiinteistön A-talon nykyiset tilat remontoidaan käyttäjän toiminnoille sopiviksi ja tiloihin tehdään pintaremontti. Tiloihin muuttaa Kauppakorkeakoulun Taloustieteen laitos. \n\nTietotie 2A:n kolmeen kerrokseen on haettu osittainen käyttötarko",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Koy Espoon Tietotie 1, BIZ vuokralaismuutos",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-11-04T10:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "59352",
+      "label": "NOT_RELEVANT",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Otsikossa keskeytetty ilmoitus; uudelleenjulkaisu 59399",
+      "error_type": "SCOPE_LOCATION_OR_EXPIRED_EXCLUSION",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "KESKEYTETTY Maunulan kirkon tekninen peruskorjausurakka Helsingin seurakuntayhtymä pyytää urakkatarjoustanne Maunulan kirkon teknisestä peruskorjausurakasta tämän tarjouspyynnön ja sen liitteiden mukaisesti.\n\nRakennuttaja edellyttää, että urakoitsija on tutustunut rakennuspaikkaan ja siellä vallitseviin olosuhteisiin ennen tarjouksen antamista. Kohdekäynnistä on sovittava projektin johtajan, Matti Prihan kanssa (matti.priha@evl.fi). Tutustumiskäy",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "KESKEYTETTY Maunulan kirkon tekninen peruskorjausurakka",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-10-27T10:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "59375",
+      "label": "UNKNOWN",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Espoon päiväkoti, pakollinen kohdekäynti jo lokakuun alussa, osallistumista ei todennettu",
+      "error_type": "MISSING_SOURCE_EVIDENCE",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Kastevuoren päiväkodin elinkaarta jatkavat korjaustyöt Espoon kaupunki Tilapalvelut-liikelaitos (myöhemmin Tilaaja) pyytää tarjouksia Kastevuoren päiväkodin elinkaarta jatkavasta korjauksesta tarjouspyynnön liitteenä olevien asiakirjojen mukaisesti täyteen käyttökuntoon saatettuna. Korjaustyö toteutetaan kokonaisurakkamuodolla. Kaikki tarjouspyynnössä esitetyt työt ja hankinnat sisältyvät kokonaisurakkaan. Valittu toimittaja toimii hankkeessa pää",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Kastevuoren päiväkodin elinkaarta jatkavat korjaustyöt",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-10-30T10:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "59399",
+      "label": "UNKNOWN",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Maunulan peruskorjaus; kohdekäynti ja kelpoisuusehdot, arvo auki",
+      "error_type": "MISSING_SOURCE_EVIDENCE",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Maunulan kirkon tekninen peruskorjausurakka Helsingin seurakuntayhtymä pyytää urakkatarjoustanne Maunulan kirkon teknisestä peruskorjausurakasta tämän tarjouspyynnön ja sen liitteiden mukaisesti.\n\nRakennuttaja edellyttää, että urakoitsija on tutustunut rakennuspaikkaan ja siellä vallitseviin olosuhteisiin ennen tarjouksen antamista. Kohdekäynnistä on sovittava projektin johtajan, Matti Prihan kanssa (matti.priha@evl.fi). Tutustumiskäynti kohteese",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Maunulan kirkon tekninen peruskorjausurakka",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-11-03T10:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "59512",
+      "label": "NOT_RELEVANT",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Salon Tupurin koulun peruskorjaus",
+      "error_type": "SCOPE_LOCATION_OR_EXPIRED_EXCLUSION",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Tupurin koulun ja päiväkodin peruskorjauksen hankinta Salon kaupunki (jäljempänä hankintayksikkö / tilaaja) pyytää tarjouksia Tupurin koulun ja päiväkodin peruskorjauksen hankinnasta kokonaisurakkana tämän tarjouspyynnön ja sen liitteenä olevien urakka-asiakirjojen ja suunnitelmien mukaisesti. Hankinnan kohteena on osoitteessa Taimistokatu 1 sijaitseva peruskorjattava Tupurin koulu ja päiväkoti. \n\nUrakkamuotona on kokonaisurakka. Urakkasuoritukse",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Tupurin koulun ja päiväkodin peruskorjauksen hankinta",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-11-18T10:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "59555",
+      "label": "UNKNOWN",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Laaksotie 20 -ikkunaremontti, urakka-arvo ja kelpoisuus puuttuvat",
+      "error_type": "MISSING_SOURCE_EVIDENCE",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "VAV /Laaksotie 20 / Ikkunoiden ja ovien uusiminen Kiinteistö on VAV Asunnot Oy:n omistama ja isännöimä.\n\nTyöt käsittävät huoneistojen ikkunoiden, käyntiovien ja parveke- / terassiovien uusimisen sekä yleisten tilojen ikkunoiden ja ulkoilmaan rajoittuvien ovien (ei teräsovet) uusimisen oheisen laskenta-aineiston mukaisesti.\n\nKts. tarjouspyynnön liitteenä  olevat urakka-asiakirjat. \n\nUrakoitava kiinteistö luovutetaan urakoitsijalle siinä kunnossa, ",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "VAV /Laaksotie 20 / Ikkunoiden ja ovien uusiminen",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-10-29T10:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "59573",
+      "label": "NOT_RELEVANT",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Mäntyharju; Uudenmaan ulkopuolinen monitoimittajapuitejärjestely",
+      "error_type": "SCOPE_LOCATION_OR_EXPIRED_EXCLUSION",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Mäntyharjun kunta kilpailuttaa kiinteistöjen ylläpitoon, kunnossapitoon, korjausrakentamiseen sekä tarvittaviin suunnittelu- ja asiantuntijapalveluihin liittyvän monitoimittajapuitejärjestelyn sopimuskaudelle 1.1.2027-31.12.2027 sekä yhden (1) vuoden optiokaudelle.\n\nTilaajalla on oikeus jatkaa sopimusta yhden (1) vuoden optiokaudella ajalle 1.1.2028-31.12.2028. Optiokauden käyttämisestä päätetään erikseen, eikä tilaaja sitoudu optiokauden käyttöö",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Mäntyharjun kunnan kiinteistöjen kunnossapito-, korjausrakennus- ja suunnittelutöiden puitejärjestely 2027",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-11-16T10:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": "4500000",
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "59575",
+      "label": "UNKNOWN",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Oopperatalon katto-osaurakka, yksittäinen urakka-arvo ja kohteen lähdesijainti avoimia",
+      "error_type": "MISSING_SOURCE_EVIDENCE",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Oopperatalon peruskorjaus 2026-2028 - Käännetty katto -urakka Tarjouspyyntö Oopperatalon peruskorjaus 2026-2028 käännetty katto -urakasta,",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Oopperatalon peruskorjaus 2026-2028 - Käännetty katto -urakka",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-11-06T14:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    },
+    {
+      "notice_id": "59592",
+      "label": "NOT_RELEVANT",
+      "reviewer_type": "AI_BLINDED_SOURCE_REVIEW",
+      "review_status": "PRELIMINARY_METADATA_ONLY",
+      "rank_seen": false,
+      "model_prediction_seen": false,
+      "independent_source_check": false,
+      "reason": "Kaarinan kaupungin puitesopimus",
+      "error_type": "SCOPE_LOCATION_OR_EXPIRED_EXCLUSION",
+      "evidence": {
+        "worksite": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Kaarinan kaupunki (jäljempänä \"Tilaaja\") hakee pienurakoiden ja -korjaustöiden puitesopimuskumppaneita sopimuskaudelle 1.1.2027 – 31.12.2027. Sopimukseen sisältyy lisäksi kaksi (2) kahden (2) vuoden optiokautta (1.1.2028-31.12.2029 ja 1.1.2030-31.12.2031), mikäli Tilaaja päättää ottaa optiot käyttöön. \n\nHankinta on jaettu 22 osa-alueeseen. Nimen perässä suluissa valittavien palveluntuottajien lukumäärä.\n\nTämän puitesopimuksen (jäljempänä myös ”so",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "scope": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "Pienurakat ja korjaustyöt, puitesopimus",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "deadline": {
+          "source_url": "https://github.com/Jambovisuaalit/pulseplay/blob/fix/urakkaluotsi-p0-validation/data/validation/snapshot_2026-10-19/hilma_raw.json",
+          "source_excerpt": "2026-11-16T10:00:00Z",
+          "access_status": "SAVED_HILMA_METADATA_ONLY"
+        },
+        "contract_value": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "INDIVIDUAL_LOT_UNVERIFIED"
+        },
+        "eligibility": {
+          "source_url": null,
+          "source_excerpt": null,
+          "access_status": "ANNEXES_NOT_REVIEWED"
+        }
+      },
+      "missing_evidence": [
+        "COMPLETE_EFORMS_REVISIONS",
+        "TENDER_ANNEXES",
+        "INDIVIDUAL_CONTRACT_VALUE",
+        "COMPLETE_ELIGIBILITY"
+      ]
+    }
+  ],
+  "note": "All 30 AI-assisted preliminary assessments completed; all lack complete primary procurement evidence. Strict AI precision must remain null."
 }
