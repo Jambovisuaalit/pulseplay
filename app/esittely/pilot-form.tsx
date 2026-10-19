@@ -23,8 +23,8 @@ export default function PilotForm() {
     setSending(true);
     try {
       const response = await fetch("/esittely/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...result.values, website: (new FormData(form).get("website") || "") }) });
-      const payload = await response.json();
-      if (!response.ok || !payload.success) { setNotice(payload.error || "Viestin lähetys epäonnistui."); return; }
+      const payload = await response.json().catch(() => null);
+      if (!response.ok || !payload?.success) { setNotice(payload?.error || "Viestin lähetys epäonnistui."); return; }
       setNotice("Viesti on vastaanotettu lähetyspalveluun. Lopullista sähköpostitoimitusta ei ole vielä vahvistettu.");
       form.reset();
     } catch { setNotice("Lähetys epäonnistui. Lähetä sähköpostia suoraan."); }
@@ -36,7 +36,7 @@ export default function PilotForm() {
     <p>Kerro lyhyesti, millaisia töitä teette ja millä alueella toimitte. Kaikki kentät ovat pakollisia. Älä kirjoita arkaluonteisia henkilötietoja.</p>
     <noscript><p>Lomakkeen lähetys tarvitsee JavaScriptin. Voit lähettää yhteydenoton suoraan osoitteeseen <a href={`mailto:${PILOT_EMAIL}`}>{PILOT_EMAIL}</a>.</p><style>{".ul-form-fields{display:none}"}</style></noscript>
     <div className="ul-form-fields">
-      {Object.keys(errors).length > 0 ? <p className="ul-error-summary" role="alert">Tarkista merkityt kentät. Sähköpostiluonnosta ei avattu.</p> : null}
+      {Object.keys(errors).length > 0 ? <p className="ul-error-summary" role="alert">Tarkista merkityt kentät. Viestiä ei lähetetty.</p> : null}
       <div className="ul-form-grid">
         {contactFields.map(field => {
           const id = `pilot-${field.name}`;
