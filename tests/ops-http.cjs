@@ -22,6 +22,13 @@ async function main(){
    const r=await fetch(origin+'/api/ops',{method:'POST',headers:{cookie,origin,'content-type':'application/json'},body:JSON.stringify({action:'export',digest_id:id,format,expected_revision:state.revision})});check(r.status,200,`export ${format}`);const bytes=Buffer.from(await r.arrayBuffer());check(bytes.length>100,true,'nonempty export');if(format==='pdf'){check(bytes.subarray(0,5).toString(),'%PDF-','PDF header');fs.mkdirSync('qa-output',{recursive:true});fs.writeFileSync('qa-output/ops-simulation.pdf',bytes);}await read();
   }
   const events=state.events.length;await send({...review,summary:'Arvio muuttui'});check(state.digests[0].status,'NEEDS_REVIEW','approval invalidated');check(state.events.length,events,'history unchanged');await send({action:'export',digest_id:id,format:'txt'},409);
+  await send({action:'timer_start',client_id,phase:'DELIVERY'});const timer=state.measurements.work_sessions.at(-1).id;
+  await send({action:'timer_start',client_id,phase:'DELIVERY'},409);await send({action:'timer_stop',session_id:timer});
+  const version=state.events.find(e=>e.type==='EXPORTED').content_hash;
+  await send({action:'correction',digest_id:id,content_hash:version,category:'CONTENT',reason:'Synthetic HTTP correction'});
+  await send({action:'feedback',digest_id:id,content_hash:version,assessment_id:state.assessments[0].id,source:'CUSTOMER',label:'USEFUL',reason:'Not real'},400);
+  await send({action:'feedback',digest_id:id,content_hash:version,assessment_id:state.assessments[0].id,source:'INTERNAL_SIMULATION',label:'USEFUL',reason:'Synthetic HTTP check'});
+  check(state.metrics.correction_events,1,'correction metric');check(state.metrics.customer_usefulness.precision,null,'no fake precision');
   if(process.env.OPS_BROWSER_QA==='true')await require('./ops-browser.cjs')({origin,cookie});
   delete process.env.TP_OPS_LOCAL_ENABLED;
   const blocked=await fetch(origin+'/api/ops',{headers:{cookie}});check(blocked.status,503,'store disabled');

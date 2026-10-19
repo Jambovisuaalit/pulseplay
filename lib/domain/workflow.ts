@@ -43,11 +43,11 @@ export function qa(state: WorkflowState,digest: Digest,now=Date.now()) {
  }
  return errors;
 }
-export function invalidate(state: WorkflowState) {
+export function invalidate(state: WorkflowState, now=Date.now()) {
  for(const digest of state.digests) {
   if(!digest.approved_hash)continue;
   let changed=true;try{changed=contentHash(snapshot(state,digest))!==digest.approved_hash;}catch{}
-  if(changed||qa(state,digest).length){digest.status="NEEDS_REVIEW";digest.row_version++;digest.approved_hash=null;digest.approved_at=null;digest.approved_by=null;digest.approved_snapshot=null;}
+  if(changed||qa(state,digest,now).length){digest.status="NEEDS_REVIEW";digest.row_version++;digest.approved_hash=null;digest.approved_at=null;digest.approved_by=null;digest.approved_snapshot=null;}
  }
 }
 export function approve(state: WorkflowState,digest: Digest,expectedHash: string,actor: string,now=Date.now()) {

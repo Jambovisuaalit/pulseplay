@@ -1,3 +1,4 @@
+import { metrics } from "@/lib/domain/metrics";
 import { NextRequest, NextResponse } from "next/server";
 import { verifySession, SESSION_COOKIE } from "@/lib/session";
 import { sameOrigin } from "@/lib/login-auth";
@@ -12,7 +13,7 @@ import { randomUUID } from "node:crypto";
 export const runtime="nodejs";
 export const dynamic="force-dynamic";
 function view(s:WorkflowState) {
- return {...s,digests:s.digests.map(d=>{
+ return {...s,metrics:metrics(s),digests:s.digests.map(d=>{
   let hash=null,preview=null;try{preview=snapshot(s,d);hash=contentHash(preview);}catch{}
   return {...d,qa:qa(s,d),current_hash:hash,preview};
  })};

@@ -1,7 +1,7 @@
 name: Urakkaluotsi data model
 on:
   push:
-    branches: [feature/urakkaluotsi-data-model]
+    branches: [feature/urakkaluotsi-data-model, feature/urakkaluotsi-pilot-metrics]
   workflow_dispatch:
 permissions:
   contents: read

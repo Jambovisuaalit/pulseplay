@@ -1,11 +1,7 @@
-# M1: delivery data model
-User authorized 2026-10-19: build clients, profile versions, notices, assessments, delivery history.
-Base: verified M0 tree 7390d3ef. Work on feature/urakkaluotsi-data-model, PR depends on #5.
-Implement PostgreSQL schema source (not an applied Supabase migration), TypeScript domain contracts and validators.
-Enforce version identity, client/profile ownership, immutable historical snapshots, explicit unknown facts, org RLS.
-Test on ephemeral PostgreSQL 16 in CI, plus existing tests/lint/typecheck/build. No cloud changes, paid services, dependencies or live ingest.
-M2 will generate the actual Supabase migration with the CLI and connect a dedicated project after its account is selected.
-
-User expanded scope in same turn: complete profile → review → digest → approval → export, source/deadline/missing-data QA and invalidation.
-Implement /ops + authenticated API, pure domain workflow, five export formats and opt-in local simulation persistence.
-Production store remains closed until dedicated cloud identity/database wiring exists; no real-data deployment claimed.
+# M6: pilot measurement
+User authorized: pilot and measure delivery time, corrections and useful client matches.
+Implement active-work timers, explicit correction ledger, version/item-bound feedback and metrics panel.
+Run a 30-delivery synthetic rehearsal with actual automation wall time; do not invent human time or customer feedback.
+Keep onboarding separate; ignore open timers, duplicate exports and superseded versions in final-item denominator.
+Use internal synthetic labels as fixture outcomes only, not precision or customer validation.
+Test full existing suite + metrics regression + SQL/RLS + browser CI; PR based on #6.

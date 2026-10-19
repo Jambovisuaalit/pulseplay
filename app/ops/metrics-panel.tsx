@@ -1,0 +1,16 @@
+"use client";
+import type { WorkflowState } from "@/lib/domain/model";
+import { metrics } from "@/lib/domain/metrics";
+export default function MetricsPanel({state,client,busy,submit}:{state:WorkflowState;client:string;busy:boolean;submit:(input:Record<string,unknown>)=>Promise<void>}){
+ const m=metrics(state,client),active=state.measurements?.work_sessions.find(s=>!s.ended_at);
+ const final=new Map<string,typeof state.events[number]>();for(const e of state.events)if(e.type==="EXPORTED"&&e.snapshot.client.id===client)final.set(e.digest_id,e);
+ const send=(e:React.FormEvent<HTMLFormElement>,extra:Record<string,unknown>)=>{e.preventDefault();const form=new FormData(e.currentTarget);void submit({...Object.fromEntries(form),...extra});};
+ return <section><h2>6. Pilotin mittarit</h2><p>SIMULAATIO. Asiakkaan hyöty: ei vielä mitattu.</p>
+ <dl><dt>Vietyjä toimituksia / sisältöversioita</dt><dd>{m.delivery_count} / {m.exported_versions}</dd><dt>Aktiivinen toimitustyö</dt><dd>{m.active_delivery_seconds===null?"Ei mitattu":`${(m.active_delivery_seconds/60).toFixed(1)} min`} · ajastettuja asiakaspäiviä {m.timed_client_days}</dd><dt>Korjauksia / korjattuja toimituksia</dt><dd>{m.correction_events} / {m.corrected_deliveries}</dd><dt>Sisäinen hyötyarvio</dt><dd>{m.internal_feedback.useful} hyödyllistä · {m.internal_feedback.not_useful} ei hyödyllistä · {m.internal_feedback.unknown} epäselvää · {m.internal_feedback.pending} ilman arviota</dd></dl>
+ <p>Tavoite: alle 10 min aktiivista työtä / asiakas / päivä. Käynnistä ajastin vain aktiivisen työn ajaksi ja pysäytä tauoille.</p>
+ {active?<button disabled={busy} onClick={()=>submit({action:"timer_stop",session_id:active.id})}>Pysäytä ajastin ({active.phase})</button>:<div className="ops-actions"><button disabled={busy||!client} onClick={()=>submit({action:"timer_start",client_id:client,phase:"ONBOARDING"})}>Aloita asiakkaan perustaminen</button><button disabled={busy||!client} onClick={()=>submit({action:"timer_start",client_id:client,phase:"DELIVERY"})}>Aloita toimitustyö</button></div>}
+ {[...final.values()].map(e=><article key={e.id}><h3>Toimitus {e.digest_id.slice(0,8)} · {e.content_hash.slice(0,10)}</h3>
+ <form onSubmit={event=>send(event,{action:"correction",digest_id:e.digest_id,content_hash:e.content_hash})}><label>Korjausluokka<select name="category"><option value="SOURCE">Lähdetieto</option><option value="PROFILE">Profiili</option><option value="CONTENT">Sisältö</option><option value="EXPORT">Vientitiedosto</option></select></label><label>Korjauksen syy<input name="reason" required/></label><button disabled={busy}>Kirjaa korjaus</button></form>
+ {e.snapshot.items.map(item=><form key={item.assessment_id} onSubmit={event=>send(event,{action:"feedback",source:"INTERNAL_SIMULATION",digest_id:e.digest_id,content_hash:e.content_hash,assessment_id:item.assessment_id})}><p>{item.title}</p><label>Sisäinen hyötyarvio<select name="label"><option value="UNKNOWN">Ei ratkaistavissa</option><option value="USEFUL">Hyödyllinen</option><option value="NOT_USEFUL">Ei hyödyllinen</option></select></label><label>Peruste, ei mallin oma päätös<textarea name="reason" required/></label><button disabled={busy}>Tallenna sisäinen arvio</button></form>)}</article>)}
+ </section>;
+}
