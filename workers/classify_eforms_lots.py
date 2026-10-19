@@ -37,7 +37,7 @@ def classify_lots(notice: dict, extraction: dict) -> list[dict]:
             "id": str(notice.get("id") or "") + "#" + str(lot["lot_id"]),
             "title": "Keskeytetty " + description if cancelled else description,
             "description": description,
-            "estimated_value": estimate,
+            "estimated_value": None,  # Lot estimate is not a verified single-work-unit value.
             "verified_single_contract_value": False,
             "_source_pointer": lot["source_pointer"],
         }
@@ -46,6 +46,7 @@ def classify_lots(notice: dict, extraction: dict) -> list[dict]:
         decision["lot_id"] = str(lot["lot_id"])
         decision["eforms_location_status"] = lot.get("location_status", "UNKNOWN")
         decision["eforms_size_status"] = lot.get("size_status", "UNKNOWN")
+        decision["estimated_lot_value_eur_unverified"] = estimate
         decision["source_xml_evidence_only"] = "YES"
         decision["customer_go_verified"] = "NO"
         outputs.append(decision)
