@@ -1,0 +1,7 @@
+{
+  "schema_version": "p0-blind-ai-silver-v1",
+  "reviewer_policy": "AI_ONLY_NO_EXTERNAL_HUMAN",
+  "review_basis": "ORIGINAL_SOURCE_DOCUMENTS_REQUIRED_NOT_MODEL_PREDICTION",
+  "reviews": [],
+  "note": "30 ranked IDs frozen separately; no complete original tender package or AI source review provided yet, so no AI precision is measured."
+}
