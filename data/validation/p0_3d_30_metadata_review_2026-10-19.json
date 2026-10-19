@@ -706,13 +706,20 @@
       "gold_label": "UNREVIEWED",
       "version_review": {
         "status": "NEW_COMPETITION_AFTER_PREVIOUS_DEADLINE",
-        "portal_publication_id": "632650",
-        "portal_notice_url": "https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon/?tpId=632650",
-        "published_at_local": "2026-10-14T07:16:00+03:00",
+        "portal_publication_id": "632664",
+        "portal_notice_url": "https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon/?tpId=632664",
+        "published_at_local": "2026-10-14T12:33:00+03:00",
         "deadline_local": "2026-10-23T12:00:00+03:00",
         "related_notice_id": "58430",
         "relation": "SAME_BUYER_AND_MULTISITE_SCOPE; FORMAL_REPLACEMENT_UNVERIFIED",
-        "delivery_state": "CONDITIONAL_ACTIVE_CHECK_LOTS_AND_DOCUMENTS"
+        "delivery_state": "CONDITIONAL_ACTIVE_CHECK_LOTS_AND_DOCUMENTS",
+        "notice_type": "COMPETITION_E3",
+        "other_same_named_result_notice": {
+          "id": "632650",
+          "type": "RESULT_E4",
+          "url": "https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon/?tpId=632650",
+          "not_to_confuse_with_new_competition": true
+        }
       }
     },
     {
