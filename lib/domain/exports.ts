@@ -1,0 +1,12 @@
+import type { DeliverySnapshot } from "./model.ts";
+const esc=(s:string)=>s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]!));
+export function renderText(s:DeliverySnapshot) {
+ return ["URAKKALUOTSI — SISÄINEN SIMULAATIO, EI LÄHETETTY",s.client.name,`Profiili v${s.profile.version}`,...s.items.flatMap((i,n)=>["",`${n+1}. ${i.title}`,`Ostaja: ${i.buyer}`,`Määräaika: ${new Date(i.deadline).toLocaleString("fi-FI",{timeZone:"Europe/Helsinki"})} (Europe/Helsinki)`,`Lähdefakta: ${i.evidence}`,`Arvio: ${i.summary}`,`Puuttuvat tiedot: ${i.missing.join("; ")||"Ei kirjattuja puutteita"}`,`Seuraava toimi: ${i.next_action}`,i.source_url]),...(!s.items.length?["Ei tarkistettuja nostoja."]:[])].join("\n");
+}
+export function renderHtml(s:DeliverySnapshot) {
+ return `<!doctype html><html lang="fi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Urakkaluotsi — sisäinen simulaatio</title><style>body{font:16px/1.6 system-ui;color:#142732;background:#F4F7F8;max-width:800px;margin:40px auto;padding:24px}h1,h2{color:#142732}article{background:white;border:1px solid #CBD5E1;padding:24px;margin:24px 0}a{color:#007F8B}.label{color:#007F8B;font-weight:700}@media print{body{background:white;margin:0}article{break-inside:avoid}}</style><h1>Urakkaluotsi</h1><p class="label">SISÄINEN SIMULAATIO — EI LÄHETETTY</p><p>${esc(s.client.name)} · profiili v${s.profile.version}</p>${s.items.map(i=>`<article><h2>${esc(i.title)}</h2><p>${esc(i.buyer)}</p><p><strong>Määräaika:</strong> ${esc(new Date(i.deadline).toLocaleString("fi-FI",{timeZone:"Europe/Helsinki"}))} (Europe/Helsinki)</p><p><strong>Lähdefakta:</strong> ${esc(i.evidence)}</p><p><strong>Arvio:</strong> ${esc(i.summary)}</p><p><strong>Puuttuvat tiedot:</strong> ${esc(i.missing.join("; ")||"Ei kirjattuja puutteita")}</p><p><strong>Seuraava toimi:</strong> ${esc(i.next_action)}</p><a href="${esc(i.source_url)}">Alkuperäinen lähde</a></article>`).join("")||"<p>Ei tarkistettuja nostoja.</p>"}</html>`;
+}
+export function renderEml(s:DeliverySnapshot,hash:string) {
+ // No To/From/Date; keep drafts unaddressed and deterministic.
+ return [`Subject: =?UTF-8?B?${Buffer.from(`Urakkaluotsi: ${s.items.length} nostoa — SIMULAATIO`).toString("base64")}?=`,`Message-ID: <${hash}@urakkaluotsi.invalid>`,`X-Urakkaluotsi-Mode: SIMULATION`,`MIME-Version: 1.0`,`Content-Type: text/plain; charset=UTF-8`,`Content-Transfer-Encoding: base64`,"",Buffer.from(renderText(s)).toString("base64").match(/.{1,76}/g)!.join("\r\n"),""].join("\r\n");
+}

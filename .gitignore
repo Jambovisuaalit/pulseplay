@@ -21,3 +21,5 @@ data/*-dryrun/
 qa-output/
 
 node_modules
+
+.local/
