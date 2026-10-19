@@ -45,6 +45,10 @@ jobs:
         run: |
           python -B workers/build_p0_uusimaa_discovery_queue.py --snapshot data/validation/snapshot_2026-10-19/hilma_raw.json --output /tmp/urakkaluotsi_uusimaa_discovery.json
           python -B -c 'import json; r=json.load(open("/tmp/urakkaluotsi_uusimaa_discovery.json")); assert r["source_count"] == 100 and r["verified_uusimaa_worksites"] == 0 and r["independent_gold_positives"] == 0 and r["precision_at_30"] is None'
+      - name: Generate notice-to-lot evidence gates (no customer GO)
+        run: |
+          python -B workers/build_p0_lot_evidence_gates.py --input data/validation/p0_3d_nine_live_source_gates_2026-10-19.json --output /tmp/urakkaluotsi_lot_gates.json
+          python -B -c 'import json; x=json.load(open("/tmp/urakkaluotsi_lot_gates.json")); assert x["input_notice_count"] == 9 and x["official_lots_verified"] == 0 and x["customer_go_count"] == 0 and x["precision_at_30"] is None'
       - run: node --test tests/*.test.mjs
       - run: python -B workers/build_validation_set.py
       - run: python -B workers/score_validation.py
