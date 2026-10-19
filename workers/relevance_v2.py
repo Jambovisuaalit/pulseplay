@@ -182,6 +182,8 @@ def classify_notice(notice: dict) -> dict:
         "size_status": size.status, "size_reason": size.reason, "estimated_value_eur": notice.get("estimated_value"),
         "scope_status": scope.status, "scope_reason": scope.reason, "scope_evidence": scope.source_excerpt,
         "reasons": "; ".join(reasons),
+        "review_queue": "YES" if label == "Mahdollinen" else "NO",
+        "deferred_due_to_missing_evidence": "YES" if label == "Ei priorisoitu" else "NO",
         "full_tender_reviewed": "NO",
         "customer_go_verified": "NO",
         "source_pointer": notice.get("_source_pointer") or f"source_metadata#id={notice.get('id')}",
@@ -215,7 +217,7 @@ def main() -> None:
         "model_version": "ICP_V2_FAIL_CLOSED_2026_10_19",
         "count": len(rows), "source_sha256": hashlib.sha256(source_bytes).hexdigest(),
         "class_counts": {name: sum(r["model_label"] == name for r in rows)
-                         for name in ("Relevantti", "Mahdollinen", "Epärelevantti")},
+                         for name in ("Relevantti", "Mahdollinen", "Ei priorisoitu", "Epärelevantti")},
         "official_precision": "NOT MEASURED",
         "customer_go_verified": 0,
     }, ensure_ascii=False, indent=2))
