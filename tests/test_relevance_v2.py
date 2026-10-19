@@ -28,6 +28,25 @@ class V2RelevanceTests(unittest.TestCase):
     def test_exactly_the_five_allowed_cities(self):
         self.assertEqual(ALLOWED_MUNICIPALITIES, {"helsinki", "espoo", "vantaa", "kauniainen", "kirkkonummi"})
 
+    def test_review_queue_requires_positive_site_and_scope_evidence(self):
+        unknown_site = self.site(description="Pintaremontti asuinhuoneistossa.")
+        result = classify_notice(unknown_site)
+        self.assertEqual(result["model_label"], "Ei priorisoitu")
+        self.assertEqual(result["area_status"], "UNKNOWN")
+        self.assertNotEqual(result["model_label"], "Epärelevantti")
+
+        unknown_scope = self.site(title="Kiinteistön palvelut",
+                                  description="Urakkakohde sijaitsee Espoossa.")
+        self.assertEqual(classify_notice(unknown_scope)["model_label"], "Ei priorisoitu")
+
+        evidenced = self.site()
+        self.assertEqual(classify_notice(evidenced)["model_label"], "Mahdollinen")
+        self.assertEqual(classify_notice(evidenced)["size_status"], "UNKNOWN")
+
+        verified = self.site(verified_single_contract_value=True,
+                             contract_value_evidence="Verified original single-contract value")
+        self.assertEqual(classify_notice(verified)["model_label"], "Relevantti")
+
     def test_outside_area_blocks_despite_strong_renovation(self):
         for city in ("Sipoossa", "Mäntsälässä", "Tuusulassa", "Hyvinkäällä", "Lohjalla", "Mäntyharjulla"):
             item = self.site(description=f"Urakkakohde sijaitsee {city}. Asuntojen pintaremontti.")
@@ -36,7 +55,7 @@ class V2RelevanceTests(unittest.TestCase):
     def test_buyer_city_never_proves_worksite(self):
         item = self.site(description="Pintaremontti rakennuksessa.", organisation="Helsingin kaupunki")
         self.assertEqual(area_signal(item).status, "UNKNOWN")
-        self.assertEqual(classify_notice(item)["model_label"], "Mahdollinen")
+        self.assertEqual(classify_notice(item)["model_label"], "Ei priorisoitu")
         item["title"] = "Helsingin kaupungin huoneistosaneeraus"
         self.assertEqual(area_signal(item).status, "UNKNOWN")
 
