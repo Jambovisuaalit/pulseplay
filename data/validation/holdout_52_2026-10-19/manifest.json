@@ -1,0 +1,20 @@
+{
+  "source_kind": "previously_archived_github_actions_hilma_search_metadata_only",
+  "source_artifact_id": 12155344561,
+  "source_archive_sha256": "365db6c99ad55a9ef3d54a2e8a046cc311f2b455f03005955eb8a5094d96ba86",
+  "source_hilma_json_sha256": "7e495a2303a16fbce00026afcc87fe7ce70e11c479557c03e27fbea4e5bc83d0",
+  "old_100_sha256": "99f386d49a7996594ee3f4d856c707bea209e51742cec32e707e6c3bbf9ca074",
+  "holdout_raw_sha256": "ef48545a624ab0399a9addc06cadd13593a0866fd574400fb9c234a807ae3a06",
+  "retrieved_at": "2026-10-19T00:13:54.618749+00:00",
+  "old_source_count": 100,
+  "candidate_source_count": 152,
+  "holdout_count": 52,
+  "id_overlap": 0,
+  "procedure_id_overlap": 0,
+  "normalised_title_overlap": 0,
+  "missing_procedure_count": 1,
+  "id_selection": "all distinct IDs after cross-procedure and normalised-title disjointness checks; sorted",
+  "temporal_independence": "NO – source retrieved ~1 minute after old snapshot; same broad search period",
+  "independent_gold": "NONE – no external source adjudicator or full annex review",
+  "live_hilma_requests_in_this_step": 0
+}
