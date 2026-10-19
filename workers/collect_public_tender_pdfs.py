@@ -20,7 +20,7 @@ from pypdf import PdfReader
 MAX_DOCUMENTS = 8
 MAX_BYTES = 12 * 1024 * 1024
 MAX_PAGES = 80
-ALLOWED_HOSTS = frozenset({"web28.aanekoski.fi"})
+ALLOWED_HOSTS = frozenset({"web28.aanekoski.fi", "tarjouspalvelu.fi"})
 PDF_HEADER = b"%PDF-"
 
 class GuardedRedirect(urllib.request.HTTPRedirectHandler):
@@ -36,8 +36,9 @@ def validate_url(url: str) -> None:
         raise ValueError("Only explicitly allowlisted HTTPS public PDF hosts are accepted")
     if parsed.username or parsed.password or parsed.port:
         raise ValueError("URL credentials and custom ports prohibited")
-    if not parsed.path.lower().endswith(".pdf"):
-        raise ValueError("Manifest must point directly to a PDF")
+    if not (parsed.path.lower().endswith(".pdf") or
+            (parsed.hostname == "tarjouspalvelu.fi" and parsed.path.startswith("/Julkiset/AvaaViesTied/"))):
+        raise ValueError("Manifest must point to an allowlisted public PDF endpoint")
 
 def fetch_pdf(url: str, opener=None) -> bytes:
     validate_url(url)
