@@ -1,6 +1,10 @@
 name: Urakkaluotsi notice-bound Hilma attachment pilot
 on:
   workflow_dispatch:
+  push:
+    branches: ['fix/urakkaluotsi-p0-validation']
+    paths:
+      - 'data/validation/trigger_notice_attachment_pilot_2026-10-19.txt'
 
 permissions:
   contents: read
