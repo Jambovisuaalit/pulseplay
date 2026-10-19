@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { validateContact, contactFields } from "../contact";
+import { validateContact, contactFields } from "../../contact";
 
 export const runtime = "nodejs";
 const MAX_BODY_BYTES = 5000;
