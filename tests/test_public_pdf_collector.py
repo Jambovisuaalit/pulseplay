@@ -8,6 +8,11 @@ class PublicPDFCollectorTests(unittest.TestCase):
     def test_allowlisted_original(self):
         validate_url("https://web28.aanekoski.fi/dynasty10/vhp/202643420.43423.PDF")
 
+    def test_allowlisted_hilma_public_attachment(self):
+        validate_url("https://cdn.hankintailmoitukset.fi/public-attachments/d190a8a2-2d9f-442d-60d6-08dd523d1dff")
+        with self.assertRaises(ValueError):
+            validate_url("https://cdn.hankintailmoitukset.fi/private-attachments/d190a8a2-2d9f-442d-60d6-08dd523d1dff")
+
     def test_block_other_host_and_http(self):
         for url in ["http://web28.aanekoski.fi/a.pdf","https://example.com/a.pdf",
                     "https://web28.aanekoski.fi:8080/a.pdf",
