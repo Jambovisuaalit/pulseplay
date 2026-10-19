@@ -43,7 +43,7 @@ def compare(predictions: list[dict], ai_labels: list[dict], expected_size: int =
         raise ValueError("Frozen baseline and AI-silver source IDs must match exactly")
     if not 0 < topk <= expected_size:
         raise ValueError("Invalid frozen top-k denominator")
-    if any(row.get("model_label") not in ("Relevantti", "Mahdollinen", "Epärelevantti") for row in p.values()):
+    if any(row.get("model_label") not in ("Relevantti", "Mahdollinen", "Ei priorisoitu", "Epärelevantti") for row in p.values()):
         raise ValueError("Invalid baseline model label")
     if any(row.get("ai_label") not in ("Relevantti", "Mahdollinen", "Epärelevantti", "") for row in a.values()):
         raise ValueError("Invalid AI silver label")
