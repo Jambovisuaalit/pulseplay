@@ -43,6 +43,58 @@
       "source_discovery": "Publicly indexed comparison PDF, 2026; not full tender package",
       "reviewer_prelabel": "OUT_OF_REGION_AND_SCOPE",
       "reviewer_prelabel_reason": "Outside allowed worksite region; wastewater pump service also outside surface renovation ICP"
+    },
+    {
+      "candidate_id": "HELSINKI_MUSIIKKITALO_IV_2025",
+      "document_id": "musiikkitalo_2025_tender",
+      "type": "tender_request",
+      "url": "https://cdn.hankintailmoitukset.fi/public-attachments/d190a8a2-2d9f-442d-60d6-08dd523d1dff",
+      "publisher": "Kiinteistöosakeyhtiö Helsingin Mannerheimintie 13a",
+      "expected_title": "Musiikkitalon IV-puhaltimien saneeraus IV-urakka",
+      "expected_worksite_municipality": "Helsinki",
+      "evaluation_use": "HISTORICAL",
+      "source_discovery": "Original Hilma public attachment; source text includes site visits March 2025 and summer 2025 work",
+      "reviewer_prelabel": "OUT_OF_SCOPE_SPECIALIST",
+      "reviewer_prelabel_reason": "IV specialist mechanical replacement not general interior renovation ICP; annexes incomplete"
+    },
+    {
+      "candidate_id": "HELSINKI_POHJOLA_4F_2020",
+      "document_id": "pohjola_2020_tender",
+      "type": "tender_request",
+      "url": "https://cdn.hankintailmoitukset.fi/public-attachments/42f2a55c-dc72-4832-4445-08d8241b96e8",
+      "publisher": "Psyykkisen hyvinvoinnin keskus Komppi Oy",
+      "expected_title": "Pohjola Sairaala Helsinki 4. kerroksen muutostyöt",
+      "expected_worksite_municipality": "Helsinki",
+      "evaluation_use": "HISTORICAL",
+      "source_discovery": "Original Hilma public attachment, 2020, tender names three missing ZIP annex packages",
+      "reviewer_prelabel": "IN_SCOPE_CONDITIONAL",
+      "reviewer_prelabel_reason": "Interior alteration, but individual lot value and annex requirements unknown; not positive gold"
+    },
+    {
+      "candidate_id": "HELSINKI_USPENSKI_INTERIOR",
+      "document_id": "uspenski_scope",
+      "type": "scope_annexes",
+      "url": "https://cdn.hankintailmoitukset.fi/public-attachments/4efc21a0-a41e-4fb0-6f5d-08d813538d7d",
+      "publisher": "Helsingin ortodoksinen seurakunta",
+      "expected_title": "Uspenskin katedraalin sisäseinien korjaus- ja entisöintityö",
+      "expected_worksite_municipality": "Helsinki",
+      "evaluation_use": "HISTORICAL",
+      "source_discovery": "Original Hilma public attachment: nine-page building work specification",
+      "reviewer_prelabel": "IN_SCOPE_CONDITIONAL",
+      "reviewer_prelabel_reason": "Surface repair and painting match scope, but no complete tender, value, eligibility, or annex coverage"
+    },
+    {
+      "candidate_id": "HELSINKI_MUSIIKKITALO_IV_2026",
+      "document_id": "musiikkitalo_2026_program",
+      "type": "scope_annexes",
+      "url": "https://cdn.hankintailmoitukset.fi/public-attachments/680a9605-60c3-4165-b0ae-08de83eb31df",
+      "publisher": "Kiinteistöosakeyhtiö Helsingin Mannerheimintie 13a",
+      "expected_title": "Musiikkitalon IV-puhaltimien saneeraus urakkaohjelma",
+      "expected_worksite_municipality": "Helsinki",
+      "evaluation_use": "HISTORICAL",
+      "source_discovery": "Original Hilma public attachment dated 17 March 2026; must NOT merge with 2025 tender without source link",
+      "reviewer_prelabel": "OUT_OF_SCOPE_SPECIALIST",
+      "reviewer_prelabel_reason": "Separate 2026 source vintage; not same tender version as 2025"
     }
   ]
 }
