@@ -79,6 +79,10 @@ def evaluate(source: dict, silver: list[dict]) -> tuple[dict, list[dict]]:
             "fn_range": v2["ai_based_false_negative_range"],
             "precision_undefined_because_no_positive_predictions": v2["baseline_predicted_positive"] == 0,
         },
+        "v2_deferred_count": new_counts["Ei priorisoitu"],
+        "v2_actionable_conditional_count": new_counts["Mahdollinen"],
+        "v2_deferred_by_ai_class": dict(Counter(r["ai_silver_label_not_gold"] for r in detail if r["model_label"] == "Ei priorisoitu")),
+        "deferred_is_not_a_verified_negative": True,
         "v2_conditional_candidates_by_ai_class": dict(Counter(
             r["ai_silver_label_not_gold"] for r in detail if r["model_label"] == "Mahdollinen"
         )),
