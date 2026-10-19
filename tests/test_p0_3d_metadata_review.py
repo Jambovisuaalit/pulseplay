@@ -23,4 +23,12 @@ class ReviewTests(unittest.TestCase):
         self.assertEqual(x["summary"]["expired_by_saved_deadline"],sum(r["deadline_status_at_audit"]=="EXPIRED_BY_METADATA_DEADLINE" for r in x["records"]))
         self.assertEqual(x["summary"]["outside_uusimaa"],1)
         self.assertTrue(all(not r["worksite_verified_from_complete_original_tender"] for r in x["records"]))
+    def test_portal_notice_e3_and_e4_not_confused(self):
+        x=json.loads(FILE.read_text(encoding="utf-8"))
+        by={r["notice_id"]:r for r in x["records"]}
+        self.assertEqual(by["59464"]["version_review"]["portal_publication_id"],"632664")
+        self.assertEqual(by["59464"]["version_review"]["notice_type"],"COMPETITION_E3")
+        self.assertEqual(by["59464"]["version_review"]["other_same_named_result_notice"]["type"],"RESULT_E4")
+        self.assertEqual(by["59352"]["version_review"]["delivery_state"],"EXCLUDE_CANCELLED")
+        self.assertEqual(by["58430"]["version_review"]["delivery_state"],"EXCLUDE_EXPIRED")
 if __name__=="__main__":unittest.main()
