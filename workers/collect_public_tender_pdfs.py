@@ -18,10 +18,10 @@ from pathlib import Path
 from pypdf import PdfReader
 from extract_public_pdf_requirements import leads_by_page
 
-MAX_DOCUMENTS = 8
+MAX_DOCUMENTS = 12
 MAX_BYTES = 12 * 1024 * 1024
 MAX_PAGES = 80
-ALLOWED_HOSTS = frozenset({"web28.aanekoski.fi", "tarjouspalvelu.fi"})
+ALLOWED_HOSTS = frozenset({"web28.aanekoski.fi", "tarjouspalvelu.fi", "cdn.hankintailmoitukset.fi"})
 PDF_HEADER = b"%PDF-"
 
 class GuardedRedirect(urllib.request.HTTPRedirectHandler):
@@ -38,7 +38,9 @@ def validate_url(url: str) -> None:
     if parsed.username or parsed.password or parsed.port:
         raise ValueError("URL credentials and custom ports prohibited")
     if not (parsed.path.lower().endswith(".pdf") or
-            (parsed.hostname == "tarjouspalvelu.fi" and parsed.path.startswith("/Julkiset/AvaaViesTied/"))):
+            (parsed.hostname == "tarjouspalvelu.fi" and parsed.path.startswith("/Julkiset/AvaaViesTied/")) or
+            (parsed.hostname == "cdn.hankintailmoitukset.fi" and
+             re.fullmatch(r"/public-attachments/[0-9a-fA-F-]{36}", parsed.path))):
         raise ValueError("Manifest must point to an allowlisted public PDF endpoint")
 
 def fetch_pdf(url: str, opener=None) -> bytes:
@@ -66,7 +68,7 @@ def extract_pdf_text(data: bytes) -> tuple[str, int]:
 def collect(manifest: dict, out: Path) -> dict:
     docs = manifest.get("documents") or []
     if not 0 < len(docs) <= MAX_DOCUMENTS:
-        raise ValueError("Manifest must contain 1..8 documents")
+        raise ValueError("Manifest must contain 1..12 documents")
     out.mkdir(parents=True, exist_ok=True)
     results = []
     for entry in docs:
