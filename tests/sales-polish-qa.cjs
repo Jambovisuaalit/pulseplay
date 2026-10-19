@@ -45,7 +45,7 @@ async function main(){
    await page.locator('.ul-form button').waitFor();
    assert.equal(await page.locator('h1').count(),1);
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
-   assert.equal(await page.locator('.ul-price').innerText(),'249 € / 30 päivää\nVerokohtelu vahvistetaan ennen pilotin aloitusta.');
+   assert.equal(await page.locator('.ul-price').innerText(),'249 € / 30 päivää\nLopullinen hinta. Myyjä ei kuulu ALV-rekisteriin.');
    assert.equal(await page.locator('link[rel=canonical]').count(),0);
    assert.equal(await page.locator('meta[property="og:url"]').count(),0);
    assert((await page.locator('meta[property="og:image"]').getAttribute('content')).endsWith('/urakkaluotsi/og.png'));

@@ -7,13 +7,13 @@ Pohja: `feature/urakkaluotsi-pilot-metrics` / c04ccf1, jotta uudempi toimituspor
 ## Toteutus
 
 - `page.tsx`: suomenkielinen myyntisivu, semanttinen esimerkkikortti ja alkuperäinen PDF.
-- `site-config.ts`: 249 € / 30 päivää, verokohtelu `null`. Vahvistettava ennen julkaisua.
+- `site-config.ts`: 249 € / 30 päivää, lopullinen hinta. Myyjä ei kuulu ALV-rekisteriin (käyttäjän vahvistus 19.10.2026).
 - `site.css`: nykyisen CSS-rakenteen rajattu viimeistely. Projektissa ei ole Tailwindia; sitä ei lisätty uutena riippuvuutena.
 - `pilot-form.tsx`: yhteinen kenttävalidointi, palvelinvirheet, fokus, lähetyksen tila ja synkroninen kaksoislähetyksen esto.
 - `api/contact/route.ts`: nykyinen Resend-käsittelijä, origin-/koko-/tyyppitarkistus ja lähetyspalvelun kuittaus. Ei henkilötietoja localStorageen.
 - Logo, OG ja PDF kopioitu liitteistä. PDF SHA-256: `36762a526ae0a7299098c77e8e64a9ca78d15b4a3ac0b9a4624b7b9e4ad1e69b`.
 
-Aiemmassa repossa dokumentoidut yhteystiedot säilytetty: Tmi Jami Harju / 3581581-6 / visualjambo@gmail.com. Uusin materiaalipaketti pitää juridisen myyjän ja verokohtelun vahvistamista avoimina; julkaisija vahvistaa nämä ennen tuotantoa. Muihin yrityksiin liittyvistä ALV-tiedoista ei tehdä päätelmiä.
+Käyttäjän 19.10.2026 vahvistamat myyjä- ja vastaanottajatiedot: Tmi Jami Harju / 3581581-6 / visualjambo@gmail.com. Myyjä ei kuulu ALV-rekisteriin, joten 249 € / 30 päivää on lopullinen hinta. Tieto perustuu tämän palvelun myyjää koskevaan käyttäjän vahvistukseen.
 
 ## Lähetyskanava
 

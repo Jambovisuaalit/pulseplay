@@ -2,7 +2,7 @@
 
 ## Päätös
 
-Muutos valmis tarkistettavaksi. Ei tuotantojulkaisua. Verokohtelu, juridinen myyjä, lopullinen julkaisuosoite ja todellinen sähköpostitoimitus vahvistetaan ennen tuotantoa.
+Muutos valmis tarkistettavaksi. Ei tuotantojulkaisua. Myyjä, vastaanottaja ja ALV-rekisteriin kuulumattomuus vahvistettu käyttäjältä 19.10.2026. Lopullinen julkaisuosoite ja todellinen sähköpostitoimitus vahvistetaan ennen tuotantoa.
 
 ## Suoritetut tarkistukset
 
@@ -34,8 +34,8 @@ React-tarkistus: sivu säilyy palvelinkomponenttina; vain lomake on asiakaskompo
 
 ## Julkaisua edeltävät avoimet asiat
 
-- 249 € / 30 päivää on vahvistettu hintapäätös. Verokohtelu on tarkoituksella `null` konfiguraatiossa.
-- Aiemman repon Tmi Jami Harju / 3581581-6 / visualjambo@gmail.com säilytetty; uusin materiaalipaketti edellyttää myyjän ja rekisterinpitäjän lopullista vahvistusta.
+- Vahvistettu 19.10.2026: 249 € / 30 päivää on lopullinen hinta. Myyjä ei kuulu ALV-rekisteriin. Konfiguraatio käyttää arvoa `SELLER_NOT_VAT_REGISTERED`, ei nollaverokantaa.
+- Käyttäjä vahvisti myyjän ja vastaanottajan: Tmi Jami Harju / 3581581-6 / visualjambo@gmail.com.
 - `RESEND_API_KEY`, `URAKKALUOTSI_CONTACT_FROM`, `URAKKALUOTSI_CONTACT_TO`, lähettäjän varmennus ja todellinen inbox-vastaanotto testattava tuotantoympäristöön erikseen.
 - Tietosuojakäytännön käytännön toteutus palveluntarjoajilla vahvistettava; tämä QA ei ole oikeudellinen arvio.
 - MetadataBase käyttää Vercelistä varmennettua tenderpulse-neon.vercel.app-hostia. Canonical ja og:url odottavat julkaisuosoitteen päätöstä.
