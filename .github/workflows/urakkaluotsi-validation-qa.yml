@@ -49,6 +49,12 @@ jobs:
         run: |
           python -B workers/build_p0_lot_evidence_gates.py --input data/validation/p0_3d_nine_live_source_gates_2026-10-19.json --output /tmp/urakkaluotsi_lot_gates.json
           python -B -c 'import json; x=json.load(open("/tmp/urakkaluotsi_lot_gates.json")); assert x["input_notice_count"] == 9 and x["official_lots_verified"] == 0 and x["customer_go_count"] == 0 and x["precision_at_30"] is None'
+      - name: Rebuild frozen real notice universe and independent-review gate
+        run: |
+          python -B workers/build_p0_full_source_universe.py --source data/validation/snapshot_2026-10-19/hilma_raw.json --source data/validation/holdout_52_2026-10-19/holdout_raw.json --output /tmp/p0_source_universe.json
+          python -B workers/guard_p0_notice_versions.py --input data/validation/p0_3d_nine_live_source_gates_2026-10-19.json --as-of 2026-10-19T07:35:00Z --output /tmp/p0_version_guard.json
+          python -B workers/evaluate_p0_independent_acceptance.py --universe /tmp/p0_source_universe.json --reviews data/validation/p0_independent_source_reviews_2026-10-19.json --output /tmp/p0_independent_acceptance.json
+          python -B -c 'import json; a=json.load(open("/tmp/p0_source_universe.json")); b=json.load(open("/tmp/p0_version_guard.json")); c=json.load(open("/tmp/p0_independent_acceptance.json")); assert a["real_unique_notices"] == 152 and a["verified_uusimaa_renovation_jobs"] == 0; assert b["cases"] == 9 and b["customer_go_count"] == 0; assert c["precision_at_30"] is None and c["acceptance_80_percent"] == "NOT_MEASURED"'
       - run: node --test tests/*.test.mjs
       - run: python -B workers/build_validation_set.py
       - run: python -B workers/score_validation.py
