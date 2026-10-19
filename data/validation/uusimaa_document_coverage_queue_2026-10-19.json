@@ -21,9 +21,22 @@
       "verified_single_contract_value": false,
       "verified_company_eligibility": false,
       "source_gold_label": "UNREVIEWED",
-      "blocker": "Portal-linked original tender annexes unavailable in unauthenticated public retrieval; no verified individual contract value",
+      "blocker": "Portal-linked original tender annexes unavailable in unauthenticated public retrieval; no verified individual contract value; public portal summary expressly requires login for full content",
       "deadline_local": "2026-11-04T12:00:00",
-      "historical_snapshot": true
+      "historical_snapshot": true,
+      "portal_public_test": {
+        "tested_at_date": "2026-10-19",
+        "request_mode": "UNAUTHENTICATED_PUBLIC_HTTP",
+        "http_status": 200,
+        "publication_id": "631619",
+        "public_notice_summary_available": true,
+        "public_annex_index_available": false,
+        "public_downloadable_tender_attachments_found": 0,
+        "login_required_for_complete_information": true,
+        "source_url": "https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon/?tpId=631619",
+        "access_classification": "PUBLIC_SUMMARY_LOGIN_REQUIRED_FOR_FULL_TENDER",
+        "verified_package_complete": false
+      }
     },
     {
       "case_id": "HILMA_59375",
@@ -44,9 +57,23 @@
       "verified_single_contract_value": false,
       "verified_company_eligibility": false,
       "source_gold_label": "UNREVIEWED",
-      "blocker": "Mandatory site visits and bidder attendance evidence unresolved; original annexes unavailable in unauthenticated public retrieval",
+      "blocker": "Mandatory site visits and bidder attendance evidence unresolved; original annexes unavailable in unauthenticated public retrieval; public portal summary expressly requires login for full content; mandatory site visit Oct 1-8 has passed",
       "deadline_local": "2026-10-30T12:00:00",
-      "historical_snapshot": true
+      "historical_snapshot": true,
+      "portal_public_test": {
+        "tested_at_date": "2026-10-19",
+        "request_mode": "UNAUTHENTICATED_PUBLIC_HTTP",
+        "http_status": 200,
+        "publication_id": "611165",
+        "public_notice_summary_available": true,
+        "public_annex_index_available": false,
+        "public_downloadable_tender_attachments_found": 0,
+        "login_required_for_complete_information": true,
+        "source_url": "https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon/?tpId=611165",
+        "access_classification": "PUBLIC_SUMMARY_LOGIN_REQUIRED_FOR_FULL_TENDER",
+        "verified_package_complete": false,
+        "site_visit_note": "Mandatory site visit window 1–8 Oct 2026 according to public summary; this is before audit date 19 Oct 2026, so bidder attendance must be independently verified."
+      }
     }
   ]
 }
