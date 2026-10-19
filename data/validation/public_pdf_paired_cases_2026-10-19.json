@@ -1,0 +1,16 @@
+{
+  "schema_version": "2026-10-19-source-gold-v1",
+  "selection": "TARGETED_DISCOVERY_NOT_RANDOM_HOLDOUT",
+  "cases": [
+    {
+      "case_id": "AANEKOSKI_KOIVISTO_PAINT_2026",
+      "source_url": "https://web28.aanekoski.fi/dynasty10/vhp/202643420.43423.PDF",
+      "source_review_status": "PENDING_PDF_FETCH",
+      "source_quote": null,
+      "gold_label": "UNREVIEWED",
+      "baseline_label": null,
+      "enhanced_label": null,
+      "notes": "City-hosted original 11-page tender PDF; verify exact worksite quote from downloaded PDF before gold negative. No historical Hilma metadata baseline record."
+    }
+  ]
+}
