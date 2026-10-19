@@ -37,6 +37,10 @@ jobs:
         run: |
           python -B workers/evaluate_paired_source_gold.py --cases data/validation/public_pdf_paired_cases_2026-10-19.json --output /tmp/urakkaluotsi_paired_metrics.json
           python -B -c 'import json; x=json.load(open("/tmp/urakkaluotsi_paired_metrics.json")); assert x["paired_source_verified"] == 0 and x["precision_at_30"] is None and x["improvement_verified"] is False'
+      - name: Evaluate Uusimaa source coverage (fail closed)
+        run: |
+          python -B workers/evaluate_uusimaa_document_coverage.py --queue data/validation/uusimaa_document_coverage_queue_2026-10-19.json --output /tmp/uusimaa_source_coverage.json
+          python -B -c 'import json; r=json.load(open("/tmp/uusimaa_source_coverage.json")); assert r["complete_packages"] == 0 and r["source_gold_positives"] == 0 and r["precision_at_30"] is None'
       - run: node --test tests/*.test.mjs
       - run: python -B workers/build_validation_set.py
       - run: python -B workers/score_validation.py
