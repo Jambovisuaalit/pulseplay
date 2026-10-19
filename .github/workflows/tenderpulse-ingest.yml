@@ -6,6 +6,7 @@ on:
       - feature/urakkaluotsi-p0-relevance-validation
     paths:
       - .github/workflows/tenderpulse-ingest.yml
+      - workers/collect_hilma_limited.py
   workflow_dispatch:
     inputs:
       mode:
