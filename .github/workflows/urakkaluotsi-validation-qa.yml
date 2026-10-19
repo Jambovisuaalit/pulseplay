@@ -37,6 +37,11 @@ jobs:
       - run: python -B workers/score_validation.py
       - name: Evaluate deferred and conditional queue against frozen AI-silver holdout
         run: python -B workers/evaluate_holdout_v2.py
+      - name: Source XML evaluation with explicit missing-coverage report
+        run: |
+          mkdir -p data/validation/source_xml_inputs
+          python -B workers/evaluate_source_xml.py --snapshot data/validation/holdout_52_2026-10-19/holdout_raw.json --xml-dir data/validation/source_xml_inputs --output /tmp/urakkaluotsi_source_xml_coverage.json
+          python -B -c 'import json; x=json.load(open("/tmp/urakkaluotsi_source_xml_coverage.json")); assert x["notices_total"] == 52 and x["official_precision"] is None and x["accuracy_improvement_verified"] is False'
       - name: Verify the independent-label gate remains closed
         run: |
           python -B -c 'import json; m=json.load(open("data/validation/independent_100/metrics.json")); assert m["rows_total"] == 100; assert m["rows_unreviewed"] == 0 or m["relevance_gate"] == "NOT MEASURED"'
