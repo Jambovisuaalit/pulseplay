@@ -166,8 +166,11 @@ def classify_notice(notice: dict) -> dict:
         label = "Epärelevantti"
     elif (area.status, size.status, scope.status) == ("IN", "IN", "MATCH"):
         label = "Relevantti"
-    else:
+    elif area.status == "IN" and scope.status == "MATCH":
         label = "Mahdollinen"
+    else:
+        label = "Ei priorisoitu"
+        reasons.append("INSUFFICIENT_POSITIVE_EVIDENCE_FOR_REVIEW_QUEUE")
     # A priority hint is never a probability or positive eligibility verdict.
     rank = (100 if label == "Relevantti" else
             25 + 6 * (scope.status == "MATCH") + 4 * (area.status == "IN") if label == "Mahdollinen" else 0)
