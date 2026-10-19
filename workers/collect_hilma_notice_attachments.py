@@ -34,7 +34,7 @@ def validate_public_url(url: str) -> str:
         raise ValueError("Not a canonical original Hilma public attachment URL")
     return url
 
-def discover(xml: str, notice_id: str, source_sha256: str | None = None) -> dict:
+def discover(xml: str, notice_id: str, source_sha256: str | None = None, *, verified_endpoint: bool = False) -> dict:
     if not NOTICE_ID.fullmatch(notice_id):
         raise ValueError("Invalid notice ID")
     root = ET.fromstring(xml)
@@ -55,6 +55,7 @@ def discover(xml: str, notice_id: str, source_sha256: str | None = None) -> dict
     return {
         "notice_id": notice_id, "xml_sha256": xml_sha,
         "association": "LINK_EXPLICITLY_PRESENT_IN_ORIGINAL_NOTICE_XML",
+        "notice_endpoint_verified": verified_endpoint,
         "attachment_count": len(urls),
         "attachments": [
             {"source_url": u, "notice_id": notice_id, "link_provenance": "ORIGINAL_XML",
@@ -114,8 +115,8 @@ def collect(records: list[dict], output: Path, *, fetcher=fetch_attachment) -> d
         if not NOTICE_ID.fullmatch(notice_id) or notice_id in seen:
             raise ValueError("Invalid or duplicate notice ID")
         seen.add(notice_id)
-        if record.get("association") != "LINK_EXPLICITLY_PRESENT_IN_ORIGINAL_NOTICE_XML":
-            raise ValueError("Missing explicit original notice provenance")
+        if record.get("association") != "LINK_EXPLICITLY_PRESENT_IN_ORIGINAL_NOTICE_XML" or record.get("notice_endpoint_verified") is not True:
+            raise ValueError("Missing verified original notice endpoint provenance")
         if not re.fullmatch(r"[0-9a-f]{64}", record.get("xml_sha256", "")):
             raise ValueError("Invalid original XML SHA-256")
         attachments = record.get("attachments") or []
