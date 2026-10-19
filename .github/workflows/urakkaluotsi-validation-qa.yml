@@ -41,6 +41,10 @@ jobs:
         run: |
           python -B workers/evaluate_uusimaa_document_coverage.py --queue data/validation/uusimaa_document_coverage_queue_2026-10-19.json --output /tmp/uusimaa_source_coverage.json
           python -B -c 'import json; r=json.load(open("/tmp/uusimaa_source_coverage.json")); assert r["complete_packages"] == 0 and r["source_gold_positives"] == 0 and r["precision_at_30"] is None'
+      - name: Build frozen Uusimaa evidence-review queue without gold assumptions
+        run: |
+          python -B workers/build_p0_uusimaa_discovery_queue.py --snapshot data/validation/snapshot_2026-10-19/hilma_raw.json --output /tmp/urakkaluotsi_uusimaa_discovery.json
+          python -B -c 'import json; r=json.load(open("/tmp/urakkaluotsi_uusimaa_discovery.json")); assert r["source_count"] == 100 and r["verified_uusimaa_worksites"] == 0 and r["independent_gold_positives"] == 0 and r["precision_at_30"] is None'
       - run: node --test tests/*.test.mjs
       - run: python -B workers/build_validation_set.py
       - run: python -B workers/score_validation.py
