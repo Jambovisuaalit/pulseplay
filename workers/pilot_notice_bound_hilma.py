@@ -50,7 +50,7 @@ def main():
             if response.status_code==200:
                 xml=unwrap_xml(response)
                 if xml.startswith("<"):
-                    record=discover(xml,notice_id)
+                    record=discover(xml,notice_id,verified_endpoint=True)
                     records.append(record)
                     entry.update({"source_status":"ORIGINAL_XML_PARSED",
                                   "original_xml_sha256":record["xml_sha256"],
