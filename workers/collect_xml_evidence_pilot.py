@@ -14,6 +14,7 @@ import requests
 from extract_eforms_evidence import parse_xml_evidence
 from classify_eforms_lots import classify_lots
 from relevance_v2 import classify_notice
+from extract_eforms_requirements import extract_requirement_leads
 
 IDS = ["59188", "59230", "59375", "58444", "160596", "54620"]
 ROOT = Path("data/validation")
@@ -71,6 +72,8 @@ def main():
             classified = classify_lots(source[ident], extracted)
             entry["source_status"] = "PARSED"
             entry["lot_count"] = len(classified)
+            if ident in {"59188", "59375"}:
+                entry["requirement_leads"] = extract_requirement_leads(text, f"original_eforms_notice/{ident}.xml")["requirements"]
             entry["lots"] = [
                 {"lot_id": d["lot_id"], "model_label": d["model_label"],
                  "area_status": d["area_status"], "scope_status": d["scope_status"],
