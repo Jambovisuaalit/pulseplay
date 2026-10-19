@@ -35,6 +35,8 @@ jobs:
       - run: node --test tests/*.test.mjs
       - run: python -B workers/build_validation_set.py
       - run: python -B workers/score_validation.py
+      - name: Evaluate deferred and conditional queue against frozen AI-silver holdout
+        run: python -B workers/evaluate_holdout_v2.py
       - name: Verify the independent-label gate remains closed
         run: |
           python -B -c 'import json; m=json.load(open("data/validation/independent_100/metrics.json")); assert m["rows_total"] == 100; assert m["rows_unreviewed"] == 0 or m["relevance_gate"] == "NOT MEASURED"'
