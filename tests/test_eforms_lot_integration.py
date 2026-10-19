@@ -40,6 +40,12 @@ class IntegrationTests(unittest.TestCase):
     def test_lot_estimate_does_not_verify_unit(self):
         self.assertEqual(self.classify(amount="250000")["size_status"], "UNKNOWN")
 
+    def test_high_lot_total_not_treated_as_individual_work_exclusion(self):
+        result = self.classify(amount="900000")
+        self.assertEqual(result["model_label"], "Mahdollinen")
+        self.assertEqual(result["estimated_lot_value_eur_unverified"], 900000.0)
+        self.assertEqual(result["size_status"], "UNKNOWN")
+
     def test_notice_cancelled_blocks(self):
         evidence = parse_xml_evidence(xml(), "fixture.xml")
         r = classify_lots({"id": "SYNTHETIC", "title": "Keskeytetty hankinta"}, evidence)[0]
