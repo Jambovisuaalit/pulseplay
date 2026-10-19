@@ -47,6 +47,15 @@ class V2RelevanceTests(unittest.TestCase):
                              contract_value_evidence="Verified original single-contract value")
         self.assertEqual(classify_notice(verified)["model_label"], "Relevantti")
 
+    def test_explicit_worksite_in_title_is_source_evidence(self):
+        notice = self.site(title="Urakkakohde sijaitsee Vantaalla: huoneistokorjaukset",
+                           description="Sisätilojen pintaremontti.")
+        self.assertEqual(area_signal(notice).status, "IN")
+        notice["title"] = "Urakkakohde sijaitsee Lohjalla: huoneistokorjaukset"
+        self.assertEqual(area_signal(notice).status, "OUT")
+        notice["title"] = "Vantaan kaupunki: huoneistokorjaukset"
+        self.assertEqual(area_signal(notice).status, "UNKNOWN")
+
     def test_outside_area_blocks_despite_strong_renovation(self):
         for city in ("Sipoossa", "Mäntsälässä", "Tuusulassa", "Hyvinkäällä", "Lohjalla", "Mäntyharjulla"):
             item = self.site(description=f"Urakkakohde sijaitsee {city}. Asuntojen pintaremontti.")
