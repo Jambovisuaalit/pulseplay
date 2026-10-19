@@ -12,7 +12,7 @@ CUES = {
     "turnover": re.compile(r"liikevaiht|turnover", re.I),
     "guarantee": re.compile(r"urakkavakuus|vakuuden määrä|suoritusvakuus|takuuaikainen vakuus", re.I),
     "insurance": re.compile(r"vastuuvakuut|toiminnan vakuut|vakuutusturva", re.I),
-    "site_visit": re.compile(r"tutustumis|näyttötilaisuu|kohdekäynt", re.I),
+    "site_visit": re.compile(r"tutustumis|näyttötilaisuu|kohdekäynt|kohde-esittely|kohteen esittely|rakennuspaikkaan", re.I),
     "contract_price": re.compile(r"kokonaishinta|urakkahinta|tarjoushinta", re.I),
 }
 
