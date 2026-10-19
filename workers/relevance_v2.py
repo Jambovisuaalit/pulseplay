@@ -73,9 +73,9 @@ def area_signal(notice: dict) -> Signal:
         return Signal("UNKNOWN", "MISSING_SOURCE_TEXT", "")
     # A directly described service area of a municipal framework may be used
     # as geographical exclusion, but never infer worksite from buyer metadata.
-    framework = bool(_match(r"\\b(?:puitejärjestely|puitesopimus|puitejärjestelynä|puitesopimuskumppan\\w*)\\b", title+" "+description))
+    framework = bool(_match(r"\b(?:puitejärjestely|puitesopimus|puitejärjestelynä|puitesopimuskumppan\w*)\b", title+" "+description))
     if framework and not explicit:
-        m = _match(r"\\b(Mäntyharjun|Kaarinan)\\s+(?:kunta|kaupunki)\\s+(?:kilpailuttaa|\\([^)]*\\)\\s*hakee|hakee)\\b", description)
+        m = _match(r"\b(Mäntyharjun|Kaarinan)\s+(?:kunta|kaupunki)\s+(?:kilpailuttaa|\([^)]*\)\s*hakee|hakee)\b", description)
         if m:
             return Signal("OUT", "FRAMEWORK_EXPLICIT_NON_UUSIMAA_SERVICE_AREA", m.group(0))
     # Only sentences / clauses which explicitly designate worksite count.
