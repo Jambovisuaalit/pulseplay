@@ -1,0 +1,101 @@
+notice_id	ai_label	reason_code	source_phrase
+59423	Epärelevantti	SCOPE	maanrakennus- ja pihaurakka
+59139	Epärelevantti	SIZE	3000000
+58997	Epärelevantti	DEMOLITION	kokonaispurku
+59696	Epärelevantti	AREA	Utsjoella
+59425	Mahdollinen	UNKNOWN_AREA	Vakka-Suomen sairaalan
+59675	Epärelevantti	AREA	Pori
+59651	Epärelevantti	AREA	Lapuan
+59641	Epärelevantti	SCOPE	kokoojakatu
+59249	Epärelevantti	DEMOLITION	kokonaispurku
+59592	Epärelevantti	AREA	Kaarinan
+59586	Epärelevantti	AREA	Kemijärven
+59563	Epärelevantti	NEW_BUILD	rivitalon ja autokatos
+59512	Epärelevantti	AREA	Salon kaupunki
+59621	Epärelevantti	SCOPE	näköalapaikka
+59591	Epärelevantti	NEW_BUILD	hallihankkeelle
+59584	Epärelevantti	SCOPE	työkonepalveluista
+59542	Epärelevantti	DEMOLITION	purku-urakka
+59575	Epärelevantti	ROOF	katto -urakka
+59573	Epärelevantti	AREA	Mäntyharjun
+59569	NOT_EVALUATED	NO_SOURCE	
+59555	Epärelevantti	WINDOW_DOOR	Ikkunoiden ja ovien uusiminen
+59473	Epärelevantti	DEMOLITION	purku
+59464	Epärelevantti	HVAC	lämpöteknisten töiden
+59441	Epärelevantti	SCOPE	rantalaituri
+59275	Epärelevantti	NEW_BUILD	uudiskohteen
+59395	Epärelevantti	NEW_BUILD	uudisrakennus
+59339	Epärelevantti	NEW_BUILD	uudisrakennushanke
+59417	Epärelevantti	SCOPE	hissin uusiminen
+59399	Mahdollinen	UNKNOWN_SCOPE	tekninen peruskorjausurakka
+59375	Mahdollinen	UNKNOWN_SIZE	päiväkodin elinkaarta jatkavat korjaustyöt
+59350	Epärelevantti	AREA	Suonenjoen
+59352	Epärelevantti	CANCELLED	KESKEYTETTY
+59343	Epärelevantti	NEW_BUILD	uutta varuskuntaravintolarakennusta
+59342	Epärelevantti	NEW_BUILD	uutta varuskuntaravintolarakennusta
+59341	Epärelevantti	NEW_BUILD	uutta varuskuntaravintolarakennusta
+59326	Epärelevantti	SCOPE	maastokartoitusta
+59329	Epärelevantti	SCOPE	kaava-alueen rakentaminen
+59217	Epärelevantti	NEW_BUILD	uudisrakennushankkeen
+59130	Epärelevantti	WINDOW_DOOR	Ikkuna- ja oviremontti
+59294	Epärelevantti	SCOPE	katukunnostustöihin
+59272	Epärelevantti	SCOPE	laiturin rakennusurakasta
+59078	Epärelevantti	HVAC	talotekniikkaurakoitsijan
+59230	Mahdollinen	UNKNOWN_SIZE	työympäristömuutoksen
+59196	Epärelevantti	NEW_BUILD	uudisrakennushankkeen
+59183	Epärelevantti	SCOPE	maarakennustöistä
+59188	Relevantti	CLEAR_SCOPE_AREA	pintaremontti
+59157	Epärelevantti	HVAC	lämpöpumppu-urakka
+59126	Epärelevantti	HVAC	runkolinjapumppujen vaihdosta
+59118	Epärelevantti	NEW_BUILD	uusien laakasiilojen
+59022	Epärelevantti	HVAC	kaikki LVISA-työt
+58891	Epärelevantti	AREA	Savukoski
+58753	Epärelevantti	SCOPE	patopenger
+58639	Epärelevantti	AREA	Savukoski
+56184	Epärelevantti	AREA	Nakkilan
+56069	Epärelevantti	AREA	Nakkilan
+59061	Epärelevantti	AREA	Kalajoki
+59058	Epärelevantti	NEW_BUILD	uusi tutkimuskasvihuone
+59046	Epärelevantti	WINDOW_DOOR	kattoikkunaurakka
+58975	Epärelevantti	HVAC	LVI- töistä
+57503	Epärelevantti	AREA	Kuopio
+58875	Epärelevantti	SIZE	6000000
+58829	Epärelevantti	NEW_BUILD	Uudisrakennus
+58922	Epärelevantti	AREA	Alavudella
+58929	Epärelevantti	DEMOLITION	purku-urakka
+58911	Epärelevantti	AREA	Kalajoen
+58877	Epärelevantti	SIZE	5100000
+58786	Epärelevantti	ROOF	katon uusiminen
+58434	Epärelevantti	NEW_BUILD	laajennus
+58802	Epärelevantti	AREA	Joroisten
+58156	Epärelevantti	AREA	Lahden
+58671	Epärelevantti	AREA	Huittisten
+58581	Epärelevantti	AREA	Ruoveden
+58709	Epärelevantti	AREA	Kokkolan
+58630	Epärelevantti	DEMOLITION	purkaminen
+58637	Epärelevantti	SCOPE	KOKONAISSUUNNITTELU
+58626	Mahdollinen	UNKNOWN_AREA	Kerttulan urheilukentän katsomon saneeraus
+58591	Epärelevantti	NEW_BUILD	Uudisrakennus
+58547	Epärelevantti	SIZE	10000000
+57430	Mahdollinen	UNKNOWN_SCOPE	Kivityöurakka
+58603	Epärelevantti	SCOPE	porras- ja kivityöt
+58587	Epärelevantti	HVAC	aurinkosähköjärjestelmästä
+58545	Epärelevantti	SIZE	350000
+58512	Epärelevantti	SCOPE	laituriurakka
+58502	Epärelevantti	AREA	Riihimäellä
+58429	Epärelevantti	HVAC	projektinjohtourakoitsijan
+58351	Epärelevantti	NEW_BUILD	uudisrakennushanketta
+58480	Epärelevantti	SCOPE	Ruoppauksen
+58465	Epärelevantti	AREA	Kontiolahden
+58467	Epärelevantti	ROOF	Vesikattourakka
+33200	Epärelevantti	SIZE	850000
+58444	Mahdollinen	UNKNOWN_AREA	Huoneistoremontit
+58440	Epärelevantti	AREA	Joensuu
+58439	Epärelevantti	AREA	Joensuu
+58438	Epärelevantti	SCOPE	pysäköintialueen rakentamisen
+58437	Epärelevantti	AREA	Joensuu
+58430	Epärelevantti	HVAC	lämpöteknisten töiden
+58415	Epärelevantti	WINDOW_DOOR	Ikkunoiden kunnostamis- ja uusintaurakka
+58407	Epärelevantti	SCOPE	polttonesteiden jakeluaseman
+58338	Epärelevantti	AREA	Rovaniemen
+58253	Epärelevantti	SCOPE	Valtatien 21

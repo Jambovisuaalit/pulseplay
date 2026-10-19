@@ -1,0 +1,36 @@
+{
+  "test_marking": "SISÄINEN TESTI – KUVITTEELLINEN YRITYS – EI ASIAKASTOIMITUS",
+  "company": "Uudenmaan Korjausrakentajat Oy (kuvitteellinen)",
+  "source_retrieved_at": "2026-10-19T00:12:27.163249+00:00",
+  "notices_checked": 100,
+  "unique_source_ids": 100,
+  "deadline_status_counts": {
+    "OPEN": 93,
+    "EXPIRED": 7
+  },
+  "delivery_decision_counts": {
+    "NOT_EVALUATED": 93,
+    "EXPIRED": 7
+  },
+  "heuristic_classes_not_gold": {
+    "Epärelevantti": 66,
+    "Mahdollinen": 19,
+    "Relevantti": 15
+  },
+  "annexes_fully_checked": 0,
+  "verified_customer_eligibilities": 0,
+  "independent_gold_reviews": 0,
+  "verified_customer_recommendations": 0,
+  "source_coverage": "Search-index metadata only; no tender annexes or full notices",
+  "relevance_precision": null,
+  "first_customer_delivery_ready": false,
+  "decision": "CONDITIONAL PASS – technical blocking checks work; client delivery not validated",
+  "critical_qa": {
+    "expired_recommended_as_GO": "PASS",
+    "unreviewed_annexes_recommended_as_GO": "PASS",
+    "all_source_ids_traceable": "PASS",
+    "independent_precision_gate": "NOT TESTED",
+    "actual_customer_eligibility": "NOT TESTED",
+    "customer_send": "NOT TESTED (prohibited for internal pilot)"
+  }
+}

@@ -1,0 +1,56 @@
+name: Urakkaluotsi notice-bound Hilma attachment pilot
+on:
+  workflow_dispatch:
+  push:
+    branches: ['fix/urakkaluotsi-p0-validation']
+    paths:
+      - 'data/validation/trigger_notice_attachment_pilot_2026-10-19.txt'
+
+permissions:
+  contents: read
+
+jobs:
+  notice-attachments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install 'requests>=2.31,<3'
+      - name: Fetch two fixed original eForms notices and only explicitly linked public PDFs/ZIPs
+        env:
+          HILMA_API_KEY: ${{ secrets.HILMA_API_KEY }}
+        run: |
+          python -B workers/pilot_notice_bound_hilma.py --output /tmp/urakkaluotsi_notice_attachments --download
+      - name: Emit sanitized original XML access-location evidence
+        run: |
+          python - <<'PY'
+          import json
+          p='/tmp/urakkaluotsi_notice_attachments/notice_discovery.json'
+          data=json.load(open(p,encoding='utf-8'))
+          for row in data.get('document_link_evidence',[]):
+              print('NOTICE',row['notice_id'],'COUNTS',row['counts'])
+              for link in row['links']:
+                  from urllib.parse import urlsplit
+                  u=urlsplit(link['url'])
+                  print('LINK',link['kind'],'HOST',u.hostname,'PATH',u.path,
+                        'XML_ELEMENT',link['source_pointer'])
+          for row in data.get('xml_url_field_audits',[]):
+              print('XML_URL_AUDIT',row['notice_id'],'COUNT',row['url_field_count'])
+              for field in row['url_fields']:
+                  print('FIELD',field['xml_path'],'HOST',field['host'],
+                        'CLASS',field['url_class'])
+          PY
+      - name: Verify no automatic eligibility or gold decision
+        run: |
+          python -B -c 'import json; x=json.load(open("/tmp/urakkaluotsi_notice_attachments/notice_discovery.json")); assert x["api_calls"] <= 2 and x["complete_tender_packages"] == 0 and x["gold_positives"] == 0 and x["precision_at_30"] is None'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: urakkaluotsi-notice-linked-public-evidence
+          path: /tmp/urakkaluotsi_notice_attachments/
+          retention-days: 2
+          if-no-files-found: warn

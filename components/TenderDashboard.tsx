@@ -176,7 +176,7 @@ export default function TenderDashboard({
                             ? "badge badgeNo"
                             : "badge"
                       }>
-                        {item._decision}
+                        {item._decision}{item._safetyNotes.length ? " · tarkista" : ""}
                       </span>
                     </td>
                     <td>{(item.sopimusriskit ?? []).length}</td>

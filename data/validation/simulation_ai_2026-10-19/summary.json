@@ -1,0 +1,72 @@
+{
+  "test_marking": "SISÄINEN TESTI – KUVITTEELLINEN YRITYS – EI ASIAKASTOIMITUS",
+  "company": "Uudenmaan Korjausrakentajat Oy (kuvitteellinen)",
+  "source_retrieved_at": "2026-10-19T00:12:27.163249+00:00",
+  "notices_checked": 100,
+  "unique_source_ids": 100,
+  "deadline_status_counts": {
+    "OPEN": 93,
+    "EXPIRED": 7
+  },
+  "delivery_decision_counts": {
+    "NOT_EVALUATED": 92,
+    "CANCELLED": 1,
+    "EXPIRED": 7
+  },
+  "heuristic_classes_not_gold": {
+    "Epärelevantti": 66,
+    "Mahdollinen": 19,
+    "Relevantti": 15
+  },
+  "annexes_fully_checked": 0,
+  "verified_customer_eligibilities": 0,
+  "independent_gold_reviews": 0,
+  "verified_customer_recommendations": 0,
+  "source_coverage": "Search-index metadata only; no tender annexes or full notices",
+  "relevance_precision": null,
+  "first_customer_delivery_ready": false,
+  "decision": "CONDITIONAL PASS – offline technical safety; relevance and customer readiness not proven",
+  "critical_qa": {
+    "expired_recommended_as_GO": "PASS",
+    "unreviewed_annexes_recommended_as_GO": "PASS",
+    "all_source_ids_traceable": "PASS",
+    "independent_precision_gate": "NOT TESTED",
+    "actual_customer_eligibility": "NOT TESTED",
+    "customer_send": "NOT TESTED (prohibited for internal pilot)",
+    "cancelled_recommended_as_GO": "PASS",
+    "ai_review_never_claims_gold": "PASS",
+    "source_label_and_metric_hashes": "PASS",
+    "annexes_actually_reviewed": "NOT TESTED",
+    "company_eligibility_actually_confirmed": "NOT TESTED",
+    "unverified_worksite_location": "NOT TESTED",
+    "published_or_sent": "NOT TESTED (explicitly prohibited)"
+  },
+  "simulation_round": "AI_SILVER_SECOND_OFFLINE_DRY_RUN",
+  "ai_review_type": "AI_SILVER_SOURCE_REVIEW_NOT_HUMAN_GOLD",
+  "ai_review_label_counts": {
+    "Epärelevantti": 91,
+    "Mahdollinen": 7,
+    "NOT_EVALUATED": 1,
+    "Relevantti": 1
+  },
+  "ai_review_source_sha256": "99f386d49a7996594ee3f4d856c707bea209e51742cec32e707e6c3bbf9ca074",
+  "ai_review_label_sha256": "73000ba0d0f5e5640c4b44796db063f9879965594b124b03111b862af41016fc",
+  "ai_review_metrics": {
+    "observed_tp": 1,
+    "observed_fp": 10,
+    "observed_fn": 0,
+    "fp_range": [
+      10,
+      14
+    ],
+    "fn_range": [
+      0,
+      4
+    ],
+    "precision_range": [
+      0.0667,
+      0.3333
+    ],
+    "known_positive_precision": 0.0909
+  }
+}
