@@ -6,6 +6,8 @@ on:
       - feature/urakkaluotsi-p0-relevance-validation
     paths:
       - .github/workflows/hilma-independent-review.yml
+      - workers/build_validation_set.py
+      - workers/test_relevance_validation.py
 
 permissions:
   contents: read
@@ -25,6 +27,8 @@ jobs:
           run-id: 39179825192
           github-token: ${{ github.token }}
           path: data
+      - name: Regression tests (offline)
+        run: python -m unittest workers.test_relevance_validation workers.test_independent_validation
       - name: Build rank-blinded review form without live API calls
         run: python -m workers.independent_validation prepare
       - name: Upload independent assessor form and original frozen ranking
