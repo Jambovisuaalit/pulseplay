@@ -58,11 +58,20 @@ def audit_eforms_xml(xml_text: str) -> dict:
         raise ValueError("DTD ja XML-entiteetit eivät ole sallittuja.")
     root = ET.fromstring(xml_text)
     entries: list[dict] = []
+    tender_lot_ids: list[str | None] = []
     for lot in root.iter():
         if local_name(lot.tag) != "ProcurementProjectLot":
             continue
+        lot_id_node = next(iter(children(lot, "ID")), None)
+        # eForms can also contain groups of lots and parts. Only schemeName=Lot
+        # represents an individual lot; absent schemes remain conservative.
+        if lot_id_node is not None and lot_id_node.get("schemeName") in {"LotsGroup", "Part"}:
+            continue
         lot_id = child_text(lot, "ID")
-        for terms in children(lot, "TenderingTerms"):
+        tender_lot_ids.append(lot_id)
+        # eForms BT-131 and BT-1311 are located under cac:TenderingProcess,
+        # not cac:TenderingTerms (the latter contains other tender conditions).
+        for terms in children(lot, "TenderingProcess"):
             for period_name, kind in (
                 ("TenderSubmissionDeadlinePeriod", "tender"),
                 ("ParticipationRequestReceptionPeriod", "participation_request"),
@@ -92,6 +101,7 @@ def audit_eforms_xml(xml_text: str) -> dict:
 
     return {
         "deadlines": entries,
+        "tender_lot_ids": tender_lot_ids,
         "document_leads": list(dict.fromkeys(document_leads)),
         "documents_status": "unknown",
         "documents_verified": False,
@@ -102,6 +112,11 @@ def compare_index_deadline(index_value: str | None, audit: dict) -> dict:
     tenders = [row for row in audit["deadlines"] if row["kind"] == "tender"]
     if not tenders or any(not row["valid"] for row in tenders):
         return {"verified": False, "reason": "Tarjousten määräaika puuttuu tai on puutteellinen XML:ssä."}
+    # One valid deadline cannot verify a notice if another individual lot has
+    # no BT-131 at all. Do not silently substitute the search-index deadline.
+    lots = audit.get("tender_lot_ids", [])
+    if not lots or any(not any(row["lot_id"] == lot_id for row in tenders) for lot_id in lots):
+        return {"verified": False, "reason": "Vähintään yhden osakohteen tarjousmääräaika puuttuu XML:stä."}
     try:
         indexed = dt.datetime.fromisoformat((index_value or "").replace("Z", "+00:00"))
         if indexed.tzinfo is None:
