@@ -1,7 +1,7 @@
 import datetime as dt
 import unittest
 
-from workers.build_validation_set import is_active, priority_score
+from workers.build_validation_set import is_active, priority_score, normalize_cpv
 from workers.score_validation import score_rows
 
 
@@ -36,6 +36,18 @@ class RelevanceValidationTests(unittest.TestCase):
         result = score_rows(rows)
         self.assertIsNone(result["top30_precision"])
         self.assertFalse(result["gate_pass"])
+
+    def test_cancelled_notice_excluded(self):
+        as_of = dt.datetime.fromisoformat("2026-10-19T12:00:00+03:00")
+        self.assertFalse(is_active({"title": "KESKEYTETTY Maunulan kirkko", "deadline": "2026-11-01T12:00:00+03:00"}, as_of))
+
+    def test_region_ranking(self):
+        self.assertGreater(priority_score({"title": "Korjaustyöt Espoo"}), priority_score({"title": "Korjaustyöt Kaarina"}))
+        self.assertEqual(priority_score({"title": "Korjaustyöt"}), 4)
+
+    def test_cpv_serialization(self):
+        self.assertEqual(normalize_cpv("45450000"), "45450000")
+        self.assertEqual(normalize_cpv(["45450000", "45200000"]), "45450000|45200000")
 
     def test_duplicate_id_rejected(self):
         rows = [
