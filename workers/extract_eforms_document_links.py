@@ -78,6 +78,37 @@ def extract(xml: str, *, notice_id: str, source_pointer: str) -> dict:
                 ("DIRECT_PUBLIC_DOCUMENT","PUBLIC_PORTAL","ACCESS_RESTRICTED_OR_UNKNOWN")},
             "package_complete":False,"gold_label":"UNREVIEWED","precision_at_30":None}
 
+def audit_url_fields(xml: str) -> dict:
+    """Enumerate XML URL locations for coverage diagnosis; do not output full URLs or query strings.
+
+    This is not a claim of document access. Hostname and local XML tag paths
+    are structural diagnostics, not download requests.
+    """
+    root=ET.fromstring(xml)
+    rows=[]
+    def walk(node: ET.Element, path: str) -> None:
+        fields=[("text",node.text or "")]+[("@"+local(k),v) for k,v in node.attrib.items()]
+        for field,raw in fields:
+            for m in LINK_RE.finditer(raw):
+                u=m.group(0).rstrip(".,;)]}")
+                try:
+                    p=urllib.parse.urlsplit(u)
+                    host=p.hostname.lower() if p.hostname else ""
+                except ValueError:
+                    host=""
+                rows.append({"xml_path":path+"/"+field,"host":host,
+                             "url_class":category(u),
+                             "document_context_candidate":any(s in path for s in (
+                                 "Tender", "Document", "AccessTools", "ExternalReference"))})
+        counts={}
+        for child in node:
+            tag=local(child.tag)
+            counts[tag]=counts.get(tag,0)+1
+            walk(child,path+"/"+tag+f"[{counts[tag]}]")
+    walk(root,"/"+local(root.tag)+"[1]")
+    return {"url_field_count":len(rows),"url_fields":rows[:100],
+            "truncated":len(rows)>100}
+
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--xml-dir",type=Path,required=True)
