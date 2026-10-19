@@ -1,0 +1,35 @@
+name: Hilma XML probe - max 3 calls
+
+on:
+  push:
+    branches:
+      - fix/hilma-offline-safety-validation
+    paths:
+      - .github/workflows/hilma-xml-probe-once.yml
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    if: github.event.head_commit.message == 'RUN_LIMITED_HILMA_XML_PROBE'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install minimal HTTP client
+        run: python -m pip install requests==2.32.3
+      - name: Run once with three-attempt hard cap
+        env:
+          HILMA_API_KEY: ${{ secrets.HILMA_API_KEY }}
+        run: python workers/live_xml_probe.py
+      - name: Preserve bounded results even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hilma-live-xml-probe
+          if-no-files-found: warn
+          path: data/validation/hilma_live_xml_probe.json
