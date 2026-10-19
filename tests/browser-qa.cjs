@@ -68,9 +68,9 @@ async function main() {
       await submit(); assert.equal(await evaluate(`document.querySelectorAll('[aria-invalid=true]').length`), 1); assert.equal(await evaluate('document.activeElement.name'), 'email');
       assert.equal(await evaluate(`document.getElementById(document.activeElement.getAttribute('aria-describedby')).textContent.includes('sähköpostiosoite')`), true);
       await fill('email', 'qa@example.invalid'); await submit();
-      assert.ok(await evaluate(`document.getElementById('pilot-draft').value.includes('QA & Ääkkönen Oy')`));
-      assert.ok(await evaluate(`document.querySelector('[role=status]').textContent.includes('ei ole vahvistettu vastaanotetuksi')`));
-      pass(`${width}px blank / malformed / valid contact`, '5 blank errors; email error focused/described; valid draft and copy fallback; no false receipt');
+      await delay(500);
+      assert.ok(await evaluate(`document.querySelector('[role=status]').textContent.includes('ei ole vielä käytössä')`));
+      pass(`${width}px blank / malformed / valid contact`, '5 blank errors; invalid email focused; unconfigured server returns safe error; no false success');
       await navigate('http://127.0.0.1:3187/esittely/tietosuoja');
       assert.equal(await evaluate(`document.querySelector('h1').textContent`), 'Tietosuojaseloste'); assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'));
       pass(`${width}px direct privacy route`, 'Styled route; no horizontal overflow');
@@ -87,6 +87,7 @@ async function main() {
     assert.ok(await evaluate(`getComputedStyle(document.querySelector('.ul-form-fields')).display==='none'`)); pass('No-JavaScript contact', 'noscript mail link; nonworking form hidden');
     await send('Emulation.setScriptExecutionDisabled', { value: false });
     const pdf = await fetch('http://127.0.0.1:3187/urakkaluotsi/esimerkkikooste.pdf'); assert.equal(pdf.status, 200); assert.ok(pdf.headers.get('content-type').includes('application/pdf')); const bytes = Buffer.from(await pdf.arrayBuffer()); assert.equal(bytes.length, 81071); fs.writeFileSync(`${output}/esimerkkikooste.pdf`, bytes); pass('Public PDF', 'HTTP 200 application/pdf; 81071 bytes identical demo');
+    const api = await fetch('http://127.0.0.1:3187/esittely/api/contact', { method: 'POST', headers: { origin: 'http://127.0.0.1:3187', 'content-type': 'application/json' }, body: JSON.stringify({company:'Test Oy',name:'Testi',email:'test@example.invalid',region:'Uusimaa',work:'Korjaukset'}) }); assert.equal(api.status,503); pass('Server contact fail-closed', 'HTTP 503 when provider environment not configured');
     const privacy = await fetch('http://127.0.0.1:3187/esittely/tietosuoja'); assert.equal(privacy.status, 200); pass('Privacy without login', 'HTTP 200');
     const icon = await fetch('http://127.0.0.1:3187/favicon.svg'); assert.equal(icon.status, 200); pass('Public favicon', 'HTTP 200');
     const locked = await fetch('http://127.0.0.1:3187/', { redirect: 'manual' }); assert.equal(locked.status, 307); assert.ok(locked.headers.get('location').endsWith('/login')); pass('Protected dashboard', 'HTTP 307 → /login');
