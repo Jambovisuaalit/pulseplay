@@ -31,6 +31,19 @@ class DocumentLinkTests(unittest.TestCase):
         self.assertEqual(category("http://tarjouspalvelu.fi/test"),"ACCESS_RESTRICTED_OR_UNKNOWN")
         self.assertEqual(category("https://example.org/a.pdf"),"ACCESS_RESTRICTED_OR_UNKNOWN")
 
+    def test_original_eforms_document_access_separate_from_submission(self):
+        xml = """<ContractNotice><ProcurementProjectLot><TenderingTerms>
+            <CallForTendersDocumentReference><Attachment><ExternalReference>
+            <URI>https://tarjouspalvelu.fi/espoo</URI>
+            </ExternalReference></Attachment></CallForTendersDocumentReference>
+            <TenderRecipientParty><EndpointID>https://tarjouspalvelu.fi/espoo</EndpointID></TenderRecipientParty>
+            </TenderingTerms></ProcurementProjectLot></ContractNotice>"""
+        x=extract(xml,notice_id="59375",source_pointer="original/59375.xml")
+        self.assertEqual(x["counts"]["PUBLIC_PORTAL"],1)
+        self.assertEqual(len(x["submission_endpoints"]),1)
+        self.assertEqual(x["submission_endpoints"][0]["kind"],"TENDER_SUBMISSION_ENDPOINT")
+        self.assertEqual(x["links"][0]["kind"],"PUBLIC_PORTAL")
+
     def test_no_links_is_not_a_positive(self):
         x=extract("<Notice><Name>Espoo saneeraus</Name></Notice>",notice_id="59188",source_pointer="xml")
         self.assertEqual(x["links"],[])
