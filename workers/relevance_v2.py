@@ -80,6 +80,9 @@ def area_signal(notice: dict) -> Signal:
         if re.search(r"\b(?:kohde|rakennuspaikka|työmaa|urakka-alue|urakkakohde|kiinteistö|osoitteessa|sijaitse\w*)\b", s, re.I):
             if re.search(r"\b(?:sijaitse\w*|osoitteessa|urakkakohde|rakennuspaikka|työmaa)\b", s, re.I):
                 site_evidence.append(s[:300])
+    # Explicit worksite phrasing in a title is also source evidence.
+    if _match(r"\\b(?:urakkakohde|työmaa|rakennuspaikka|osoitteessa|sijaitse\\w*)\\b", title):
+        site_evidence.append(title[:300])
     # Title city treated as site only in explicit "Helsinki, <project>" form,
     # NOT "Helsingin kaupunki pyytää ..." or buyer metadata.
     if _match(r"\b(?:helsinki|espoo|vantaa|kauniainen|kirkkonummi|sipoo|mäntsälä|tuusula|hyvinkää|lohja)\s*[,;:]\s*\S", title):
