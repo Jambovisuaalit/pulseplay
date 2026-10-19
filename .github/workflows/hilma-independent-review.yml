@@ -8,6 +8,7 @@ on:
       - .github/workflows/hilma-independent-review.yml
       - workers/build_validation_set.py
       - workers/test_relevance_validation.py
+      - workers/independent_validation.py
 
 permissions:
   contents: read
@@ -29,6 +30,27 @@ jobs:
           path: data
       - name: Regression tests (offline)
         run: python -m unittest workers.test_relevance_validation workers.test_independent_validation
+      - name: Produce candidate reranking without modifying frozen ranking
+        run: |
+          python -m workers.build_validation_set
+          test -f data/validation/hilma_100_reranked_candidate.csv
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          p=Path("data/validation")
+          def read(name):
+              with (p/name).open(encoding="utf-8-sig", newline="") as f:
+                  return list(csv.DictReader(f))
+          before=read("hilma_100_luokiteltavaksi.csv")
+          after=read("hilma_100_reranked_candidate.csv")
+          old={r["notice_id"]:int(r["rank"]) for r in before}
+          new={r["notice_id"]:int(r["rank"]) for r in after}
+          print("FROZEN_TOP30", [r["notice_id"] for r in before[:30]])
+          print("CANDIDATE_TOP30", [r["notice_id"] for r in after[:30]])
+          print("TOP30_OVERLAP", len(set(old_id for old_id,rank in old.items() if rank<=30)&set(new_id for new_id,rank in new.items() if rank<=30)))
+          print("CANCELLED_IN_CANDIDATE", [r["notice_id"] for r in after if "keskeytetty" in r["title"].casefold()])
+          assert not any("keskeytetty" in r["title"].casefold() for r in after)
+          PY
       - name: Build rank-blinded review form without live API calls
         run: python -m workers.independent_validation prepare
       - name: Upload independent assessor form and original frozen ranking
@@ -39,3 +61,4 @@ jobs:
           path: |
             data/validation/hilma_100_blind_review.csv
             data/validation/hilma_100_luokiteltavaksi.csv
+            data/validation/hilma_100_reranked_candidate.csv
