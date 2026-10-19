@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Independent reference fixture: reduced structural excerpt of the EU TED
+  eForms-SDK cn_24_minimal.xml (SDK 1.15), not a Hilma notice.
+  Source: https://github.com/OP-TED/eForms-SDK/blob/develop/examples/notices/cn_24_minimal.xml
+  The source's LOT-0000 deadline is 2020-02-04 at 10:00:00+02:00.
+  Structural subset only; not a replacement for schema validation.
+-->
+<ContractNotice xmlns="urn:oasis:names:specification:ubl:schema:xsd:ContractNotice-2"
+  xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+  xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cac:ProcurementProjectLot>
+    <cbc:ID schemeName="Lot">LOT-0000</cbc:ID>
+    <cac:TenderingTerms>
+      <cbc:FundingProgramCode listName="eu-funded">eu-funds</cbc:FundingProgramCode>
+    </cac:TenderingTerms>
+    <cac:TenderingProcess>
+      <cbc:SubmissionMethodCode listName="esubmission">required</cbc:SubmissionMethodCode>
+      <cac:TenderSubmissionDeadlinePeriod>
+        <cbc:EndDate>2020-02-04+02:00</cbc:EndDate>
+        <cbc:EndTime>10:00:00+02:00</cbc:EndTime>
+      </cac:TenderSubmissionDeadlinePeriod>
+      <cac:OpenTenderEvent>
+        <cbc:OccurrenceDate>2020-02-04+01:00</cbc:OccurrenceDate>
+        <cbc:OccurrenceTime>10:00:00+01:00</cbc:OccurrenceTime>
+      </cac:OpenTenderEvent>
+    </cac:TenderingProcess>
+  </cac:ProcurementProjectLot>
+</ContractNotice>

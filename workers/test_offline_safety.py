@@ -124,6 +124,19 @@ class OfflineSafetyTests(unittest.TestCase):
         self.assertFalse(audit["documents_verified"])
         self.assertTrue(xml_audit.compare_index_deadline("2026-10-31T09:00:00Z", audit)["verified"])
 
+    def test_independent_ted_sdk_example_matches_utc(self):
+        """TED SDK source values, independently of our hand-built October cases."""
+        xml = (ROOT / "tests/fixtures/ted_cn24_deadline_excerpt.xml").read_text(encoding="utf-8")
+        audit = xml_audit.audit_eforms_xml(xml)
+        self.assertEqual(audit["tender_lot_ids"], ["LOT-0000"])
+        self.assertEqual(audit["deadlines"][0]["deadline_iso"], "2020-02-04T10:00:00+02:00")
+        self.assertTrue(xml_audit.compare_index_deadline("2020-02-04T08:00:00Z", audit)["verified"])
+        self.assertFalse(xml_audit.compare_index_deadline("2020-02-04T09:00:00Z", audit)["verified"])
+        # Opening of tenders is a separate event; its date/time cannot overwrite BT-131.
+        self.assertEqual(len(audit["deadlines"]), 1)
+        self.assertEqual(audit["documents_status"], "unknown")
+        self.assertFalse(audit["documents_verified"])
+
     def test_eforms_refuses_conflicting_lots_or_index(self):
         audit = xml_audit.audit_eforms_xml(fixture_xml(other_time="13:00:00+03:00"))
         self.assertFalse(xml_audit.compare_index_deadline("2026-10-31T09:00:00Z", audit)["verified"])
