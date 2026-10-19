@@ -1,0 +1,3 @@
+notice_id,source_portal,worksite_area,repair_scope,single_contract_value_10k_250k,company_eligibility,mandatory_visit,attendance_evidence,source_review_status,gold_label,reason
+59188,https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon/?tpId=631619,PASS,PASS,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,PARTIAL_SOURCE_REVIEW,UNREVIEWED,Price and qualification documents not verified
+59375,https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon/?tpId=611165,PASS,PASS,UNKNOWN,UNKNOWN,REQUIRED,UNKNOWN,PARTIAL_SOURCE_REVIEW,UNREVIEWED,Mandatory site visit unverified and price and qualifications unknown
