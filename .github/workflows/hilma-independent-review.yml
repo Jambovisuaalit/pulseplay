@@ -1,0 +1,37 @@
+name: Hilma independent review template (offline)
+
+on:
+  push:
+    branches:
+      - feature/urakkaluotsi-p0-relevance-validation
+    paths:
+      - .github/workflows/hilma-independent-review.yml
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  prepare_blind_review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout feature branch
+        uses: actions/checkout@v4
+      - name: Download existing frozen Hilma snapshot
+        uses: actions/download-artifact@v4
+        with:
+          name: urakkaluotsi-limited-sample
+          run-id: 39179825192
+          github-token: ${{ github.token }}
+          path: .
+      - name: Build rank-blinded review form without live API calls
+        run: python -m workers.independent_validation prepare
+      - name: Upload independent assessor form and original frozen ranking
+        uses: actions/upload-artifact@v4
+        with:
+          name: hilma-independent-review-template
+          if-no-files-found: error
+          path: |
+            data/validation/hilma_100_blind_review.csv
+            data/validation/hilma_100_luokiteltavaksi.csv
