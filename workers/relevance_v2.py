@@ -71,6 +71,13 @@ def area_signal(notice: dict) -> Signal:
         return Signal("UNKNOWN", "WORKSITE_FIELD_CONTRADICTS_EVIDENCE", evidence)
     if not title and not description:
         return Signal("UNKNOWN", "MISSING_SOURCE_TEXT", "")
+    # A directly described service area of a municipal framework may be used
+    # as geographical exclusion, but never infer worksite from buyer metadata.
+    framework = bool(_match(r"\\b(?:puitejärjestely|puitesopimus|puitejärjestelynä|puitesopimuskumppan\\w*)\\b", title+" "+description))
+    if framework and not explicit:
+        m = _match(r"\\b(Mäntyharjun|Kaarinan)\\s+(?:kunta|kaupunki)\\s+(?:kilpailuttaa|\\([^)]*\\)\\s*hakee|hakee)\\b", description)
+        if m:
+            return Signal("OUT", "FRAMEWORK_EXPLICIT_NON_UUSIMAA_SERVICE_AREA", m.group(0))
     # Only sentences / clauses which explicitly designate worksite count.
     # Buyer names and generic city mentions alone are not sufficient.
     lines = re.split(r"[\n.;]", description)
@@ -162,9 +169,20 @@ def classify_notice(notice: dict) -> dict:
     scope = scope_signal(notice)
     cancelled = bool(_match(r"^\s*(?:keskeytetty|peruttu)\b", title))
     reasons = [f"AREA_{area.reason}", f"SIZE_{size.reason}", f"SCOPE_{scope.reason}"]
-    if cancelled:
+    # Deadline exclusion requires an explicit evaluation timestamp; historical
+    # frozen holdouts stay reproducible and do not change with wall-clock time.
+    expired = False
+    if notice.get("evaluation_time_utc") and notice.get("deadline"):
+        from datetime import datetime
+        try:
+            asof = datetime.fromisoformat(str(notice["evaluation_time_utc"]).replace("Z","+00:00"))
+            cutoff = datetime.fromisoformat(str(notice["deadline"]).replace("Z","+00:00"))
+            expired = asof.tzinfo is not None and cutoff.tzinfo is not None and cutoff <= asof
+        except ValueError:
+            expired = False
+    if cancelled or expired:
         label = "Epärelevantti"
-        reasons.insert(0, "CANCELLED_TITLE")
+        reasons.insert(0, "CANCELLED_SOURCE_STATUS" if cancelled else "EXPIRED_AT_EVALUATION_TIME")
     elif "OUT" in (area.status, size.status, scope.status):
         label = "Epärelevantti"
     elif (area.status, size.status, scope.status) == ("IN", "IN", "MATCH"):
