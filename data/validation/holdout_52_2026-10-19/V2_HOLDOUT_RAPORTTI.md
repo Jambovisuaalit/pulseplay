@@ -2,7 +2,7 @@
 
 **SISÄINEN TESTI – KUVITTEELLINEN YRITYS – EI ASIAKASTOIMITUS**
 
-Arviointi 19.10.2026. Tekninen kohde: Uudenmaan Korjausrakentajat Oy (kuvitteellinen).
+Alkuperäinen arviointi 19.10.2026, uusinta ja raportin täsmäytys 20.10.2026. Tekninen kohde: Uudenmaan Korjausrakentajat Oy (kuvitteellinen).
 Tämä ei ole uusi 30 päivän seuranta, täydellinen tarjousasiakirja-arvio eikä
 ensimmäisen maksavan asiakkaan toimitus.
 
@@ -52,7 +52,8 @@ silti ole riippumattomasti varmennettua ihmisen gold-totuutta.
 | Mittari | Vanhalla avainsanapisteytyksellä | V2 fail-closed |
 | --- | ---: | ---: |
 | Relevantti | 6 | 0 |
-| Ehdollinen | 5 | 21 |
+| Ehdollinen asiakasnostoehdokas | 5 | 0 |
+| Ei priorisoitu / puuttuvan tiedon vuoksi lykätty | 0 | 21 |
 | Epärelevantti | 41 | 31 |
 | AI:n mukaan selvästi väärät positiiviset | **6** | **0** |
 | AI:n mukaan selvästi väärät negatiiviset | 0 | 0 |
@@ -64,15 +65,19 @@ AI-silver-luokat: 49 epärelevanttia, 2 ehdollista, 1 ilman riittävää lähdet
 kuusi positiivista olivat tämän AI-arvion perusteella vääriä: Mäntsälän
 puitejärjestely, Jyväskylän kylpyhuonekorjaukset, lattianostinten työ,
 Tampereen talotekniikkakokonaisuus, TAYSin paloilmoitin ja Tuusulan
-uudisrakennus. V2 siirsi viisi pois rajauksesta ja yhden ehdolliseksi.
+uudisrakennus. Nykyinen V2 siirtää viisi pois rajauksesta ja yhden ei-priorisoiduksi. Ei-priorisoitu ei tarkoita lähteestä vahvistettua epärelevanttia.
 
 **Keskeinen tulkinta:** V2:n nolla väärää positiivista saavutettiin samalla,
 kun se ei antanut yhtään varmaa positiivista. Tarkkuuslukua ei voi laskea
 ilman yhtään positiivista ennustetta. Tätä ei saa ilmoittaa 100 %:n precisionina.
 
-V2:n 21 ehdollisesta 18 oli AI-silver-arvion perusteella epärelevanttia,
+V2:n 21 ei-priorisoidusta 18 oli AI-silver-arvion perusteella epärelevanttia,
 2 epäselvää ja 1 arvioimaton. Ehdollisten tarkistusjono on siis edelleen
-laaja eikä työaikatavoitetta ole todennettu.
+laaja eikä työaikatavoitetta ole todennettu. Aiempi tulostiedosto oli vanhasta luokittelijaversiosta: tässä ajossa JSON/CSV-tulokset täsmäytettiin nykyiseen kooditiivisteeseen `5c8a5f1c0b0ebe330c9820c64f13b25c1615af5f8fefd728d66455eefce5b91e`.
+
+20.10.2026 lisätty alkuperäaineiston hashin, tunnisteiden, menettelyjen, otsikoiden ja 52 AI-lähdesitaatin uudelleentarkistus. Tarkistus laskee erillisyyden lähdetiedostoista eikä luota manifestiin merkittyihin nolliin. Päällekkäisyys, väärä sitaatti, väärä snapshot tai perusteeton täysien asiakirjojen tarkistusväite pysäyttää arvioinnin. 130 Python-testiä PASS, sisältäen neljä uutta provenienssitestiä.
+
+100 ilmoituksen uusintasimulaatio 20.10.2026: 92 NOT_EVALUATED, 7 EXPIRED, 1 CANCELLED ja 0 GO. Tämä on saman historiallisen aineiston uusinta, ei uusi riippumaton validointijoukko.
 
 ## QA ja hyväksyntä
 

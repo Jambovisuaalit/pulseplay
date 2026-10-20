@@ -14,18 +14,23 @@
   },
   "v2_class_counts": {
     "Epärelevantti": 31,
-    "Mahdollinen": 21
+    "Ei priorisoitu": 21
   },
   "class_migrations": [
+    {
+      "from": "Epärelevantti",
+      "to": "Ei priorisoitu",
+      "count": 18
+    },
     {
       "from": "Epärelevantti",
       "to": "Epärelevantti",
       "count": 23
     },
     {
-      "from": "Epärelevantti",
-      "to": "Mahdollinen",
-      "count": 18
+      "from": "Mahdollinen",
+      "to": "Ei priorisoitu",
+      "count": 2
     },
     {
       "from": "Mahdollinen",
@@ -33,19 +38,14 @@
       "count": 3
     },
     {
-      "from": "Mahdollinen",
-      "to": "Mahdollinen",
-      "count": 2
+      "from": "Relevantti",
+      "to": "Ei priorisoitu",
+      "count": 1
     },
     {
       "from": "Relevantti",
       "to": "Epärelevantti",
       "count": 5
-    },
-    {
-      "from": "Relevantti",
-      "to": "Mahdollinen",
-      "count": 1
     }
   ],
   "legacy_provisional_ai_metrics": {
@@ -79,11 +79,15 @@
     ],
     "precision_undefined_because_no_positive_predictions": true
   },
-  "v2_conditional_candidates_by_ai_class": {
+  "v2_deferred_count": 21,
+  "v2_actionable_conditional_count": 0,
+  "v2_deferred_by_ai_class": {
     "Epärelevantti": 18,
     "NOT_EVALUATED": 1,
     "Mahdollinen": 2
   },
+  "deferred_is_not_a_verified_negative": true,
+  "v2_conditional_candidates_by_ai_class": {},
   "official_precision": null,
   "official_relevance_gate": "NOT MEASURED",
   "official_false_negative_count": null,
@@ -91,8 +95,16 @@
   "human_gold_count": 0,
   "annexes_fully_checked": 0,
   "source_limitation": "Search-index metadata, same calendar date as old sample; no true independent temporal holdout",
+  "provenance_rechecked_from_actual_sources": {
+    "id_overlap": 0,
+    "procedure_id_overlap": 0,
+    "normalised_title_overlap": 0,
+    "source_ids_checked": 52,
+    "source_quotes_checked": 52,
+    "independent_accuracy_proven": false
+  },
   "source_sha256": "ef48545a624ab0399a9addc06cadd13593a0866fd574400fb9c234a807ae3a06",
   "ai_silver_labels_sha256": "286280efb843af1f8b8281bcada21ddc51fb812eb3d70ebcd846d96b6fd71c52",
   "model_version": "ICP_V2_FAIL_CLOSED_2026_10_19",
-  "classifier_code_sha256": "878168e404ae38b48152679e224692c8b396d44bc828ef2daf108b7ede0b46b8"
+  "classifier_code_sha256": "5c8a5f1c0b0ebe330c9820c64f13b25c1615af5f8fefd728d66455eefce5b91e"
 }
