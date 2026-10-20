@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-19T16:45:56.699576+00:00",
+  "deployment": "dpl_EhiaqYnywHykdRyGCDnkRv7h9DvC",
+  "testReference": "UL-20261019-1941",
+  "status": 202,
+  "response": {
+    "success": true,
+    "message": "Viestisi on vastaanotettu lähetyspalveluun. Otamme yhteyttä."
+  },
+  "mode": "Direct POST to deployed form handler; scripts not executed"
+}

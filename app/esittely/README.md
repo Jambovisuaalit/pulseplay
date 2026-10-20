@@ -1,34 +1,43 @@
 # Urakkaluotsi – julkinen myyntisivu
 
-Nykyinen design säilytetään. Julkiset reitit ovat `/esittely`, `/esittely/tietosuoja` ja `/urakkaluotsi/*`. Juurireitin dashboard säilyy suojattuna.
+Reitit: `/esittely`, `/esittely/tietosuoja`, POST `/esittely/api/contact` ja `/urakkaluotsi/*`. Juurireitti, `/ops` ja sisäiset API-reitit säilyvät suojattuina.
 
-## Muokkaus
+Pohja: `feature/urakkaluotsi-pilot-metrics` / c04ccf1, jotta uudempi toimitusportaali säilyy. PR #3 on avoin luonnos; sen jälkeen palvelinlomake on kehitetty haarassa `feature/urakkaluotsi-server-contact` / 31f699b. Lomake integroitiin tähän pohjaan. Main sisältää eri projektin eikä ole tämän sovelluksen julkaisuhaara. AGENTS.md-tiedostoja ei löytynyt. Työpuu oli alussa puhdas.
 
-- `page.tsx`: sivun teksti, hero ja nelisivuisen demon linkit.
-- `site.css`: nykyinen layout ja rajatut responsiivisuus-/saavutettavuuskorjaukset.
-- `contact.ts`: kenttien rajat, validointi ja mailto-luonnoksen muodostus.
-- `pilot-form.tsx`: virhetilat, fokus ja kopioitava varaviesti.
-- `tietosuoja/page.tsx`: nykyisen yhteydenottotavan tietosuojaseloste; lataa oman tyylitiedostonsa myös suoralla avauksella.
-- `JULKAISU-QA.md`: testien tulokset ja jäljellä olevat rajoitteet.
+## Toteutus
 
-## Palveluntarjoaja ja tietojen käsittely
+- `page.tsx`: suomenkielinen myyntisivu, semanttinen esimerkkikortti ja alkuperäinen PDF.
+- `site-config.ts`: 249 € / 30 päivää, lopullinen hinta. Myyjä ei kuulu ALV-rekisteriin (käyttäjän vahvistus 19.10.2026).
+- `site.css`: nykyisen CSS-rakenteen rajattu viimeistely. Projektissa ei ole Tailwindia; sitä ei lisätty uutena riippuvuutena.
+- `pilot-form.tsx`: yhteinen kenttävalidointi, palvelinvirheet, fokus, lähetyksen tila ja synkroninen kaksoislähetyksen esto.
+- `api/contact/route.ts`: nykyinen Resend-käsittelijä, origin-/koko-/tyyppitarkistus ja lähetyspalvelun kuittaus. Ei henkilötietoja localStorageen.
+- Logo, OG ja PDF kopioitu liitteistä. PDF SHA-256: `36762a526ae0a7299098c77e8e64a9ca78d15b4a3ac0b9a4624b7b9e4ad1e69b`.
 
-Tmi Jami Harju, Y-tunnus **3581581-6**, väliaikainen yhteys **visualjambo@gmail.com**. Käyttäjä on antanut nimen, tunnuksen ja osoitteen. YTJ:n yrityshaussa 19.10.2026 tunnus löytyy yksityisenä elinkeinonharjoittajana, Verohallinnon perustiedoissa rekisterissä 24.11.2025 alkaen. Julkinen hakutulos ei näytä henkilön nimeä; sitä ei väitetä rekisteristä varmennetuksi.
+Käyttäjän 19.10.2026 vahvistamat myyjä- ja vastaanottajatiedot: Tmi Jami Harju / 3581581-6 / visualjambo@gmail.com. Myyjä ei kuulu ALV-rekisteriin, joten 249 € / 30 päivää on lopullinen hinta. Tieto perustuu tämän palvelun myyjää koskevaan käyttäjän vahvistukseen.
 
-Lomake muodostaa luonnoksen käyttäjän omaan sähköpostisovellukseen. Se ei lähetä viestiä palvelimelle, tallenna kenttiä tai vahvista vastaanottoa. Käyttäjä lähettää itse. Puuttuvan sähköpostisovelluksen varalle valmis teksti on kopioitavissa sivulta; suora sähköpostiosoite on aina näkyvissä. JavaScriptin puuttuessa näytetään suora yhteystieto ja piilotetaan toimimaton lomake.
+## Lähetyskanava
 
-Tietosuojaselosteen säilytysraja ei-asiakkaiden yhteydenotoille on enintään kuusi kuukautta viimeisestä yhteydenotosta, jollei avoin selvitys tai vaade edellytä pidempää. Palveluntarjoajan tulee toteuttaa poistokäytäntö sähköpostissa; sivusto ei voi poistaa Gmail-viestejä. Sähköpostipalvelu on Gmail ja hosting Vercel. Tilikohtaisia sopimus-/siirtojärjestelyjä tai lokisäilytystä ei väitetä tarkastetuiksi. Teksti ei ole oikeudellisen vaatimustenmukaisuuden varmennus.
+Asetukset: `RESEND_API_KEY`, `URAKKALUOTSI_CONTACT_FROM`, `URAKKALUOTSI_CONTACT_TO`. Puuttuva konfiguraatio palauttaa 503: "Lähetys ei ole vielä käytössä." Hyväksytty palveluntarjoajan vastaus palauttaa 202; se osoittaa vastaanoton lähetyspalveluun, ei lopullista inbox-toimitusta. Varmista lähettäjä ja vastaanottava postilaatikko sekä testaa todellinen toimitus ennen tuotantoa.
 
-## Toistettavat tarkistukset
+## Tarkistukset
 
-- `npm test`: Node 24, neljä lomakkeen validointi- ja encoding-testiä, ei ulkoisia kutsuja.
-- `npm run typecheck`: TypeScript.
-- `npm run build`: Next.js production build.
-- `node tests/browser-qa.cjs`: Chrome + Node 24, neljä viewportia, virhetilat, mailto-varapolku, näppäimistö, tekstin suurennus, JS pois käytöstä ja julkiset/suojatut HTTP-reitit. Käyttää vain Node- ja Chrome-vakiotyökaluja, ei uusia npm-riippuvuuksia.
-- `.github/workflows/urakkaluotsi-sales-qa.yml`: ajaa tarkistukset feature-haaran muutoksista; tulokset ja QA-kuvat ovat Actions-artifaktissa. Testien henkilötiedot ovat synteettisiä, sähköpostia ei lähetetä.
+`npm test`, `npm run lint`, `npm run typecheck`, `npm run build`.
+`node tests/auth-http.cjs --missing`, `node tests/auth-http.cjs`.
+`node tests/sales-polish-qa.cjs` käyttää QA-ympäristön Playwrightia ja Chromea. `PLAYWRIGHT_MODULE` voi osoittaa valmiiksi asennettuun moduuliin; `CHROME_PATH` selainbinääriin. Ei runtime-riippuvuuksia. Lähetyspalvelun onnistumiset ja virheet simuloidaan, sähköpostia ei lähetetä.
+`OPS_BROWSER_QA=true node tests/ops-http.cjs`: sisäisen portaalin työnkulku.
 
-Olemassa oleva `npm run lint` käyttää Next 15:ssä poistunutta `next lint` -komentoa; sitä ei nimetä toimivaksi lint-tarkistukseksi. Runtime-riippuvuuksia ei lisätty. Native iOS Safari ja todellisen sähköpostin vastaanotto eivät sisälly automatisoidun Chromen testiin.
+Vercelin tenderpulse-projekti ja nykyinen hosting-osoite tenderpulse-neon.vercel.app varmennettu connectorilla 19.10.2026. MetadataBase käyttää tätä hostia; canonical ja og:url jätetty asettamatta julkaisuosoitteen vahvistamiseen asti. Analytiikkaa ei löytynyt eikä sitä lisätty. Ei Hilma-kutsuja, ei liitteiden lataamista eikä tuotantojulkaisua.
 
-## Julkaisu
+Paikallinen esikatselu: `npm ci && npm run build && npm start`, sitten http://localhost:3000/esittely.
 
-Domainit on ostettu; DNS-/tuotantokytkentää ei tehdä tällä PR-korjauksella. Varmista kaupallinen hinta, toimitusrytmi ja ehdot ennen tilausta. Katso hyväksymispäätös QA-raportista. Ei mergeä eikä erillistä tuotantopromootiota tässä työssä.
+## Esikatselun lähetys varmennettu
+
+19.10.2026: Preview-ympäristön lähettäjä Urakkaluotsi <urakkaluotsi@virellahelsinki.com>, vastaanottaja visualjambo@gmail.com. Virellahelsinki.com on Resendissä varmennettu; avain rajattu tämän domainin sähköpostilähetyksiin. Selaimen oikea lomakelähetys palautti 202 ja viesti löytyi Gmailin Saapuneet-kansiosta. Katso QA-raportin lisätarkistus. Tuotannon asetuksia ei muutettu. API-avainta ei pidä tulostaa tai lisätä tähän dokumenttiin.
+
+## Oman domainin julkaisuvalmistelu
+
+`lib/public-site.ts` rajaa julkisen juurireitin vain urakkaluotsi.fi- ja www.urakkaluotsi.fi-hosteihin. Middleware rewrite `/` → `/esittely`; muiden hostien juurireitti sekä operaattori- ja hankintareitit säilyvät suojattuina. Vercelin www-domain ohjaa 308:lla apex-domainiin.
+
+Canonical ja OG URL aktivoituvat vain erikseen asetettavalla `URAKKALUOTSI_PUBLIC_ORIGIN=https://urakkaluotsi.fi`-muuttujalla. Preview ilman muuttujaa säilyttää aiemman metatietokäytöksen. `tests/domain-http.cjs` testaa aidolla HTTP Host -otsakkeella molemmat domainit, suojatut reitit, väärän hostin ja julkisen PDF:n (11 tarkistusta).
+
+19.10.2026: molemmat domainit lisätty Vercelin tenderpulse-projektiin ja omistajuus hyväksytty (`verified=true`). DNS osoitti edelleen Zonerin IP:hen 84.34.166.69. Zonerin selainhallinta vaatii kirjautumisen; DNS:ää ei muutettu. Nimipalvelimet, MX- ja SPF-tietueet säilytetään. Tuotantodeploymentia tai domainin julkista liikenteensiirtoa ei tehty.

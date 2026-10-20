@@ -1,7 +1,7 @@
 name: Urakkaluotsi sales QA
 on:
   push:
-    branches: [feature/urakkaluotsi-sales-page, feature/urakkaluotsi-foundation, feature/urakkaluotsi-data-model, feature/urakkaluotsi-pilot-metrics]
+    branches: [feature/urakkaluotsi-sales-page, feature/urakkaluotsi-foundation, feature/urakkaluotsi-data-model, feature/urakkaluotsi-pilot-metrics, feature/urakkaluotsi-sales-polish]
   workflow_dispatch:
 permissions:
   contents: read
@@ -22,10 +22,15 @@ jobs:
       - run: npm test
       - run: npm run typecheck
       - run: npm run build
+      - run: node tests/domain-http.cjs
       - run: node tests/auth-http.cjs --missing
       - run: node tests/auth-http.cjs
-      - name: Chromium browser QA
-        run: node tests/browser-qa.cjs
+      - name: Install QA browser driver only
+        run: npm install --no-save --package-lock=false --ignore-scripts playwright
+      - name: Chromium sales and contact QA
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+        run: node tests/sales-polish-qa.cjs
       - name: Frozen PDF integrity and page count
         run: node tests/verify-demo.cjs
       - name: Complete local simulation and ops browser QA
@@ -39,7 +44,7 @@ jobs:
         with:
           name: urakkaluotsi-sales-qa
           path: |
-            qa-output/results.json
+            qa-output/sales-polish-results.json
             qa-output/pdf-verification.json
             qa-output/*.png
             qa-output/ops-browser.json

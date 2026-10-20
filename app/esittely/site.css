@@ -18,3 +18,29 @@
 .ul-final-grid>*,.ul-demo>*,.ul-faq>*,.ul-split>*{min-width:0}.ul-privacy-page a{overflow-wrap:anywhere}.ul-privacy-page h1{max-width:none}
 .ul-footer :focus-visible,.ul-top :focus-visible{outline-offset:4px}.ul-footer :focus-visible{outline-color:#26bbc2}
 @media(max-width:800px){.ul-example-row{flex-wrap:wrap}.ul-example-row .ul-status{margin-left:30px;max-width:none}.ul-nav-cta{flex-shrink:0}.ul-nav{gap:12px}}
+/* Brand v1.1: quiet surfaces, evidence hierarchy and motion only on interaction. */
+.ul-product{border-radius:8px;box-shadow:0 8px 24px rgba(20,39,50,.04);transform:none}
+.ul-product-head{padding:16px 24px;gap:16px;color:#fff}
+.ul-evidence{margin:0}.ul-evidence>div{padding:16px 24px;border-bottom:1px solid var(--line)}
+.ul-evidence dt{display:flex;align-items:center;gap:16px;font-weight:650;font-size:.9rem;color:var(--ink)}
+.ul-evidence dd{margin:8px 0 0 32px;color:var(--muted);font-size:.875rem;line-height:1.6}
+.ul-product-foot a{min-height:44px;display:inline-flex;align-items:center;text-decoration:underline;text-underline-offset:4px}
+.ul-product-foot{align-items:center;padding:8px 24px}
+.ul-pdf-preview{transform:none;background:#e4edef}.ul-pdf-preview:hover{transform:translateY(-4px)}
+.ul-sheet{box-shadow:0 4px 16px rgba(20,39,50,.05)}
+.ul-form{border-radius:8px;scroll-margin-top:24px}.ul-form h2{font-size:1.58rem;margin:8px 0 16px;max-width:none;color:var(--ink)}
+.ul-final .ul-eyebrow{color:#26bbc2}.ul-step-num{color:var(--accent)}
+.ul-final .ul-price{font-size:2.5rem;font-weight:650;letter-spacing:-.04em;line-height:1.2;margin-top:32px;color:white}
+.ul-price span{display:block;font-size:.875rem;font-weight:400;letter-spacing:0;line-height:1.6;margin-top:8px;color:#d4e1e4}
+.ul-pilot-note{margin-top:24px}.ul-micro{font-weight:600}
+.ul-feature{transition:border-color .18s,background .18s}.ul-feature:hover{border-color:#71818a;background:#f4f7f8}
+.ul-nav nav a{transition:color .18s}.ul-btn{transition:background .18s,border-color .18s,transform .18s}.ul-btn:hover:not(:disabled){transform:translateY(-1px)}
+.ul-site :is(a,button,input,textarea,summary):focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.ul-footer :focus-visible{outline-color:#26bbc2}.ul-honeypot{display:none}
+@media(max-width:800px){.ul-nav{flex-wrap:wrap;padding-top:16px;padding-bottom:8px}.ul-nav nav{display:flex;order:3;width:100%;justify-content:space-between;gap:8px;font-size:.8rem}.ul-product-foot{align-items:flex-start}.ul-product-intro h2{max-width:24ch}}
+@media(prefers-reduced-motion:reduce){.ul-site *,.ul-site *::before,.ul-site *::after{animation:none!important;transition:none!important;transform:none!important;scroll-behavior:auto!important}}
+/* Keep long Finnish words and enlarged text within the available column. */
+.ul-site{overflow-wrap:anywhere}.ul-hero>*,.ul-step{min-width:0}
+.ul-nav nav{flex-wrap:wrap}.ul-product-head{flex-wrap:wrap}
+@media(max-width:800px){.ul-hero,.ul-step-grid{grid-template-columns:minmax(0,1fr)}.ul-site h1{max-width:17ch}.ul-evidence dd{margin-left:0}.ul-nav nav{justify-content:flex-start;column-gap:24px}.ul-kicker{align-items:flex-start}.ul-dot{margin-top:6px}}
+@media(min-width:431px) and (max-width:800px){.ul-step-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
