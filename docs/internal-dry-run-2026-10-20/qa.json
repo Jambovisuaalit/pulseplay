@@ -1,0 +1,8 @@
+{
+  "status": "PASS_INTERNAL_REVIEW_ONLY",
+  "pages_expected": 4,
+  "review_json_sha256": "058509c002d6f4abbfbd85b559261c6245cd4d58a0a889e2d3ff058afebeb727",
+  "items": 3,
+  "verified_bid_recommendations": 0,
+  "sent": false
+}
