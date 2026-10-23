@@ -17,6 +17,10 @@ try {
   }
   await db.exec('reset role');
  }
+ for(const privilege of ['SELECT','INSERT','UPDATE','DELETE','TRUNCATE','TRIGGER','REFERENCES']){
+  const result=await db.query(`select has_table_privilege('service_role','public.urakkaluotsi_ops_state','${privilege}') as allowed`);
+  assert.equal(result.rows[0].allowed,['SELECT','INSERT','UPDATE'].includes(privilege),`Unexpected service_role privilege: ${privilege}`);checks++;
+ }
  await db.exec('set role service_role');
  await db.query('insert into public.urakkaluotsi_ops_state values ($1,1,$2)', ['pilot-simulation',state]);checks++;
  await assert.rejects(db.query('insert into public.urakkaluotsi_ops_state values ($1,1,$2)', ['pilot-simulation',state]),e=>e.code==='23505');checks++;
