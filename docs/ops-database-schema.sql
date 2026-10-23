@@ -19,7 +19,9 @@ create table public.urakkaluotsi_ops_state (
   ) is true)
 );
 alter table public.urakkaluotsi_ops_state enable row level security;
-revoke all on public.urakkaluotsi_ops_state from public, anon, authenticated;
+revoke all on public.urakkaluotsi_ops_state from public, anon, authenticated, service_role;
+-- Supabase defaults may grant service_role DELETE/TRUNCATE/TRIGGER/REFERENCES.
+-- The server adapter only needs SELECT, INSERT and conditional UPDATE.
 grant select, insert, update on public.urakkaluotsi_ops_state to service_role;
 comment on table public.urakkaluotsi_ops_state is
  'Private single-operator simulation workspace. Next.js session authorization precedes every access. No public/anonymous policies.';
