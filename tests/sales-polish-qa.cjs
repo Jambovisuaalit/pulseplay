@@ -49,6 +49,7 @@ async function main(){
    assert.equal(await page.locator('link[rel=canonical]').count(),0);
    assert.equal(await page.locator('meta[property="og:url"]').count(),0);
    assert((await page.locator('meta[property="og:image"]').getAttribute('content')).endsWith('/urakkaluotsi/og.png'));
+   for(const [label,heading] of [['02 · Ymmärrä','Faktat ja arviot erottuvat toisistaan.'],['03 · Päätä','Selkeä seuraava tarkistus.'],['01 · Rajaa','Yrityksesi profiili ohjaa seurantaa.']]){await page.getByRole('button',{name:label,exact:true}).click();assert(await page.getByRole('heading',{name:heading,exact:true}).isVisible());}
    await page.locator('.ul-nav-cta').click();assert.equal(new URL(page.url()).hash,'#hakemus');
    for(const href of ['#toiminta','#esimerkki','#pilotti']){await page.locator(`nav a[href="${href}"]`).click();assert.equal(new URL(page.url()).hash,href);}
    await page.locator('.ul-form button').click();assert.equal(await page.locator('[aria-invalid=true]').count(),5);assert.equal(await page.evaluate(()=>document.activeElement.name),'company');
@@ -79,6 +80,14 @@ async function main(){
   await page.locator('.ul-form button').click();await page.getByRole('status').filter({hasText:'Viestin lähetys epäonnistui.'}).waitFor();pass('Non-JSON upstream failure is not shown as success');
   assert.equal(await page.evaluate(()=>localStorage.length),0);assert.equal(errors.length,0);pass('No localStorage contact data and no browser runtime exceptions');
   const nojs=await browser.newContext({javaScriptEnabled:false});const p=await nojs.newPage();await p.goto(origin+'/esittely');assert.equal(await p.locator('.ul-form-fields').isVisible(),false);assert(await p.locator('noscript a').isVisible());await nojs.close();pass('No JavaScript fallback');
+  for(const width of [375,390,768,1440]){
+   await page.setViewportSize({width,height:900});
+   for(const slug of ['tietoa','ominaisuudet','hinnoittelu','blogi','yhteys','muutosloki','integraatiot','esimerkkitapaus','tietosuoja','ehdot','tyyliopas']){
+    const response=await page.goto(origin+'/esittely/'+slug);assert.equal(response.status(),200);assert.equal(await page.locator('h1').count(),1);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+   }
+   const missing=await page.goto(origin+'/esittely/tuntematon-sivu');assert.equal(missing.status(),404);assert(await page.getByRole('heading',{name:'Tätä sivua ei löydy.'}).isVisible());await page.getByRole('link',{name:'Takaisin etusivulle →'}).click();assert.equal(new URL(page.url()).pathname,'/esittely');
+   pass(`${width}px: all content pages, custom 404 and return navigation`);
+  }
   await page.goto(origin+'/esittely/tietosuoja');assert.equal(await page.locator('h1').innerText(),'Tietosuojaseloste');pass('Direct privacy page');
   for(const resource of ['/urakkaluotsi/logo-primary.svg','/urakkaluotsi/mark-white.svg','/urakkaluotsi/og.png'])assert.equal((await realFetch(origin+resource)).status,200);
   const pdf=await realFetch(origin+'/urakkaluotsi/esimerkkikooste.pdf');assert.equal(pdf.status,200);assert(pdf.headers.get('content-type').includes('application/pdf'));const bytes=Buffer.from(await pdf.arrayBuffer());assert(bytes.equals(fs.readFileSync('public/urakkaluotsi/esimerkkikooste.pdf')));fs.writeFileSync('qa-output/esimerkkikooste.pdf',bytes);assert.equal((bytes.toString('latin1').match(/\/Type\s*\/Page\b/g)||[]).length,4);pass('Public PDF HTTP 200, four pages and byte-identical supplied original; logo and OG available');
