@@ -1,0 +1,53 @@
+notice_id	ai_label	reason_code	source_phrase	review_note
+160596	Epärelevantti	SCOPE	Kerrostalon purku-urakka	Purku-urakka ei kuulu palveluihin; lähdetekstissä Pieksämäki.
+54620	Epärelevantti	SCOPE	Avantosaunan KVR-rakennusurakka	Uuden rakennuksen kokonaisvastuu; lähdetekstissä Lapua.
+57348	Epärelevantti	SCOPE	Hulevesilinjan suuntaporaus Kauhajoki	Vesihuollon suuntaporaus eikä sisäkorjaus.
+57450	Epärelevantti	SCOPE	Katsomo- ja katoshanke	Uuden katsomon ja katoksen rakennus, ei asiakkaan palvelu.
+57487	Epärelevantti	SCOPE	Lieto, Sillilän päiväkoti	Uuden päiväkodin KVR-rakentaminen.
+57498	Epärelevantti	SCOPE	Petikon golfkentän kunnostus	Ulkokentän parannustyöt.
+57518	Epärelevantti	SCOPE	Vt 4 Lahdenväylä	Tie- ja eritasoliittymäallianssi.
+57552	Epärelevantti	SCOPE	Kauhajoen vapaa-aikakeskuksen huoltorakennus	Uuden huoltorakennuksen rakentaminen; ei saneeraus.
+57556	Epärelevantti	SCOPE	liikuntahallin rakentaminen sekä suunnittelu	Uuden hallin suunnittelu ja rakentaminen.
+57571	Epärelevantti	SCOPE	Veturitien alikulkukäytävä	Infra ja louhinta.
+57574	Epärelevantti	SCOPE	Suvilahdenkatu ja Vilhonvuorenkatu	Katu- ja vesihuoltorakentaminen.
+57598	Epärelevantti	SCOPE	Lempäälän Uuden Jäteaseman rakennusurakka	Uusi jäteasema.
+57600	Epärelevantti	SCOPE	Peltisepäntöiden puitejärjestely	Erikoistunut peltiseppäpalvelu, ei kuvattuihin viiteen peruspalveluun.
+57602	Epärelevantti	AREA	Jyväskylän Vuokra-asuntojen	Ilmoitus kohdistuu Jyväskylän huoneistokohteeseen.
+57608	Epärelevantti	SCOPE	pelastus- ja ensihoitoaseman hankinta vuokramallilla	Rakennuttamis- ja vuokrausmalli.
+57609	Epärelevantti	SCOPE	Lattianostimien peruskorjausurakka	Lattianostinmekaniikka, ei lattiapintojen korjaus.
+57610	Epärelevantti	SCOPE	Sprinkleriurakka	Talotekninen sprinkleriurakka.
+57634	Epärelevantti	SCOPE	Kipparlahden laiturin korjaus	Vesirakenteen laiturityö.
+57644	Epärelevantti	SCOPE	Kuusijärven esteetön uimapaikka	Uimarannan ja ulkoreitin rakennus.
+57660	Epärelevantti	SCOPE	Vt 9 Tampere-Orivesi	Tieurakka, ei kiinteistösaneeraus.
+57691	Epärelevantti	MIXED	LVIASJ-linjasaneeraushanke	LVIASJ ja vesikatot sisältyvät kokonaisuuteen.
+57723	Epärelevantti	SCOPE	katujen ja vesihuollon rakentaminen	Kunnallistekniikka.
+57724	Epärelevantti	SCOPE	katuvalaisinten vaihdot	Katuvalaistuksen tekninen vaihto.
+57738	Epärelevantti	AREA	Itä-Uudenmaan hyvinvointialueen	Palvelu koskee Itä-Uudenmaan aluetta, ei viittä pilottikuntaa; toimitusalue tarkistettava.
+57768	Epärelevantti	SCOPE	Ikkunoiden uusiminen	Poissuljettu ikkunoiden kokonaisuus.
+57772	Epärelevantti	MIXED	Taloteknisten järjestelmien uusiminen	Kokonaisuus sisältää taloteknisten järjestelmien uusimista.
+57774	Epärelevantti	AREA	Sodankylän kunnanviraston ja kirjaston	Työmaa lähdetekstissä Sodankylässä.
+57799		NO_SOURCE		Hakumetadatassa otsikko ja kuvaus puuttuvat.
+57832	Epärelevantti	SCOPE	Paloilmoittimen saneeraus	Paloilmoitinjärjestelmä, ei pintasaneeraus.
+57833	Epärelevantti	SCOPE	sillan rakennusurakka, Oulu	Silta- ja tierakentaminen.
+57861	Epärelevantti	SCOPE	konetyöpalvelut ja talvikunnossapito	Maarakennuskoneet ja talvikunnossapito.
+57872	Epärelevantti	SCOPE	Hissien vaihe 3	Hissien uusiminen.
+57875	Epärelevantti	AREA	Kokkolan kaupunki	Kaupungin kiinteistöpalvelujen puitesopimus Kokkolassa.
+57880	Epärelevantti	MIXED	kaikki LVISA-työt	Kokonaisurakka sisältää kaikki LVISA-työt eikä jakaudu osiin.
+57882	Mahdollinen	UNRESOLVED	Tapiolasalin akustiset parannukset	Espoossa sisätilojen seinä- ja pintarakenteiden työtä; kokoluokka ja erityisosaaminen avoin.
+57906	Epärelevantti	SCOPE	kerrostalon purku-urakka	Koko kerrostalon purku.
+57925	Epärelevantti	SCOPE	siltojen ylläpitourakka	Siltojen korjaus ja tarkastus, ei kiinteistökorjaus.
+57927	Epärelevantti	SCOPE	Hybridiakun sijoituspaikan vuokrasopimus	Vuokrasopimus ja perustamisurakka, ei sisäkorjaus.
+57961	Mahdollinen	UNRESOLVED	A-sairaalan C-siiven korjausprojekti	Korjaushanke mutta paikka, kokoluokka ja osittelu eivät käy ilmi hakumetadatasta.
+58014	Epärelevantti	SCOPE	uudisrakennushanke	Uudisrakentaminen ja kokonaiset LVIAS-työt.
+58047	Epärelevantti	SCOPE	Toivalan ylikulkusilta	Sillanrakennus.
+58068	Epärelevantti	SCOPE	Kulmakadun pienvenelaituri	Laiturin uusiminen.
+58095	Epärelevantti	SCOPE	Purku-urakka - Valkealan entinen sairaala	Rakennusten purku.
+58102	Epärelevantti	SCOPE	Vaarallisen jätteen kenttäalueen vesienjohtamisen	Ulkokentän vesienjohtamistöitä.
+58110	Epärelevantti	SCOPE	Käräjätörmä 8 Purku	Kerrostalopurku.
+58127	Epärelevantti	SCOPE	metsätien perusparannuksen päällysrakenneurakka	Metsätie, ei sisäkorjaus.
+58133	Epärelevantti	AREA	Nikkilän Terveysaseman Tilamuutokset	Sijainti kuvauksen mukaan Etelä-Sipoo, ei viiden kunnan alue.
+58161	Epärelevantti	SCOPE	alueleikkipaikan rakentaminen	Leikkipuiston viherrakentaminen.
+58178	Epärelevantti	SCOPE	metsätien päällysrakenneurakka	Metsätien päällysrakenne.
+58217	Epärelevantti	AREA	Mäntsälän kunnan	Mäntsälän kiinteistöjen puitejärjestely, ei viiden kunnan toiminta-alueella.
+58254	Epärelevantti	SCOPE	purku-urakka	Rakennusten purku.
+58340	Epärelevantti	MIXED	Rakennus-, ilmanvaihto-, putki- ja sähköurakka	Muutostyö sisältää suuret LVI-/sähköurakat, ei eriytettyjä pieniä sisäkorjauksia.

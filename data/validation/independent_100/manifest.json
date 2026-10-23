@@ -1,0 +1,13 @@
+{
+  "source_file": "data/validation/snapshot_2026-10-19/hilma_raw.json",
+  "source_sha256": "99f386d49a7996594ee3f4d856c707bea209e51742cec32e707e6c3bbf9ca074",
+  "source_retrieved_at": "2026-10-19T00:12:27.163249+00:00",
+  "source_notice_count": 100,
+  "selected_notice_count": 100,
+  "sampling": "uniform_without_replacement_sorted_ids_seed_20261019",
+  "blind_review": "blind_review.csv excludes model predictions",
+  "predictions": "predictions.csv is an UNVALIDATED heuristic baseline",
+  "independent_gold": "gold_labels.csv is blank pending an independent reviewer",
+  "attachment_coverage": "NOT VERIFIED; no tender annexes downloaded",
+  "blind_text_normalization": "trailing whitespace removed from source description lines; original JSON preserved"
+}

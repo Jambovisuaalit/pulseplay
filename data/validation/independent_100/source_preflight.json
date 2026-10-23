@@ -1,0 +1,35 @@
+{
+  "test_marking": "SISÄINEN TESTI – KUVITTEELLINEN YRITYS – EI ASIAKASTOIMITUS",
+  "source_sha256": "99f386d49a7996594ee3f4d856c707bea209e51742cec32e707e6c3bbf9ca074",
+  "source_retrieved_at": "2026-10-19T00:12:27.163249+00:00",
+  "review_prepared_at_utc": "2026-10-19T01:13:41.982260+00:00",
+  "unique_notice_ids": 100,
+  "notices_total": 100,
+  "description_present": 99,
+  "published_at_present": 100,
+  "tender_deadline_present": 100,
+  "estimated_value_present": 35,
+  "standalone_worksite_location_fields": 0,
+  "standalone_questions_deadline_fields": 0,
+  "fully_checked_annexes": 0,
+  "independent_gold_labels": 0,
+  "possible_duplicate_title_groups": [
+    [
+      "58430",
+      "59464"
+    ],
+    [
+      "59352",
+      "59399"
+    ]
+  ],
+  "cancelled_in_title_ids": [
+    "59352"
+  ],
+  "precision": "NOT MEASURED",
+  "false_positives": "NOT MEASURED",
+  "false_negatives": "NOT MEASURED",
+  "unreviewed_count": 100,
+  "review_status": "SOURCE-ONLY PRECHECK — NOT INDEPENDENT GOLD",
+  "boundary": "Cues are verbatim excerpts for a blind reviewer, not autonomous classification or eligibility."
+}

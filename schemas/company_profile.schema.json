@@ -24,6 +24,18 @@
     "capabilities": { "type": "array", "items": { "type": "string" } },
     "certifications": { "type": "array", "items": { "type": "string" } },
     "response_time_hours": { "type": ["number", "null"], "minimum": 0 },
-    "can_provide_financial_guarantee": { "type": ["boolean", "null"] }
+    "can_provide_financial_guarantee": { "type": ["boolean", "null"] },
+    "verification_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "turnover_eur": { "type": "string" },
+        "regions": { "type": "string" },
+        "capabilities": { "type": "string" },
+        "certifications": { "type": "string" },
+        "response_time_hours": { "type": "string" },
+        "can_provide_financial_guarantee": { "type": "string" }
+      }
+    }
   }
 }

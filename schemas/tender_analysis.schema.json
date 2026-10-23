@@ -24,6 +24,8 @@
     "organisation": { "type": ["string", "object"] },
     "publishedAt": { "type": ["string", "null"] },
     "deadline": { "type": ["string", "null"] },
+    "attachment_review_status": { "type": "string", "enum": ["COMPLETE", "INCOMPLETE", "UNKNOWN"] },
+    "attachment_review_evidence": { "type": ["string", "null"] },
     "hilma_url": { "type": ["string", "null"], "format": "uri" },
     "source_url": { "type": ["string", "null"], "format": "uri" },
     "tiivistelma": { "type": ["string", "null"] },

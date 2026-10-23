@@ -1,0 +1,77 @@
+{
+  "schema_version": "P0-PRIMARY-THREE-2026-10-19",
+  "source_type": "PUBLIC_UNAUTHENTICATED_TARJOUSPALVELU_E3",
+  "cases": [
+    {
+      "notice_id": "57882",
+      "portal_url": "https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon/?tpId=628507",
+      "worksite": "Kulttuuriaukio 2, Espoo",
+      "worksite_source": "Public tender Description",
+      "scope": "Tapiolasalin akustiset parannukset; seinä- ja akustiikkarakenteet, verhot, näyttämö",
+      "deadline_local": "2026-11-02T12:00:00+02:00",
+      "mandatory_site_visits": [
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-20"
+      ],
+      "must_register_before_visit": true,
+      "site_visit_attendance_verified": false,
+      "other_public_requirements": [
+        "Täytetty näyttämömekaniikan laitelistaus, liite 3",
+        "Pääurakoitsijan/päätoteuttajan vastuut"
+      ],
+      "public_portal_confirmed": true,
+      "contract_lot_value_eur": null,
+      "verified_lot_id": null,
+      "complete_annexes_accessible_without_login": false,
+      "complete_eligibility_verified": false,
+      "latest_notice_revision_chain_verified": false,
+      "live_open_status": "PORTAL_E3_PAGE_VISIBLE_NOT_FULL_VERSION_CHAIN",
+      "decision": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "59188",
+      "portal_url": "https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon/?tpId=631619",
+      "worksite": "Tietotie 2A, Otaniemi, Espoo",
+      "worksite_source": "Public tender Description",
+      "scope": "Kolmen kerroksen käyttäjämuutos ja pintaremontti; WC, väliseinät, LVIS",
+      "deadline_local": "2026-11-04T12:00:00+02:00",
+      "mandatory_site_visits": [],
+      "site_visit_attendance_verified": null,
+      "other_public_requirements": [],
+      "public_portal_confirmed": true,
+      "contract_lot_value_eur": null,
+      "verified_lot_id": null,
+      "complete_annexes_accessible_without_login": false,
+      "complete_eligibility_verified": false,
+      "latest_notice_revision_chain_verified": false,
+      "live_open_status": "PORTAL_E3_PAGE_VISIBLE_NOT_FULL_VERSION_CHAIN",
+      "decision": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "gold_label": "UNREVIEWED"
+    },
+    {
+      "notice_id": "59230",
+      "portal_url": "https://tarjouspalvelu.fi/UX/TP/SiirryTarjouspyyntoon/?tpId=624657",
+      "worksite": "Erik Palménin aukio 1, 00560 Helsinki",
+      "worksite_source": "Public tender Description",
+      "scope": "Dynamicum työympäristömuutos, kokonaisurakka, pääurakoitsija ja päätoteuttaja",
+      "deadline_local": "2026-10-27T12:00:00+02:00",
+      "mandatory_site_visits": [],
+      "site_visit_attendance_verified": null,
+      "other_public_requirements": [
+        "Urakkaohjelma ja liitteet edellytetään varsinaiseen arvioon"
+      ],
+      "public_portal_confirmed": true,
+      "contract_lot_value_eur": null,
+      "verified_lot_id": null,
+      "complete_annexes_accessible_without_login": false,
+      "complete_eligibility_verified": false,
+      "latest_notice_revision_chain_verified": false,
+      "live_open_status": "PORTAL_E3_PAGE_VISIBLE_NOT_FULL_VERSION_CHAIN",
+      "decision": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "gold_label": "UNREVIEWED"
+    }
+  ],
+  "precision_at_30": null
+}

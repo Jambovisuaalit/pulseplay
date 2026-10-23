@@ -39,6 +39,8 @@ export interface Tender {
   publishedAt?: string;
   published_at?: string;
   deadline?: string | null;
+  attachment_review_status?: "COMPLETE" | "INCOMPLETE" | "UNKNOWN";
+  attachment_review_evidence?: string | null;
   hilma_url?: string | null;
   source_url?: string | null;
   hard_gates?: TenderHardGate[];
