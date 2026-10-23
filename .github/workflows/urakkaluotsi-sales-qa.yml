@@ -1,7 +1,7 @@
 name: Urakkaluotsi sales QA
 on:
   push:
-    branches: [feature/urakkaluotsi-sales-page, feature/urakkaluotsi-foundation, feature/urakkaluotsi-data-model, feature/urakkaluotsi-pilot-metrics, feature/urakkaluotsi-sales-polish]
+    branches: [feature/urakkaluotsi-sales-page, feature/urakkaluotsi-foundation, feature/urakkaluotsi-data-model, feature/urakkaluotsi-pilot-metrics, feature/urakkaluotsi-sales-polish, feature/urakkaluotsi-marketing-complete]
   workflow_dispatch:
 permissions:
   contents: read
