@@ -1,0 +1,12 @@
+{
+  "metric": "AI_SOURCE_REVIEWED_PRECISION_AT_30",
+  "reviewer_category": "AI_SILVER_NOT_HUMAN_GOLD",
+  "top30_hash": "d73391c294feeaad28df46cf48eedd2ca19898461b9a4afe0c3c99903006282e",
+  "labels_submitted": 30,
+  "fully_evidenced_ai_reviews": 0,
+  "missing_or_incomplete": 30,
+  "ai_precision_at_30": null,
+  "ai_80_percent_gate": "NOT_MEASURED",
+  "human_gold_precision_at_30": null,
+  "customer_eligibility_confirmed": false
+}

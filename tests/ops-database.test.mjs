@@ -88,3 +88,16 @@ test('production never falls back to a local file on missing or broken configura
   await assert.rejects(selectedState(),e=>e.status===503);
  }finally{for(const key of Object.keys(process.env))if(!(key in original))delete process.env[key];Object.assign(process.env,original);}
 });
+
+test('a lost write acknowledgement does not falsely claim that committed data was not saved',async()=>{
+ const db=backend();
+ const failing=async(url,init)=>{
+  const result=await db.fetcher(url,init);
+  if(init.method==='POST')throw new Error('synthetic acknowledgement timeout after commit');
+  return result;
+ };
+ await assert.rejects(createDatabaseStore(config,failing).transaction(s=>{s.clients.push({id:'committed',name:'Synthetic',delivery_email:'qa@example.invalid'});s.revision++;}),e=>e.status===503&&!e.message.includes('Tietoja ei tallennettu'));
+ const recovered=await createDatabaseStore(config,db.fetcher).readState();
+ assert.equal(recovered.clients[0].id,'committed');
+ assert.equal(recovered.revision,1);
+});

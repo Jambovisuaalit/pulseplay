@@ -13,7 +13,7 @@ import { randomUUID } from "node:crypto";
 export const runtime="nodejs";
 export const dynamic="force-dynamic";
 function view(s:WorkflowState) {
- return {...s,metrics:metrics(s),digests:s.digests.map(d=>{
+ return {...s,storage_mode:process.env.TP_OPS_STORE==="supabase"?"persistent":"local",metrics:metrics(s),digests:s.digests.map(d=>{
   let hash=null,preview=null;try{preview=snapshot(s,d);hash=contentHash(preview);}catch{}
   return {...d,qa:qa(s,d),current_hash:hash,preview};
  })};

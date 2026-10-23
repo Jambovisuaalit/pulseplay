@@ -43,6 +43,11 @@ test('backup CLI restores a committed snapshot across three processes and refuse
     const corrupt = run('restore');
     assert.notEqual(corrupt.status, 0);
     assert.match(corrupt.stderr, /checksum mismatch/);
+    await writeFile(backupFile,original);
+    const cleanup=run('cleanup');
+    assert.equal(cleanup.status,0,`Owned cleanup failed: ${cleanup.stderr}`);
+    const {PGlite}=await import(process.env.PGLITE_MODULE),db=new PGlite(env.PR12_QA_DATABASE_DIRECTORY);
+    try{assert.equal((await db.query('select count(*)::int as n from public.urakkaluotsi_ops_state')).rows[0].n,0);}finally{await db.close();}
   } finally {
     // These are exclusively local synthetic fixtures; never retain mock-hosted reports.
     await rm(directory, { recursive: true, force: true });

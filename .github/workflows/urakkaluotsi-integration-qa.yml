@@ -1,0 +1,81 @@
+name: Urakkaluotsi integration QA
+on:
+  push:
+    branches: [integration/urakkaluotsi-pilot-readiness-20261024]
+  pull_request:
+    branches: [feature/urakkaluotsi-marketing-complete]
+permissions:
+  contents: read
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: python -m pip install 'pypdf>=5,<7'
+      - run: npm test
+      - run: npm run lint
+      - run: npm run build
+      - run: npm run typecheck
+      - name: Server-only key identifiers absent from browser assets
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          files=[p for p in Path('.next/static').rglob('*') if p.is_file()]
+          assert files
+          assert all(b'TP_SUPABASE_SECRET_KEY' not in p.read_bytes() and b'sb_secret_' not in p.read_bytes() for p in files)
+          print('PASS browser bundle secret-identifier scan')
+          PY
+      - name: Domain routing and HTTP authentication
+        run: |
+          node tests/domain-http.cjs
+          node tests/auth-http.cjs --missing
+          node tests/auth-http.cjs
+      - name: Install isolated PostgreSQL QA engine
+        run: npm install --prefix "$RUNNER_TEMP/urakkaluotsi-pglite" --no-audit --no-fund @electric-sql/pglite@0.3.15
+      - name: Database privileges, safe cleanup and independent restore processes
+        env:
+          PGLITE_MODULE: ${{ runner.temp }}/urakkaluotsi-pglite/node_modules/@electric-sql/pglite/dist/index.js
+        run: |
+          node tests/ops-database-sql.mjs
+          node --test tests/ops-test-cleanup-sql.mjs tests/preview-backup-runner.mjs
+          OPS_HTTP_STORE=supabase node tests/ops-http.cjs
+      - name: Four-width public-site and contact browser QA (no mail sent)
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+        run: |
+          npm install --prefix "$RUNNER_TEMP/urakkaluotsi-browser" --no-audit --no-fund playwright@1.62.1
+          PLAYWRIGHT_MODULE="$RUNNER_TEMP/urakkaluotsi-browser/node_modules/playwright" node tests/sales-polish-qa.cjs
+          node tests/verify-demo.cjs
+      - name: Complete local portal and browser regressions
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+          OPS_BROWSER_QA: 'true'
+        run: PLAYWRIGHT_MODULE="$RUNNER_TEMP/urakkaluotsi-browser/node_modules/playwright" node tests/ops-http.cjs
+      - name: Relevance replay with explicit non-independent labels
+        run: |
+          python workers/evaluate_holdout_v2.py --output-dir qa-output/relevance
+          python workers/evaluate_p0_blind_ai_source_review.py --ranked data/validation/p0_frozen_ranked_100_2026-10-19.json --reviews data/validation/p0_blind_ai_silver_reviews_2026-10-19.json --output qa-output/relevance/source-review.json
+      - name: Hosted runner preflight syntax (does not run hosted tests)
+        run: |
+          node --check tests/preview-hosted-e2e.mjs
+          node --check tests/preview-backup-restore.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: integration-local-qa
+          path: |
+            qa-output/*.json
+            qa-output/*.png
+            qa-output/relevance/
+          if-no-files-found: warn

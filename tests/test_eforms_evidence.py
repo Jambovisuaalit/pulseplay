@@ -45,9 +45,9 @@ class SourceEvidenceTests(unittest.TestCase):
 
     def test_synthetic_positive_and_negative_classifier_controls(self):
         good = {"id": "SYNTH-POS-1", "title": "Huoneistojen pintaremontti",
-                "description": "Urakkakohde sijaitsee Espoossa. Huoneistojen maalaustyöt.",
+                "description": "Urakkakohde sijaitsee Espoossa. Huoneistojen maalaustyöt. Urakan arvo on 80 000 euroa.",
                 "estimated_value": 80000, "verified_single_contract_value": True,
-                "contract_value_evidence": "SYNTHETIC source confirms individual work contract"}
+                "contract_value_evidence": "Urakan arvo on 80 000 euroa."}
         self.assertEqual(classify_notice(good)["model_label"], "Relevantti")
         wrong_city = dict(good, description="Urakkakohde sijaitsee Lohjalla. Huoneistojen maalaustyöt.")
         self.assertEqual(classify_notice(wrong_city)["model_label"], "Epärelevantti")

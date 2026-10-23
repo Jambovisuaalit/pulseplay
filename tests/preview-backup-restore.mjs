@@ -5,7 +5,7 @@ import { mkdir, open, readFile, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { contentHash } from '../lib/domain/workflow.ts';
 import { createDatabaseStore } from '../lib/server/ops-database.ts';
-import { PROJECT_REF, supabaseConfig, dataApi, createBackup, validateBackup, restoredRow, verifyRestoredRow, syntheticBackupState } from './helpers/pr12-qa.mjs';
+import { PROJECT_REF, supabaseConfig, dataApi, createBackup, validateBackup, restoredRow, verifyRestoredRow, syntheticBackupState, cleanupWorkspace } from './helpers/pr12-qa.mjs';
 
 async function loadBackup(filename) {
   assert.ok(((await stat(filename)).mode & 0o077) === 0, 'Backup file must be owner-only');
@@ -14,7 +14,7 @@ async function loadBackup(filename) {
 
 async function main() {
   const action = process.argv[2], filename = process.env.PREVIEW_E2E_BACKUP_FILE;
-  assert.ok(['backup', 'restore', 'verify'].includes(action) && filename, 'Use backup|restore|verify with PREVIEW_E2E_BACKUP_FILE');
+  assert.ok(['backup', 'restore', 'verify', 'cleanup'].includes(action) && filename, 'Use backup|restore|verify|cleanup with PREVIEW_E2E_BACKUP_FILE');
   assert.ok(process.env.PREVIEW_E2E_PERSIST_SYNTHETIC === 'yes', 'Explicit opt-in required for two persistent synthetic workspaces');
   const config = supabaseConfig(), database = dataApi(config);
   await mkdir('qa-output', { recursive: true });
@@ -24,6 +24,7 @@ async function main() {
     const file = await open(filename, 'wx', 0o600);
     try {
       const runId = randomUUID(), state = syntheticBackupState(runId), workspace = `pr12-e2e-source-${runId}`;
+      await cleanupWorkspace(config,`preview-e2e-probe-${runId}`,runId,1,fetch,true);
       const source = { workspace_id: workspace, storage_version: 1, state };
       const written = await database(workspace, 'POST', source);
       assert.ok(contentHash(written) === contentHash(source), 'Synthetic source insert acknowledgement mismatch');
@@ -37,6 +38,19 @@ async function main() {
     return;
   }
   const backup = await loadBackup(filename);
+  if(action==='cleanup'){
+    for(const workspace of [backup.target_workspace,backup.source_workspace]){
+      const row=await database(workspace);
+      if(row){
+        const expected=workspace===backup.source_workspace?backup.row:restoredRow(backup);
+        assert.ok(contentHash(row)===contentHash(expected),'Cleanup refuses a changed workspace');
+        await cleanupWorkspace(config,workspace,backup.run_id,row.storage_version);
+      }
+      assert.ok(await database(workspace)===null,'Owned backup workspace must be absent after cleanup');
+    }
+    await writeFile(`qa-output/pr12-backup-cleanup-${backup.run_id}.json`,JSON.stringify({status:'PASS',run_id:backup.run_id,owned_workspaces_removed:[backup.source_workspace,backup.target_workspace]},null,2)+'\n',{flag:'wx',mode:0o600});
+    console.log('PASS scoped cleanup of this backup run only');return;
+  }
   if (action === 'restore') {
     assert.ok(await database(backup.target_workspace) === null, 'Restore target already exists; refusing to overwrite');
     const source = await database(backup.source_workspace);
@@ -62,7 +76,7 @@ async function main() {
     counts: Object.fromEntries(['clients', 'profiles', 'notices', 'assessments', 'digests', 'events'].map(key => [key, loaded[key].length])),
     history_and_measurements_exact: true, fresh_node_process_and_adapter_read: true,
     vercel_restart_persistence: 'NOT_TESTED', full_project_disaster_recovery: 'NOT_TESTED',
-    persistent_synthetic_workspaces: 2,
+    synthetic_workspaces_verified: 2,cleanup:'REQUIRES_SEPARATE_CLEANUP_COMMAND',
   };
   const reportPath = `qa-output/pr12-backup-restore-${backup.run_id}-${verificationId}.json`;
   await writeFile(reportPath, JSON.stringify(report, null, 2) + '\n', { flag: 'wx', mode: 0o600 });

@@ -6,7 +6,7 @@ import { isDeepStrictEqual } from "node:util";
 // Server route only. The browser never receives the database key or raw endpoint.
 type Config = { origin: string; key: string; workspace: string };
 type Stored = { state: WorkflowState; version: number | null };
-const unavailable = () => new WorkflowError("Pysyvä työtila ei ole käytettävissä. Tietoja ei tallennettu.", 503);
+const unavailable = () => new WorkflowError("Työtilan yhteyttä tai tallennuksen tilaa ei voitu varmistaa. Päivitä tila ennen uutta yritystä.", 503);
 const conflict = () => new WorkflowError("Työtila muuttui. Lataa uusi tila ennen uutta yritystä.", 409);
 
 export function databaseConfig(env: NodeJS.ProcessEnv = process.env): Config {

@@ -37,6 +37,18 @@ export function dataApi(config, fetcher = fetch) {
   };
 }
 
+export async function cleanupWorkspace(config, workspace, runId, version, fetcher = fetch, allowAbsent = false) {
+  const response = await fetcher(`${config.origin}/rest/v1/rpc/urakkaluotsi_cleanup_e2e`, {
+    method: 'POST', redirect: 'error', signal: AbortSignal.timeout(20_000),
+    headers: { apikey: config.key, 'content-type': 'application/json' },
+    body: JSON.stringify({ p_workspace: workspace, p_run: runId, p_version: version }),
+  });
+  assert.ok(response.ok, `Scoped Preview cleanup failed (HTTP ${response.status}); apply the test-only cleanup SQL or resolve the ownership/version conflict`);
+  const removed = await response.json();
+  assert.ok(removed === true || (allowAbsent && removed === false), 'Scoped cleanup did not acknowledge deletion');
+  return removed;
+}
+
 export function validateRow(row) {
   assert.ok(row && Number.isSafeInteger(row.storage_version) && row.storage_version > 0, 'Invalid stored version');
   const state = row.state;

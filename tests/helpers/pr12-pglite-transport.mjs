@@ -7,7 +7,7 @@ assert.ok(process.env.PR12_QA_DATABASE_DIRECTORY, 'Missing isolated PGlite direc
 globalThis.fetch = async (input, init) => {
   const url = new URL(input);
   assert.equal(url.origin, 'https://kzcmzelxydrhxxhcmmua.supabase.co');
-  assert.equal(url.pathname, '/rest/v1/urakkaluotsi_ops_state');
+  assert.ok(['/rest/v1/urakkaluotsi_ops_state','/rest/v1/rpc/urakkaluotsi_cleanup_e2e'].includes(url.pathname));
   assert.equal(init.headers.apikey, 'synthetic-local-runner-only');
   assert.equal(init.redirect, 'error');
   const db = new PGlite(process.env.PR12_QA_DATABASE_DIRECTORY);
@@ -15,8 +15,14 @@ globalThis.fetch = async (input, init) => {
     if (!(await db.query("select to_regclass('public.urakkaluotsi_ops_state') as name")).rows[0].name) {
       await db.exec('create role anon; create role authenticated; create role service_role bypassrls;');
       await db.exec(await readFile(new URL('../../docs/ops-database-schema.sql', import.meta.url), 'utf8'));
+      await db.exec(await readFile(new URL('../../docs/ops-test-cleanup.sql', import.meta.url), 'utf8'));
     }
     await db.exec('set role service_role');
+    if(url.pathname.includes('/rpc/')){
+      const row=JSON.parse(init.body);
+      const result=await db.query('select public.urakkaluotsi_cleanup_e2e($1,$2,$3) as removed',[row.p_workspace,row.p_run,row.p_version]);
+      return Response.json(result.rows[0].removed);
+    }
     if (init.method === 'GET') {
       const filter = url.searchParams.get('workspace_id');
       assert.ok(filter?.startsWith('eq.'));

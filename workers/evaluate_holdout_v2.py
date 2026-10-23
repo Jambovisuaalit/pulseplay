@@ -6,13 +6,14 @@ gold truth; absent predicted positives yield undefined precision, never 100%.
 from __future__ import annotations
 
 import csv
+import argparse
 import hashlib
 import json
 from collections import Counter
 from pathlib import Path
 
 from build_validation_set import baseline_label, priority_score
-from relevance_v2 import classify_notice
+from relevance_v2 import classify_notice, MODEL_VERSION
 from score_ai_silver import compare
 from prepare_independent_review import title_fingerprint
 
@@ -103,7 +104,10 @@ def evaluate(source: dict, silver: list[dict]) -> tuple[dict, list[dict]]:
     new_counts = Counter(r["model_label"] for r in detail)
     changes = Counter((r["legacy_model_label"], r["model_label"]) for r in detail)
     metrics = {
-        "evaluation_status": "ID_DISJOINT_HOLDOUT_AI_SILVER_NOT_INDEPENDENT_GOLD",
+        "evaluation_status": "REGRESSION_REPLAY_AI_SILVER_NOT_INDEPENDENT_GOLD",
+        "independent_temporal_holdout": False,
+        "independent_gold_labels": False,
+        "evaluation_use": "Previously inspected cases; regression only, never new acceptance evidence",
         "source_notices": 52,
         "old_100_notice_overlap": 0,
         "ai_silver_class_counts": dict(ai_counts),
@@ -147,6 +151,10 @@ def evaluate(source: dict, silver: list[dict]) -> tuple[dict, list[dict]]:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--output-dir', type=Path, default=ROOT)
+    output = parser.parse_args().output_dir
+    output.mkdir(parents=True, exist_ok=True)
     raw = (ROOT / "holdout_raw.json").read_bytes()
     silver_raw = (ROOT / "ai_silver_labels.csv").read_bytes()
     m = json.loads((ROOT / "ai_silver_manifest.json").read_text(encoding="utf-8"))
@@ -168,11 +176,11 @@ def main() -> None:
         "provenance_rechecked_from_actual_sources": provenance,
         "source_sha256": hashlib.sha256(raw).hexdigest(),
         "ai_silver_labels_sha256": hashlib.sha256(silver_raw).hexdigest(),
-        "model_version": "ICP_V2_FAIL_CLOSED_2026_10_19",
+        "model_version": MODEL_VERSION,
         "classifier_code_sha256": hashlib.sha256(Path("workers/relevance_v2.py").read_bytes()).hexdigest(),
     })
-    (ROOT / "v2_metrics.json").write_text(json.dumps(metrics, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    with (ROOT / "v2_predictions_and_errors.csv").open("w", encoding="utf-8-sig", newline="") as handle:
+    (output / "v2_metrics.json").write_text(json.dumps(metrics, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    with (output / "v2_predictions_and_errors.csv").open("w", encoding="utf-8-sig", newline="") as handle:
         writer = csv.DictWriter(handle, list(detail[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(detail)

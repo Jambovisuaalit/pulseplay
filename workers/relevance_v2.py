@@ -15,6 +15,7 @@ from pathlib import Path
 
 ALLOWED_MUNICIPALITIES = frozenset({"helsinki", "espoo", "vantaa", "kauniainen", "kirkkonummi"})
 MIN_EUR, MAX_EUR = 10_000, 250_000
+MODEL_VERSION = 'ICP_V2_SOURCE_BOUND_2026_10_24'
 
 # The source index has no structured worksite location. These are high-confidence
 # place-name variants, not an exhaustive Finnish gazetteer. Unrecognised -> UNKNOWN.
@@ -34,6 +35,9 @@ CITY_FORMS: dict[str, tuple[str, ...]] = {
     "mäntsälä": ("mäntsälä", "mäntsälän", "mäntsälässä"),
     "sipoo": ("sipoo", "sipoon", "sipoossa", "etelä-sipoossa"),
     "tuusula": ("tuusula", "tuusulan", "tuusulassa"),
+    "turku": ("turku", "turun", "turussa"),
+    "tampere": ("tampere", "tampereen", "tampereella"),
+    "oulu": ("oulu", "oulun", "oulussa"),
 }
 
 
@@ -65,10 +69,15 @@ def area_signal(notice: dict) -> Signal:
     explicit = str(notice.get("worksite_municipality") or "").strip().casefold()
     evidence = str(notice.get("worksite_location_evidence") or "").strip()
     title, description = _text(notice)
+    structured = None
+    site_pattern = r"\b(?:urakkakohde|rakennuspaikka|työmaa|osoitteessa|sijaitse\w*)\b"
+    buyer_pattern = r"\b(?:tilaajan|ostajan|hankintayksikön|tarjoajan)\s+(?:toimisto\w*|kotipaikka\w*|postiosoite\w*|käyntiosoite\w*)\b"
     if explicit and evidence and evidence.casefold() in (title + "\n" + description).casefold():
-        if explicit in _municipalities(evidence):
-            return Signal("IN" if explicit in ALLOWED_MUNICIPALITIES else "OUT", "STRUCTURED_WORKSITE", evidence)
-        return Signal("UNKNOWN", "WORKSITE_FIELD_CONTRADICTS_EVIDENCE", evidence)
+        if explicit not in _municipalities(evidence):
+            return Signal("UNKNOWN", "WORKSITE_FIELD_CONTRADICTS_EVIDENCE", evidence)
+        if not _match(site_pattern, evidence) or _match(buyer_pattern, evidence):
+            return Signal("UNKNOWN", "WORKSITE_EVIDENCE_NOT_SITE", evidence)
+        structured = explicit
     if not title and not description:
         return Signal("UNKNOWN", "MISSING_SOURCE_TEXT", "")
     # A directly described service area of a municipal framework may be used
@@ -84,11 +93,13 @@ def area_signal(notice: dict) -> Signal:
     site_evidence = []
     for segment in lines:
         s = segment.strip()
+        if _match(buyer_pattern, s):
+            continue
         if re.search(r"\b(?:kohde|rakennuspaikka|työmaa|urakka-alue|urakkakohde|kiinteistö|osoitteessa|sijaitse\w*)\b", s, re.I):
             if re.search(r"\b(?:sijaitse\w*|osoitteessa|urakkakohde|rakennuspaikka|työmaa)\b", s, re.I):
                 site_evidence.append(s[:300])
     # Explicit worksite phrasing in a title is also source evidence.
-    if _match(r"\b(?:urakkakohde|työmaa|rakennuspaikka|osoitteessa|sijaitse\w*)\b", title):
+    if _match(site_pattern, title) and not _match(buyer_pattern, title):
         site_evidence.append(title[:300])
     # Title city treated as site only in explicit "Helsinki, <project>" form,
     # NOT "Helsingin kaupunki pyytää ..." or buyer metadata.
@@ -99,7 +110,9 @@ def area_signal(notice: dict) -> Signal:
         return Signal("UNKNOWN", "MULTIPLE_WORKSITE_MUNICIPALITIES", " | ".join(site_evidence)[:230])
     if names:
         city = next(iter(names))
-        return Signal("IN" if city in ALLOWED_MUNICIPALITIES else "OUT", f"WORKSITE_{city.upper()}", " | ".join(site_evidence)[:230])
+        if structured and city != structured:
+            return Signal("UNKNOWN", "WORKSITE_FIELD_CONTRADICTS_EVIDENCE", evidence)
+        return Signal("IN" if city in ALLOWED_MUNICIPALITIES else "OUT", "STRUCTURED_WORKSITE" if structured else f"WORKSITE_{city.upper()}", " | ".join(site_evidence)[:230])
     return Signal("UNKNOWN", "WORKSITE_NOT_VERIFIED", "")
 
 
@@ -111,6 +124,8 @@ def size_signal(notice: dict) -> Signal:
     raw = notice.get("estimated_value")
     if raw is None or raw == "":
         return Signal("UNKNOWN", "ESTIMATED_VALUE_MISSING", "")
+    if isinstance(raw, bool):
+        return Signal("UNKNOWN", "INVALID_VALUE", "")
     try:
         amount = float(raw)
     except (TypeError, ValueError):
@@ -123,8 +138,15 @@ def size_signal(notice: dict) -> Signal:
         return Signal("OUT", "ESTIMATED_SINGLE_CONTRACT_OUTSIDE_RANGE", str(raw))
     # Search-index estimate supports conditional prioritisation only. Actual
     # lot/value-kind/equipment exclusions need original notice/annex evidence.
-    if notice.get("verified_single_contract_value") is True and notice.get("contract_value_evidence"):
-        return Signal("IN", "VERIFIED_SINGLE_CONTRACT_VALUE", str(raw))
+    evidence = str(notice.get("contract_value_evidence") or "").strip()
+    if notice.get("verified_single_contract_value") is True and evidence:
+        # A boolean and an arbitrary note cannot establish a verified unit value.
+        amounts = [float(whole.replace(" ", "").replace("\u00a0", "").replace(".", "") + "." + (decimal or "0"))
+                   for whole, decimal in re.findall(r"(?<![\w\d])(\d{1,3}(?:[ .\u00a0]\d{3})+|\d+)(?:,(\d{1,2}))?\s*(?:€|eur(?:oa)?\b)", evidence, re.I)]
+        unit = _match(r"\b(?:urakan|urakkakohtainen|yksittäisen\s+urakan|sopimuksen)\s+(?:ennakoitu\s+)?arvo\b", evidence)
+        if evidence.casefold() in content.casefold() and unit and amount in amounts:
+            return Signal("IN", "VERIFIED_SINGLE_CONTRACT_VALUE", evidence)
+        return Signal("UNKNOWN", "VALUE_EVIDENCE_NOT_SOURCE_BOUND", evidence)
     return Signal("UNKNOWN", "VALUE_KIND_NOT_VERIFIED", str(raw))
 
 
@@ -137,6 +159,7 @@ def scope_signal(notice: dict) -> Signal:
 
     # Clear *primary works*, not incidental mention of new doors, walls or LVI.
     forbidden_primary = [
+        (r"\b(?:suunnittelu\w*|valvontapalvel\w*|konsultointi\w*)\b", "NOT_WORKS_CONTRACT"),
         (r"\b(?:uudisrakenn\w*|uudisrakent\w*|uuden\s+(?:päiväkodin|koulun|liikuntahallin|aseman|rakennuksen|saunan|jäteaseman)\s+rakentami\w*)", "NEW_BUILD"),
         (r"\b(?:purku-urakka|kerrostalon\s+purku|rakennusten\s+purkaminen)\b", "DEMOLITION"),
         (r"\b(?:ikkunoiden\s+(?:uusimin\w*|vaiht\w*)|ovien\s+kokonaisvaiht\w*)", "WINDOW_DOOR"),
@@ -156,9 +179,15 @@ def scope_signal(notice: dict) -> Signal:
     # Standalone technical systems are not surface refurbishment.
     if _match(r"\b(?:sprinkleriurakka|paloilmoitin\w*|linjasaneeraus|taloteknisten\s+järjestelmien)\b", normalized_title):
         return Signal("OUT", "TECHNICAL_SYSTEM", title[:180])
-    matching = _match(r"\b(?:huoneisto(?:saneer\w*|remont\w*|korj\w*)|pintaremont\w*|pintakorj\w*|maalaus\w*|maalausty\w*|lattia(?:päällyste\w*|remont\w*|korj\w*|työ\w*)|sisäpuoli\w*|tilamuut\w*|peruskorj\w*|rakennusteknis\w*\s+(?:muutos|korjaus)|korjausty\w*)\b", content)
-    if matching:
-        return Signal("MATCH", "REPAIR_SERVICE_CUE", content[max(0, matching.start()-35):matching.end()+80])
+    cue = r"\b(?:huoneisto(?:saneer\w*|remont\w*|korj\w*)|pintaremont\w*|pintakorj\w*|maalaus\w*|maalausty\w*|lattia(?:päällyste\w*|remont\w*|korj\w*|työ\w*)|sisäpuoli\w*|tilamuut\w*|peruskorj\w*|rakennusteknis\w*\s+(?:muutos|korjaus)|korjausty\w*)\b"
+    for clause in re.split(r"[\n.;]", content):
+        for matching in re.finditer(cue, clause, re.I):
+            before, after = clause[max(0, matching.start()-80):matching.start()], clause[matching.end():matching.end()+60]
+            if _match(r"\bei\s+(?:kuulu|sisälly|sisällä|hankita|koske|tehdä)(?:\s+\w+){0,4}\s*$", before):
+                continue
+            if _match(r"^\s+(?:ei|eivät)\s+(?:kuulu|sisälly|ole)", after):
+                continue
+            return Signal("MATCH", "REPAIR_SERVICE_CUE", clause[max(0, matching.start()-35):matching.end()+80])
     return Signal("UNKNOWN", "SERVICE_SCOPE_NOT_PROVEN", "")
 
 
@@ -200,7 +229,7 @@ def classify_notice(notice: dict) -> dict:
         "title": title, "model_version": "ICP_V2_FAIL_CLOSED_2026_10_19",
         "model_label": label, "priority_hint_not_probability": rank,
         "area_status": area.status, "area_reason": area.reason, "area_evidence": area.source_excerpt,
-        "size_status": size.status, "size_reason": size.reason, "estimated_value_eur": notice.get("estimated_value"),
+        "size_status": size.status, "size_reason": size.reason, "size_evidence": size.source_excerpt, "estimated_value_eur": notice.get("estimated_value"),
         "scope_status": scope.status, "scope_reason": scope.reason, "scope_evidence": scope.source_excerpt,
         "reasons": "; ".join(reasons),
         "review_queue": "YES" if label == "Mahdollinen" else "NO",
@@ -235,7 +264,7 @@ def main() -> None:
         writer.writeheader()
         writer.writerows(rows)
     print(json.dumps({
-        "model_version": "ICP_V2_FAIL_CLOSED_2026_10_19",
+        "model_version": MODEL_VERSION,
         "count": len(rows), "source_sha256": hashlib.sha256(source_bytes).hexdigest(),
         "class_counts": {name: sum(r["model_label"] == name for r in rows)
                          for name in ("Relevantti", "Mahdollinen", "Ei priorisoitu", "Epärelevantti")},

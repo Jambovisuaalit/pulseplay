@@ -44,7 +44,8 @@ class V2RelevanceTests(unittest.TestCase):
         self.assertEqual(classify_notice(evidenced)["size_status"], "UNKNOWN")
 
         verified = self.site(verified_single_contract_value=True,
-                             contract_value_evidence="Verified original single-contract value")
+                             description=self.site()["description"] + " Urakan ennakoitu arvo on 80 000 euroa.",
+                             contract_value_evidence="Urakan ennakoitu arvo on 80 000 euroa.")
         self.assertEqual(classify_notice(verified)["model_label"], "Relevantti")
 
     def test_explicit_worksite_in_title_is_source_evidence(self):
@@ -84,7 +85,8 @@ class V2RelevanceTests(unittest.TestCase):
         for inside in (10000, 250000):
             self.assertEqual(size_signal(self.site(estimated_value=inside)).status, "UNKNOWN")
         verified = self.site(estimated_value=250000, verified_single_contract_value=True,
-                             contract_value_evidence="Original document confirms this single contract")
+                             description=self.site()["description"] + " Urakan arvo on 250 000 euroa.",
+                             contract_value_evidence="Urakan arvo on 250 000 euroa.")
         self.assertEqual(size_signal(verified).status, "IN")
         self.assertEqual(classify_notice(verified)["model_label"], "Relevantti")
 
