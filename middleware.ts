@@ -18,6 +18,7 @@ export async function middleware(request: NextRequest) {
     pathname === "/esittely" ||
     pathname === "/esittely/api/contact" ||
     pathname === "/esittely/tietosuoja" ||
+    /^\/esittely\/[^/]+$/.test(pathname) ||
     pathname === "/urakkaluotsi/esimerkkikooste.pdf" ||
     pathname.startsWith("/urakkaluotsi/") ||
     pathname.startsWith("/_next/") ||
