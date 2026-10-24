@@ -5,6 +5,10 @@ Never target Production or urakkaluotsi.fi. See [exact variable placement](integ
 
 ## Prerequisites
 
+- Use Node.js 24.14 or newer. Both hosted runners configure the existing
+  HTTP/HTTPS environment proxy with `http.setGlobalProxyFromEnv()` before any
+  requests. This retains `NO_PROXY`, TLS verification and destination-scoped
+  secret substitution. Default Node fetch does not enable this proxy automatically.
 - Use a successful GitHub deployment in `Preview – tenderpulse` for the integration branch.
 - Bind the exact deployment URL and ID. The runner checks GitHub metadata and application-source equivalence before sending Preview credentials.
 - Keep Vercel Deployment Protection enabled; supply the Automation Bypass secret to the **runner header**, not the application login.
@@ -60,14 +64,32 @@ node tests/preview-backup-restore.mjs verify
 node tests/preview-backup-restore.mjs cleanup
 ```
 
-Backup is an independent owner-only file (0600) with a canonical SHA-256 check.
+Before any remote mutation, backup writes and fsyncs an owner-only (0600)
+`snapshot.json.recovery.json` companion containing the run UUID and exact intended
+synthetic row. It logs the UUID before writing remote data. This recovery intent
+has its own format and checksum; restore and verify reject it as an unconfirmed
+backup. A lost insert acknowledgement therefore remains safely traceable even
+if `snapshot.json` is still empty or incomplete.
+
+The confirmed backup is an independent owner-only file (0600) with a canonical SHA-256 check.
 Restore commits a separate new workspace, refuses any existing target, and does
 not use a rollback-only transaction. Verification uses a fresh process and the
 production application adapter, compares every state/history/measurement field,
 and confirms the source was unchanged. It may be repeated. Cleanup reads the
 same verified artifact and removes only its unchanged source and target rows;
-if an earlier phase fails, run the cleanup command explicitly with that artifact
-after inspecting the failure. Keep the private artifact outside uploaded reports.
+if an earlier phase fails after a confirmed backup, run the cleanup command with
+that artifact after inspecting the failure. If backup failed before creating a
+confirmed artifact, retain the same `PREVIEW_E2E_BACKUP_FILE` and run:
+
+```sh
+node tests/preview-backup-restore.mjs cleanup-recovery
+```
+
+This uses only the valid private recovery companion. It compares each current row
+to the exact intended row before invoking the run/version-scoped cleanup RPC.
+Changed rows, corrupt recovery files and unrelated workspaces are never deleted.
+Recovery cleanup is not evidence that backup or restore passed. Keep both private
+artifacts outside uploaded reports.
 
 Successful verification and cleanup write separate credential-free JSON reports.
 Neither local nor hosted workspace restoration proves full-project PITR or an
@@ -80,8 +102,15 @@ observed; a fresh Node process is not a Vercel restart.
 backup corruption. `tests/preview-backup-runner.mjs` exercises the backup CLI in
 separate processes against persisted PGlite storage. The transport intercepts
 all external requests, uses the real schema/grants/cleanup RPC and checks that
-only the two created rows disappear. `tests/ops-test-cleanup-sql.mjs` verifies
+only the two created rows disappear. It also simulates a committed insert whose
+acknowledgement is lost, recovers ownership in a separate process and proves
+that cleanup retains an unrelated row and refuses changed data or a corrupt
+journal. `tests/ops-test-cleanup-sql.mjs` verifies
 ownership, null inputs, stale versions, namespaces and denied role privileges.
+
+`tests/preview-network.test.mjs` uses only a local CONNECT proxy and local HTTP
+servers to verify that the Node runner honors proxy settings and `NO_PROXY`.
+It is networking regression evidence, not a live Preview authentication result.
 
 `OPS_HTTP_STORE=supabase node tests/ops-http.cjs`, with `PGLITE_MODULE` set,
 executes the real Next production HTTP workflow against a local PostgreSQL
@@ -92,6 +121,10 @@ file-store fallback. This is valuable integration evidence, **not hosted QA**.
 checks local responsive portal UI plus duplicate submission, client editing,
 HTML save/export failures and expired sessions. Public-page QA uses
 `tests/sales-polish-qa.cjs`; email responses are simulated and no mail is sent.
+The portal CDP runner uses a fresh temporary Chrome profile and an automatically
+assigned debug port for each run. It removes only its own temporary profile after
+Chrome exits; machine-specific locks and synthetic session cookies are not reused
+from a restored workspace snapshot.
 
 The integration CI intentionally does not use live Preview secrets. Syntax,
 local PostgreSQL and browser success cannot close the hosted acceptance gates.

@@ -5,16 +5,22 @@ import { mkdir, open, readFile, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { contentHash } from '../lib/domain/workflow.ts';
 import { createDatabaseStore } from '../lib/server/ops-database.ts';
-import { PROJECT_REF, supabaseConfig, dataApi, createBackup, validateBackup, restoredRow, verifyRestoredRow, syntheticBackupState, cleanupWorkspace } from './helpers/pr12-qa.mjs';
+import { PROJECT_REF, supabaseConfig, dataApi, createBackup, createRecovery, validateBackup, validateRecovery, restoredRow, verifyRestoredRow, syntheticBackupState, cleanupWorkspace } from './helpers/pr12-qa.mjs';
+import { configurePreviewNetwork } from './helpers/preview-network.mjs';
 
-async function loadBackup(filename) {
+async function loadBackup(filename, validate = validateBackup) {
   assert.ok(((await stat(filename)).mode & 0o077) === 0, 'Backup file must be owner-only');
-  return validateBackup(JSON.parse(await readFile(filename, 'utf8')));
+  const contents = await readFile(filename, 'utf8');
+  let parsed;
+  try { parsed = JSON.parse(contents); }
+  catch { throw new Error('Backup document is invalid JSON; contents omitted'); }
+  return validate(parsed);
 }
 
 async function main() {
+  configurePreviewNetwork();
   const action = process.argv[2], filename = process.env.PREVIEW_E2E_BACKUP_FILE;
-  assert.ok(['backup', 'restore', 'verify', 'cleanup'].includes(action) && filename, 'Use backup|restore|verify|cleanup with PREVIEW_E2E_BACKUP_FILE');
+  assert.ok(['backup', 'restore', 'verify', 'cleanup', 'cleanup-recovery'].includes(action) && filename, 'Use backup|restore|verify|cleanup|cleanup-recovery with PREVIEW_E2E_BACKUP_FILE');
   assert.ok(process.env.PREVIEW_E2E_PERSIST_SYNTHETIC === 'yes', 'Explicit opt-in required for two persistent synthetic workspaces');
   const config = supabaseConfig(), database = dataApi(config);
   await mkdir('qa-output', { recursive: true });
@@ -24,8 +30,16 @@ async function main() {
     const file = await open(filename, 'wx', 0o600);
     try {
       const runId = randomUUID(), state = syntheticBackupState(runId), workspace = `pr12-e2e-source-${runId}`;
-      await cleanupWorkspace(config,`preview-e2e-probe-${runId}`,runId,1,fetch,true);
       const source = { workspace_id: workspace, storage_version: 1, state };
+      // Persist ownership and the exact intended row before any remote mutation.
+      // This is not a confirmed backup and cannot be used by restore/verify.
+      const recovery = await open(filename + '.recovery.json', 'wx', 0o600);
+      try {
+        await recovery.writeFile(JSON.stringify(createRecovery(source, runId), null, 2) + '\n');
+        await recovery.sync();
+      } finally { await recovery.close(); }
+      console.log(`Synthetic backup run: ${runId}; recovery intent saved`);
+      await cleanupWorkspace(config,`preview-e2e-probe-${runId}`,runId,1,fetch,true);
       const written = await database(workspace, 'POST', source);
       assert.ok(contentHash(written) === contentHash(source), 'Synthetic source insert acknowledgement mismatch');
       const row = await database(workspace);
@@ -37,18 +51,20 @@ async function main() {
     } finally { await file.close(); }
     return;
   }
-  const backup = await loadBackup(filename);
-  if(action==='cleanup'){
+  const recoveryCleanup = action === 'cleanup-recovery';
+  const backup = await loadBackup(recoveryCleanup ? filename + '.recovery.json' : filename,
+    recoveryCleanup ? validateRecovery : validateBackup);
+  if(action==='cleanup' || recoveryCleanup){
     for(const workspace of [backup.target_workspace,backup.source_workspace]){
       const row=await database(workspace);
       if(row){
-        const expected=workspace===backup.source_workspace?backup.row:restoredRow(backup);
+        const expected={...backup.row,workspace_id:workspace};
         assert.ok(contentHash(row)===contentHash(expected),'Cleanup refuses a changed workspace');
         await cleanupWorkspace(config,workspace,backup.run_id,row.storage_version);
       }
       assert.ok(await database(workspace)===null,'Owned backup workspace must be absent after cleanup');
     }
-    await writeFile(`qa-output/pr12-backup-cleanup-${backup.run_id}.json`,JSON.stringify({status:'PASS',run_id:backup.run_id,owned_workspaces_removed:[backup.source_workspace,backup.target_workspace]},null,2)+'\n',{flag:'wx',mode:0o600});
+    await writeFile(`qa-output/pr12-backup-cleanup-${backup.run_id}.json`,JSON.stringify({status:'PASS',run_id:backup.run_id,recovery_cleanup:recoveryCleanup,owned_workspaces_removed:[backup.source_workspace,backup.target_workspace]},null,2)+'\n',{flag:'wx',mode:0o600});
     console.log('PASS scoped cleanup of this backup run only');return;
   }
   if (action === 'restore') {

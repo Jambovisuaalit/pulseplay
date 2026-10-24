@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 import { emptyState } from '../lib/domain/model.ts';
 import { contentHash } from '../lib/domain/workflow.ts';
-import { createBackup, validateBackup, restoredRow, verifyRestoredRow, verifyRace, dataApi, supabaseConfig, syntheticBackupState, verifyPreviewTarget } from './helpers/pr12-qa.mjs';
+import { createBackup, createRecovery, validateBackup, validateRecovery, restoredRow, verifyRestoredRow, verifyRace, dataApi, cleanupWorkspace, supabaseConfig, syntheticBackupState, verifyPreviewTarget } from './helpers/pr12-qa.mjs';
 
 test('hosted runner rejects production deployments and unrelated Preview URLs', () => {
   const deployment = { environment: 'Preview – tenderpulse', sha: 'a'.repeat(40) };
@@ -69,4 +69,25 @@ test('Preview Data API scopes reads and forbids redirect credential forwarding',
   await assert.rejects(database('pr12-test&select=*'));
   assert.equal(calls, 1);
   assert.throws(() => supabaseConfig({ TP_SUPABASE_URL: 'https://other-project.supabase.co', TP_SUPABASE_SECRET_KEY: 'synthetic' }), /Preview project/);
+});
+
+test('a recovery intent cannot be restored as a confirmed independent backup', () => {
+  const runId = randomUUID();
+  const recovery = createRecovery({ workspace_id: `pr12-e2e-source-${runId}`, storage_version: 1, state: syntheticBackupState(runId) }, runId);
+  assert.equal(validateRecovery(recovery).run_id, runId);
+  assert.throws(() => validateBackup(recovery), /format/);
+  assert.throws(() => restoredRow(recovery), /format/);
+});
+
+test('hosted database transport and malformed JSON never expose private response details', async () => {
+  const config = { origin: 'https://kzcmzelxydrhxxhcmmua.supabase.co', key: 'synthetic-sensitive-key' };
+  const sensitive = 'synthetic-sensitive-transport-detail';
+  for (const fetcher of [async () => { throw new Error(sensitive); }, async () => new Response(sensitive)]) {
+    for (const operation of [
+      () => dataApi(config, fetcher)('preview-e2e-redaction'),
+      () => cleanupWorkspace(config, 'preview-e2e-redaction', randomUUID(), 1, fetcher),
+    ]) {
+      await assert.rejects(operation, error => !error.message.includes(sensitive) && /omitted/.test(error.message));
+    }
+  }
 });

@@ -25,26 +25,36 @@ export function dataApi(config, fetcher = fetch) {
   return async (workspace, method = 'GET', row) => {
     assert.ok(/^[a-z0-9][a-z0-9_-]{2,79}$/.test(workspace), 'Invalid isolated workspace');
     const query = method === 'GET' ? `?workspace_id=eq.${workspace}&select=workspace_id,storage_version,state` : '';
-    const response = await fetcher(`${config.origin}/rest/v1/urakkaluotsi_ops_state${query}`, {
-      method, redirect: 'error', cache: 'no-store', signal: AbortSignal.timeout(20_000),
-      headers: { apikey: config.key, 'content-type': 'application/json', Prefer: 'return=representation' },
-      ...(row === undefined ? {} : { body: JSON.stringify(row) }),
-    });
+    let response;
+    try {
+      response = await fetcher(`${config.origin}/rest/v1/urakkaluotsi_ops_state${query}`, {
+        method, redirect: 'error', cache: 'no-store', signal: AbortSignal.timeout(20_000),
+        headers: { apikey: config.key, 'content-type': 'application/json', Prefer: 'return=representation' },
+        ...(row === undefined ? {} : { body: JSON.stringify(row) }),
+      });
+    } catch { throw new Error(`Preview Data API ${method} transport failed; details omitted`); }
     assert.ok(response.ok, `Preview Data API ${method} failed (HTTP ${response.status}); response body omitted`);
-    const rows = await response.json();
+    let rows;
+    try { rows = await response.json(); }
+    catch { throw new Error(`Preview Data API ${method} returned invalid JSON; response body omitted`); }
     assert.ok(Array.isArray(rows) && rows.length <= 1, 'Unexpected Preview Data API acknowledgement');
     return rows[0] ?? null;
   };
 }
 
 export async function cleanupWorkspace(config, workspace, runId, version, fetcher = fetch, allowAbsent = false) {
-  const response = await fetcher(`${config.origin}/rest/v1/rpc/urakkaluotsi_cleanup_e2e`, {
-    method: 'POST', redirect: 'error', signal: AbortSignal.timeout(20_000),
-    headers: { apikey: config.key, 'content-type': 'application/json' },
-    body: JSON.stringify({ p_workspace: workspace, p_run: runId, p_version: version }),
-  });
+  let response;
+  try {
+    response = await fetcher(`${config.origin}/rest/v1/rpc/urakkaluotsi_cleanup_e2e`, {
+      method: 'POST', redirect: 'error', signal: AbortSignal.timeout(20_000),
+      headers: { apikey: config.key, 'content-type': 'application/json' },
+      body: JSON.stringify({ p_workspace: workspace, p_run: runId, p_version: version }),
+    });
+  } catch { throw new Error('Scoped Preview cleanup transport failed; details omitted'); }
   assert.ok(response.ok, `Scoped Preview cleanup failed (HTTP ${response.status}); apply the test-only cleanup SQL or resolve the ownership/version conflict`);
-  const removed = await response.json();
+  let removed;
+  try { removed = await response.json(); }
+  catch { throw new Error('Scoped Preview cleanup returned invalid JSON; response body omitted'); }
   assert.ok(removed === true || (allowAbsent && removed === false), 'Scoped cleanup did not acknowledge deletion');
   return removed;
 }
@@ -57,11 +67,11 @@ export function validateRow(row) {
   return row;
 }
 
-export function createBackup(row, runId) {
+function createArtifact(row, runId, format) {
   validateRow(row);
   assert.ok(row.workspace_id === `pr12-e2e-source-${runId}`, 'Back up only this run’s synthetic source workspace');
   const backup = {
-    format: 'urakkaluotsi-pr12-backup-v1', project_ref: PROJECT_REF,
+    format, project_ref: PROJECT_REF,
     run_id: runId, created_at: new Date().toISOString(),
     source_workspace: row.workspace_id, target_workspace: `pr12-e2e-restore-${runId}`,
     row: structuredClone(row),
@@ -69,17 +79,23 @@ export function createBackup(row, runId) {
   return { ...backup, sha256: contentHash(backup) };
 }
 
-export function validateBackup(value) {
+export const createBackup = (row, runId) => createArtifact(row, runId, 'urakkaluotsi-pr12-backup-v1');
+export const createRecovery = (row, runId) => createArtifact(row, runId, 'urakkaluotsi-pr12-recovery-v1');
+
+function validateArtifact(value, format) {
   assert.ok(value && typeof value === 'object' && !Array.isArray(value), 'Invalid backup document');
   const { sha256, ...backup } = value;
   assert.ok(typeof sha256 === 'string' && sha256 === contentHash(backup), 'Backup checksum mismatch');
-  assert.ok(backup.format === 'urakkaluotsi-pr12-backup-v1' && backup.project_ref === PROJECT_REF, 'Unexpected backup format or project');
+  assert.ok(backup.format === format && backup.project_ref === PROJECT_REF, 'Unexpected backup format or project');
   assert.ok(/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(backup.run_id), 'Invalid backup run identifier');
   assert.ok(backup.source_workspace === `pr12-e2e-source-${backup.run_id}` && backup.target_workspace === `pr12-e2e-restore-${backup.run_id}`, 'Restore target must be a separate synthetic workspace');
   validateRow(backup.row);
   assert.ok(backup.row.workspace_id === backup.source_workspace, 'Backup source mismatch');
   return value;
 }
+
+export const validateBackup = value => validateArtifact(value, 'urakkaluotsi-pr12-backup-v1');
+export const validateRecovery = value => validateArtifact(value, 'urakkaluotsi-pr12-recovery-v1');
 
 export function restoredRow(backup) {
   validateBackup(backup);

@@ -1,11 +1,22 @@
-const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');const {spawn}=require('node:child_process');
+const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),assert=require('node:assert/strict');const {spawn}=require('node:child_process');
 const delay=ms=>new Promise(r=>setTimeout(r,ms));
 module.exports=async function({origin,cookie}){
  fs.mkdirSync('qa-output',{recursive:true});
- const chrome=spawn(process.env.CHROME_PATH||'google-chrome',['--headless=new','--no-sandbox','--disable-dev-shm-usage','--remote-debugging-port=9223',`--user-data-dir=${path.resolve('qa-output/ops-chrome')}`,'about:blank'],{stdio:'ignore'});
+ // Browser profiles contain machine-specific singleton locks and session cookies.
+ // Keep each run outside the published workspace and remove only its own profile.
+ const profile=fs.mkdtempSync(path.join(os.tmpdir(),'urakkaluotsi-ops-chrome-'));
+ const chrome=spawn(process.env.CHROME_PATH||'google-chrome',['--headless=new','--no-sandbox','--disable-dev-shm-usage','--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'],{stdio:'ignore'});
+ const stopped=new Promise(resolve=>chrome.once('close',resolve));
+ let launchError=false;chrome.once('error',()=>{launchError=true;});
  let ws;const results=[];
  try{
-  let targets;for(let i=0;i<40;i++){try{targets=await fetch('http://localhost:9223/json').then(r=>r.json());if(targets.length)break;}catch{}await delay(250);}
+  let targets;for(let i=0;i<40;i++){
+   if(launchError||chrome.exitCode!==null)break;
+   try{
+    const port=fs.readFileSync(path.join(profile,'DevToolsActivePort'),'utf8').split('\n')[0];
+    if(/^\d+$/.test(port)){targets=await fetch(`http://127.0.0.1:${port}/json`).then(r=>r.json());if(targets.length)break;}
+   }catch{}await delay(250);
+  }
   assert.ok(targets?.length,'Chrome startup');ws=new WebSocket(targets.find(t=>t.type==='page').webSocketDebuggerUrl);await new Promise((r,j)=>{ws.onopen=r;ws.onerror=j;});
   let id=0;const pending=new Map();ws.onmessage=e=>{const m=JSON.parse(e.data);if(m.id){const p=pending.get(m.id);pending.delete(m.id);if(m.error)p.reject(new Error(m.error.message));else p.resolve(m.result);}};
   const send=(method,params={})=>new Promise((resolve,reject)=>{const n=++id;pending.set(n,{resolve,reject});ws.send(JSON.stringify({id:n,method,params}));});
@@ -26,5 +37,5 @@ module.exports=async function({origin,cookie}){
   assert.equal(await evaluate(`document.querySelector('.ops').textContent.includes('Synteettinen selainasiakas')`),true);results.push({test:'browser client form saves persistent state',status:'PASS'});
   await evaluate(`document.querySelector('.ops button').focus()`);const focus=await evaluate(`getComputedStyle(document.activeElement).outlineWidth`);assert.equal(focus,'3px');results.push({test:'visible keyboard focus',status:'PASS'});
   fs.writeFileSync('qa-output/ops-browser.json',JSON.stringify(results,null,2));console.log(`PASS ops browser: ${results.length} checks`);
- }finally{ws?.close();chrome.kill('SIGTERM');}
+ }finally{ws?.close();chrome.kill('SIGTERM');await stopped;fs.rmSync(profile,{recursive:true,force:true,maxRetries:5,retryDelay:100});}
 };

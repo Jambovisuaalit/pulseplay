@@ -1,6 +1,8 @@
 # Integraatioympäristön asetukset
 
-Sovellus käyttää Node 24:ää ja Python 3.12:ta. Asenna Node-riippuvuudet
+Sovellus käyttää Node 24:ää ja Python 3.12:ta. Hosted-ajurit tarvitsevat
+Node 24.14:n tai uudemman ympäristöproxyn ohjelmalliseen käyttöönottoon.
+Asenna Node-riippuvuudet
 `npm ci --ignore-scripts` ja Python-testiriippuvuus `python -m pip install
 'pypdf>=5,<7'`. Työntekijän valinnaiset PDF/OCR-riippuvuudet ovat erikseen
 `requirements-worker.txt`:ssä. Työ tehdään olemassa olevassa checkoutissa;
@@ -43,12 +45,37 @@ Ajuri hyväksyy turvallisen proxyn salaisuussidonnat paljastamatta raaka-arvoja.
 Vercelin suojausta ei poisteta. Julkisen yhteydenottolomakkeen sähköpostipalvelu
 simuloidaan QA:ssa; `RESEND_API_KEY` ei ole näiden testien edellytys.
 
-24.10.2026 tässä koneessa kaikki yllä mainitut E2E-sidonnat puuttuvat.
-Pilviympäristön luonnoksessa kolmen salaisuuden `has_saved_binding` on false.
-GitHub-integraation Preview-salaisuuksien nimien listaus palauttaa HTTP 403.
-Vercelin palvelinasetukset ovat siten **varmentamatta**, eivät todistetusti tyhjät.
-Tarvitaan sidontojen turvallinen syöttö ja integraatiohaaran Preview-asetusten
-varmennus. Arvoja ei pyydetä keskusteluun.
+24.10.2026 uudessa tarkistuksessa kaikki viisi tavallista asetusta ja kolme
+verkkosalaisuussidontaa ovat saatavilla. Kokoonpanon lukutulos palauttaa nyt
+julkaistun version (ei luonnosrevisiota), jonka tunniste päättyy
+`cecfgver_6adbfb5eb4cc81a1b948158b1110e5b5`. Tämä ei yksin todista koneen
+aktiivista kokoonpanoversiota; ajonaikaista versiotilakyselyä ei ole käytettävissä.
+
+Julkaistusta kokoonpanosta luetuissa vaatimuksissa kahden Preview-salaisuuden
+sallittu host on edelleen vanha
+`tenderpulse-fch3db8x2-info-32533854s-projects.vercel.app`. Se ei vastaa nykyistä
+integraatio-Previewta. Muutos on tehtävä **Network secrets → Manage → olemassa
+oleva salaisuus → Allowed domains** -kenttään. Yleisen Internet-sallintalistan
+muutos ei muuta salaisuuden kohderajausta. Päivitystyökalu ei tue olemassa olevan
+vaatimuksen ristiriitaisen kohteen muuttamista eikä vaatimuksia monisteta.
+
+`PREVIEW_E2E_WORKSPACE` on asetettu, mutta se ei täytä erillisen testityötilan
+`preview-e2e-`/`pr12-e2e-`-nimiavaruutta. Arvoa ei arvata tai muuteta vain ajurissa:
+sen pitää vastata integraatiohaaran Preview-palvelimen erillistä työtilaa.
+
+Hosted-ajurit ottavat nyt Node-prosessissa käyttöön `http.setGlobalProxyFromEnv`-
+tuen ennen verkkopyyntöjä. Ympäristön `HTTPS_PROXY` ja `NO_PROXY` säilyvät käytössä,
+TLS-varmennusta ei poisteta. Ilman tätä Node-fetch aikakatkaistiin, vaikka Pythonin
+ja GitHub CLI:n HTTPS-yhteydet toimivat. Korjauksen jälkeen oikea, satunnaiseen
+olemattomaan testityötilaan rajattu Supabase GET palautti HTTP 401:n: sidonnan
+saatavuus ei vielä osoita kelvollista tietokantatunnistautumista. Vastauksen runkoa
+tai avainta ei kirjattu. Erillistä testiprojektia ei ole tämän perusteella varmennettu.
+
+Vercelin hallintarajapinta palauttaa ilman hallintasidontaa 403:n, Supabasen
+hallintarajapinta 401:n. Hallintatokenia, suoraa SQL-yhteyssidontaa tai kirjautunutta
+CLI-istuntoa ei löytynyt. Integraatiohaaran Vercel-palvelinasetukset ovat siten
+**varmentamatta**, eivät todistetusti tyhjät. Tarvitaan palvelinasetusten ja
+testiprojektin erillisyyden varmennus hallintapääsyllä. Arvoja ei pyydetä keskusteluun.
 
 ## Testidatan siivous
 

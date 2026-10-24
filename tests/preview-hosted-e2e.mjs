@@ -5,8 +5,10 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { spawnSync } from 'node:child_process';
 import { contentHash } from '../lib/domain/workflow.ts';
 import { supabaseConfig, dataApi, validateRow, verifyRace, verifyPreviewTarget, cleanupWorkspace } from './helpers/pr12-qa.mjs';
+import { configurePreviewNetwork } from './helpers/preview-network.mjs';
 
 async function main() {
+  configurePreviewNetwork();
   const origin = (process.env.PREVIEW_E2E_URL || '').replace(/\/$/, '');
   const username = process.env.PREVIEW_E2E_USERNAME;
   const password = process.env.PREVIEW_E2E_PASSWORD;

@@ -95,10 +95,14 @@ Jäädytettyjä lähtötietoja tai vertailuluokkia ei muokattu onnistumisen luom
 
 ## Täsmälliset jäljellä olevat esteet
 
-1. Testiajurin turvalliset Preview-sidonnat puuttuvat. Nimet, ympäristöt ja
-   toimenpiteet: [integraatioympäristö](integration-environment.md). Vercelin
-   integraatiohaaran palvelinasetuksia ei ole pystytty varmentamaan. Vanha
-   PR #12 -Preview ei vastaa tämän integraation sovelluskoodia.
+1. Testiajurin sidonnat ovat nyt saatavilla, mutta julkaistusta kokoonpanosta
+   luetut kaksi Preview-kohderajausta osoittavat vanhaan hostiin ja työtila on
+   testinimiavaruuden ulkopuolella. Node-proxy-yhteys korjattiin ajureihin;
+   sen jälkeen rajattu oikea Supabase-luku palauttaa 401:n. Nimet, ympäristöt
+   ja toimenpiteet: [integraatioympäristö](integration-environment.md).
+   Vercelin integraatiohaaran palvelinasetuksia ja testiprojektin erillisyyttä
+   ei ole pystytty varmentamaan hallintapääsyn puuttuessa. Vanha PR #12 -Preview
+   ei vastaa tämän integraation sovelluskoodia.
 2. Rajattu siivous-SQL on sovellettava vain hyväksyttyyn Preview-testiprojektiin.
    Sen jälkeen tarvitaan oikea autentikoitu koko työnkulku, HTTP-kilpailu,
    erillinen palautus/siivous ja uudelleenkäynnistyksen jälkeinen luku.

@@ -31,7 +31,9 @@ globalThis.fetch = async (input, init) => {
     assert.equal(init.method, 'POST', 'Runner regression must not UPDATE or DELETE a workspace');
     const row = JSON.parse(init.body);
     try {
-      return Response.json((await db.query('insert into public.urakkaluotsi_ops_state values ($1,$2,$3) returning workspace_id,storage_version,state', [row.workspace_id, row.storage_version, row.state])).rows, { status: 201 });
+      const rows = (await db.query('insert into public.urakkaluotsi_ops_state values ($1,$2,$3) returning workspace_id,storage_version,state', [row.workspace_id, row.storage_version, row.state])).rows;
+      if (process.env.PR12_QA_LOSE_INSERT_ACK === 'yes') throw new Error('synthetic-sensitive-transport-detail');
+      return Response.json(rows, { status: 201 });
     } catch (error) {
       if (error.code === '23505') return Response.json({ code: '23505' }, { status: 409 });
       throw error;
