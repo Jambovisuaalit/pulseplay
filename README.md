@@ -73,11 +73,25 @@ python workers/build_validation_set.py
 
 The daily GitHub Action runs the same path and uploads artifacts. Hilma's search index does not contain the complete tender documentation, so the worker also attempts to retrieve the full eForms notice and follows document URLs where possible. External tender portals may still require a separate document-fetching integration.
 
-## 100-notice validation
+## 100-notice validation — blinded frozen source, 19.10.2026
 
 ```text
-data/validation/hilma_100_luokiteltavaksi.csv
+data/validation/snapshot_2026-10-19/hilma_raw.json
+data/validation/snapshot_2026-10-19/validation/hilma_collection_audit.json
+data/validation/independent_100/blind_review.csv
+data/validation/independent_100/predictions.csv
+data/validation/independent_100/gold_labels.csv
 ```
+
+Source: GitHub Actions artifact 12155822339, 100 unique official Hilma search-index
+records captured 2026-10-19 00:12 UTC by a previously executed one-call
+collector. No additional Hilma API calls were used here. Search metadata is not
+equivalent to full tender annexes.
+
+`blind_review.csv` contains source metadata only. An independent human reviewer
+checks the original source and separately fills `gold_labels.csv`: reviewer ID,
+review time, label, rationale, cited evidence, and `source_checked=YES`.
+Predictions are held in `predictions.csv`, never used as gold truth.
 
 Manual labels:
 
@@ -85,17 +99,37 @@ Manual labels:
 - Mahdollinen
 - Epärelevantti
 
-After labeling:
+Build and assess:
 
 ```bash
+python workers/build_validation_set.py
 python workers/score_validation.py
+python -B -m unittest discover -s tests -p 'test_*.py' -v
+node --test tests/*.test.mjs
 ```
 
 Primary gate:
 
-- 100 manually labeled notices
+- 100 independently source-reviewed decisive labels
 - top-30 precision >= 80%
+- positive-prediction precision >= 80%; report false positives, false negatives and unreviewed
 - fabricated hard requirements = 0
+
+The 100 rows are sampled uniformly, not by scoring. The top-30 is frozen before
+any gold join. If even one item is unreviewed or only conditionally classified,
+the complete precision gate is `NOT MEASURED`. Rebuilding preserves gold rows.
+
+## Release safety rules
+
+- A past deadline is `EXPIRED` even if the archived analysis says GO.
+- A date-only deadline on the current day, missing timezone, or invalid date
+  is `UNKNOWN`; it is not assumed open.
+- A hard gate requires a nonempty original requirement quote *and* separately
+  recorded evidence confirming the corresponding company-profile field.
+- Annex review is `UNKNOWN` by default. `COMPLETE` with a documented audit is
+  required before the delivery recommendation can become GO.
+- These controls reduce false claims; they do **not** verify that evidence text
+  is authentic. Independent source checks remain obligatory.
 
 Do not wire automatic LLM publishing before this gate passes.
 

@@ -1,0 +1,12 @@
+{
+  "review_type": "AI_SILVER_SOURCE_ONLY_BLIND_HOLDOUT_NOT_HUMAN_GOLD",
+  "source_sha256": "ef48545a624ab0399a9addc06cadd13593a0866fd574400fb9c234a807ae3a06",
+  "seed_sha256": "0e7e7d3c0aa9f60bd2a20b744bab6148e55e775dbeb1f397760f5c226ff76379",
+  "ai_silver_labels_sha256": "286280efb843af1f8b8281bcada21ddc51fb812eb3d70ebcd846d96b6fd71c52",
+  "frozen_at_utc": "2026-10-19T02:08:27.744648+00:00",
+  "count": 52,
+  "prediction_file_read": false,
+  "human_gold_count": 0,
+  "full_annex_reviews": 0,
+  "usable_for_official_precision": false
+}

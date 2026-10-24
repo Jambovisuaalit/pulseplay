@@ -1,0 +1,78 @@
+{
+  "schema_version": "2026-10-19-source-candidates-v1",
+  "selection_policy": "PUBLIC_DOCUMENT_DISCOVERY_NOT_RANDOM_HOLDOUT",
+  "candidates": [
+    {
+      "candidate_id": "YSAO_SANKARINIEMI_VALVONTA_2026",
+      "name": "Sankariniemen A-siiven saneerauksen ja auditorion muutoksen valvontatyöt",
+      "region_icp": "OUT",
+      "scope_icp": "OUT",
+      "individual_contract_value_verified": false,
+      "eligibility_terms_reviewed": false,
+      "evaluation_use": "HISTORICAL",
+      "documents": [
+        {
+          "type": "public_listing",
+          "source_url": "https://ysao.fi/2026/10/01/tarjouspyynto-sankariniemen-a-siiven-saneerauksen-ja-auditorion-muutoshankkeen-valvontatyosta/",
+          "access": "SEARCH_INDEX_ONLY",
+          "note": "Index lists annexes; live page not accessible in direct fetch"
+        }
+      ],
+      "reason": "Valvontapalvelu Iisalmessa; ei rakennusurakka Uudellamaalla"
+    },
+    {
+      "candidate_id": "HELSINKI_HEL_2026_010970",
+      "name": "Stara Sydänpuunpuiston kuorielementtien asennusurakka",
+      "region_icp": "IN",
+      "scope_icp": "OUT",
+      "individual_contract_value_verified": false,
+      "eligibility_terms_reviewed": false,
+      "evaluation_use": "HISTORICAL",
+      "documents": [
+        {
+          "type": "award_decision",
+          "source_url": "https://paatokset.hel.fi/fi/asia/hel-2026-010970?paatos=3b32626d-de09-c458-875e-a014ebf00000",
+          "access": "VERIFIED_PUBLIC_DECISION",
+          "note": "Tender request and contract annexes not published online"
+        }
+      ],
+      "reason": "Infran tukimuurin kuorielementtiasennus, ei saneeraus-ICP"
+    },
+    {
+      "candidate_id": "ESPOO_TUOMARILA_DAYCARE_2026",
+      "name": "Tuomarilan päiväkodin sisätilojen korjaus",
+      "region_icp": "IN",
+      "scope_icp": "MATCH",
+      "individual_contract_value_verified": false,
+      "eligibility_terms_reviewed": false,
+      "evaluation_use": "HISTORICAL",
+      "documents": [
+        {
+          "type": "award_summary",
+          "source_url": "https://viranhaltija.fi/haku/?page=2&q=tilapalvelut&sort=newest",
+          "access": "SEARCH_INDEX_ONLY",
+          "note": "Decision search excerpt reports winning price 379000 EUR; not independently verified original tender or estimate"
+        }
+      ],
+      "reason": "Potential out-of-range awarded price; cannot substitute award price for tender estimate or full eligibility"
+    },
+    {
+      "candidate_id": "ESPOO_MANKKAA_DAYCARE_2026",
+      "name": "Mankkaan tyyppipäiväkodin elinkaarta jatkavat korjaustyöt",
+      "region_icp": "IN",
+      "scope_icp": "MATCH",
+      "individual_contract_value_verified": false,
+      "eligibility_terms_reviewed": false,
+      "evaluation_use": "HISTORICAL",
+      "documents": [
+        {
+          "type": "award_summary",
+          "source_url": "https://viranhaltija.fi/haku/?page=2&q=tilapalvelut&sort=newest",
+          "access": "SEARCH_INDEX_ONLY",
+          "note": "Decision search excerpt reports awarded contract 687000 EUR"
+        }
+      ],
+      "reason": "Likely out-of-range, but complete original tender and eligibility missing"
+    }
+  ]
+}

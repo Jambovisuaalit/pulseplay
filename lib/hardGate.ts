@@ -9,6 +9,10 @@ export interface CompanyProfile {
   certifications: string[];
   response_time_hours: number | null;
   can_provide_financial_guarantee: boolean | null;
+  verification_evidence?: Partial<Record<
+    "turnover_eur" | "regions" | "capabilities" | "certifications" |
+    "response_time_hours" | "can_provide_financial_guarantee", string
+  >>;
 }
 
 export type GateStatus = "PASS" | "FAIL" | "UNKNOWN";
@@ -43,6 +47,17 @@ export function evaluateHardGates(
   const regions = new Set(profile.regions.map(normalize));
 
   const results: GateResult[] = gates.map((gate) => {
+    const evidenceField: Record<TenderHardGate["type"], keyof NonNullable<CompanyProfile["verification_evidence"]>> = {
+      turnover_min: "turnover_eur", capability: "capabilities", capability_any: "capabilities",
+      capability_all: "capabilities", certification: "certifications", region: "regions",
+      response_time_max_hours: "response_time_hours", financial_guarantee: "can_provide_financial_guarantee",
+    };
+    if (!gate.evidence?.trim()) {
+      return { id: gate.id, label: gate.label, status: "UNKNOWN", reason: "Vaatimuksen lähde-evidenssi puuttuu." };
+    }
+    if (!profile.verification_evidence?.[evidenceField[gate.type]]?.trim()) {
+      return { id: gate.id, label: gate.label, status: "UNKNOWN", reason: "Yritystiedon riippumaton vahvistus puuttuu." };
+    }
     switch (gate.type) {
       case "turnover_min": {
         if (typeof gate.required_value !== "number" || profile.turnover_eur == null) {

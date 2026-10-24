@@ -1,0 +1,608 @@
+﻿notice_id,title,organisation,description,deadline,estimated_value,procedure_id,source_pointer
+160596,Kerrostalon purku-urakka,Pieksämäen Haka Oy,"Pyydämme tarjoustanne kerrostalon purkamisesta osoitteessa Metsämiehentie 83, 76120 Pieksämäki.",2026-10-02T09:00:00Z,0.0,,holdout_raw.json#id=160596
+54620,Avantosaunan KVR-rakennusurakka,Lapuan avantouimarit ry,"Avantosaunan KVR-rakennusurakka Lapuan Avantouimarit ry kilpailuttaa kokonaisvastuullisen KVR-urakan uuden avantouintisaunan toteuttamiseksi osoitteeseen Urheilumajantie 28, 62100 Lapua.
+
+Hankinnan tavoitteena on toteuttaa tarjouspyynnön ja sen liiteasiakirjojen mukainen saunarakennus kokonaisuudessaan valmiiksi, viranomaisten hyväksymäksi ja käyttöönotetuksi.
+
+Tarjouspyyntö, suunnitelmat ja muut hankinta-asiakirjat muodostavat hankkeen sitovan lähtöaineiston ja määrittävät hankkeen vähimmäisvaatimukset. Urakoitsija vastaa rakennuksen toteuttamisesta sekä KVR-urakkaan kuuluvasta täydentävästä toteutussuunnittelusta, suunnitelmien toteutuskelpoisuudesta, yhteensovittamisesta ja siitä, että lopputulos täyttää hankinta-asiakirjoissa asetetut vaatimukset. 
+
+Urakkahintaan sisältyvät kaikki hankinta-asiakirjoissa urakkaan määritellyt työt ja hankinnat sekä sellaiset rakennuksen toteuttamiseksi ja täysin käyttövalmiiksi saattamiseksi tarvittavat tehtävät, jotka ammattitaitoisen KVR-urakoitsijan on tarjousasiakirjojen perusteella tarjousta antaessaan kohtuudella tullut ottaa huomioon. Urakkahintaan sisältyvät siten muun muassa kaikki tarvittavat työt, materiaalit, tuotteet, laitteet, täydentävä suunnittelu, suunnitelmien yhteensovittaminen, liittymät, tarkastukset, mittaukset, koekäytöt, säädöt, käyttöönottotoimenpiteet, viranomaisvelvoitteet sekä luovutus- ja käyttöönottodokumentaatio tarjouspyyntöasiakirjoissa määritellyssä laajuudessa. 
+
+Urakkaan sisältyvät tarjouspyyntöasiakirjojen mukaisessa laajuudessa rakennuksen pohja-, perustus- ja maanrakennustyöt, massanvaihdot, kaivut, täytöt, tarvittavat louhinnat, kuivatus- ja routasuojaustyöt, rakennekerrokset, pihatyöt sekä perustukset ja alapohjarakenteet.
+
+Urakkaan kuuluvat lisäksi runko-, yläpohja-, vesikatto-, ulkoverhous-, julkisivu- ja räystäsrakenteet, kaikki sisävalmistustyöt, kalusteet ja varusteet sekä suunnitelmien mukaiset terassi, esteetön luiska, kulkuyhteydet ja avantoon johtavat puuportaat.
+
+Maanrakennus-, louhinta-, liittymä- ja pihatöiden tarkka laajuus sekä niitä koskeva vastuunjako määräytyvät tarjouspyynnön pakollisten vaatimusten, pohjatutkimusselostuksen, asemapiirroksen ja muiden hankinta-asiakirjojen perusteella.
+
+Urakkaan sisältyvät tarjouspyyntöasiakirjojen mukaiset LVI-, sähkö-, ilmanvaihto- ja automaatiotyöt sekä talotekniset järjestelmät kokonaisuudessaan. Näihin kuuluvat muun muassa lämpöpumppujärjestelmä (NIBE tai teknisiltä, toiminnallisilta ja laadullisilta ominaisuuksiltaan vastaava), vesikiertoinen lattialämmitys, valaistus, turvavalaistus ja ulkovalaistus sekä järjestelmien säädöt, koekäytöt ja käyttöönotto.
+
+Urakkaan sisältyy lisäksi uuden erillisen sähköliittymän hankkiminen ja toteuttaminen kokonaisuudessaan liittymismaksuineen tarjouspyyntöasiakirjoissa määritellyssä laajuudessa.
+
+Urakoitsija vastaa KVR-urakkaan kuuluvista työmaapalveluista ja työmaajärjestelyistä, suojauksista, kuljetuksista, nostoista, varastoinnista, työmaasähköstä, työmaan vedenkäytöstä ja jätehuollosta sekä tarjouspyynnössä määritellyistä viranomais-, tarkastus-, dokumentointi- ja käyttöönottovelvoitteista. Rakennus luovutetaan tilaajalle täysin valmiina, viranomaisten hyväksymänä ja käyttöönotettuna.
+
+Hankkeen tekniset, toiminnalliset ja laadulliset vähimmäisvaatimukset määräytyvät tarjouspyynnön ja sen liiteasiakirjojen perusteella. Materiaalien, tuotteiden, laitteiden ja järjestelmien tulee täyttää asetetut vähimmäisvaatimukset sekä soveltua rakennuksen käyttötarkoitukseen ja julkisen tilan vaativaan, ympärivuotiseen käyttöön.
+
+Jos hankinta-asiakirjoissa viitataan tiettyyn tuotemerkkiin, tarjoaja voi tarjota teknisiltä, toiminnallisilta ja laadullisilta ominaisuuksiltaan vastaavaa tuotetta, ellei hankinta-asiakirjoissa ole perustellusta syystä nimenomaisesti toisin määrätty. Tarjoajan on osoitettava tarjotun vastaavan tuotteen vaatimustenmukaisuus tarjouspyynnössä edellytetyllä tavalla.
+
+Vastikkeeton työ (talkootyö)
+
+Hankkeeseen sisältyy ELY-keskuksen hyväksymää vastikkeetonta työtä. Hankkeessa toteutettavan tukiehtojen mukaisesti hyväksyttävän vastikkeettoman työn laskennallisen arvon tulee olla 60 876,20 euroa. Vastikkeettoman työn arvo määräytyy hankkeeseen sovellettavien tukiehtojen mukaisesti. Henkilötyön laskennallinen arvo on 20 euroa henkilötyötunnilta. Vastikkeettoman työn laskennalliseen arvoon ei lisätä arvonlisäveroa.
+
+Urakoitsija vastaa vastikkeettoman työn suunnittelusta, yhteensovittamisesta ja aikatauluttamisesta sekä työmaalla tehtävän vastikkeettoman työn ohjaamisesta ja valvonnasta. Urakoitsija vastaa lisäksi omalle vastuulleen määritellystä vastikkeettoman työn dokumentoinnista tarjouspyynnön pakollisten vaatimusten mukaisesti.
+
+Tilaaja vastaa talkootyöntekijöiden järjestämisestä, eikä urakoitsija vastaa talkootyövoiman saatavuudesta.
+
+Hinta ja määräaika
+
+Tarjouksen arvonlisäveroton kokonaisurakkahinta saa olla enintään 194 027,73 euroa (alv 0 %). Hintakaton ylittävä tarjous hylätään tarjouspyynnön vastaisena.
+
+Rakennuksen tulee olla täysin valmis, viranomaisten hyväksymä ja käyttöönotettu viimeistään 31.12.2027. Urakan tarkemmat ehdot, vähimmäisvaatimukset, vastuunjako, asiakirjojen pätevyysjärjestys ja tarjousten vertailuperusteet määräytyvät tarjouspyynnön ja sen liiteasiakirjojen perusteella.,",2026-10-15T09:00:00Z,194027.73,35821,holdout_raw.json#id=54620
+57348,Hulevesilinjan suuntaporaus Kauhajoki,Kauhajoen kaupunki,"Hulevesilinjan suuntaporaus Kauhajoki Hulevesilinjojen asentaminen suuntaporaamalla suunnitelman mukaisiin paikkoihin,",2026-10-05T09:00:00Z,,37384,holdout_raw.json#id=57348
+57450,Katsomo- ja katoshanke 9/2026,Kuusan Nuorisoseura r.y.,"Katsomo- ja katoshanke 9/2026 1. HANKINNAN KOHDE JA TAVOITTEET
+Kuusan nuorisoseura ry pyytää tarjouksia katsomo- ja katoshankkeesta. 
+Hanke käsittää seuraavat kokonaisuudet: (Tarkemmin leikkaus A-A suunnitelmissa)
+-Kesäteatterin katsomo: n. 500 paikkaa ja Katsomon katos: n. 330 m² (suunnitelmien mukaan)
+-Maatyöt, tukimuuri, salaoja- ja sadevesijärjestelmä, routasuojaus + alaosan antura
+Tilaaja toteuttaa osan töistä talkoilla.
+
+2. URAKAN SISÄLTÖ JA TARJOUSPYYNTÖ
+Hanke sisältää kaksi (2) eri tarjottavaa kokonaisurakkaa (tarjouksen tulee sisältää kaikki työt, tarvikkeet, matkakulut ja velvoitteet):
+– 1 Katsomo (n. 500 paikkaa), katsomon katos (n. 330 m²) sekä kaikki näihin liittyvät rakennustekniset työt ja perustukset, rakenne- ja erikoissuunnitelmat, sekä rakennusvalvonnan vaatiman päärakennesuunnittelijan - 2 Maanrakennustyöt, maanpaineseinä rakennesuunnitelmineen sekä routasuojaus.
+- Tarjoajan tulee antaa kiinteähintainen tarjous kustakin tarjoamastaan kohdasta (1-2) erikseen (alv 0 %).
+- Hankkeen lupakuvat ja rajapinnat löytyvät tarjouspyynnön liitteenä olevista suunnitelmista ja dokumenteista. Tarjousten pohjana käytetään lupakuvia. 
+- Tarjousten voimassaoloaika 3 kk.
+- Tilaaja ei käsittele vaihtoehtotarjouksia.
+- Melua aiheuttavat työt pitää suorittaa arkipäivinä klo 7.00-18.00 välisenä aikana (muina aikoina tarvitaan tilaajalta etukäteistä hyväksyntää).
+- aikataulutus sovitaan urakoitsijoiden kesken päätösvaiheessa.
+- Molempien osa-alueiden urakoitsija toimii pääurakoitsijana ja lainsäädännön tarkoittamana päätoteuttajana oman osuuden kohdalla. 
+
+AIKATAULU, VIIVÄSTYSSAKKO JA TAKUU
+Aikataulu on kriittinen kesäteatterin esityskauden vuoksi.
+-Purku: Tilaaja purkaa vanhat rakenteet (poislukien perustukset) talkoilla vuoden 2026 aikana.
+-Työmaan aloitus: 15.3.2027 (sään salliessa).
+-Hanke maanrakennuksen ja maanpaineseinän osalta valmis: 15.4.2027 (kohde vastaanotettuna ja siivottuna).
+-Hanke katsomon ja katoksen osalta osalta valmis: 15.6.2027 (kohde vastaanotettuna ja siivottuna).
+-Erityishuomio: 3.5.2027 alkaen näyttämöalueen on oltava vapaana teatterin käyttöön ilta-aikoina ja viikonloppuisin sekä sinne pitää pystyä rakentamaan näytelmän kulissit.
+-Työmaatuvallisuus: Nuorisoseuran piha ja talo on käytössä hankkeen ajan, joka pitää ottaa huomioon. Hankkeen on tarkoitus valmistua 15.6.2027 mennessä
+Viivästyssakko: 
+- Mikäli kohde ei ole vastaanottokelpoinen 15.6.2027 mennessä, urakoitsija maksaa viivästyssakkoa 1,0 % (alv 0 %) urakkahinnasta per alkava viikko. 
+- Mikäli viivästys jatkuu 1.7.2027 yli, tilaajalla on oikeus periä sakon lisäksi korvaus välittömistä taloudellisista vahingoista (esim. menetetyt tulot kesäteatterikaudelta).
+
+Takuu: 
+-Yleinen takuuaika: 2 vuotta (alkaa koko urakan hyväksytystä vastaanotosta).
+-Erityistakuu: vesikate 10 vuotta ja teräsrakenteet 5 vuotta.
+-Kymmenvuotisvastuu: YSE 1998 mukainen vastuu piilevistä virheistä 10 vuotta.
+-Urakoitsijan on asetettava rakennusalan yleisten sopimusehtojen (YSE 1998) mukaiset vakuudet.  *Rakennusajan vakuus on 10 % urakkahinnasta (alv 0 %) 
+*Takuuajan vakuus 2 % urakkahinnasta (alv 0 %). Vakuuden on oltava voimassa 3 kk yli takuuajan päättymisen. 
+*Vakuudeksi hyväksytään pankkitakaus, vakuutusyhtiön takaus tai tilaajan hyväksymä muu vakuus.ALIURAKOITSIJAT
+-Urakoitsija on velvollinen ilmoittamaan käyttämänsä aliurakoitsijat tilaajalle ennen näiden työn aloitusta. Tilaajavastuulain mukaiset todistukset vaaditaan koko ketjulta.
+-Tilaajalla on oikeus hylätä aliurakoitsija, mikäli tämä ei täytä asetettuja soveltuvuusvaatimuksia tai tilaajavastuulain mukaisia velvoitteita.
+
+Muuta: 
+-Voimassa olevat tulityö- ja työturvallisuuskortit sekä veronumero kaikilla työntekijöillä. -Nuorisoseuran pihan ja talon aktiivinen käyttö on huomioitava työturvallisuudessa.
+
+TARJOAJIEN POISSULKEMINEN JA SOVELTUVUUS SEKÄ ESITTELYT(Hankintalaki 1397/2016) Pakolliset poissulkemisperusteet (80 §): 
+Hankintayksikkö sulkee tarjoajan pois kilpailutuksesta, mikäli tarjoajaa tai sen hallinto-, johto- tai valvontaelimen jäsentä koskee hankintalain 80 §:ssä tarkoitettu lainvoimainen tuomio.
+Harkinnanvaraiset poissulkemisperusteet (81 §): Hankintayksikkö voi sulkea tarjoajan pois kilpailutuksesta, jos tarjoaja: 
+-On konkurssissa, purkamis- tai saneerausmenettelyssä.
+-On syyllistynyt ammattitoiminnassaan vakavaan virheeseen.
+-On laiminlyönyt verojen tai sosiaaliturvamaksujen maksamisen.
+-On aiemmissa hankintasopimuksissa syyllistynyt merkittäviin puutteisiin.
+Tarjoajan on täytettävä tilaajavastuulain (1233/2006) mukaiset velvoitteet. Soveltuvuuden arvioimiseksi tarjoajan tulee toimittaa: 
+-Enintään 3 kk vanhat todistukset verojen maksamisesta, eläkevakuutuksista ja työehtosopimuksesta.
+-Selvitys voimassa olevasta vastuuvakuutuksesta (vähintään 500 000 €) .
+- Kohteeseen tutustuminen on suositeltavaa.
+-Tarjouksen ja liitteiden tulee olla suomenkielisiä. 
+- Yhteyshenkilö: Tapio Myllylä, 043 824 8504, tapio@rakennussuunnittelumyllyla.fi.Sijainti: Koskelantie 43, 41370 Kuusa.,",2026-10-09T20:45:00Z,280000.0,37451,holdout_raw.json#id=57450
+57487,"Lieto, Sillilän päiväkoti",Liedon kaupunki,"Lieto, Sillilän päiväkoti Hankkeena on uuden päiväkodin rakentaminen Sillilän asuinalueelle Lietoon. Rakennuspaikka sijaitsee Jukolantie 31, 21420 Lieto. Urakkamuotona on kiinteähintainen tekninen KVR-urakka. Urakka sisältää hankkeen suunnittelun, rakentamisen ja laadullisen vastuun hankkeen lopputuloksesta. Päiväkotirakennuksen bruttoala on noin 1 900 m² ja lisäksi piha-alueelle rakennetaan noin 200 m² kota-katosrakennus.,",2026-10-19T07:00:00Z,7150000.0,37472,holdout_raw.json#id=57487
+57498,Petikon golfkentän kunnostus,Vantaan kaupunki,"Petikon golfkentän kunnostus Urakan kohteena on Petikon 9 väyläisen golfkentän kunnostaminen pelikäyttöön. Parannuksia tehdään kohteisiin, joissa on tunnistettu laatuongelma. Kenttä on ollut useita vuosia käyttämättömänä ja vain välttämättömän kunnossapidon kohteena.,",2026-10-07T09:00:00Z,,37478,holdout_raw.json#id=57498
+57518,"Vt 4 Lahdenväylä välillä Kehä I - Kehä III ja Ilmasillan eritasoliittymä, allianssi; Alustava tarjouspyyntö",Väylävirasto,"Vt 4 Lahdenväylä välillä Kehä I - Kehä III ja Ilmasillan eritasoliittymä, allianssi; Alustava tarjouspyyntö Tällä hankintailmoituksella Väylävirasto ja Helsingin kaupunki käynnistävät hankintamenettelyn koskien ""Vt 4 Lahdenväylä välillä Kehä I - Kehä III ja Ilmasillan eritasoliittymä"" -urakan rakentamista.
+
+Väylävirasto ja Helsingin kaupunki hakevat ehdokkaita ja ehdokasryhmittymiä Vt 4 Lahdenväylä välillä Kehä I - Kehä III ja Ilmasillan eritasoliittymä -hankkeen toteuttajaksi. Hanke tullaan toteuttamaan allianssimallilla, jossa valittava sopimuskumppani toteuttaa hankkeen rakentamisen yhteistoiminnassa Tilaajien kanssa. Suunnitteluosapuoli hankitaan erikseen hankkeen kehitysvaiheen alussa hankkeen parhaaksi. Suunnitteluosapuolen hankinta ja integroiminen hankkeeseen toteutetaan allianssin parhaaksi laajasta tarjoajajoukosta.
+
+Hankkeen kehitysvaihe käynnistyy arviolta tammikuussa 2027 ja toteutusvaihe arviolta vuoden 2027 aikana.
+
+Hankkeessa tilaajina ja allianssisopimuksen osapuolina toimivat Väylävirasto ja Helsingin kaupunki. Hankkeessa tilaajina voivat toimia myös Uudenmaan elinvoimakeskus, HSY sekä hankealueella sijaitsevien johtojen ja laitteiden omistajat.
+
+Hankkeen kokonaiskustannusarvio on noin 100 M€ (MAKU 145, 2020 = 100). Väyläviraston ja Helsingin kaupungin kustannusosuudet täsmentyvät kehitysvaiheen aikana.
+
+Hanke koostuu tiesuunnitelmasta ""Valtatien 4 parantaminen välillä Kehä I - Kehä III ja Ilmasillan eritasoliittymä, Helsinki"". Tiesuunnitelma on hyväksytty ja saanut lainvoiman 4.6.2026.
+
+Helsingin kaupunki on laatinut Ilmasillasta ja Ilmasillantiestä rakennussuunnitelman.
+
+Hanke sisältää mm.:
+- lisäkaistojen rakentamisen Vt 4:lle ja Kehä I:lle
+- olemassa olevien eritasoliittymien parantaminen (Kivikon ETL ja Tattariharjun ETL)  
+- uuden Ilmasillan eritasoliittymän rakentaminen
+- vanhojen siltojen leventämistä ja korjaamista
+- uusien siltojen rakentamista
+- paalulaattaa n. 24 000 m2
+- pilaristabilointia n. 320 km 
+- melunsuojausta 1,8 km
+- pohjaveden suojausta n. 44 000 m2
+- tukimuureja 
+- valaistuksen uusimisen sekä laite- ja johtosiirtoja
+- geolujitteita, ylipenkereitä,",2026-09-28T10:00:00Z,,36349,holdout_raw.json#id=57518
+57552,"Kauhajoen vapaa-aikakeskuksen huoltorakennus (sisältää kolme eri urakkaa; RU, LVIA ja SÄHKÖ-urakat)",Kauhajoen kaupunki,"Kauhajoen vapaa-aikakeskuksen huoltorakennuksen (sosiaalitilat) rakentaminen, kerrosala 281m².Hankinta on jaettu kolmeen urakkaan / osaan. Tarjouksen voi jättää yhteen tai useampaan urakkaan., Kauhajoen vapaa-aikakeskuksen huoltorakennus, Rakennusurakka (RU) Kauhajoen vapaa-aikakeskuksen huoltorakennuksen rakentaminen sisältäen rakennustekniset työt, ympäröivät piha-alueet ja päätoteuttajan velvoitteet suunnitelmien mukaisessa laajuudessa, kokonaishintaisena pääurakkana., Kauhajoen vapaa-aikakeskuksen huoltorakennus, LVIA-urakka (LVIA). Kauhajoen vapaa-aikakeskuksen huoltorakennuksen lämpö, - vesi, - viemäri, - ilmanvaihto- ja automaatiotyöt suunnitelmien mukaisessa laajuudessa, kokonaishintaisena sivu-urakkana., Kauhajoen vapaa-aikakeskuksen huoltorakennus, SÄHKÖ-urakka (SU). Kauhajoen vapaa-aikakeskuksen huoltorakennuksen sähkötyöt suunnitelmien mukaisessa laajuudessa, kokonaishintaisena sivu-urakkana.,",2026-09-30T09:00:00Z,,36962,holdout_raw.json#id=57552
+57556,"SR-urakka, Koskin liikuntahallin rakentaminen sekä suunnittelu",Ulvilan kaupunki,"SR-urakka, Koskin liikuntahallin rakentaminen sekä suunnittelu Hankinnan kohteena Koskin uuden liikuntahallin suunnittelu ja rakentaminen kaikkine työmaatoimintoineen.
+
+Liikuntahallin pitää olla luovutettuna käyttäjälle 9.8.2027 kalustusta varten.
+ 
+Hankintaa ei jaeta osiin, sillä usean toimittajan malli tuottaisi epätarkoituksenmukaisen sopimuskokonaisuuden aikataulunhallinnan sekä töiden yhteensovittamisen kannalta.,",2026-10-26T10:00:00Z,,37501,holdout_raw.json#id=57556
+57571,"Veturitien alikulkukäytävä, kokonaisurakka","Helsingin kaupunki, kaupunkiympäristön toimiala","Veturitien alikulkukäytävä, kokonaisurakka Urakka käsittää Veturitien rakentamisen vaatimat työt urakka-asiakirjojen osoittamassa laajuudessa tarjouspyyntöasiakirjojen mukaisesti kaikkine liittyvine töineen ja hankintoineen täysin valmiiksi.
+
+Urakka sisältää koskee louhintaa, tukimuurin rakentamistöitä, baanan rakentamistöitä, tilapäisen raitin rakentamista, hulevesiviemärin rakennustöitä sekä täydennysistutus- ja maisemointitöitä.
+
+Rakennuttaja on Helsingin kaupungin kaupunkiympäristön toimialan Yleiset alueet -palvelu, joka toimii myös YSE 98 mukaisena tilaajana.
+
+Urakka-asiakirjojen mukaisten töiden tulee olla valmiina ja vastaanotettuna sekä viranomaisten ja tarkastavien laitosten vaatimat tarkastukset hyväksytysti pidettynä 30.11.2027.
+
+Urakkamuotona on kokonaisurakka, jossa työhön valittu urakoitsija toimii YSE:n ja lainsäädännön tarkoittamana pääurakoitsijan asemassa toimivana päätoteuttajana.
+
+YKT-osapuolet ovat 7.3.2017 solmineet ”yhteinen kunnallistekninen työmaa” nimellä yhteistoimintasopimuksen, jossa Helsingin kaupunki on nimetty ”päätilaajaksi” ja muut sopijapuolet ”tilaajiksi”. Tässä sopimuksessa YKT-osapuolet ovat mm. sopineet yhteisen VNa 205/2009 mukaisen turvallisuuskoordinaattorin nimeämisestä. YKT-työmaan ”tilaajilta” siirtyy päätoteuttajalle kaikki tämän urakan kaupallisissa asiakirjoissa mainitut päätoteuttajan velvollisuudet.
+
+Urakkaohjelman kohdassa 1.7 on lueteltu rakennuttajan YKT-osapuolet, erillisurakat ja kohdassa 3.4 muut rakennuttajan hankinnat. YKT-osapuolien hankintarajoja on lisäksi täsmennetty urakkarajaliitteessä.
+
+Urakkaan sisältyvät asiakirjaluettelossa mainittujen suunnitelmien mukaisten töiden lisäksi työmaan johtovelvollisuudet sekä työmaapalvelut, jotka koskevat myös kohdan 3.4 rakennuttajan erillishankintoja ja urakkarajaliitteessä esitettyjä YKT-osapuolien hankintarajoja.
+
+Työ tehdään kokonaishintaurakkana.
+
+Työmaa toteutetaan kokonaisuudessaan vähäpäästöisenä työmaana, jonka vaatimukset löytyvät urakkarajaliitteestä.
+
+Suunnitelmissa esitetyt määrät eivät ole tilaajaa sitovia.
+
+Urakoitsijaksi valitaan kokonaistaloudellisesti edullisimman tarjouksen antanut tarjoaja. Kokonaistaloudellisesti edullisin on tarjous, joka on rakennuttajan asettamien tarjoajan soveltuvuutta koskevien vaatimusten täyttävistä tarjouksista hinnaltaan halvin.
+
+Tilaajaan sopimussuhteessa olevan urakoitsijan alihankkijalla/aliurakoitsijalla on oikeus antaa urakka edelleen alihankintana/aliurakkana. Hankinnan/urakan ketjuttaminen tätä pidemmälle ei ole mahdollista ilman erityisen perusteltua syytä ja siihen on saatava tilaajan/rakennuttajan kirjallinen suostumus.,",2026-10-15T10:00:00Z,,37507,holdout_raw.json#id=57571
+57574,"Suvilahdenkatu ja Vilhonvuorenkatu, kokonaisurakka","Helsingin kaupunki, kaupunkiympäristön toimiala","Suvilahdenkatu ja Vilhonvuorenkatu, kokonaisurakka Urakka käsittää Vilhonvuorenkatu ja Suvilahdenkatu hankkeen rakentamisen vaatimat työt urakka-asiakirjojen osoittamassa laajuudessa tarjouspyyntöasiakirjojen mukaisesti kaikkine liittyvine töineen ja hankintoineen täysin valmiiksi.
+
+Urakka sisältää muun muassa Suvilahdenkadun ja Vilhonvuorenkadun välillä Hämeentie-Sörnäisten rantatien katujen ja vesihuollon rakentaminen urakka-asiakirjojen osoittamassa laajuudessa. Hankkeeseen kuuluu myös Hämeentien, Pääskylänrinteen ja Pääskylänkadun sekä Sörnäisten rantatien liittymäalueiden työt rakenteiden liittämisen edellyttämässä laajuudessa.
+
+Rakennuttaja on Helsingin kaupungin kaupunkiympäristön toimialan Yleiset alueet -palvelu, joka toimii myös YSE 98 mukaisena tilaajana.
+
+Välitavoite 1: Sörnäisten rantatien ja Vilhonvuorenkadun liittymän, pl 295 vesihuollon ja kunnallistekniikan liitostyöt sekä päällystystyöt tulee olla valmiina ja liikennöitävässä kunnossa viimeistään 30.12.2026.
+
+Urakka-asiakirjojen mukaisten töiden tulee olla valmiina ja vastaanotettuna sekä viranomaisten ja tarkastavien laitosten vaatimat tarkastukset hyväksytysti pidettynä 29.10.2027. 
+
+Urakkamuotona on kokonaisurakka, jossa työhön valittu urakoitsija toimii YSE:n ja lainsäädännön tarkoittamana pääurakoitsijan asemassa toimivana päätoteuttajana. 
+
+YKT-osapuolet ovat 7.3.2017 solmineet ”yhteinen kunnallistekninen työmaa” nimellä yhteistoimintasopimuksen, jossa Helsingin kaupunki on nimetty ”päätilaajaksi” ja muut sopijapuolet ”tilaajiksi”. Tässä sopimuksessa YKT-osapuolet ovat mm. sopineet yhteisen VNa 205/2009 mukaisen turvallisuuskoordinaattorin nimeämisestä. YKT-työmaan ”tilaajilta” siirtyy päätoteuttajalle kaikki tämän urakan kaupallisissa asiakirjoissa mainitut päätoteuttajan velvollisuudet.
+
+Urakkaohjelman kohdassa 1.7 on lueteltu rakennuttajan YKT-osapuolet, erillisurakat ja kohdassa 1.8 muut rakennuttajan hankinnat. YKT-osapuolien hankintarajoja on lisäksi täsmennetty urakkarajaliitteessä.
+
+Urakkaan sisältyvät asiakirjaluettelossa mainittujen suunnitelmien mukaisten töiden lisäksi työmaan johtovelvollisuudet sekä työmaapalvelut, jotka koskevat myös kohdan 3.4 erillisurakoita ja rakennuttajan erillishankintoja ja urakkarajaliitteessä esitettyjä YKT-osapuolien hankintarajoja.
+
+Työ tehdään kokonaishintaurakkana.
+
+Työmaa toteutetaan kokonaisuudessaan vähäpäästöisenä työmaana, jonka vaatimukset löytyvät urakkarajaliitteestä.
+
+Suunnitelmissa esitetyt määrät eivät ole tilaajaa sitovia.
+
+Urakoitsijaksi valitaan kokonaistaloudellisesti edullisimman tarjouksen antanut tarjoaja. Kokonaistaloudellisesti edullisin on tarjous, joka on rakennuttajan asettamien tarjoajan soveltuvuutta koskevien vaatimusten täyttävistä tarjouksista hinnaltaan halvin.
+
+Tilaajaan sopimussuhteessa olevan urakoitsijan alihankkijalla/aliurakoit-sijalla on oikeus antaa urakka edelleen alihankintana/aliurakkana. Han-kinnan/urakan ketjuttaminen tätä pidemmälle ei ole mahdollista ilman erityisen perusteltua syytä ja siihen on saatava tilaajan/rakennuttajan kirjallinen suostumus.,",2026-10-12T10:00:00Z,,37509,holdout_raw.json#id=57574
+57598,Lempäälän Uuden Jäteaseman rakennusurakka,Pirkanmaan Jätehuolto Oy,"Lempäälän Uuden Jäteaseman rakennusurakka Rakennuskohteena on Lempäälään rakennettava uusi jäteasema. Kohdetta varten on olemassa tontti osoitteessa Kalliokummuntie 16, Lempäälä.
+Hankinta toteutetaan tämän tarjouspyynnön mukaisena kokonaishintaurakkana, tehtyjen suunnitelmien mukaisesti.,",2026-10-22T13:00:00Z,,37524,holdout_raw.json#id=57598
+57600,Peltisepäntöiden puitejärjestely,Museovirasto,"Peltisepäntöiden puitejärjestely Museovirasto, Suomenlinnan hoitokunta -osasto (""Hankintayksikkö"") kilpailuttaa Suomenlinnan ja Seurasaaren kiinteistöjen peltisepäntyöt (""Palvelu""). Tavoitteena on perustaa puitesopimus, jonka kautta Hankintayksiköllä on mahdollista hankkia Palveluita tarpeidensa mukaisesti.
+
+Palvelua teetetään Hankintayksikön hallinnoimissa rakennuksissa, joissa sijaitsee toimitiloja, työtiloja, asuntoja sekä museorakennuksia. Palvelussa kiinnitetään erityistä huomiota kohteen kulttuurihistoriallisiin arvoihin, ominaispiirteisiin, materiaaleihin ja vanhoihin rakennustapoihin. Töitä tehdään eri aikakausina rakennetuissa kohteissa, ja niitä tehdään ympärivuotisesti.
+
+Palveluihin kuuluvat esimerkiksi: 
+• vesikatteiden peltityöt kuten katepeltien asennukset ja saumaukset 
+• syöksytorvet ja räystäskourut
+• ikkunapellitykset sekä hormien ja läpivientien peltiasennukset
+• peltikatteiden tiivistyskorjaukset ja kattoturvatuotteiden asennukset. 
+
+Tarjoaja voi toimia toimeksiannoissa joko päätoteuttajana tai sivu-urakoitsijana. Työkohteet ovat vaihtelevia ja osa kohteista on hyvin pieniä. Puitejärjestelyn perusteella tehtävät työt ovat pääsääntöisesti tuntihintaperusteisena laskutustyönä tehtäviä erilaisia peltisepäntöitä. Töitä voidaan teettää myös erilaisilla urakkamuodoilla. Työnaikainen dokumentointi ja valokuvaus sisältyvät kaikkiin töihin.
+
+Valituilla toimittajilla on mahdollisuus käyttää Hankintayksikön järjestämiä, yhteyskäytössä olevia henkilöstötiloja Suomenlinnassa puitesopimuksen mukaisten toimeksiantojen aikana. Tiloista peritään vuokraa, joka sovitaan erikseen. Seurasaaressa ei ole yhteiskäyttöisiä henkilöstötiloja.
+
+Hankinnan kohde on esitelty tarkemmin jäljempänä tarjouspyynnössä ja sen liitteissä.
+
+PUITEJÄRJESTELY
+
+Hankinnan tuloksena perustetaan puitejärjestely. Kokonaistaloudellisen edullisuuden valintaperuste on paras hinta-laatusuhde, minkä perusteella Hankintayksikkö valitsee neljä (4) parhaat pisteet saanutta palveluntuottajaa, ellei kelpoisuusehdot täyttäviä tarjoajia tai hyväksyttäviä tarjouksia ole vähemmän.
+
+Mikäli hyväksyttäviä tarjouksia vastaanotetaan vähemmän kuin edellä on esitetty, valitsee Hankintayksikkö kaikki tarjoajat automaattisesti mukaan puitejärjestelyyn, mikäli kaikki Hankintayksikön tarjoajalle ja sen tarjoamille palveluille asetetut vaatimukset täyttyvät. 
+
+Sopimuskausi alkaa puitesopimuksen (hankintasopimuksen) allekirjoittamisesta ja jatkuu kolme (3) vuotta). Lisäksi Hankintayksikkö varaa oikeuden jatkaa sopimuskautta yhden (1) vuoden optiokaudella. 
+
+Yksittäiset tilaukset puitejärjestelyn sisällä tehdään kevennetyn kilpailutuksen perusteella. Puitejärjestelystä tehdyn sopimuksen ehtoja ja sisältöä noudatetaan kaikissa Hankintayksikön ja puitejärjestelyyn valitun tarjoajan välisissä suhteissa. Puitejärjestelyyn perustuva toimeksianto voidaan tehdä vain puitesopimuksen voimassaoloaikana.
+
+Tarjoajan on otettava huomioon, että puitejärjestelyyn perustuvia toimeksiantoja toteutetaan Hankintayksikön päättämän aikataulun mukaisesti, jolloin toimeksiannot eivät välttämättä jakaudu tasaisesti sopimuskauden ajalle. Hankintayksikkö hankkii Palveluita omien tarpeidensa mukaisesti, eikä Hankintayksikkö sitoudu vähimmäisostomääriin. Puitesopimus ei anna valituille toimittajille yksinoikeutta hankittavien palveluiden toimittamiseen.,",2026-10-21T12:00:00Z,250000.0,37526,holdout_raw.json#id=57600
+57602,Kypärätie 31-33:n pesuhuoneiden ja WC-tilojen uusiminen.,Jyväskylän Vuokra-asunnot Oy,"Kypärätie 31-33:n pesuhuoneiden ja WC-tilojen uusiminen. Jyväskylän Vuokra-asuntojen vuokra-asuntokohteen, Kypärätie 31-33:n huoneistokohtaiset pesuhuoneet- ja WC-tilat uusitaan. Huoneistoja on 48 kappaletta. Tarkempi kuvaus liitteenä olevassa korjaustyöselostuksessa ja muissa liiteasiakirjoissa. Hankkeen alustava aikataulu on, että työt tulee aloittaa lokakuussa 2026. Hankkeen tulee olla valmis elokuun loppuun 2027. Tähän aikatauluun urakoitsijan on sitouduttava.
+Hanke on rakennusluvan alainen. Tilaaja hakee tarvittaessa hankkeelle rakennusluvan. Työt voidaan aloittaa, kun saatu rakennuslupa on lainvoimainen.,",2026-10-14T11:30:00Z,860000.0,36938,holdout_raw.json#id=57602
+57608,Virtain pelastus- ja ensihoitoaseman hankinta vuokramallilla,Pirkanmaan hyvinvointialue,"Virtain pelastus- ja ensihoitoaseman hankinta vuokramallilla Hankinnan kohteena on Virtain pelastus- ja ensihoitoasema vuokrahankintana Virtain kaupungin osoittamalle tontille. 
+
+Vuokranantaja rakennuttaa vuokrakohteen siten, että vuokranantaja vastaa vuokrakohteen suunnittelusta, rakennuttamisesta ja ylläpidosta kustannuksellaan. Vuokranantaja saa korvauksen kustannuksista vuokrasopimuksissa sovitun vuokran muodossa. 
+
+Hankkeeseen valittu tarjoaja on rakennushankkeeseen ryhtyvä, investori, rakennuttaja, päätoteuttaja ja vuokranantaja sekä kiinteistön haltija ja rakennuksen omistaja. Pirkanmaan hyvinvointialue tulee toimimaan vuokralaisena ja käyttäjänä vähintään 20 vuoden ajan.,",2026-11-18T07:00:00Z,,37531,holdout_raw.json#id=57608
+57609,A202639 OPK26-28 Lattianostimien peruskorjausurakka,Senaatti-kiinteistöt,"A202639 OPK26-28 Lattianostimien peruskorjausurakka Hankinnan kohteena on Oopperatalon päänäyttämön lattianostimien peruskorjausurakka tarjouspyyntöasiakirjojen sisältöjen mukaisesti.,",2026-11-09T12:00:00Z,3000000.0,37532,holdout_raw.json#id=57609
+57610,"Sprinkleriurakka, L-talo Metsälä, Honkalampi (projekti 5436), Pohjois-Karjalan hyvinvointialue",Pohjois-Karjalan hyvinvointialue,"Sprinkleriurakka, L-talo Metsälä, Honkalampi (projekti 5436), Pohjois-Karjalan hyvinvointialue Hankinnan kohteena on Honkalammen L-talon ""Metsälän"" sprinkleriurakka. 
+
+Urakka-alue sijaitsee Honkalampi-keskuksen 1980-luvulla valmistuneesta L-talossa ”Metsäläksi” kutsutussa rakennuksessa. missä toimii sosiaalihuoltolain 21 c §:n tarkoittama ympärivuorokautisen palvelu asumisen yksikkö.
+
+Urakka-alueelle sijoitetaan asuinpaikat yhteensä kuudelle (6) asiakkaalle sekä talon ja lohkon yhteisiä tiloja.
+
+Kaikki talon tilat suunnitellaan esteettömiksi, myös aistiesteettömiksi.
+
+Tarkempi kuvaus urakkaohjelmasta.,",2026-10-20T09:00:00Z,,37533,holdout_raw.json#id=57610
+57634,"Kipparlahden laiturin korjaus, kokonaisurakka","Helsingin kaupunki, kaupunkiympäristön toimiala","Kipparlahden laiturin korjaus, kokonaisurakka Rakennustyö käsittää Kipparlahden laiturin korjauksen tarjouspyyntöasiakirjojen mukaisesti kaikkine töineen ja hankintoineen täysin valmiiksi.
+
+Kipparlahden laituri sijaitsee Helsingissä Herttoniemenrannassa. Laituri koostuu kahdeksasta osasta ja se on tyypiltään teräsbetoninen palkkilaituri.
+Osoite: Amiraali Cronstedtin tori, 00810 Helsinki.
+
+Urakka sisältää muun muassa; Uusitaan laakerit, korjataan haljennut betoninen palkki ja uusittaan elementit saumat. 
+
+Urakkaan sisältyvät asiakirjaluettelossa mainittujen suunnitelmien mukaisten töiden lisäksi työmaan johtovelvollisuudet sekä työmaapalvelut. Näiden ohjelman mukaisista töistä mahdollisesti aiheutuva haitta ei oikeuta urakoitsijaa lisäkorvauksiin.
+
+Rakennuttaja on Helsingin kaupungin kaupunkiympäristön toimialan Yleiset alueet -palvelu, joka toimii myös YSE 98 mukaisena tilaajana.
+
+Urakka-asiakirjojen mukaisten töiden tulee olla valmiina ja vastaanotettuna sekä viranomaisten ja tarkastavien laitosten vaatimat tarkastukset hyväksytysti pidettynä 31.12.2026.
+
+Urakkamuotona on kokonaisurakka, jossa työhön valittu urakoitsija toimii YSE:n ja lainsäädännön tarkoittamana pääurakoitsijan asemassa toimivana päätoteuttajana. 
+
+Työmaa toteutetaan kokonaisuudessaan vähäpäästöisenä työmaana, jonka vaatimukset löytyvät urakkaohjelmasta. 
+
+Suunnitelmissa esitetyt määrät eivät ole tilaajaa sitovia.
+
+Urakoitsijaksi valitaan kokonaistaloudellisesti edullisimman tarjouksen antanut tarjoaja. Kokonaistaloudellisesti edullisin on tarjous, joka on rakennuttajan asettamien tarjoajan soveltuvuutta koskevien vaatimusten täyttävistä tarjouksista hinnaltaan halvin.
+
+Tilaajaan sopimussuhteessa olevan urakoitsijalla on oikeus antaa urakka edelleen alihankintana/aliurakkana. Hankinnan/urakan ketjuttaminen tätä pidemmälle ei ole mahdollista ilman erityisen perusteltua syytä ja siihen on saatava tilaajan/rakennuttajan kirjallinen suostumus.,",2026-09-28T10:00:00Z,150000.0,36552,holdout_raw.json#id=57634
+57644,Kuusijärven esteetön uimapaikka sekä reitti,Vantaan kaupunki,"Kuusijärven esteetön uimapaikka sekä reitti Kohde sijaitsee Vantaan 97. kaupunginosassa Kuninkaanmäessä.
+
+Rakennushanke käsittää Kuusijärven ulkoilualueella sijaitsevan, uimarantaa reunustavan esteettömän reitin rakentamisen. Osittain pihatiilillä kivetty reitti kulkee pysäköintialueelta kohti rannan savusaunaa. Savusaunalla reitti liittyy aiemmin rakennettuun, tulipaikalle johtavaan esteettömän reitin osaan. Reitti toimii myös pelastus- ja huoltoreittinä. Reitin varren kalusteet uusitaan. Lisäksi hankkeeseen kuuluvat latusillan purkutyöt.
+
+Hanke käsittää myös Kuusijärven ulkoilualueella sijaitsevan nykyisen uimarannan yhteyteen rakennettavan esteettömän uimaluiskan sekä siihen liittyvät oheisrakenteet ja varusteet: äänimajakan, suihkun, esteettömät avopukusuojat, varaston sekä säilytyslokerot. Uimaluiskan edustalle tehdään kiveys, joka liittyy uimapaikan vierestä kulkevaan esteettömään reittiin.
+Rannan kasvillisuutta täydennysistutetaan rakennusalueen ympärillä ja varaston katolle tehdään kasvikatto. Työ sisältää myös sähkötöitä.,",2026-10-09T05:30:00Z,,37549,holdout_raw.json#id=57644
+57660,"Osallistumispyyntö: Vt 9 Tampere-Orivesi 1.vaihe, STk",Väylävirasto,"Osallistumispyyntö: Vt 9 Tampere-Orivesi 1.vaihe, STk Urakka on kokonaishintaperusteinen kehitysvaiheen sisältävä Suunnittele ja toteuta -urakka (STk). Tavanomaiseen ST-urakkaan lisäyksenä on urakoitsijan valinnan ja rakentamisen välille sijoittuva tilaajan ja urakoitsijan yhteinen kehitysvaihe, jossa mm. on tavoitteena kehittää suunnitelmaratkaisuja. Kehitysvaihe on kuvattu tarkemmin tarjouspyyntöasiakirjoissa.
+
+Tarjoukseen ei edellytä liitettäväksi alustavaa rakennussuunnitelmaa. Kuitenkin urakoitsija vastaa tarjousratkaisujensa tuotevaatimusten mukaisuudesta. Kehitysvaiheessa tilaaja ja urakoitsija jatkavat rakentamissuunnitelman kehittämistä yhteistyössä urakoitsijan kanssa. Kehitysvaihe päättyy, kun tilaaja tekee päätöksen toteutusvaiheeseen siirtymisestä. Urakka sisältää noin neljän kuukauden kehitysvaiheen, jonka jälkeen päätetään toteutusvaiheesta.
+
+Kehitysvaiheen tilaaja maksaa urakoitsijalle vastineeksi kehitysvaiheen urakkasopimuksen mukaisten tehtävien ja suorittamisesta yksikköhintaperusteisesti toteutuneiden työtuntien ja kulujen mukaisesti.
+
+Urakka sisältää ennen lopullisen rakentamissuunnitelman laatimista ja rakennustöiden aloitusta noin kolmesta neljään kuukauden mittaisen kehitys-vaiheen. Kehitysvaiheessa urakoitsijalla ja tilaajalla on yhdessä mahdollisuus:
+- kehittää toteutusratkaisuja tiesuunnitelman ja tiesuunnitelman muutossuunnitelman ja tuotevaatimusten puitteissa
+- kehittää tiesuunnitelmaratkaisuja teknis-taloudellisesti paremmiksi, huomioiden kuitenkin tiesuunnitelmamuutosten hallinnolliseen prosessiin liittyvät mahdollisuudet ja riskit
+- kehittää urakan tuotevaatimuksia teknis-taloudellisesti paremmat ratkaisut mahdollistaviksi
+- kehittää urakan toteutukseen liittyviä toimintatapoja sekä tilaajan ja urakoitsijan välisiä yhteistyömenettelyitä
+- valmistella rakennustöiden aloittaminen ja siihen liittyvät suunnitelmat sekä muut asiakirjat
+
+Tilaaja päättää urakoitsijan esittämien muutosten hyväksymisestä ja vastaa muutosten edellyttämästä sopimusasiakirjojen muuttamisesta.
+
+Kehitysvaiheen tuloksena syntyy tilaajan hyväksymä teknis-taloudellisesti optimoitu alustava rakentamissuunnitelma sekä ensimmäisten työvaiheiden aloitusedellytyksenä olevat muut asiakirjat.
+
+Tilaaja laatii yksipuolisella päätöksellä päätöksen toteutusvaiheeseen siirtymisestä, johon kirjataan kehitysvaiheessa sovittujen muutosten mukaisesti tarkennettu urakkahinta, joka korvaa sopimuksentekohetkellä sovitun urakkahinnan. 
+
+Urakkaan kuuluu ”Vt 9 Tampere-Orivesi 1.vaihe, STk"" rakentamissuunnittelu ja rakentaminen siinä laajuudessa kuin se suunnitelma-asiakirjoissa on määritelty kaikkine tiejärjestelyineen, varusteineen ja laitteineen siinä laajuudessa kuin tarjouspyynnön liitteenä olevissa asiakirjoissa on määritelty. Urakkaan kuuluu töiden osalta rakentamisen toteuttaminen sopimusasiakirjojen vaatimukset täyttäen siten, että se myös tekniseltä toimivuudeltaan vastaa sille sopimusasiakirjoissa asetettuja vaatimuksia.
+
+Urakkaan kuuluu töiden osalta suunnittelun ja rakentamisen toteuttaminen sopimusasiakirjojen vaatimukset täyttäen siten, että se myös tekniseltä toimivuudeltaan vastaa sille sopimusasiakirjoissa asetettuja vaatimuksia
+
+Urakkaan kuuluu myös tiedotus-, raportointi- sekä takuuaikaisia hoito- ja raportointitöitä ja päätoteuttajan rooliin kuuluvia yhteensovittamisvelvoitteita tarjouspyyntöasiakirjojen mukaisesti. Urakkaan kuuluu työt siinä laajuudessa, kuin ne on tarjouspyynnön liitteenä olevissa asiakirjoissa määritelty kaikkine tiejärjestelyineen, varusteineen ja laitteineen.
+
+Urakoitsijan tulee suorittaa kaikki ne työt ja niihin liittyvät hankinnat, jotka asiakirjojen mukaisen työsuorituksen valmiiksi saattaminen edellyttää ja joista ei nimenomaan asiakirjoissa mainita, etteivät ne kuulu urakoitsijan suoritusvelvollisuuteen.
+
+Urakan sisältö on määritetty tarkemmin tarjouspyyntöasiakirjoissa.,",2026-10-28T11:00:00Z,,37557,holdout_raw.json#id=57660
+57691,Kokonaisurakka Kiinteistö Oy Leppävaaran Esplanadinkulma B-rakennuksen LVIASJ-linjasaneeraushanke,Kiinteistö Oy Leppävaaran Esplanadinkulma,"Kokonaisurakka Kiinteistö Oy Leppävaaran Esplanadinkulma B-rakennuksen LVIASJ-linjasaneeraushanke Kiinteistö Oy Leppävaaran Esplanadinkulma pyytää tarjouksia yllä mainitusta urakasta liitteenä olevien tarjouspyyntöasiakirjojen mukaisesti.
+
+Kilpailutuksen kohteena oleva rakennuskohde käsittää kiinteistön B-rakennuksen LVIASJ-linjasaneeraushanketta sekä A- ja B-rakennuksien vesikattojen korjaushanketta liitteenä olevien urakkalaskenta-asiakirjojen mukaisesti. B-rakennuksen urakka-alueella ei ole hankkeen aikana toimintaa. A-rakennuksen toimistotilat ovat normaalisti hankkeen aikana käytössä, joka tulee huomioida urakan aikana.
+
+Tarjouksen tulee sisältää kaikki tarjouspyyntöasiakirjojen mukaiset rakennus- ja talotekniset työt kokonaisuudessaan valmiiksi saatettuna.
+
+Urakkamuoto on kokonaisurakka, jossa kokonaisurakoitsija toimii pääurakoitsijana ja päätoteuttajana. LVV-, jäähdytys-, ilmanvaihto- sekä sähkötyöt sisältyvät pääurakoitsijan suoritusvelvollisuuksiin. Pääurakan urakka-aika alkaa alustavasti marras-joulukuussa 2026 ja sen tulee olla valmiina 30.6.2027 mennessä.  Urakoitsijalta pyydetään määrittämään hankkeen aikatauluesitys tarjouksen liitteeksi.,",2026-10-09T13:00:00Z,,37577,holdout_raw.json#id=57691
+57723,Limingan Ekokorttelin katujen ja vesihuollon rakentaminen.,Limingan kunta,"Limingan Ekokorttelin katujen ja vesihuollon rakentaminen. Limingan kunnan kunnallistekniikan liikelaitos ja Limingan Vesihuolto Oy pyytää yksikköhintaista perusteista kokonaisurakkatarjousta Limingan Ekokorttelin katujen ja vesihuollon rakentaminen -urakasta. Urakkatyö sisältää mm. katujen, vesihuollon, vihertöiden ja valaistuksen rakentamista.,",2026-10-26T10:00:00Z,,37594,holdout_raw.json#id=57723
+57724,Sodankylän kunnan omistamien katuvalaisinten vaihdot,Sodankylän kunta,"Sodankylän kunnan omistamien katuvalaisinten vaihdot Sodankylän kunta pyytää urakkatarjoustanne Sodankylän kunnan omistamien katuvalaisinten vaihtotyöstä: Kohteet sijaitsevat kirkonkylällä.  
+
+Tarjoaja vastaa tarvittavista laitehankinnoista sekä asennuksesta. Urakkaan kuuluu  353 valaisinpistettä. Valaisinten tekniset vaatimukset sekä sijainnit käyvät ilmi tarjouspyynnön liitteenä olevista dokumenteista. Työalueella on myös säilytettävää valaistusta (Kelukoskentien klv: Voihkajantie-Jahtimiehentie, rakennettu 2024)
+
+Sodankylän kunta on ottamassa C2 -valaistuksen ohjausjärjestelmän käyttöönsä vuoden 2026-2027 aikana. Mahdolliset lisäohjausjärjestelmät hankitaan ja asennetaan erikseen tilattavana tuntihintaisena työnä sopimusaikana.
+
+Valaisinten asennuksen tulee olla tehtynä 23.12.2026 mennessä. 
+
+Asennusten viivästyminen:
+Työn valmistumisen viivästyessä urakkasopimuksen mukaisesta ajankohdasta peritään viivästyssakkoa YSE 1998:sta poiketen 0,25 prosenttia arvonlisäverottomasta kokonaishinnasta (sis. lisä- ja muutostyöt sekä määrämuutokset) kultakin työpäivältä kuitenkin enintään 90 työpäivältä
+
+Asennustyössä noudatetaan Suomessa voimassa olevia lakeja ja asetuksia, virallisia normeja sekä 
+alalla yleisesti käytettäviä standardeja.  
+  
+Hankkeen yleiset tekniset vaatimukset ja kelpoisuuden osoittaminen on esitetty Rakennustieto Oy:n 
+julkaisussa ""Infra RYL 2022 Infrarakentamisen yleiset laatuvaatimukset"".  Erityisesti huomioitava kohta InfraRYL 2025/2: 33000 Sähkö-, tele- ja konetekniset järjestelmät.
+
+Asennuksesta vastaavalla henkilöllä on alalle soveltuva sähköalan koulutus ja vähintään kahden (2) vuoden työkokemus alan tehtävistä. Toiminnanharjoittajan on oltava Tukesin rekisteröimä ja hänellä on oltava vähintään S2-sähköpätevyys tai vastaavat oikeudet (esim. A- tai A(sj)-oikeudet).
+
+Urakkatarjouksen tulee sisältää kaikki valmiin työn edellyttämät kustannukset. 
+Tarjousten vertailuarvona käytetään halvinta kokonaishintaa.
+
+Kohteisiin tutustumista paikan päällä ei vaadita tarjousvaiheessa. Tilaaja pidättää oikeuden keskeyttää hankinta tai rajata urakan laajuutta käytettävissä oleviin määrärahoihin nähden.,",2026-10-12T11:00:00Z,60000.0,37515,holdout_raw.json#id=57724
+57738,"Esteettömään asumiseen liittyvät rakennustekniset muutostyöt sekä erilaiset asennus-, korjaus- ja huoltotyöt sisältäen laitteet ja materiaalit",Itä-Uudenmaan hyvinvointialue,"Hankinta koskee Itä-Uudenmaan hyvinvointialueen vammaispalveluiden sekä ikääntyneiden palveluiden kautta myönnettäviä asunnon muutostöitä. 
+
+Asunnon muutostyöt ovat osa vammaispalvelulain 22§:n mukaisen esteettömän asumisen tukea sekä sosiaalihuoltolain (1301/2014) 14 §:n 2. momentin mukainen muu sosiaalipalvelu ja 11§ määritettyyn asumisen tuen tarpeeseen vastaava sosiaalipalvelu, jonka tavoitteena on mahdollistaa vammaisen tai ikääntyneen henkilön itsenäinen ja turvallinen asuminen omassa vakituisessa kodissaan. 
+
+Esteettömän asumisen tuki sisältää asunnon muutostyöt, esteiden poistamisen sekä tarvittavat välineet ja tekniset ratkaisut, jos ne ovat välttämättömiä vamman tai sairauden aiheuttaman toimintarajoitteen vuoksi. Sosiaalihuoltolain mukaisissa palveluissa huomioidaan myös ikääntymisestä johtuvat pienimuotoiset kodin muutostyön tarpeet. Muutostyöt voivat koskea asunnon sisätiloja tai välitöntä lähiympäristöä, ja niiden tarkoituksena on mahdollistaa päivittäistä toiminnoista selviytyminen, sujuva liikkuminen sekä asumisen turvallisuus. Tuen piiriin kuuluu myös muutostöiden suunnittelu. 
+
+Hyvinvointialue omistaa asiakkaille myönnetyt laitteet ja tarvikkeet ja ylläpitää varastoa käytöstä poistuneesta kalustosta ja laitteistosta sekä ylijääneestä rakennusmateriaalista (esimerkiksi hissit, luiskat, oven avauslaitteet, erikoisvalaisimet, tukikahvat yms.).
+
+Hankinnalla perustetaan seitsemän, josta tällä tarjouspyynnöllä kaksi puitejärjestelyä, joihin valitaan kaikki hyväksytyn tarjouksen jättäneet tarjoajat osa-alueittain. Tällä tarjouspyynnöllä tilaaja ei vielä valitse yksittäisen muutoskohteen toteuttajaa. Valinta tapahtuu liitteen palvelukuvaus kohdan 5. ""Urakoitsijan / palveluntuottajan valinta"" mukaisesti.
+
+Hankinta on jaettu osiin seuraavasti:
+
+Tällä tarjouspyynnöllä pyydetään tarjouksia aikaisemmin keskeytetyssä hankinnassa osa-alueilla:
+
+1. Kuuloapuvälineet sekä niiden asennus 
+
+2. Näköapuvälineet sekä niiden asennus
+
+Sopimuskausi on suunniteltu alkavaksi 1.11.2026. Perussopimuskauden pituus on kaksi (2) vuotta, jonka jälkeen tilaaja voi jatkaa sopimusta kahdella vuoden pituisella optiolla (1+1 vuotta).
+
+Muutostöiden tilausvirta ei ole tasainen, vaan tilaus voi koskea muutostyön toteutusta eri kunnissa, eri ajankohtina. Tilaaja ei sitoudu vähimmäisostomääriin vaan asunnon muutostyötä hankitaan asiakkaiden tarpeiden mukaisesti. Palveluntuottajalla / Urakoitsijalla ei ole yksinoikeutta palvelun tuottamiseen. Tilaaja voi hankkia palveluja myös nyt kilpailutettujen puitesopimusten ulkopuolelta, jos asiakkaan palvelutarve sitä edellyttää tai jos mikään puitesopimustoimittaja ei ota muutostyötilausta vastaan suunnitellun aikataulun sisällä. Hankinnan eri osa-alueet ja puitejärjestelyjen toimintamalli on kuvattu tarkemmin liitteessä palvelukuvaus. 
+
+Tämän tarjouspyynnön osalta hankinnan ennakoitu arvo on 32 000 euroa, alv 0%.
+
+Hankintayksikkö on 7.9.2026 §96 (hyvinvointialuejohtaja) tehnyt hankintapäätöksen osa-alueilla:
+
+- Laajat rakennustekniset muutostyöt 
+
+- Pienet rakennustekniset muutostyöt 
+
+- Hissien asennukset huollot ja korjaukset 
+
+- Ovenavauslaitteiden ja turvalukkojen asennukset, huollot ja korjaukset 
+
+- Sähköasentajan työt esteettömän asumisen kohteissa 
+
+ Jo kilpailutettujen osa-alueiden ja nyt hankinnan kohteena olevien osa-alueiden yhteen laskettu ennakoitu arvo on 860 000 euroa, alv 0%., Kuuloapuvälineet ja niiden asennus Hankinnan kohteena ovat vammaispalvelulain ja sosiaalihuoltolain mukaiset tilaajan sosiaalihuollon asiakkaiden asuntoihin hankittavat kuuloapuvälineet sekä näiden asennukset ja muu apuvälineisiin liittyvä työ. Katso tarkemmat tiedot liitteestä palvelun kuvaus., Näköapuvälineet ja niiden asennus Hankinnan kohteena ovat vammaispalvelulain ja sosiaalihuoltolain mukaiset tilaajan sosiaalihuollon asiakkaiden asuntoihin hankittavat näköapuvälineet sekä näiden asennukset  ja muu apuvälineisiin liittyvä työ. Katso tarkemmat tiedot liitteestä palvelun kuvaus.,",2026-10-15T09:00:00Z,860000.0,37601,holdout_raw.json#id=57738
+57768,Ikkunoiden uusiminen kolmella Niiralan Kulma Oy:n kiinteistöllä ,Niiralan Kulma Oy,"Ikkunoiden uusiminen kolmella Niiralan Kulma Oy:n kiinteistöllä  Ikkunoiden uusiminen kolmella Niiralan Kulma Oy:n kiinteistöllä tarjouspyyntöasiakirjojen mukaisesti.,",2026-10-09T20:00:00Z,,37622,holdout_raw.json#id=57768
+57772,As Oy Tampereen Takahuhdin Pappila - Taloteknisten järjestelmien uusiminen,Asunto Oy Tampereen Takahuhdin Pappila,"As Oy Tampereen Takahuhdin Pappila - Taloteknisten järjestelmien uusiminen Hanke käsittää Asunto Oy Tampereen Takahuhdin Pappila - nimisen taloyhtiön korjausrakentamisen tarjouspyyntöasiakirjojen mukaisesti. 
+
+Korjaushanke sisältää mm. taloteknisten järjestelmien, märkätilojen ja keittiöiden uusimisen. 
+
+Työt suoritetaan täysin valmiiksi saatettuna tarjouspyyntöasiakirjojen mukaisesti.
+
+Tekniset ja muut kaupalliset asiakirjat ovat tarjouspyynnön liitteenä.
+
+Tilaaja esittelee rakennuskohdetta ti 15.9.2026 klo 14. Esittelyyn osallistuminen on edellytys tarjoamiselle. Esittelyyn tulee ilmoittautua etukäteen viimeistään 14.9.2026 sähköpostitse kaisa.korkee@ains.fi. Kokoontuminen Takahuhdin Seurakuntatalon parkkipaikalla.,",2026-10-02T09:00:00Z,,36594,holdout_raw.json#id=57772
+57774,"Sodankylän kunta, Sodankylän kunnanviraston ja kirjaston perusparannus, pääurakka (rakennusurakka, RU)",Sodankylän kunta,"Sodankylän kunta, Sodankylän kunnanviraston ja kirjaston perusparannus, pääurakka (rakennusurakka, RU) Sodankylän kunta (jäljempänä myös ""Hankintayksikkö"" tai ""Tilaaja"") pyytää tarjouksia Sodankylän kunnanviraston ja kirjaston perusparannuksen pääurakasta (rakennusurakka, RU).
+
+Kohde sijaitsee osoitteessa Jäämerentie 1, 99600 Sodankylä. Hankinta on kuvattu ja tulee toteuttaa liitteiden mukaisesti.
+
+Tällä hankinnalla kilpailutetaan uudelleen Hankintayksikön 14.8.2026 keskeyttämä kilpailutus pää-/rakennusurakan osalta. Aiemmin kilpailutetuista, pääurakalle alistettavista sivu-urakoista on olemassa lainvoimaiset hankintapäätökset.
+
+HUOMIO TARJOAJILLE
+
+Tilaaja edellyttää, että tarjouksen antajat käyvät opastetusti tutustumassa rakennuskohteeseen paikan päällä. Tilaajan edustajan tulee olla läsnä tutustumiskäynnillä. Mikäli tarjouksen antaja on jo aiemmin vuoden 2026 aikana käynyt tutustumassa rakennuskohteeseen, ei uutta tutustumiskäyntiä vaadita.
+
+Rakennuspaikkaan tutustumisesta voi sopia olemalla yhteydessä Tilaajan edustajaan:
+- Heli Illikainen, +358 40 152 8917, heli.illikainen@sodankyla.fi tai
+- Ville Pyhäjärvi, +358 40 197 5846, ville.pyhajarvi@sodankyla.fi.,",2026-10-07T09:00:00Z,,36666,holdout_raw.json#id=57774
+57799,,,,2026-09-30T12:00:00Z,,36874,holdout_raw.json#id=57799
+57832,"Pirkanmaan hyvinvointialue, Tays Keskussairaala K Paloilmoittimen saneeraus",Pirkanmaan hyvinvointialue,"Pirkanmaan hyvinvointialue, Tays Keskussairaala K Paloilmoittimen saneeraus Hankinnan kohteena on Tampereen yliopistollisen keskussairaalan TAYS rakennuksien paloilmoitinkeskusten ja -järjestelmien sekä grafiikan uusiminen suunnitelmien mukaisessa laajuudessa. Urakka sisältää tarjouspyynnön liiteasiakirjojen mukaisen toteuttamisen. Urakkamuotona on kokonaisurakka.,",2026-11-02T10:00:00Z,,37658,holdout_raw.json#id=57832
+57833,"Isosaunan yksityistien, Sanginjoen sillan rakennusurakka, Oulu",VeiTa Tekniikka Oy,"Isosaunan yksityistien, Sanginjoen sillan rakennusurakka, Oulu VeiTa Tekniikka Oy pyytää tarjoustanne Isosaunan yksityistien tiekunnan puolesta sillanrakennusurakasta Oulussa. Tilaajana toimii Isosaunan yksityistien tiekunta.
+Tarjouspyynnön kohteena oleva sillanrakennushankkeen tiedot on esitetty suunnitelma asiakirjoissa. Urakka sisältää vanhan sillan purkamisen ja uuden sillan rakentamisen. Siltapaikka sijaitsee Isosaunan yksityistiellä Sanginjoen ylityksessä. Siltapaikan osoite on Kinnusenkoskentie 12, Oulu. 
+Uusi silta on penkereen varaan perustettava; peruslaatta ja siipimuurimaatuet tehdään paikallavaluna erillisten raudoitus-, mitta- ja yleispiirroksen mukaan. Silta valmistetaan Versowoodin tyyppisiltapiirroksen pjPlp A-4 (D) mukaan HL 4,0 m, JM 16,00 m, jonka kantavuus on Liikenneviraston hyväksymien kuormitusten mukaan: LM1, LM3 / 6.12.2017. Rakennusurakkaan kuuluvat kaikki tarjouslomakkeen mukaiset työt ja tarvikkeet. Tilaaja ei hanki mitään. Tarjouksen tekemisessä ja työn toteutuksessa on huomioitava vesilain mukainen lupa ja siinä asetetut ehdot PSAVI/13352/2024 (16.6.2025).,",2026-10-21T09:00:00Z,,37659,holdout_raw.json#id=57833
+57861,Karkkilan konetyöpalvelut ja talvikunnossapito vuosille 2026 - 2028,Karkkilan kaupunki,"Karkkilan kaupungin kaupunkikehitystoimiala pyytää yksikköhintatarjouksia erilaisiin kunnossapito- ja maarakennustöihin sekä talvikunnossapitotöihin soveltuvista työkoneista ajalle 15.10.2026— 31.08.2028 puitesopimusperiaatteella.
+Varsinaisen sopimuskauden lisäksi on kaikkiin tarjouspyynnön osiin mahdollisuus kahteen (2) optiovuoteen, josta neuvotellaan erikseen., Konetyöpalvelut Tarjoukset tulee jättää seuraavista rakentamiseen ja kunnossapitoon soveltuvista työkoneista:
+• traktorikaivurit 
+• pyörä- ja tela-alustaiset kaivinkoneet
+• puskukoneet 
+• tiehöylät 
+• lakaisukoneet (harja ja / tai imulakaisu) 
+• imuautot 
+• kuorma-auto (=kuljetuskalusto) 
+• metsätyötraktori
+• traktori (liikennekäyttö)
+
+Traktorikaivureissa ja kaivinkoneissa on oltava käytettävissä työlaitteena myös iskuvasara.
+Kaupunki ei tilaajana sitoudu työllistämään työkoneita koko sopimuskauden ajaksi. Työkoneet tilataan kuhunkin työkohteeseen ja hankkeeseen erikseen sopimuskauden aikana. Kaupungilla ei tilaajana ole määräostovelvoitetta. Tilaaja voi teettää työkohteissa myös omaa konetyötä.
+
+Työkoneiden laskutuksessa käytetään normaalityöaikaa seuraavasti:
+• ma -to/ 7:00 – 15:30 ,
+• pe / 7:00- 13:45 
+• ruokatauko (1.0 — 0,5 h) ja kahvitauot (2 x 15 min / päivä) eivät ole työaikaa
+
+Maksuperusteena on työaika (€ / h) ja maksujakso vähintään 2 viikkoa, kuitenkin enintään yksi kalenterikuukausi. Maksuaika on 30 päivää netto siitä alkaen, kun kirjataan saapuneeksi kaupungille (ei laskun päiväyksestä)., Talvikunnossapito Tarjoukset tulee jättää seuraavista talvikunnossapitoon liittyvistä tehtävistä:
+• auraus
+• hiekoitus
+• polanteenpoisto
+
+Tarjoajalta täytyy löytyä itseltään kalusto tarjottavan tehtävän tekemiseen kuten hiekoitin. Hiekoituksessa käytetään Karkkilan kaupungin hiekkaa. Tarjouksen voi jättää joko yhdestä tai useammasta tehtävästä. Tarjoaja täyttää tarjouspyyntölomake ostotarjouspyyntö 2 lomakkeelle tunti hinnan niille tehtäville joita haluaa tarjota. Kaupunki ei tilaajana sitoudu työllistämään työkoneita koko sopimuskauden ajaksi. Työkoneet tilataan kuhunkin työkohteeseen ja hankkeeseen erikseen sopimuskauden aikana. 
+
+Kaupungilla ei tilaajana ole määräostovelvoitetta. Tilaaja voi teettää työkohteissa myös omaa konetyötä.
+
+Maksuperusteena on työaika (€ / h) ja maksujakso vähintään 2 viikkoa, kuitenkin enintään yksi kalenterikuukausi. Maksuaika on 30 päivää netto siitä alkaen, kun kirjataan saapuneeksi kaupungille (ei laskun päiväyksestä).
+
+Talvikunnossa eri alueilla noudatetaan kaupungin tekemiä virallisia päätöksiä, koskien väylien talvihoidon kunnossapitoluokituksia, ohjeita ja kriteereitä sekä kunnossapitolakia.,",2026-10-09T09:00:00Z,60000.0,37675,holdout_raw.json#id=57861
+57872,"HUSK Hissien vaihe 3, vuosi 2028",HUS Kiinteistöt Oy,"HUSK Hissien vaihe 3, vuosi 2028 HUS Kiinteistöt Oy kilpailuttaa sairaalakohteiden hissien uusimistyöt. Tarjouspyyntö sisältää hissejä seuraavista kohteista: Meilahden sairaala ja Syöpätautien klinikka. Alustava toimitusaika 2028. Hissiurakoitsija toimii töiden päätoteuttajana ja pääurakoitsijana.
+
+Tarjouksen antajan tulee olla tutustunut rakennuskohteeseen paikan päällä ja tarkastanut tarvittavat mitat.
+Kohteisiin tutustumisesta pyydämme olemaan yhteydessä F&L Hissikonsultointi Oy, Ville Pitkänen, p. 040 561 7001 / s. ville@flhissikonsultointi.fi.
+
+Urakkatarjous on annettava rakennuttajan laatiman urakkatarjouslomakkeen mukaisena. Tarjoukseen on liitettävä pyydetyt erittelyt ja todistukset.
+
+Lisätietoa urakasta löytyy tarjouspyyntömateriaalista, joka on tämän ilmoituksen liitteenä.,",2026-10-30T12:00:00Z,,37683,holdout_raw.json#id=57872
+57875,"Kiinteistöjen rakennuspalveluita koskeva puitejärjestely OSA-ALUE 1 RU, OSA-ALUE 2 SÄH, OSA-ALUE 3 LVIA",Kokkolan kaupunki,"Kokkolan kaupunki (jäljempänä myös ""tilaaja"", ""hankintayksikkö"" tai ""rakennuttaja"") pyytää tarjouksia tämän tarjouspyynnön ja sen liitteiden mukaisesti tilaajan rakennuspalveluiden (""rakentamispalvelu(t)"") puitesopimuksen hankintaan. 
+
+Hankinta on jaettu osiin seuraavasti:
+osa-alue 1: rakennustyöt
+osa-alue 2: sähkötyöt
+osa-alue 3: LVIA-työt
+
+Hankinta on kuvattu tarkemmin tarjouspyynnön asiakirjoissa, erityisesti liitteessä 1 Hankinnan kohteen kuvaus.
+
+Hankinnassa vertaillaan osa-alueittain tuntihintojen painotettua keskiarvoa ja kateprosenttia jotka jätetään ""Hinnat"" liitteellä. Tarjous tulee jättää tarjouspyynnön ""Hinnat"" liitteellä, kaikki tarjottavan osa-alueen keltaiset solut täytettynä, muutoin tarjous hylätään. ""Hinnat"" liitteellä on oma välilehti jokaisen osa-alueen pyydetyille tiedoille.
+
+Kilpailutuksen perusteella muodostetaan enintään  5 urakoitsijan puitejärjestely osa-alueittain. Puitejärjestelyyn sovelletaan liitteen ""Puitesopimus"" ehtoja.
+
+Sopimus alkaa sopimuksen allekirjoittamisesta  ja on voimassa 24 kuukautta. Tämän jälkeen sopimusta on mahdollista jatkaa kahdella 12 kuukauden pituisella optiokaudella., Rakennustyöt Ks. tarkemmin liite 1, Sähkötyöt Ks. tarkemmin liite 1, LVIA-työt Ks. tarkemmin liite 1,",2026-10-23T09:00:00Z,,37685,holdout_raw.json#id=57875
+57880,"Kokonaisurakka, peruskorjaus, Helsinki, Heka Itäkeskus Asiakkaankatu 4","Helsingin kaupunki, kaupunkiympäristön toimiala, asuntotuotanto","Kokonaisurakka, peruskorjaus, Helsinki, Heka Itäkeskus Asiakkaankatu 4 Hankinnan kohteena on Helsingin Itäkeskuksessa sijaitsevien asuinkerrostalojen peruskorjaus kiinteähintaisena kokonaisurakkana sisältäen rakennusteknisten töiden lisäksi kaikki LVISA-työt. 
+
+Peruskorjauksen kohteena on Helsingin kaupungin asunnot Oy:n omistama vuokratalokohde, joka sijaitsee Helsingin kaupungin tontilla 45053/1 (Asiakkaankatu 4, 00930 Helsinki)
+
+Urakan arvioitu alkamisajankohta on 01.02.2027 ja rakentamisen arvioitu alkamisajankohta 03/2027.
+
+Hankintaa ei jaeta osiin, sillä usean toimittajan malli tuottaisi epätarkoituksenmukaisen sopimuskokonaisuuden aikataulunhallinnan sekä töiden yhteensovittamisen kannalta.
+
+Ennen hankintailmoituksen julkaisua hankintayksikkö on tehnyt markkinakartoituksen. Markkinakartoitus on perustunut toistuvien vastaavanlaisten hankintojen systemaattiseen analyysiin ja alan toimittajien kanssa ylläpidettävään vuorovaikutukseen.
+
+PERUSKORJAUSHANKKEEN TIETOJA
+- Kohde on valmistunut vuonna 1977
+- Kohteessa on kaksi asuinkerrostaloa, kaksi autokatosta ja jätekatos.
+- Asuinkerrostaloissa on 3-5 asuinkerrosta ja molemmissa rakennuksissa on neljä porrashuonetta. 
+- Tällä hetkellä vuokra-asuntoja on yhteensä 96 kpl ja peruskorjauksen jälkeen vuokra-asuntoja tulee olemaan 99 kpl (n. 5 597 asm2)
+
+PERUSKORJAUKSEN TOTEUTUS
+- Urakka on lähtökohtaisesti on suunniteltu tehtäväksi yhdessä vaiheessa. Vaiheistusta voidaan täsmentää yhteisellä sopimuksella, mikäli muu vaiheistus on urakan näkökulmasta perusteltua.
+- Asukkaat muuttavat korjaustöiden ajaksi sijaisasuntoihin. Urakka alkaa asukkaiden poismuutoilla. Pois- ja takaisinmuutot sisältyvät urakkaan. 
+
+Hankinnan kohde on tarkemmin kuvattu tarjouspyynnön liitteenä olevissa kaupallisissa ja teknisissä asiakirjoissa. Liiteasiakirjat löytyvät julkaisun Tarjouspalvelu-sivuilta kohdassa ""Liitteet ja linkit"".,",2026-10-12T09:00:00Z,,36386,holdout_raw.json#id=57880
+57882,"Espoon kulttuurikeskus, Tapiolasalin akustiset parannukset",Espoon kaupunki Tilapalvelut-liikelaitos,"Espoon kulttuurikeskus, Tapiolasalin akustiset parannukset Espoon kaupunki Tilapalvelut-liikelaitos (myöhemmin Tilaajan edustaja) pyytää tarjouksia Tapiolasalin akustisista parannuksista. Tilaajana hankkeessa toimii Espoon kulttuurikeskus. 
+Urakan sisältö lyhyesti: salin akustiikkaa ja näyttämön toiminnallisuutta parannetaan. Näyttämön sivulla olevat siirtoseinät sekä takaseinän pintarakenteet ja akustiset osat uusitaan. Salin akustiset verhot uusitaan. Katsomon kattoon asennetaan akustiikkaa parantavia elementtejä. Tarkempi kuvaus hankinnasta on tarjouspyynnön teknisissä ja kaupallisissa asiakirjoissa. 
+
+TUTUSTUMISKÄYNTI: Tilaajan edustaja edellyttää Tarjoajan osallistuvan tilaajan järjestämälle pakolliselle tutustumiskäynnille ennen tarjoamista. Pakollinen tutustumiskäynti järjestetään 15.10 klo 14-15, 16.10 klo 10-12 ja 20.10.2026 klo 14-15. Tutustumiskäynnille tulee ilmoittautua etukäteen viimeistään haluttua tutustumispäivää edeltävänä arkipäivänä klo 15:00 mennessä sähköpostilla osoitteeseen arvo.pount@espoo.fi. Kohteen osoite on Kulttuuriaukio 2, Espoo. Tilaaja hylkää tarjouksen, mikäli tarjoaja ei ole tutustunut kohteeseen Tilaajan järjestämällä tutustumiskäynnillä.
+
+Urakka toteutetaan tarjouspyynnön liitteenä olevien teknisten ja kaupallisten asiakirjojen mukaisesti täyteen käyttökuntoon saatettuna. Urakoitsijan tulee huomioida, että kulttuurikeskus on käytössä koko urakan ajan, ainoastaan näyttämösali eriytetään urakoitsijan käyttöön. Tämän johdosta asennustyöt on pyrittävä suorittamaan mahdollisimman vähän kulttuurikeskuksen toimintaa häiritseviä työtapoja noudattaen. 
+
+Urakka-aika on 7.6.2027 – 24.8.2027. Urakka toteutetaan kokonaisurakkamuodolla. Valittava urakoitsija toimii kohteessa pääurakoitsijana ja Vna 205/2009 mukaan päätoteuttajana vastaa työturvallisuudesta. 
+Urakasta pyydetään kokonaishintatarjouksia. 
+
+Verhovarastointia varten rakennettavasta verhokotelosta pyydetään optiohinta. Tämän rakentamisesta tilaaja päättää urakan toteutusvaiheessa.
+
+Tarjoaja on velvollinen täyttämään tarjouspyynnön liitteenä olevan Laitelistauksen, liite 3 ”Näyttämömekaniikan laitelistaus”. Kaikki listauksen kentät tulee täyttää ja listaus liittää tarjoukseen. 
+
+Tilaaja ei sitoudu ilmoitettuihin hankintamääriin. 
+
+Tilaajan edustaja tulee valitsemaan kilpailutuksen perusteella yhden toimittajan.
+
+Urakan toteutuminen varmistuu joulukuussa 2026, kun hankkeen rahoitus on varmistettu ja Tilaajan vuoden 2027 talousarvio hyväksytty.,",2026-11-02T10:00:00Z,,37689,holdout_raw.json#id=57882
+57906,Otsolankatu 3 / kerrostalon purku-urakka,Virtain kaupunki,"Otsolankatu 3 / kerrostalon purku-urakka Virtain kaupunki pyytää tarjouksia Otsolankatu 3:n kerrostalon purku-urakkaan. Urakka koskee kerrostalon purkutyötä, joka toteutetaan kokonaisurakkana. Urakkaan sisältyy kaikki purkutyöt, jätehuolto, asbesti purkutyöt, tontin siistiminen, purkutyön jälkeisen tontin tasaaminen, sekä lopputarkastukseen liittyvät tehtävät. 
+
+Rakennuttaja edellyttää, että urakoitsija on tutustunut rakennuspaikkaan ennen tarjouksen antamista.
+ 
+Infotilaisuuksia järjestetään 2.10.2026 klo 13.00 ja 9.10.2026 klo 13.00. 
+
+Mikäli urakoitsija ei ole käynyt tutustumassa rakennuspaikkaan ennen tarjouksen antamista ja esittää lisäkorvattavaksi työksi jotakin sellaista, mikä suoritetulla käynnillä olisi ollut havaittavissa, urakoitsijalla ei ole oikeutta lisä- ja muutostyökustannuksiin,",2026-10-12T07:00:00Z,170000.0,37707,holdout_raw.json#id=57906
+57925,Kaakkois-Suomen elinvoimakeskuksen siltojen ylläpitourakka 2027-2028 (optio 2029),"Työllisyys-, kehittämis- ja hallintokeskus","Kaakkois-Suomen elinvoimakeskuksen siltojen ylläpitourakka 2027-2028 (optio 2029) Hankinta sisältää  Kaakkois-Suomen elinvoimakeskuksen ylläpitämien siltojen (Kymenlaakso, Päijät-Häme ja Etelä-Karjala) ylläpitokorjauksia tilaajan ohjelmoiman korjausohjelman mukaisesti. 
+
+Lisäksi hankinta sisältää Etelä-Karjalan osalta siltojen vuositarkastusten suorittamisen ja raportoinnin tilaajalle.
+
+Sopimukseen kuuluvana työnä tehdään mahdollisesti myös putkisiltojen uusimisia ja laajempia korjausurakoita sisältäen suunnittelun.,",2026-10-27T11:00:00Z,,37718,holdout_raw.json#id=57925
+57927,Hybridiakun sijoituspaikan vuokrasopimus,Oy Turku Energia - Åbo Energi Ab,"Hybridiakun sijoituspaikan vuokrasopimus Turku Energia kilpailuttaa kaukolämpö- ja kaukojäähdytysveden varastointiin käytettävän vesisäiliön (myöhemmin Hybridiakku) sijoituspaikan vuokrasopimuksen sekä akun sijoittamista koskevan perustamisurakan Turun Kupittaan ja Itäharjun alueilla.
+
+Turku Energia etsii kumppania, jonka kanssa tehdään pitkäaikainen vuokrasopimus hybridiakun ja sen vaatimien apulaitteiden sijoittamista varten. Vuokrasopimuksen lisäksi sopimukseen kuuluu hybridiakun perustamisurakka, jolla rakennetaan perusta sekä suojarakennelma / kuorirakennus hybridiakun sijoittamiselle. Varsinainen akku kilpailutetaan erikseen.
+
+Turku Energia on Varsinais-Suomen johtava energiayhtiö ja yksi Suomen suurimmista alan yhtiöistä. Tarkempia tietoja toiminnastamme löytyy nettisivuiltamme, www.turkuenergia.fi.,",2026-10-12T07:00:00Z,,37719,holdout_raw.json#id=57927
+57961,A-sairaalan C-siiven korjausprojekti / tarjouskilpailukutsu,Varsinais-Suomen hyvinvointialue,"A-sairaalan C-siiven korjausprojekti / tarjouskilpailukutsu Varsinais-Suomen hyvinvointialue kilpailuttaa A-sairaalan C-siiven korjausprojektin ja pyytää urakasta kiinnostuneita urakoitsijoita jättämään osallistumishakemuksen kilpailutukseen liittyen.,",2026-10-26T10:00:00Z,,37736,holdout_raw.json#id=57961
+58014,"VT Pajukiitäjä, uudisrakennushanke",Tuusulan kunnan kiinteistöt Oy,"VT Pajukiitäjä, uudisrakennushanke Tuusulan kunnan kiinteistöt Oy, Tuumakodit, pyytää tarjousta VT Pajukiitäjä -nimisen rakennushankkeen Tavoitehintaurakasta (suunnittelu sekä rakennus-tekniset ja LVIAS -työt) tarjouspyyntöasiakirjojen mukaisesti.
+Pyydämme kiinteähintaista tavoitehintaurakka -tarjousta liitteenä olevien ARK -suunnitelmien ja asiakirjojen mukaisesti toteutettuna.
+Pääurakka, tavoitehintaurakka, sisältäen rakennusurakan sekä päätoteuttajan tehtävät, LVI-, sähkö- ja rakennusautomaatiourakat sisältyen.
+Rakennuskohde on rivitalot 2 kpl, joihin tulee yhteensä kahdeksan asuntoa. Ulko-rakennukseen sijoitetaan tekniset tilat, huoneistojen verkkovarastot/talovarasto sekä ulkoiluvälivarasto.
+Rakennuskohde käsittää kohteen Urakan mukaisesti toteutussuunnittelun ja rivitalorakennuksen rakentamisen piha-alueineen oheisten urakkalaskenta-asiakirjojen mukaisessa laajuudessa siten, että vastaanottohetkellä hanke on kokonaisuudessaan täysin valmis.,",2026-11-13T13:00:00Z,1200000.0,37772,holdout_raw.json#id=58014
+58047,Toivalan ylikulkusilta,"Työllisyys-, kehittämis- ja hallintokeskus (KEHA-keskus) ja elinvoimakeskukset","Toivalan ylikulkusilta Urakka on kokonaishintaperusteinen kokonaisurakka (KU). 
+
+
+Urakkaan kuuluvat seuraavat tilaajan hankkimiin suunnitelmiin perustuvat sillanrakentamistyöt. Urakkaan kuuluu ko. sillan rakentaminen siinä laajuudessa kuin se on tarjouspyyntöasiakirjoissa ja rakentamissuunnitelmissa määritelty kaikkine liikennejärjestelyineen, varusteineen ja laitteineen. 
+
+SK-161 Toivalan ylikulkusilta
+
+• Liikenne:
+o Toivalantien yleinen maantieliikenne kevyenliikenteen järjestelyineen suljetaan rakentamisen ajaksi.
+o Rautatieliikenne: sähköistetty rata, henkilö- ja tavaraliikennettä.
+
+• Urakan sisältö: Vanhan sillan purku ja uuden rakentaminen sähkörata-töineen.
+
+• Uusi rakennettava Toivalan ylikulkusilta (SK-135) on tyypiltään jännitetty betoninen jatkuva laattasilta (jBjl). Uusi silta rakennetaan nykyisen sillan paikalle. 
+
+• Sillan uusimisen yhteydessä Toivalantien tasausta nostetaan suunni-telmien mukaisesti.
+
+• Sillan länsipuolella sijaitsevaa huoltotietä siirretään sillan kohdalla kauemmaksi sillasta,",2026-10-13T10:00:00Z,,37789,holdout_raw.json#id=58047
+58068,Kulmakadun pienvenelaituri nro 3,Vaasan kaupunki,"Kulmakadun pienvenelaituri nro 3 Pyydetään tarjouksia Vaasan kaupungin Kulmakadun venesataman laiturin (nro 3) uusimisesta tarjouspyynnön ja sen liitteiden mukaisesti. Kyse on muoviponttonilaiturista, joka hankitaan paikoilleen asennettuna. Uutta hankittavaa laituria jatketaan olemassa olevalla 24,5 metriä pitkällä laiturilla. Uuden laiturin paikalleen asennus sekä vanhan laiturin liittäminen uuden laiturin jatkeeksi kuuluu urakkaan,",2026-10-12T09:00:00Z,,36947,holdout_raw.json#id=58068
+58095,Purku-urakka - Valkealan entinen sairaala,Kouvolan kaupunki,"Purku-urakka - Valkealan entinen sairaala Purkukohde: Valkealan entinen sairaala
+Purkupaikan osoite: Sairaalantie 7-11, 45360 Valkeala
+Kiinteistöt: 286-401-26-7 ja 286-401-26-49
+Rakennukset: 101900277P (9904kem²) sekä kiinteistöillä sijaitsevat talousrakennukset.
+
+Purkukohteena on em. osoitteissa sijaitsevat rakennukset perustuksineen tarjouspyyntöasiakirjojen mukaisesti. Rakennukset puretaan perustuen Kouvolan kaupungin teknisen lautakunnan lupajaoston päätöksiin 04.12.2024 § 64 ja 08.10.2024 § 54; rakennusta koskevat purkamismääräykset teettämisuhalla täytäntöönpantavaksi.
+
+Urakkamuotona on kokonaisurakka, jossa purkutöiden urakoitsija toimii pääurakoitsijana ja lain tarkoittamana päätoteuttajana. Pääurakkaan sisältyvät purkutyöt sekä asbesti-, haitta-aineiden ja palojätteiden purkutyöt asiakirjaluettelossa mainittujen asiakirjojen mukaisesti saatettuna täysin valmiiksi. Tällä tarjouspyynnöllä pyydetään kokonaishintaa em. urakasta. 
+
+Arvioitu töiden aloitus on loppuvuodesta 2026. Purkutyöt voi aloittaa aikaisintaan, kun urakkasopimus on allekirjoitettu. Purkutyöt tulee olla kokonaisuudessaan valmiit viimeistään 30.07.2027.
+
+Tilaaja edellyttää, että urakoitsija on tutustunut purkukohteeseen ennen tarjouksen antamista.
+Purkukohteen esittely: 05.10.2026 klo 10:00. Ilmoittautuminen esittelyyn aidatun alueen portilla.
+Kohteen esittelyyn ilmoittaudutaan ennakkoon sähköpostitse : jarno.kauppi(at)kouvola.fi.,",2026-10-26T10:00:00Z,,37816,holdout_raw.json#id=58095
+58102,"Topinojan Jätekeskus, Vaarallisen jätteen kenttäalueen vesienjohtamisen muutostyöt 2026-2027",Lounais-Suomen Jätehuolto Oy,"Topinojan Jätekeskus, Vaarallisen jätteen kenttäalueen vesienjohtamisen muutostyöt 2026-2027 Vaarallisen jätteen kenttäalueen vesienjohtamisen muutostyöt 2026-2027,",2026-10-15T09:00:00Z,,37822,holdout_raw.json#id=58102
+58110,Käräjätörmä 8 Purku,Tampereen Vuokratalosäätiö sr,"Käräjätörmä 8 Purku Haetaan urakoitsijaa Käräjätörmä 8 kerrostalokiinteistön purku-urakkaan. Hanke koskee Tohlopissa Käräjätörmä 8 kiinteistöä, jossa on kaksi Tampereen vuokratalosäätiön omistamaa asuinkerrostaloa. Tämä purku-urakka koskee rakennusten 2 ja 3 (raput C-H) purkua.,",2026-11-20T10:00:00Z,,37829,holdout_raw.json#id=58110
+58127,Kotoluhta Fleini metsätien perusparannuksen päällysrakenneurakka,Metsänhoitoyhdistys Keskipohja ry,"Kotoluhta Fleini metsätien perusparannuksen päällysrakenneurakka Metsätien perusparannuksen päällysrakenne urakka.,",2026-11-02T10:00:00Z,,37840,holdout_raw.json#id=58127
+58133,Nikkilän Terveysaseman Tilamuutokset,Sipoon kunta,"Nikkilän Terveysaseman Tilamuutokset Sipoon kunnan yhdyskunnan ja ympäristön toimialan Toimitilat -yksikkö pyytää tarjousta Nikkilän Terveyskeskuksen tilamuutoksien kokonaisurakasta. 
+Urakkamuotona on kokonaisurakka, johon sisältyy kaikki suunnitelmien ja urakka-asiakirjojen mukaiset työt valmiiksi saatettuina. 
+Kokonaisurakoitsija toimii pääurakoitsijana ja lainsäädännön tarkoittamana päätoteuttajana. Kokonaisurakkaan sisältyy työmaan johtovelvollisuudet, tiedottaminen sidosryhmiin ja työmaapalvelut.
+Maksuperusteena on urakkasopimuksen perusteella määräytyvä kiinteä kokonaishinta (urakkahinta). 
+
+Urakkakohde sijaitsee Etelä-Sipoossa osoitteessa Jussaksentie 14, 04130 SIPOO.
+Työt voidaan aloittaa aikaisintaan maanantaina 16.11.2026. 
+Rakennustöiden tulee olla valmiina ja vastaanotettavissa viimeistään 2027 tammikuussa perjantaina 29.01.2027. 
+Urakoitsijan on otettava huomioon, että työn aikana rakennuksessa on terveysaseman toiminta, jonka on toimittava pysäyksettömästi.
+
+Kohteen esittely 6.10 ja 7.10.2026 klo 15.00.
+Esittelyyn on ilmoitettava tulosta vähintään yhtä työpäivää aikaisemmin. Ilmoittautumiset kimmo.kuusjarvi@sipoo.fi,",2026-10-30T10:00:00Z,,37845,holdout_raw.json#id=58133
+58161,Vesaikon alueleikkipaikan rakentaminen,"Lappeenrannan kaupunki, kaupunkikehitystoimiala","Vesaikon alueleikkipaikan rakentaminen Lappeenrannan kaupunki pyytää Teiltä urakkatarjousta Voisalmen kaupunginosassa Niittyvillantiellä sijaitsevan alueleikkipaikan saneerauksen ympäristö-/ viherrakentamisurakasta tarjouspyyntöasiakirjojen mukaisessa laajuudessa liitteenä olevalla tarjouslomakkeella. 
+
+Työhön valituksi tuleva urakoitsija toimii YSE 1998 mukaisena päätoteuttajana vastuineen ja velvollisuuksineen. Tässä urakassa dokumentointi toteutetaan Buildie -sovelluksella. Tilaaja antaa työhön urakoitsijaksi valitulle ilmaiseksi käyttöön yhden (1) tunnuksen.
+
+Rakennusurakan sisältö on kuvattu tarkemmin tarjouspyynnön liitteenä olevissa tarjouspyyntö-/ suunnitelma-asiakirjoissa.,",2026-10-05T09:00:00Z,,37055,holdout_raw.json#id=58161
+58178,Sadeharju Loukas metsätien päällysrakenneurakka,Metsänhoitoyhdistys Keskipohja ry,"Sadeharju Loukas metsätien päällysrakenneurakka Sadeharju Loukas metsätien päällysrakenneurakka,",2026-11-02T10:00:00Z,,37866,holdout_raw.json#id=58178
+58217,Rakennustekniset työt puitejärjestely 2027-2028 (2029-2030),Mäntsälän kunta,"Mäntsälän kunnan tekninen ja elinvoimapalvelujen toimitilapalvelut-yksikkö kilpailuttaa rakennustekniset työt tilaajan omistamien kiinteistöjen kunnossapitotöihin. Tilaajana hankinnassa on Mäntsälän kunta, Kiinteistö Oy Mäntsälän Toimistotalo, sekä Mäntsälän Sotekiinteistöt Oy.
+
+Puitesopimuksen kesto on kaksi (2) vuotta 1.1.2027 - 31.12.2028. Hankinta sisältää kaksi yhden (1+1) vuoden optiota kausille 1.1.-31.12.2029 ja 1.1.-31.12.2030.
+
+Hankinta on jaettu seitsemään (8) osaan, tarjouksen voi jättää yhteen tai useampaan osaan. 
+
+Tarjouskilpailun tavoitteena on valita osa-alueeseen: 
+
+1. Kirvesmiestyöt, kuusi (6) kokonaistaloudellisesti edullisinta ja vähimmäisvaatimukset täyttävää toimittajaa. 
+2. Rakennuspeltisepäntyöt, kuusi (6) kokonaistaloudellisesti edullisinta ja vähimmäisvaatimukset täyttävää toimittajaa.
+3. Laatoitus ja vesieristystyöt, kuusi (6) kokonaistaloudellisesti edullisinta ja vähimmäisvaatimukset täyttävää toimittajaa.
+4. Maalaus-, tasoite- ja mattotyöt, neljä (4) kokonaistaloudellisesti edullisinta ja vähimmäisvaatimukset täyttävää toimittajaa.
+5. Bitumikattotyöt, neljä (4) kokonaistaloudellisesti edullisinta ja vähimmäisvaatimukset täyttävää toimittajaa.
+6. Asbestipurkutyöt, neljä (4) kokonaistaloudellisesti edullisinta ja vähimmäisvaatimukset täyttävää toimittajaa.
+7. Rautarakennetyöt, neljä (4) kokonaistaloudellisesti edullisinta ja vähimmäisvaatimukset täyttävää toimittajaa.
+8. Muuraus- ja rappaustyöt, neljä (4) kokonaistaloudellisesti edullisinta ja vähimmäisvaatimukset täyttävää toimittajaa.
+
+Jos tarjouksia ei saada riittävästi tai tarjouksia joudutaan hylkäämään, voi valittavien toimittajien määrä osa-alueittain olla vähemmän. Valittujen toimittajien kanssa perustetaan puitejärjestely.
+
+Hankintasopimuksen perusteella tilaaja tekee toimittajilta tilauksia, joiden kesto ja mahdolliset tilausta koskevat yksityiskohdat määräytyvät tilaajan tarpeiden mukaan. Tarjouspyyntö koskee tilaajan kiinteistöjä ja toimitiloja sekä niissä sopimusaikana toteutettavia erikseen määriteltäviä (pääasiassa pieniä ja/tai urakkalaskennan kannalta epämääräisiä) työsuorituksia/kokonaisuuksia. Kunnossapitotöiden lisäksi sopimuksen kautta tilataan vuosittaisia investointitöitä. Töiden kesto tapauskohtaisesti noin yhdestä (1) tunnista muutamaan kuukauteen.
+
+Työt tilataan laskutustyönä tuntiveloitusperiaatteella tai erikseen puitesopimustoimittajien kesken kilpailutettavalla urakkahinnalla. Työt tehdään YSE 1998 rakennusurakan yleisten sopimusehtojen sekä hankekohtaisten urakka-asiakirjojen mukaisesti., Kirvesmiestyöt kirvesmiestöitä voivat olla esim.
+puu- ja levyrakenteiden rakentaminen ja korjaaminen
+väliseinä-, alakatto- ja verhoustyöt
+ovi- ja ikkuna-asennukset
+listoitukset ja viimeistelytyöt
+kalusteasennukset
+lattia- ja kattorakenteiden korjaukset
+rakennusten muutostyöt
+kunnossapito- ja korjausrakentamisen kirvesmiestyöt, Rakennuspeltisepäntyöt Rakennuspeltisepäntyöt käsittäen kattopellitykset, julkisivupellitykset, sadevesijärjestelmien asennukset ja korjaukset, ikkuna- ja ovipellitykset, läpivientien pellitykset sekä muut rakennustekniset ohutlevytyöt.
+- Peltikattojen asennusta
+- Konesaumakattojen valmistus ja asennus
+- Profiili- ja lukkosaumakattojen asennus
+- Kattopeltien korjaukset ja uusimiset
+- Kattoturvatuotteiden asennuksen yhteydessä tarvittavat pellitystyöt, Laatoitus- ja vesieristystyöt Työt sisältävät tarvittavat pohjatyöt, tasoitukset, vedeneristeiden asennukset, laattojen asennukset, saumaukset, silikonisaumaukset, vanhojen pinnoitteiden purkutyöt sekä muut laatoitus- ja vedeneristysurakkaan liittyvät työt., Maalaus-, tasoite- ja mattotyöt Maalaus- ja mattotyöt käsittäen rakennusten sisä- ja ulkopintojen maalaus-, tasoitus- ja pinnoitustyöt sekä lattia- ja seinäpäällysteiden asennus-, korjaus- ja uusimistyöt., Bitumikatto- ja vedeneristystyöt Bitumikattotyöt käsittäen rakennusten bitumikattojen ja vedeneristysrakenteiden asennus-, korjaus-, huolto- ja uusimistyöt.
+Työt sisältävät bitumikermien asennukset, paikkaus- ja korjaustyöt, läpivientien tiivistykset, kattokaivojen ja ylösnostojen vedeneristystyöt, höyrynsulkujen asennukset, vedeneristysrakenteiden uusimiset, vanhojen katemateriaalien purkutyöt sekä muut bitumikattoihin liittyvät kunnossapito- ja korjaustyöt., Asbesti- ja haitta-ainepurkutyöt Asbesti- ja haitta-ainepurkutyöt käsittävät rakennuksissa, rakennelmissa ja teknisissä järjestelmissä olevien asbestia tai muita haitta-aineita sisältävien materiaalien kartoituksen, osastoinnin, purkamisen, pakkaamisen, kuljetuksen, asianmukaisen jätehuollon sekä purkutyöhön liittyvät suojaus-, puhdistus-, mittaus- ja dokumentointitehtävät voimassa olevan lainsäädännön ja viranomaismääräysten mukaisesti.
+
+Työt voivat sisältää muun muassa:
+
+asbestipitoisten lattia-, seinä- ja kattomateriaalien purkamisen
+muovimattojen, liimojen ja tasoitteiden asbestipurkutyöt
+putki- ja ilmanvaihtoeristeiden asbestipurkutyöt
+asbestisementtituotteiden purkamisen
+PAH-yhdisteitä sisältävien rakenteiden purkamisen
+PCB-, lyijy- ja kreosoottia sisältävien materiaalien ja rakenteiden purkamisen
+mineraalivilla- ja kuitupitoisten materiaalien purkutyöt
+haitta-ainepitoisten saumamassojen, pinnoitteiden ja muiden materiaalien poistot
+osastointi-, alipaineistus- ja pölynhallintatyöt
+loppusiivoukset, puhtausmittaukset sekä käyttöönluovutukseen liittyvät toimenpiteet
+purkutöihin liittyvät viranomaisilmoitukset, Rautarakennetyöt Hankinnan kohteena ovat rautarakennetyöt tilaajan kiinteistöissä ja piha-alueilla. Työt sisältävät teräs- ja muiden metallirakenteiden valmistuksen, asennuksen, korjauksen, muutostyöt, kunnossapidon sekä purkamisen. Työt voivat sisältää hitsaus-, konepaja- ja asennustöitä sekä muita rakennusteknisiä metallitöitä., Muuraus- ja rappaustyöt Hankinnan kohteena ovat muuraus- ja rappaustyöt tilaajan omistamissa tai hallinnoimissa rakennuksissa, rakennelmissa ja piha-alueilla. Työt sisältävät tiili-, harkko-, betoni- ja luonnonkivirakenteiden rakentamisen, korjaamisen, paikkaamisen ja purkamisen sekä julkisivujen, sokkeleiden ja sisätilojen rappaus- ja korjausrappaustyöt. Työt voivat sisältää myös muurattujen rakenteiden vahvistus-, saumaus-, tasoitus- ja kunnostustöitä.,",2026-10-23T09:00:00Z,520000.0,37893,holdout_raw.json#id=58217
+58254,"Sotkamon Pappilan, entisen kirkkoherranviraston, purku-urakka",Sotkamon seurakunta,"Sotkamon Pappilan, entisen kirkkoherranviraston, purku-urakka Purku-urakan kohteena on Sotkamon seurakunnan Pappilan rakennukset, Pappila ja Kanttorila, jotka sijaitsevat Sotkamon kirkonkylällä osoitteessa Salmelantie 1, 88600 Sotkamo. 
+
+Urakkaan kuuluu molempien rakennusten purkaminen. Rakennusten välissä oleva kellarirakennus jätetään kuitenkin purkuhankkeessa purkamatta. Purkuun sisältyy myös asfalttialueiden sekä lämmitys- ja valaisintolppien purkaminen.
+
+Kohteiden pinta-alat ovat: Pappila pinta-ala 564 brm2, Kanttorila, pinta-ala 302 brm2.,",2026-10-07T09:00:00Z,85000.0,36837,holdout_raw.json#id=58254
+58340,"Malmska Tandkliniken Rakennus-, ilmanvaihto-, putki- ja sähköurakka",Malmska Fastigheter Ab,"Malmska Tandkliniken Rakennus-, ilmanvaihto-, putki- ja sähköurakka Rakennuskohde on Pietarsaaren sairaalan alueella sijaitsevan rakennuksen muutostyö hammashoidon käyttöön.,",2026-10-26T10:00:00Z,2000000.0,37853,holdout_raw.json#id=58340

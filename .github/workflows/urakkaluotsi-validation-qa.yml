@@ -1,0 +1,77 @@
+name: Urakkaluotsi P0 and relevance regression
+
+on:
+  pull_request:
+    paths:
+      - 'workers/**'
+      - 'lib/**'
+      - 'app/**'
+      - 'components/**'
+      - 'tests/**'
+      - 'data/validation/**'
+      - 'schemas/**'
+      - 'package.json'
+      - '.github/workflows/urakkaluotsi-validation-qa.yml'
+  push:
+    branches: ['fix/urakkaluotsi-p0-validation']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: python -m pip install 'pypdf>=5,<7'
+      - run: python -B -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Evaluate independent source-gold paired metrics (fail closed)
+        run: |
+          python -B workers/evaluate_paired_source_gold.py --cases data/validation/public_pdf_paired_cases_2026-10-19.json --output /tmp/urakkaluotsi_paired_metrics.json
+          python -B -c 'import json; x=json.load(open("/tmp/urakkaluotsi_paired_metrics.json")); assert x["paired_source_verified"] == 0 and x["precision_at_30"] is None and x["improvement_verified"] is False'
+      - name: Evaluate Uusimaa source coverage (fail closed)
+        run: |
+          python -B workers/evaluate_uusimaa_document_coverage.py --queue data/validation/uusimaa_document_coverage_queue_2026-10-19.json --output /tmp/uusimaa_source_coverage.json
+          python -B -c 'import json; r=json.load(open("/tmp/uusimaa_source_coverage.json")); assert r["complete_packages"] == 0 and r["source_gold_positives"] == 0 and r["precision_at_30"] is None'
+      - name: Build frozen Uusimaa evidence-review queue without gold assumptions
+        run: |
+          python -B workers/build_p0_uusimaa_discovery_queue.py --snapshot data/validation/snapshot_2026-10-19/hilma_raw.json --output /tmp/urakkaluotsi_uusimaa_discovery.json
+          python -B -c 'import json; r=json.load(open("/tmp/urakkaluotsi_uusimaa_discovery.json")); assert r["source_count"] == 100 and r["verified_uusimaa_worksites"] == 0 and r["independent_gold_positives"] == 0 and r["precision_at_30"] is None'
+      - name: Generate notice-to-lot evidence gates (no customer GO)
+        run: |
+          python -B workers/build_p0_lot_evidence_gates.py --input data/validation/p0_3d_nine_live_source_gates_2026-10-19.json --output /tmp/urakkaluotsi_lot_gates.json
+          python -B -c 'import json; x=json.load(open("/tmp/urakkaluotsi_lot_gates.json")); assert x["input_notice_count"] == 9 and x["official_lots_verified"] == 0 and x["customer_go_count"] == 0 and x["precision_at_30"] is None'
+      - name: Rebuild frozen real notice universe and independent-review gate
+        run: |
+          python -B workers/build_p0_full_source_universe.py --source data/validation/snapshot_2026-10-19/hilma_raw.json --source data/validation/holdout_52_2026-10-19/holdout_raw.json --output /tmp/p0_source_universe.json
+          python -B workers/guard_p0_notice_versions.py --input data/validation/p0_3d_nine_live_source_gates_2026-10-19.json --as-of 2026-10-19T07:35:00Z --output /tmp/p0_version_guard.json
+          python -B workers/evaluate_p0_independent_acceptance.py --universe /tmp/p0_source_universe.json --reviews data/validation/p0_independent_source_reviews_2026-10-19.json --output /tmp/p0_independent_acceptance.json
+          python -B -c 'import json; a=json.load(open("/tmp/p0_source_universe.json")); b=json.load(open("/tmp/p0_version_guard.json")); c=json.load(open("/tmp/p0_independent_acceptance.json")); assert a["real_unique_notices"] == 152 and a["verified_uusimaa_renovation_jobs"] == 0; assert b["cases"] == 9 and b["customer_go_count"] == 0; assert c["precision_at_30"] is None and c["acceptance_80_percent"] == "NOT_MEASURED"'
+      - name: Evaluate frozen top30 AI-silver review readiness
+        run: |
+          python -B workers/evaluate_p0_blind_ai_source_review.py --ranked data/validation/p0_frozen_ranked_100_2026-10-19.json --reviews data/validation/p0_blind_ai_silver_reviews_2026-10-19.json --output /tmp/p0_ai_source_review.json
+          python -B -c 'import json; x=json.load(open("/tmp/p0_ai_source_review.json")); assert x["frozen"]["sample_size"] == 30 and x["evaluation"]["ai_precision_at_30"] is None and x["evaluation"]["human_gold_precision_at_30"] is None'
+      - run: node --test tests/*.test.mjs
+      - run: python -B workers/build_validation_set.py
+      - run: python -B workers/score_validation.py
+      - name: Evaluate deferred and conditional queue against frozen AI-silver holdout
+        run: python -B workers/evaluate_holdout_v2.py
+      - name: Source XML evaluation with explicit missing-coverage report
+        run: |
+          mkdir -p data/validation/source_xml_inputs
+          python -B workers/evaluate_source_xml.py --snapshot data/validation/holdout_52_2026-10-19/holdout_raw.json --xml-dir data/validation/source_xml_inputs --output /tmp/urakkaluotsi_source_xml_coverage.json
+          python -B -c 'import json; x=json.load(open("/tmp/urakkaluotsi_source_xml_coverage.json")); assert x["notices_total"] == 52 and x["official_precision"] is None and x["accuracy_improvement_verified"] is False'
+      - name: Verify the independent-label gate remains closed
+        run: |
+          python -B -c 'import json; m=json.load(open("data/validation/independent_100/metrics.json")); assert m["rows_total"] == 100; assert m["rows_unreviewed"] == 0 or m["relevance_gate"] == "NOT MEASURED"'
+      - run: npm install --ignore-scripts --no-audit --no-fund --package-lock=false
+      - run: npm run typecheck
+      - run: npm run build

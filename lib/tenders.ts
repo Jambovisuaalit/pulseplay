@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { SESSION_COOKIE, verifySession } from "@/lib/session";
 import rawData from "@/data/hilma_analysoitu.json";
 import type { Tender } from "@/types/tender";
+import { safeSourceDecision } from "@/lib/deliverySafety";
 
 export type NormalizedTender = Tender & {
   _key: string;
@@ -10,9 +11,12 @@ export type NormalizedTender = Tender & {
   _buyer: string;
   _revenue: number | null;
   _decision: string;
+  _sourceDecision: string;
+  _safetyNotes: string[];
 };
 
 export function normalizeTender(item: Tender, index = 0): NormalizedTender {
+  const safety = safeSourceDecision(item);
   const organisationName =
     typeof item.organisation === "object" && item.organisation
       ? item.organisation.name
@@ -31,7 +35,9 @@ export function normalizeTender(item: Tender, index = 0): NormalizedTender {
       typeof rawRevenue === "number" && Number.isFinite(rawRevenue)
         ? rawRevenue
         : null,
-    _decision: String(item.go_no_go_suositus ?? "EI ARVIOITU").toUpperCase(),
+    _decision: safety.decision,
+    _sourceDecision: String(item.go_no_go_suositus ?? "EI ARVIOITU").toUpperCase(),
+    _safetyNotes: safety.reasons,
   };
 }
 

@@ -1,0 +1,113 @@
+{
+  "evaluation_status": "REGRESSION_REPLAY_AI_SILVER_NOT_INDEPENDENT_GOLD",
+  "independent_temporal_holdout": false,
+  "independent_gold_labels": false,
+  "evaluation_use": "Previously inspected cases; regression only, never new acceptance evidence",
+  "source_notices": 52,
+  "old_100_notice_overlap": 0,
+  "ai_silver_class_counts": {
+    "Epärelevantti": 49,
+    "NOT_EVALUATED": 1,
+    "Mahdollinen": 2
+  },
+  "legacy_class_counts": {
+    "Relevantti": 6,
+    "Mahdollinen": 5,
+    "Epärelevantti": 41
+  },
+  "v2_class_counts": {
+    "Epärelevantti": 32,
+    "Ei priorisoitu": 20
+  },
+  "class_migrations": [
+    {
+      "from": "Epärelevantti",
+      "to": "Ei priorisoitu",
+      "count": 17
+    },
+    {
+      "from": "Epärelevantti",
+      "to": "Epärelevantti",
+      "count": 24
+    },
+    {
+      "from": "Mahdollinen",
+      "to": "Ei priorisoitu",
+      "count": 2
+    },
+    {
+      "from": "Mahdollinen",
+      "to": "Epärelevantti",
+      "count": 3
+    },
+    {
+      "from": "Relevantti",
+      "to": "Ei priorisoitu",
+      "count": 1
+    },
+    {
+      "from": "Relevantti",
+      "to": "Epärelevantti",
+      "count": 5
+    }
+  ],
+  "legacy_provisional_ai_metrics": {
+    "tp": 0,
+    "fp": 6,
+    "fn": 0,
+    "predicted_positive": 6,
+    "precision": 0.0,
+    "fp_range": [
+      6,
+      6
+    ],
+    "fn_range": [
+      0,
+      3
+    ]
+  },
+  "v2_provisional_ai_metrics": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "predicted_positive": 0,
+    "precision": null,
+    "fp_range": [
+      0,
+      0
+    ],
+    "fn_range": [
+      0,
+      3
+    ],
+    "precision_undefined_because_no_positive_predictions": true
+  },
+  "v2_deferred_count": 20,
+  "v2_actionable_conditional_count": 0,
+  "v2_deferred_by_ai_class": {
+    "Epärelevantti": 17,
+    "NOT_EVALUATED": 1,
+    "Mahdollinen": 2
+  },
+  "deferred_is_not_a_verified_negative": true,
+  "v2_conditional_candidates_by_ai_class": {},
+  "official_precision": null,
+  "official_relevance_gate": "NOT MEASURED",
+  "official_false_negative_count": null,
+  "all_ai_silver_labels_from_frozen_source_before_scoring": true,
+  "human_gold_count": 0,
+  "annexes_fully_checked": 0,
+  "source_limitation": "Search-index metadata, same calendar date as old sample; no true independent temporal holdout",
+  "provenance_rechecked_from_actual_sources": {
+    "id_overlap": 0,
+    "procedure_id_overlap": 0,
+    "normalised_title_overlap": 0,
+    "source_ids_checked": 52,
+    "source_quotes_checked": 52,
+    "independent_accuracy_proven": false
+  },
+  "source_sha256": "ef48545a624ab0399a9addc06cadd13593a0866fd574400fb9c234a807ae3a06",
+  "ai_silver_labels_sha256": "286280efb843af1f8b8281bcada21ddc51fb812eb3d70ebcd846d96b6fd71c52",
+  "model_version": "ICP_V2_SOURCE_BOUND_2026_10_24",
+  "classifier_code_sha256": "8eec0642f1707b1721dac4ea576d1c3e99826ad446849ab86ae9bf0607d81f19"
+}

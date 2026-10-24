@@ -15,6 +15,13 @@ from hilma_store import atomic_bytes, save_json, upsert
 
 ROOT = Path(__file__).resolve().parents[1]
 SELECT = 'noticeId,cpvCodes,datePublished,mainType,titleFi,organisationNameFi,descriptionFi,expirationDate'
+CPV_CODES = ['45000000', '45200000', '45400000', '45450000']
+
+
+def construction_query_groups(tree):
+    # Use the official construction subtree; maintenance and consulting roots
+    # remain available to the vocabulary validator but are not acquisition seeds.
+    return {'45000000': groups(tree)['45000000']}
 
 
 def timestamp(value, field):
@@ -109,12 +116,12 @@ def main():
     raw_tree = client.request(CPV_TREE)
     atomic_bytes(run / 'cpv.response.json', raw_tree)
     tree = json.loads(raw_tree)
-    group_codes = groups(tree)
+    group_codes = construction_query_groups(tree)
     save_json(ROOT / 'fixtures/cpv-main.json', {'source': CPV_TREE, 'fetched_at': utc_now(), 'tree': tree})
     expression = search_expression(group_codes)
     notices, count = collect(client, expression, start_iso, end_iso, run)
     metadata = {'retrievedAt': utc_now(), 'publishedAfter': start_iso, 'publishedBefore': end_iso,
-                'cpvCodes': list(TIER1), 'api_count': count, 'unique_notice_ids': len(notices),
+                'cpvCodes': CPV_CODES, 'api_count': count, 'unique_notice_ids': len(notices),
                 'group_vocabulary_sizes': {key: len(value) for key, value in group_codes.items()},
                 'group_notice_counts': {key: sum(bool(set(n['cpv_codes']) & set(value)) for n in notices)
                                        for key, value in group_codes.items()},

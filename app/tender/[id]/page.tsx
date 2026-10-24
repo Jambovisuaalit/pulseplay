@@ -4,6 +4,8 @@ import companyProfile from "@/data/company_profile.json";
 import { evaluateHardGates, type CompanyProfile } from "@/lib/hardGate";
 import { formatEuro, getTenderById } from "@/lib/tenders";
 
+export const dynamic = "force-dynamic";
+
 export default async function TenderPage({
   params,
 }: {
@@ -67,6 +69,8 @@ export default async function TenderPage({
         <div className="decisionPanel">
           <p className="eyebrow">LÄHDEANALYYSI</p>
           <h2>{tender._decision}</h2>
+          {tender._sourceDecision !== tender._decision && <p>Alkuperäinen analyysiluokka: {tender._sourceDecision}</p>}
+          {tender._safetyNotes.map((note) => <p key={note}>{note}</p>)}
           <p>{tender.perustelu ?? "Perustelua ei ole kirjattu."}</p>
         </div>
 

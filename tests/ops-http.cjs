@@ -1,10 +1,12 @@
 const assert=require('node:assert/strict');const http=require('node:http');const fs=require('node:fs');const os=require('node:os');const path=require('node:path');
 const {randomBytes,scryptSync}=require('node:crypto');
 async function main(){
- process.env.NODE_ENV='development';process.env.TP_OPS_LOCAL_ENABLED='true';
+ const durable=process.env.OPS_HTTP_STORE==='supabase';
+ process.env.NODE_ENV=durable?'production':'development';process.env.TP_OPS_LOCAL_ENABLED='true';
+ const database=durable?await (await import('./helpers/ops-http-database.mjs')).databaseTransport():null;
  const directory=fs.mkdtempSync(path.join(os.tmpdir(),'urakkaluotsi-ops-'));process.env.TP_OPS_LOCAL_DIRECTORY=directory;
  const password=randomBytes(24).toString('hex'),salt=randomBytes(16).toString('hex');process.env.TP_AUTH_USERNAME='test-operator';process.env.TP_AUTH_PASSWORD_SCRYPT=salt+':'+scryptSync(password,salt,64).toString('hex');process.env.TP_SESSION_SECRET=randomBytes(32).toString('hex');
- const app=require('next')({dev:true,dir:process.cwd(),hostname:'localhost',port:3189});await app.prepare();const server=http.createServer(app.getRequestHandler());await new Promise(resolve=>server.listen(3189,'127.0.0.1',resolve));const origin='http://localhost:3189';
+ const app=require('next')({dev:!durable,dir:process.cwd(),hostname:'localhost',port:3189});await app.prepare();const server=http.createServer(app.getRequestHandler());await new Promise(resolve=>server.listen(3189,'127.0.0.1',resolve));const origin='http://localhost:3189';
  let checks=0,cookie='',state;const check=(value,expected,label)=>{assert.equal(value,expected,label);checks++;};
  async function read(){const r=await fetch(origin+'/api/ops',{headers:{cookie},redirect:'manual'});check(r.status,200,'read');state=await r.json();return state;}
  async function send(input,status=200){const r=await fetch(origin+'/api/ops',{method:'POST',headers:{cookie,origin,'content-type':'application/json'},body:JSON.stringify({...input,expected_revision:state.revision}),redirect:'manual'});check(r.status,status,`action ${input.action}: ${await r.clone().text()}`);const value=await r.json();if(status===200)state=value;return value;}
@@ -29,10 +31,20 @@ async function main(){
   await send({action:'feedback',digest_id:id,content_hash:version,assessment_id:state.assessments[0].id,source:'CUSTOMER',label:'USEFUL',reason:'Not real'},400);
   await send({action:'feedback',digest_id:id,content_hash:version,assessment_id:state.assessments[0].id,source:'INTERNAL_SIMULATION',label:'USEFUL',reason:'Synthetic HTTP check'});
   check(state.metrics.correction_events,1,'correction metric');check(state.metrics.customer_usefulness.precision,null,'no fake precision');
-  if(process.env.OPS_BROWSER_QA==='true')await require('./ops-browser.cjs')({origin,cookie});
+  await send({action:'client',client_id,name:'Synteettinen Muokattu Oy',delivery_email:'changed@example.invalid'});
+  const freshLogin=await fetch(origin+'/api/login',{method:'POST',headers:{origin,'content-type':'application/x-www-form-urlencoded'},body:new URLSearchParams({username:'test-operator',password}),redirect:'manual'});
+  check(freshLogin.status,303,'fresh session');
+  const freshCookie=freshLogin.headers.get('set-cookie').split(';')[0];
+  check(freshCookie!==cookie,true,'independent session');cookie=freshCookie;
+  await read();check(state.clients.find(c=>c.id===client_id).name,'Synteettinen Muokattu Oy','edited client survives fresh session');
+  check(state.profiles.length>0&&state.events.length>0,true,'profile versions and history persist');
+  check(state.storage_mode,durable?'persistent':'local','actual storage indicator');
+  if(process.env.OPS_BROWSER_QA==='true'){await require('./ops-browser.cjs')({origin,cookie});await require('./ops-ui-regression.cjs')({origin,cookie});}
   delete process.env.TP_OPS_LOCAL_ENABLED;
+  database?.fail();
   const blocked=await fetch(origin+'/api/ops',{headers:{cookie}});check(blocked.status,503,'store disabled');
+  fs.mkdirSync('qa-output',{recursive:true});fs.writeFileSync(`qa-output/ops-http-${durable?'postgresql':'local'}.json`,JSON.stringify({status:'PASS',scope:durable?'LOCAL_NEXT_POSTGRESQL':'LOCAL_NEXT_FILE_STORE',checks,hosted:false,completed_at:new Date().toISOString()},null,2));
   console.log(`PASS ops HTTP complete workflow: ${checks} checks`);
- }finally{server.closeAllConnections();await new Promise(resolve=>server.close(resolve));await app.close();fs.rmSync(directory,{recursive:true,force:true});}
+ }finally{server.closeAllConnections();await new Promise(resolve=>server.close(resolve));await app.close();await database?.close();fs.rmSync(directory,{recursive:true,force:true});}
 }
 main().then(()=>process.exit(0)).catch(e=>{console.error(e.message);process.exit(1);});

@@ -1,0 +1,37 @@
+name: Urakkaluotsi public PDF evidence pilot
+on:
+  push:
+    branches: ['fix/urakkaluotsi-p0-validation']
+    paths:
+      - 'workers/collect_public_tender_pdfs.py'
+      - 'data/validation/public_pdf_manifest_2026-10-19.json'
+      - '.github/workflows/urakkaluotsi-public-pdf-pilot.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-pdf:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install PDF text parser
+        run: python -m pip install 'pypdf>=5,<7'
+      - name: Acquire only explicitly allowlisted public PDFs
+        run: |
+          python -B workers/collect_public_tender_pdfs.py --manifest data/validation/public_pdf_manifest_2026-10-19.json --output /tmp/urakkaluotsi_public_pdf
+      - name: Verify explicit no-gold policy
+        run: |
+          python -B -c 'import json; x=json.load(open("/tmp/urakkaluotsi_public_pdf/acquisition.json")); assert x["complete_tender_packages"] == 0 and x["independent_gold_positives"] == 0 and x["official_precision_at_30"] is None; assert x["full_text_documents"] > 0, "No public PDF downloaded; do not report green acquisition"'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: urakkaluotsi-public-pdf-evidence
+          path: /tmp/urakkaluotsi_public_pdf/
+          retention-days: 7
+          if-no-files-found: warn

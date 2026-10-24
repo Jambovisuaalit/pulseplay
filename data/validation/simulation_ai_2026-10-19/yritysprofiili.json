@@ -1,0 +1,10 @@
+{
+  "profile_status": "UNCONFIGURED",
+  "company_name": "Uudenmaan Korjausrakentajat Oy (kuvitteellinen testiyritys)",
+  "turnover_eur": null,
+  "regions": ["Helsinki", "Espoo", "Vantaa", "Kauniainen", "Kirkkonummi"],
+  "capabilities": ["Huoneistosaneeraukset", "Pintaremontit ja maalaustyöt", "Lattia- ja kalustekorjaukset", "Kiinteistöjen pienkorjaukset", "Toimitilojen sisäpuoliset korjaustyöt"],
+  "certifications": [],
+  "response_time_hours": null,
+  "can_provide_financial_guarantee": null
+}

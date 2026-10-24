@@ -1,0 +1,58 @@
+{
+  "status": "EXPLORATORY_AI_SILVER_NOT_INDEPENDENT_HUMAN_GOLD",
+  "rows_total": 100,
+  "ai_decisive_reviewed": 92,
+  "ai_ambiguous_count": 7,
+  "unreviewed_count": 1,
+  "ai_label_counts": {
+    "Epärelevantti": 91,
+    "Mahdollinen": 7,
+    "Relevantti": 1,
+    "NOT_EVALUATED": 1
+  },
+  "baseline_counts": {
+    "Relevantti": 15,
+    "Mahdollinen": 19,
+    "Epärelevantti": 66
+  },
+  "baseline_predicted_positive": 15,
+  "known_binary_count": 92,
+  "ai_observed_true_positives": 1,
+  "ai_observed_false_positives": 10,
+  "ai_observed_false_negatives": 0,
+  "ai_observed_true_negatives": 81,
+  "potentially_positive_uncertain": 4,
+  "potentially_missed_uncertain": 4,
+  "ai_decisive_precision_only": 0.0909,
+  "ai_based_full_precision_lower_bound": 0.0667,
+  "ai_based_full_precision_upper_bound": 0.3333,
+  "ai_based_false_positive_range": [
+    10,
+    14
+  ],
+  "ai_based_false_negative_range": [
+    0,
+    4
+  ],
+  "ai_false_positive_reasons": {
+    "AREA": 5,
+    "CANCELLED": 1,
+    "SCOPE": 1,
+    "SIZE": 2,
+    "WINDOW_DOOR": 1
+  },
+  "ai_false_negative_reasons": {},
+  "topk": 30,
+  "topk_ai_known_relevant": 1,
+  "topk_ai_ambiguous_or_unreviewed": 5,
+  "topk_ai_precision_range": [
+    0.0333,
+    0.2
+  ],
+  "official_independent_precision": null,
+  "official_independent_precision_gate": "NOT MEASURED",
+  "human_independent_gold_review_count": 0,
+  "note": "All confusion counts and bounds are provisional AI-vs-heuristic comparisons using only search metadata; not independent accuracy ground truth.",
+  "frozen_ai_review_sha256": "73000ba0d0f5e5640c4b44796db063f9879965594b124b03111b862af41016fc",
+  "baseline_predictions_sha256": "e36fa65ec4af712d5b30c10c1c0c3ed635ee6f489d1cc9f80e098487aee2b68b"
+}

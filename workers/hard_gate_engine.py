@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from delivery_safety import delivery_decision
 
 TENDERS_PATH = Path("data/hilma_analysoitu.json")
 PROFILE_PATH = Path("data/company_profile.json")
@@ -22,29 +23,51 @@ def evaluate_gate(gate: dict, profile: dict) -> dict:
     status = "UNKNOWN"
     reason = "Tietoa ei voida arvioida."
 
+    evidence_key = {
+        "turnover_min": "turnover_eur",
+        "capability": "capabilities",
+        "capability_any": "capabilities",
+        "capability_all": "capabilities",
+        "certification": "certifications",
+        "region": "regions",
+        "response_time_max_hours": "response_time_hours",
+        "financial_guarantee": "can_provide_financial_guarantee",
+    }.get(gate_type)
+
+    source_evidence = gate.get("evidence")
+    company_evidence = (profile.get("verification_evidence") or {}).get(evidence_key)
+    if not isinstance(source_evidence, str) or not source_evidence.strip():
+        reason = "Pakollisen vaatimuksen lähde-evidenssi puuttuu."
+    elif not isinstance(company_evidence, str) or not company_evidence.strip():
+        reason = "Yritystiedon riippumaton vahvistus puuttuu."
+
     if profile.get("profile_status") != "ACTIVE":
         reason = "Yritysprofiilia ei ole konfiguroitu."
+    elif not isinstance(source_evidence, str) or not source_evidence.strip():
+        pass
+    elif not isinstance(company_evidence, str) or not company_evidence.strip():
+        pass
     elif gate_type == "turnover_min":
         turnover = profile.get("turnover_eur")
         if turnover is not None and isinstance(required, (int, float)):
             status = "PASS" if turnover >= required else "FAIL"
             reason = f"Liikevaihto {turnover} €, vaatimus {required} €."
-    elif gate_type == "capability":
+    elif gate_type == "capability" and required is not None:
         status = "PASS" if norm(str(required)) in capabilities else "FAIL"
         reason = "Kyvykkyys löytyy." if status == "PASS" else "Kyvykkyys puuttuu."
-    elif gate_type == "capability_any":
+    elif gate_type == "capability_any" and isinstance(required, list) and required:
         values = [norm(str(v)) for v in (required or [])]
         status = "PASS" if any(v in capabilities for v in values) else "FAIL"
         reason = "Vähintään yksi kyvykkyys löytyy." if status == "PASS" else "Vaadittu kyvykkyys puuttuu."
-    elif gate_type == "capability_all":
+    elif gate_type == "capability_all" and isinstance(required, list) and required:
         values = [norm(str(v)) for v in (required or [])]
         missing = [v for v in values if v not in capabilities]
         status = "PASS" if not missing else "FAIL"
         reason = "Kaikki kyvykkyydet löytyvät." if not missing else "Puuttuvat: " + ", ".join(missing)
-    elif gate_type == "certification":
+    elif gate_type == "certification" and required is not None:
         status = "PASS" if norm(str(required)) in certifications else "FAIL"
         reason = "Pätevyys löytyy." if status == "PASS" else "Pätevyys puuttuu."
-    elif gate_type == "region":
+    elif gate_type == "region" and required is not None:
         status = "PASS" if norm(str(required)) in regions else "FAIL"
         reason = "Toiminta-alue täsmää." if status == "PASS" else "Toiminta-alue ei täsmää."
     elif gate_type == "response_time_max_hours":
@@ -83,6 +106,7 @@ def evaluate_tender(tender: dict, profile: dict) -> dict:
         "id": tender.get("id"),
         "profile_decision": decision,
         "hard_gate_results": results,
+        **delivery_decision(tender, decision),
     }
 
 

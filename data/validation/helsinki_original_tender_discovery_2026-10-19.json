@@ -1,0 +1,166 @@
+{
+  "schema_version": "2026-10-19-original-hilma-helsinki-v1",
+  "purpose": "HISTORICAL_SOURCE_DISCOVERY_NOT_GOLD_OR_RANKED_HOLDOUT",
+  "candidates": [
+    {
+      "case_id": "HELSINKI_MUSIIKKITALO_IV_2025",
+      "worksite": "Helsinki",
+      "scope_ai_preassessment": "SPECIALIST_IV_OUTSIDE_GENERAL_RENOVATION",
+      "document_url": "https://cdn.hankintailmoitukset.fi/public-attachments/d190a8a2-2d9f-442d-60d6-08dd523d1dff",
+      "document_type": "tender_request",
+      "source_vintage": "2025",
+      "original_document_content": "Six ventilation machine fan replacements; site visit 14/20 March 2025; work June-August 2025",
+      "missing": [
+        "all referenced tender annexes",
+        "verified individual contract value",
+        "bidder-specific eligibility"
+      ],
+      "gold_label": "UNREVIEWED",
+      "notice_id": null,
+      "notice_link_status": "NOT_VERIFIED",
+      "verified_individual_lot_value_eur": null,
+      "value_source_status": "NOT_VERIFIED",
+      "package_complete": false,
+      "eligibility_decision": "CONDITIONAL_SOURCE_INCOMPLETE"
+    },
+    {
+      "case_id": "HELSINKI_POHJOLA_4F_2020",
+      "worksite": "Helsinki",
+      "scope_ai_preassessment": "RENOVATION_MATCH_CONDITIONAL",
+      "document_url": "https://cdn.hankintailmoitukset.fi/public-attachments/42f2a55c-dc72-4832-4445-08d8241b96e8",
+      "document_type": "tender_request",
+      "source_vintage": "2020",
+      "original_document_content": "Hospital 4th-floor room alterations; three separately priced lots; liability insurance >=500000 EUR; 3 references; turnover 3 years; annex ZIPs mentioned",
+      "missing": [
+        "Rakennusurakka.zip",
+        "LVIA urakka.zip",
+        "Sähköurakka.zip",
+        "verified single lot estimated value",
+        "supplier eligibility evidence",
+        "source-linked notice ID"
+      ],
+      "gold_label": "UNREVIEWED",
+      "notice_id": null,
+      "notice_link_status": "NOT_VERIFIED",
+      "verified_individual_lot_value_eur": null,
+      "value_source_status": "NOT_VERIFIED",
+      "package_complete": false,
+      "eligibility_decision": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "required_building_lot_documents": [
+        {
+          "name": "Alkuperäinen tarjouspyyntö",
+          "status": "PUBLIC_FULL_TEXT_VERIFIED"
+        },
+        {
+          "name": "Liite 1 Rakennusurakka.zip",
+          "status": "NOT_FOUND"
+        },
+        {
+          "name": "Liite 2 LVIA urakka.zip",
+          "status": "NOT_FOUND"
+        },
+        {
+          "name": "Liite 3 Sähköurakka.zip",
+          "status": "NOT_FOUND"
+        }
+      ]
+    },
+    {
+      "case_id": "HELSINKI_USPENSKI_INTERIOR",
+      "worksite": "Helsinki",
+      "scope_ai_preassessment": "SURFACE_REPAIR_MATCH_CONDITIONAL",
+      "document_url": "https://cdn.hankintailmoitukset.fi/public-attachments/4efc21a0-a41e-4fb0-6f5d-08d813538d7d",
+      "document_type": "scope_annexes",
+      "source_vintage": "2021",
+      "original_document_content": "Interior wall patching, chasing, painting and restoration works, nine-page scope",
+      "missing": [
+        "tender request",
+        "eligibility terms",
+        "individual contract value",
+        "remaining plans and attachments",
+        "2.1 Tarjouspyyntökirje RU (identified by original document index)",
+        "RU-specific bid form, unit prices, program, safety, boundaries and drawings",
+        "source-linked notice ID"
+      ],
+      "gold_label": "UNREVIEWED",
+      "notice_id": null,
+      "notice_link_status": "NOT_VERIFIED",
+      "verified_individual_lot_value_eur": null,
+      "value_source_status": "NOT_VERIFIED",
+      "package_complete": false,
+      "eligibility_decision": "CONDITIONAL_SOURCE_INCOMPLETE",
+      "project_identity_evidence": {
+        "source_title": "Uspenskin katedraalin sähkösaneeraus 2021, urakkalaskenta-asiakirjaluettelo",
+        "document_url": "https://hnshilmaprodsa.blob.core.windows.net/attachments/75491beb-82be-440b-e865-08d906e43da0?sv=2020-04-08&se=9999-12-31T23%3A59%3A59Z&sr=b&sp=r&rscd=attachment%3B+filename%3D%221.+ASIAKIRJALUETTELO.pdf%22&sig=TFRnsFP6YTmE1IjAOg6E6fFUzhlrCSZ6XNeFN0ftBho%3D",
+        "retrieval_status": "PUBLIC_PDF_FULL_TEXT_OBSERVED",
+        "source_date": "2021-04-24",
+        "linkage_level": "SAME_PROJECT_AND_SCOPE_BY_EXPLICIT_INDEX_REFERENCE_NOT_NOTICE_ID",
+        "explicit_index_reference": "Sisäseinien korjaus- ja entisöintityöselostus / Maalausvalvonta Laeslehto Oy"
+      },
+      "required_building_lot_documents": [
+        {
+          "name": "Asiakirjaluettelo 24.4.2021",
+          "status": "PUBLIC_FULL_TEXT_OBSERVED"
+        },
+        {
+          "name": "2.1 Tarjouspyyntökirje RU 1.4.2021",
+          "status": "NOT_FOUND"
+        },
+        {
+          "name": "3.1 Tarjouslomake RU",
+          "status": "NOT_FOUND"
+        },
+        {
+          "name": "4 Yksikköhintaluettelot RU",
+          "status": "NOT_FOUND"
+        },
+        {
+          "name": "5 Urakkaohjelma 1.4.2021",
+          "status": "NOT_FOUND"
+        },
+        {
+          "name": "6.1 Turvallisuusasiakirja 1.4.2021",
+          "status": "NOT_FOUND"
+        },
+        {
+          "name": "6.2 Haitta-ainekartoitus",
+          "status": "NOT_FOUND"
+        },
+        {
+          "name": "7 Urakkarajaliite 1.4.2021",
+          "status": "NOT_FOUND"
+        },
+        {
+          "name": "Sisäseinien korjaus- ja entisöintityöselostus",
+          "status": "PUBLIC_FULL_TEXT_VERIFIED"
+        },
+        {
+          "name": "Rakennusurakan piirustukset ja muut luettelon tekniset liitteet",
+          "status": "NOT_VERIFIED_COMPLETE"
+        }
+      ]
+    },
+    {
+      "case_id": "HELSINKI_MUSIIKKITALO_IV_2026",
+      "worksite": "Helsinki",
+      "scope_ai_preassessment": "SPECIALIST_IV_OUTSIDE_GENERAL_RENOVATION",
+      "document_url": "https://cdn.hankintailmoitukset.fi/public-attachments/680a9605-60c3-4165-b0ae-08de83eb31df",
+      "document_type": "scope_annexes",
+      "source_vintage": "2026-03-17",
+      "original_document_content": "Fourteen-page urakkaohjelma for Musiikkitalo IV fans",
+      "missing": [
+        "matching 2026 tender request",
+        "confirmed link to 2025 tender revision",
+        "verified individual contract value",
+        "complete annexes"
+      ],
+      "gold_label": "UNREVIEWED",
+      "notice_id": null,
+      "notice_link_status": "NOT_VERIFIED",
+      "verified_individual_lot_value_eur": null,
+      "value_source_status": "NOT_VERIFIED",
+      "package_complete": false,
+      "eligibility_decision": "CONDITIONAL_SOURCE_INCOMPLETE"
+    }
+  ]
+}
